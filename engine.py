@@ -19,11 +19,8 @@ class World:
         self.width = width
         self.height = height
         self.caseList = []
-        self.wallList = []
-        self.boxList = []
-        self.targetList = []
-        self.playerList = []
-        self.collisions = []
+        self.hardCollisions = []
+        self.softCollisions = []
         self.mkMap()
 
 
@@ -32,54 +29,42 @@ class World:
         for h in list(range(self.height)):
             self.map.append([" "]*self.width)
 
-
-    def mkCase(self, pos):
-        self.map[pos[1]][pos[0]] = " "
-
-    def mkWall(self, pos):
-        text = colored("O", "blue")
-        self.map[pos[1]][pos[0]] = text
-
-    def mkBox(self, pos):
-        text = colored("#", "white")
-        self.map[pos[1]][pos[0]] = text
-
-    def mkTarget(self, pos):
-        text = colored("*", "green")
-        self.map[pos[1]][pos[0]] = text
-
-    def mkPlayer(self, pos):
-        text = colored("X", "red")
-        self.map[pos[1]][pos[0]] = text
+    def mkCase(self, case):
+        self.map[case.pos[0]][case.pos[1]] = case.texture
 
     def addCase(self, case):
-        self.caseList.append(case)
+        self.caseList.append([case, case.pos])
 
-    def addWall(self, wall):
-        self.wallList.append(wall)
-        self.collisions.append(wall.pos)
+    def addHardCollision(self, case):
+        self.hardCollisions.append(case.pos)
 
-    def addBox(self, box):
-        self.boxList.append(box)
+    def addSoftCollision(self, case):
+        self.softCollisions.append(case.pos)
 
-    def addTarget(self, target):
-        self.targetList.append(target)
-
-    def addPlayer(self, player):
-        self.playerList.append(player)
+    def searchCase(self, caseType, coords):
+        for cl in self.caseList:
+            if type(cl[0]) == caseType and cl[1] == coords:
+                return cl[0]
 
     def update(self):
         self.mkMap()
         for c in self.caseList:
-            self.mkCase(c.pos)
-        for w in self.wallList:
-            self.mkWall(w.pos)
-        for b in self.boxList:
-            self.mkBox(b.pos)
-        for t in self.targetList:
-            self.mkTarget(t.pos)
-        for p in self.playerList:
-            self.mkPlayer(p.pos)
+            self.mkCase(c[0])
+
+    def winCondition(self):
+        targetList = []
+        boxList = []
+        for case in self.caseList:
+            if type(case[0]) == Target:
+                targetList.append(case[1])
+            if type(case[0]) == Box:
+                boxList.append(case[1])
+        targetList.sort()
+        boxList.sort()
+        if boxList == targetList:
+            for case in self.caseList:
+                case[0].texture = colored("W", "green")
+            return 1
 
     def __str__(self):
         string = ""
@@ -89,7 +74,7 @@ class World:
             string += "\n"
         return string
 
-class Case:
+class EmptyCase:
     """
     ------------------------------
     Empty case with no collisions.
@@ -99,6 +84,8 @@ class Case:
     """
     def __init__(self, pos):
         self.pos = pos
+        self.texture = " "
+        self.collision = 0
 
 class Wall:
     """
@@ -110,6 +97,8 @@ class Wall:
     """
     def __init__(self, pos):
         self.pos = pos
+        self.texture = colored("O", "blue")
+        self.collisions = 1
 
 class Box:
     """
@@ -121,6 +110,31 @@ class Box:
     """
     def __init__(self, pos):
         self.pos = pos
+        self.texture = colored("#", "white")
+
+    def right(self, world):
+       nextCase = [self.pos[0]+1, self.pos[1]]
+       if nextCase not in world.softCollisions+world.hardCollisions:
+           self.pos[0] += 1
+           return 1
+
+    def left(self, world):
+        nextCase = [self.pos[0]-1, self.pos[1]]
+        if nextCase not in world.hardCollisions+world.softCollisions:
+            self.pos[0] -= 1
+            return 1
+
+    def down(self, world):
+        nextCase = [self.pos[0], self.pos[1]+1]
+        if nextCase not in world.hardCollisions+world.softCollisions:
+            self.pos[1] += 1
+            return 1
+
+    def up(self, world):
+        nextCase = [self.pos[0], self.pos[1]-1]
+        if nextCase not in world.hardCollisions+world.softCollisions:
+            self.pos[1] -= 1
+            return 1
 
 class Player:
     """
@@ -130,28 +144,49 @@ class Player:
     ---------------------------------------------------------------
     #Attributes:
         -[list] pos : case's position
-    
+
     #Methods:
         -right, left, down, up : move the player in the given direction if 
                                  there's no collision's conflict
     """
     def __init__(self, pos):
         self.pos = pos
-        
-    def right(self, world):
-        if self.pos[0]+1<world.width and [self.pos[0]+1, self.pos[1]] not in world.collisions:
+        self.texture = colored("X", "red")
+
+    def down(self, world): 
+        nextCase = [self.pos[0]+1, self.pos[1]]
+        if nextCase in world.softCollisions:
+            box = world.searchCase(Box, nextCase)
+            if box.right(world):
+                self.pos[0] += 1
+        elif self.pos[0]+1<world.width and [self.pos[0]+1, self.pos[1]] not in world.hardCollisions:
             self.pos[0] += 1
 
-    def left(self, world):
-        if self.pos[0]-1>=0 and [self.pos[0]-1, self.pos[1]] not in world.collisions:
+    def up(self, world):
+        nextCase = [self.pos[0]-1 ,self.pos[1]]
+        if nextCase in world.softCollisions:
+            box = world.searchCase(Box, nextCase)
+            if box.left(world):
+                self.pos[0] -= 1
+        elif self.pos[0]-1>=0 and [self.pos[0]-1, self.pos[1]] not in world.hardCollisions:
             self.pos[0] -= 1
 
-    def down(self, world):
-        if self.pos[1]+1<world.height and [self.pos[0], self.pos[1]+1] not in world.collisions:
+    def right(self, world):
+        nextCase = [self.pos[0], self.pos[1]+1]
+        if nextCase in world.softCollisions:
+            box = world.searchCase(Box, nextCase)
+            if box.down(world):
+                self.pos[1] += 1
+        elif self.pos[1]+1<world.height and [self.pos[0], self.pos[1]+1] not in world.hardCollisions:
             self.pos[1] += 1
 
-    def up(self, world):
-        if self.pos[1]-1>=0 and [self.pos[0], self.pos[1]-1] not in world.collisions:
+    def left(self, world):
+        nextCase = [self.pos[0], self.pos[1]-1]
+        if nextCase in world.softCollisions:
+            box = world.searchCase(Box, nextCase)
+            if box.up(world):
+                self.pos[1] -= 1
+        elif self.pos[1]-1>=0 and [self.pos[0], self.pos[1]-1] not in world.hardCollisions:
             self.pos[1] -= 1
 
 class Target:
@@ -164,6 +199,7 @@ class Target:
     """
     def __init__(self, pos):
         self.pos = pos
+        self.texture = colored("*", "green")
 
 class Game:
     """
@@ -172,7 +208,7 @@ class Game:
     It starts a game with the given configuration.
     ----------------------------------------------
     #Attributes:
-    
+
     #Methods:
         -start() : starts the game loop and ask the user for action.
                    If the user choose to leave this loop the program stops.
@@ -180,20 +216,47 @@ class Game:
     def __init__(self, world, player, walls):
         self.world = world
         self.player = player
-        self.world.addPlayer(self.player)
         self.walls = walls
         for w in self.walls:
-            self.world.addWall(w)
-        self.target = Target([8, 8])
-        self.world.addTarget(self.target)
-        self.box = Box([2, 1])
-        self.world.addBox(self.box)
+            self.world.addCase(w)
+            self.world.addHardCollision(w)
+
+        self.target = Target([1, 2])
+        self.world.addCase(self.target)
+        self.box = Box([3, 2])
+        self.world.addCase(self.box)
+        self.world.addSoftCollision(self.box)
+
+        self.target2 = Target([1, 6])
+        self.world.addCase(self.target2)
+        self.box2 = Box([4, 2])
+        self.world.addCase(self.box2)
+        self.world.addSoftCollision(self.box2)
+
+        self.target3 = Target([7, 2])
+        self.world.addCase(self.target3)
+        self.box3 = Box([4, 4])
+        self.world.addCase(self.box3)
+        self.world.addSoftCollision(self.box3)
+
+        self.target4 = Target([7, 7])
+        self.world.addCase(self.target4)
+        self.box4 = Box([7, 4])
+        self.world.addCase(self.box4)
+        self.world.addSoftCollision(self.box4)
+        self.world.addCase(self.player)
 
     def start(self):
         scanner = ""
         while scanner.upper() != 'EXIT':
             world.update()
             print(world)
+            if world.winCondition():
+                print("You win")
+                scanner = "EXIT"
+                world.update()
+                print(world)
+                continue
             print("Z,Q,S,D or exit :", end="")
             scanner = input()
             if scanner.upper() == 'Z':
@@ -213,17 +276,17 @@ class Game:
 
 if __name__ == "__main__": 
     world = World(10, 10)  
-    player = Player([1, 1])
+    player = Player([6, 2])
     walls = []
     wallsPositions = ([0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6,], [0, 7], [0, 8], [0, 9],
-                      [1, 0], [1, 2], [1, 5], [1, 7], [1, 9],
-                      [2, 0], [2, 2], [2, 3], [2, 5], [2, 7], [2, 9],
+                      [1, 0], [1, 9],
+                      [2, 0], [2, 2], [2, 4], [2, 5], [2, 7], [2, 9],
                       [3, 0], [3, 5], [3, 9],
-                      [4, 0], [4, 3], [4, 4], [4, 5], [4, 7], [4, 9],
-                      [5, 0], [5, 1], [5, 7], [5, 9],
-                      [6, 0], [6, 3], [6, 5], [6, 6], [6, 7], [6, 9],
-                      [7, 0], [7, 2], [7, 3], [7, 5], [7, 9],
-                      [8, 0], [8, 5], [8, 7], [8, 9],
+                      [4, 0], [4, 9],
+                      [5, 0], [5, 2], [5, 6], [5, 8], [5, 9],
+                      [6, 0], [6, 3], [6, 9],
+                      [7, 0], [7, 6], [7, 8], [7, 9],
+                      [8, 0], [8, 2], [8, 8], [8, 9],
                       [9, 0], [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [9, 7], [9, 8], [9, 9])
     for w in wallsPositions:
         walls.append(Wall(w)) 
