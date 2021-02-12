@@ -223,25 +223,29 @@ class Game:
 
         self.target = Target([1, 2])
         self.world.addCase(self.target)
-        self.box = Box([3, 2])
-        self.world.addCase(self.box)
-        self.world.addSoftCollision(self.box)
 
         self.target2 = Target([1, 6])
         self.world.addCase(self.target2)
-        self.box2 = Box([4, 2])
-        self.world.addCase(self.box2)
-        self.world.addSoftCollision(self.box2)
 
         self.target3 = Target([7, 2])
         self.world.addCase(self.target3)
-        self.box3 = Box([4, 4])
-        self.world.addCase(self.box3)
-        self.world.addSoftCollision(self.box3)
 
         self.target4 = Target([7, 7])
         self.world.addCase(self.target4)
         self.box4 = Box([7, 4])
+
+        self.box = Box([3, 2])
+        self.world.addCase(self.box)
+        self.world.addSoftCollision(self.box)
+        
+        self.box2 = Box([4, 2])
+        self.world.addCase(self.box2)
+        self.world.addSoftCollision(self.box2)
+
+        self.box3 = Box([4, 4])
+        self.world.addCase(self.box3)
+        self.world.addSoftCollision(self.box3)
+
         self.world.addCase(self.box4)
         self.world.addSoftCollision(self.box4)
         self.world.addCase(self.player)
@@ -250,6 +254,7 @@ class Game:
         scanner = ""
         while scanner.upper() != 'EXIT':
             world.update()
+            print("\n"*30)
             print(world)
             if world.winCondition():
                 print("You win")
