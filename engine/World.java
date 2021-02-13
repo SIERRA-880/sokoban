@@ -2,9 +2,9 @@
 
 public class World {
 
-	private int width;
-	private int height;
-	private Pointer[] caseList;
+	public int width;
+	public int height;
+	public Pointer[] caseList;
 	
 	public World(int width, int height) {
 		this.width = width;

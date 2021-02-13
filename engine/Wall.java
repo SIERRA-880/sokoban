@@ -1,5 +1,5 @@
 
 public class Wall extends Cell {
 
-	private boolean HardCollision = true;
+	public boolean HardCollision = true;
 }

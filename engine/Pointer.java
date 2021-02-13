@@ -1,8 +1,8 @@
 
 public class Pointer {
 
-	private int[] pos;
-	private Cell cell;
+	public int[] pos;
+	public Cell cell;
 
 	public Pointer(Cell cell, int[] pos) {
 		this.cell = cell;

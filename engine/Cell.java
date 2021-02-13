@@ -1,8 +1,8 @@
 
-public Cell {
+public class Cell {
 	
-	private int[] pos;
-	private String texture;
+	public int[] pos;
+	public String texture;
 
 	public Cell(int[] pos, String texture) {
 		this.pos = pos;
