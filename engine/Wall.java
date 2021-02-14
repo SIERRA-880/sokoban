@@ -1,5 +1,7 @@
 
 public class Wall extends Cell {
 
-	public boolean HardCollision = true;
+	public Wall(int[] pos, texture) {
+		super(pos, texture, true, false);
+	}
 }

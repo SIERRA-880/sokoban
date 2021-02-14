@@ -2,9 +2,9 @@
 
 public class World {
 
-	public int width;
-	public int height;
-	public Pointer[] caseList;
+	private int width;
+	private int height;
+	private Pointer[] casesArray = new Case[width*height];
 	
 	public World(int width, int height) {
 		this.width = width;
@@ -20,13 +20,14 @@ public class World {
 	public void mkCell(Cell newCell) {
 	}
 
-	public searchCell(Cell cell) {
+	public void searchCell(Cell cell) {
 	}
 
 	public void update() {
 	}
 
 	public boolean winCondition() {
+		return false;
 	}
 	
 }
