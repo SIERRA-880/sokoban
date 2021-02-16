@@ -4,7 +4,7 @@ public class World {
 
 	private int width;
 	private int height;
-	private Pointer[] casesArray = new Case[width*height];
+	private Pointer[] casesArray = new Pointer[width*height];
 	
 	public World(int width, int height) {
 		this.width = width;
