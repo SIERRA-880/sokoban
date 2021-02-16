@@ -20,7 +20,8 @@ public class World {
 		for (int line=0; line<height; line++) {
 			for (int column=0; column<width; column++) {
 				int[] pos = {line, column};
-				Cell cell = new Cell(pos, config.charAt(n++), false, false);
+				char cellType = config.charAt(n++);
+				Cell cell = addCell(cellType,  pos);
 				Pointer pointer = new Pointer(cell, cell.getCellPos());
 				cellsArray[line][column] = pointer;
 			}
@@ -36,7 +37,16 @@ public class World {
 		}
 	}
 
-	public void addCell(Cell newCell) {
+	public Cell addCell(char type, int[] pos) {
+		if (type== ' ') {
+			return new Cell(pos, ' ', false, false);
+		}
+		else if (type == '#') {
+			return new Wall(pos, '#');
+		}
+		else {
+			return new Cell(pos, '!', false, false);  
+		}
 	}
 
 	public void mkCell(Cell newCell) {
