@@ -1,10 +1,11 @@
 
 public class Game {
+	public static String map = "###########        ## # ## # ##    #   ##        ## #   # ###  #     ##     # ### #     ############";
 
 	public static void main(String[] args) {
-		int[] pos = {1, 1};
-		Player player = new Player(pos, "X");
-		System.out.println(player.getCellTexture());
+		World world = new World(10, 10);
+		world.mkMap(map);
+		world.printMap();
 	}
 
 }

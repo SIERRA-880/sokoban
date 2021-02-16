@@ -2,11 +2,11 @@
 public class Cell {
 	
 	private int[] pos;
-	private String texture;
+	private char texture;
 	private boolean hardCollision;
 	private boolean softCollision;
 
-	public Cell(int[] pos, String texture, boolean hardCollision, boolean softCollision) {
+	public Cell(int[] pos, char texture, boolean hardCollision, boolean softCollision) {
 		this.pos = pos;
 		this.texture = texture;	
 		this.hardCollision = hardCollision;
@@ -18,7 +18,7 @@ public class Cell {
 		return pos;
 	}
 
-	public String getCellTexture() {
+	public char getCellTexture() {
 		return texture;
 	}
 
