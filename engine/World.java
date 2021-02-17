@@ -12,7 +12,7 @@ public class World {
 		this.cellsArray = new Pointer[height][width];
 	}
 
-	public void mkMap(String config) {
+	public void mkMap(String config, Player player) {
 		/**This method create a matrix where each value
 		 * represents a Cell of the world.
 		 */
@@ -21,9 +21,15 @@ public class World {
 			for (int column=0; column<width; column++) {
 				int[] pos = {line, column};
 				char cellType = config.charAt(n++);
-				Cell cell = addCell(cellType,  pos);
-				Pointer pointer = new Pointer(cell, cell.getCellPos());
-				cellsArray[line][column] = pointer;
+				if (pos[0]==player.getCellPos()[0] && pos[1]==player.getCellPos()[1]) {
+					Pointer pointer = new Pointer(player, player.getCellPos());
+					cellsArray[line][column] = pointer;
+				}
+				else {
+					Cell cell = addCell(cellType,  pos);
+					Pointer pointer = new Pointer(cell, cell.getCellPos());
+					cellsArray[line][column] = pointer;
+				}
 			}
 		}
 	}
@@ -52,10 +58,13 @@ public class World {
 	public void mkCell(Cell newCell) {
 	}
 
-	public void searchCell(Cell cell) {
+	public Cell searchCell(int[] pos) {
+		return cellsArray[pos[0]][pos[1]].cell;
 	}
 
-	public void update() {
+	public void update(String config, Player player) {
+		mkMap(config, player);
+		printMap();
 	}
 
 	public boolean winCondition() {

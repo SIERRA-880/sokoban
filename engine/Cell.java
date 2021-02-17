@@ -18,6 +18,11 @@ public class Cell {
 		return pos;
 	}
 
+	public void setCellPos(int[] newPos) {
+		pos[0] = newPos[0];
+		pos[1] = newPos[1];
+		}
+
 	public char getCellTexture() {
 		return texture;
 	}
