@@ -11,10 +11,10 @@ public class Builder {
 		for (int line=0; line<height; line++) {
 
 			for (int column=0; column<width; column++) {
-				int[] pos = {line, column};
+				int[] pos = {column, line};
 				char cellType = mapConfig.charAt(n++);
 				
-				if (line==player.getCellPos()[0] && column==player.getCellPos()[1]) {
+				if (line==player.getCellPos()[1] && column==player.getCellPos()[0]) {
 					mapMatrix[line][column] = player;
 				}
 				else if (cellType == ' ') {

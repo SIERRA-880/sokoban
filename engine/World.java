@@ -27,7 +27,7 @@ public class World {
 	}
 
 	public Cell searchCell(int[] pos) {
-		return cellsArray[pos[0]][pos[1]];
+		return cellsArray[pos[1]][pos[0]];
 	}
 
 	public void update(String config, Player player) {

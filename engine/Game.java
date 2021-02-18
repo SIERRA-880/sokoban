@@ -4,7 +4,7 @@ public class Game {
 
 	public static void main(String[] args) {
 		String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ###  #     ## . $ #.### #     ############";
-		int[] pos = {6, 2};
+		int[] pos = {2, 6};
 
 		Player player = new Player(pos, '@');
 		World world = new World(10, 10);
