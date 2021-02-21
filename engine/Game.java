@@ -3,13 +3,14 @@ import java.util.Scanner;
 public class Game {
 
 	public static void main(String[] args) {
-		String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ###  #     ## . $ #.### #     ############";
-		int[] pos = {2, 6};
+		String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ### @#     ## . $ #.### #     ############";
 
+		int[] pos = {0, 0};
 		Player player = new Player(pos, '@');
-		World world = new World(10, 10);
 
-		world.setMap(Builder.build(map, player, 10, 10));
+		World world = new World(10, 10);
+		world.setList(Builder.innit(map, player, 10, 10));
+		world.setMap(Builder.build(world.getList(), 10, 10));
 		world.printMap();
 
 		Scanner input = new Scanner(System.in);
@@ -26,13 +27,13 @@ public class Game {
 				case 'd' : player.move(direction, world);
 									 break;
 				case '!' : replay=false;
-									 break;
-						
+								   break;
+					
 				default : System.out.println("Give a correct direction please.");
-									 break;
+									break;
 			}
-			world.update(map, player);
+			world.upDate();
+			world.printMap();
 		}
 	}
-
 }

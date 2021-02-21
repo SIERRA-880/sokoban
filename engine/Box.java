@@ -5,8 +5,4 @@ public class Box extends MoveableCell {
 		super(pos, texture, false, true);
 	}
 
-	public boolean isMoveable(int[] nextCasePos, World world) {
-		return false;
-		 	
-	}
 }
