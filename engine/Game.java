@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Game {
 
 	public static void main(String[] args) {
-		String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ### @#     ## . $ #.### #     ############";
+		//String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ### @#     ## . $ #.### #     ############";
+		String map = MapLoader.load("map1.txt");
 
 		int[] pos = {0, 0};
 		Player player = new Player(pos, '@');
