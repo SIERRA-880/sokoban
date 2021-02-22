@@ -8,7 +8,7 @@ public class Builder {
 		 * output: Cell[]
 		 *
 		 * This method fills an array of map's objects.
-		 * This will first fills the half with Empty Cells and the 
+		 * This will first fill half of the said array with Empty Cells and the 
 		 * second half will be filled with the objects of the map.
 		 *
 		 */
