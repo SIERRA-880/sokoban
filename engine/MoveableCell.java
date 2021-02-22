@@ -8,7 +8,7 @@ public class MoveableCell extends Cell {
 		int[] nextPos = getNextPos(direction);
 		Cell nextCell;
 
-		// here we test de type of the next cell :
+		// test of de type of the next cell :
 		if (world.searchCell(nextPos) instanceof Box) {
 			nextCell = world.searchBox(nextPos);
 		}
@@ -16,13 +16,13 @@ public class MoveableCell extends Cell {
 			nextCell = world.searchCell(nextPos);
 		}
 
-		// then we check the collisions :
+		// check the collisions :
 		if (nextCell.hardCollision()) {
 			// if the next cell cannot be gone trough :
 			return false;
 		}
 		else if (nextCell.softCollision()) {
-			// if the next cell can be pushed we'll check the following :
+			// if the next cell can be pushed check the following :
 			int[] nextNextPos = nextCell.getNextPos(direction);
 			Cell nextNextCell = world.searchCell(nextNextPos);
 			if (nextNextCell.hardCollision() || nextNextCell.softCollision()) {
