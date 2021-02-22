@@ -6,10 +6,12 @@ public class World {
 	private int height;
 	private Cell[][] cellsArray;
 	private Cell[] cellsList;
+	private Player player;
 	
-	public World(int width, int height) {
+	public World(int width, int height, Player player) {
 		this.width = width;
 		this.height = height;
+		this.player = player;
 	}
 
 	public void setList(Cell[] list) {
@@ -22,6 +24,11 @@ public class World {
 
 	public void setMap(Cell[][] matrix) {
 		cellsArray = matrix;
+	}
+
+	public void mapChanger(String file) {
+		setList(Builder.innit(MapLoader.load(file), player, width, height));
+		setMap(Builder.build(getList(), width, height));
 	}
 
 	public void printMap() {

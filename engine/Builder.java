@@ -2,6 +2,16 @@
 public class Builder {
 
 	public static Cell[] innit(String mapConfig, Player player, int width, int height) {
+		/** Builder.innit() :
+		 *
+		 * input : String, Player, int, int.
+		 * output: Cell[]
+		 *
+		 * This method fills an array of map's objects.
+		 * This will first fills the half with Empty Cells and the 
+		 * second half will be filled with the objects of the map.
+		 *
+		 */
 		int index = 0;
 		
 		Cell[] cellsList = new Cell[(width*height)*2];
@@ -72,8 +82,9 @@ public class Builder {
 	}
 
 	public static Cell[][] build(Cell[] cellsList, int height, int width) {
-		/**This method take a file, a player object and dimensions 
-		 * to return a matrix where each value is a cell object
+		/**This method return a matrix where each value is a cell object
+		 * It needs a list of all objects to place in the matrix, the width
+		 * and the height of the matrix.
 		 */
 		Cell[][] mapMatrix = new Cell[height][width]; 	
 		for (int n=0; n<cellsList.length; n++) {

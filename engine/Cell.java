@@ -15,15 +15,18 @@ public class Cell {
 	}
 
 	public int[] getCellPos() {
+		/** return cell's position */
 		return pos;
 	}
 
 	public void setCellPos(int[] newPos) {
+		/** set the given cell's position */
 		pos[0] = newPos[0];
 		pos[1] = newPos[1];
 	}
 
 	public int[] getNextPos(char direction) {
+		/** return cell's position if it  would be moved in the given direction */
 		int[] nextPos = new int[2];
 		if (direction == 'z') {
 			nextPos[0] = pos[0];
@@ -49,14 +52,17 @@ public class Cell {
 	}
 
 	public char getCellTexture() {
+		/** return cell's texture */
 		return texture;
 	}
 
 	public boolean hardCollision() {
+		/** return true if the cell can't be gone trough */
 		return hardCollision;
 	}
 
 	public boolean softCollision() {
+		/** return true if the cell can be pushed */
 		return softCollision;
 	}
 

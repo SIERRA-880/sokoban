@@ -4,12 +4,18 @@ public class Game {
 
 	public static void main(String[] args) {
 		//String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ### @#     ## . $ #.### #     ############";
-		String map = MapLoader.load("map2.txt");
+		String map;
+		if (args.length > 0) {
+			map = MapLoader.load(args[0]);
+		}
+		else {
+			map = MapLoader.load("map1.txt");
+		}
 
 		int[] pos = {0, 0};
 		Player player = new Player(pos, '@');
 
-		World world = new World(10, 10);
+		World world = new World(10, 10, player);
 		world.setList(Builder.innit(map, player, 10, 10));
 		world.setMap(Builder.build(world.getList(), 10, 10));
 
@@ -27,6 +33,8 @@ public class Game {
 				case 's' : player.move(direction, world);
 									 break;
 				case 'd' : player.move(direction, world);
+									 break;
+				case 'm' : world.mapChanger("map2.txt");
 									 break;
 				case '!' : replay=false;
 								   break;

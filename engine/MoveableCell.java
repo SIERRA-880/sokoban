@@ -7,6 +7,8 @@ public class MoveableCell extends Cell {
 	public boolean isMoveable(char direction, World world) {
 		int[] nextPos = getNextPos(direction);
 		Cell nextCell;
+
+		// here we test de type of the next cell :
 		if (world.searchCell(nextPos) instanceof Box) {
 			nextCell = world.searchBox(nextPos);
 		}
@@ -14,10 +16,13 @@ public class MoveableCell extends Cell {
 			nextCell = world.searchCell(nextPos);
 		}
 
+		// then we check the collisions :
 		if (nextCell.hardCollision()) {
+			// if the next cell cannot be gone trough :
 			return false;
 		}
 		else if (nextCell.softCollision()) {
+			// if the next cell can be pushed we'll check the following :
 			int[] nextNextPos = nextCell.getNextPos(direction);
 			Cell nextNextCell = world.searchCell(nextNextPos);
 			if (nextNextCell.hardCollision() || nextNextCell.softCollision()) {
@@ -34,6 +39,7 @@ public class MoveableCell extends Cell {
 	}
 
 	public void move(char direction, World world) {
+		/** This method change the cell's position depending on the given direction */
 		if (isMoveable(direction, world)) {
 			int[] nextPos = getNextPos(direction);
 			setCellPos(nextPos);
