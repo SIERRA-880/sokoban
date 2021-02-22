@@ -23,7 +23,7 @@ public class World {
 	public void setMap(Cell[][] matrix) {
 		cellsArray = matrix;
 	}
-	
+
 	public void printMap() {
 		/**This print the matrix cell by cell in the terminal
 		 */

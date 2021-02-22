@@ -4,7 +4,7 @@ public class Game {
 
 	public static void main(String[] args) {
 		//String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ### @#     ## . $ #.### #     ############";
-		String map = MapLoader.load("map1.txt");
+		String map = MapLoader.load("map2.txt");
 
 		int[] pos = {0, 0};
 		Player player = new Player(pos, '@');
@@ -12,11 +12,12 @@ public class Game {
 		World world = new World(10, 10);
 		world.setList(Builder.innit(map, player, 10, 10));
 		world.setMap(Builder.build(world.getList(), 10, 10));
-		world.printMap();
 
 		Scanner input = new Scanner(System.in);
 		boolean replay = true;
 		while (replay) {
+			world.upDate();
+			world.printMap();
 			char direction = input.next().charAt(0);
 			switch (direction) {
 				case 'z' : player.move(direction, world); 
@@ -33,8 +34,6 @@ public class Game {
 				default : System.out.println("Give a correct direction please.");
 									break;
 			}
-			world.upDate();
-			world.printMap();
 		}
 	}
 }
