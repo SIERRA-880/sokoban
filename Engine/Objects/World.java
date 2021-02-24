@@ -1,4 +1,5 @@
-import Objects.*;
+package Objects;
+
 import Tools.*;
 
 import java.util.*;
