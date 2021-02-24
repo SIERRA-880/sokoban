@@ -26,6 +26,10 @@ public class World {
 		cellsArray = matrix;
 	}
 
+	public Cell[][] getMap() {
+		return cellsArray;
+	}
+
 	public void mapChanger(String file) {
 		setList(Builder.innit(MapLoader.load(file), player, width, height));
 		setMap(Builder.build(getList(), width, height));

@@ -34,7 +34,9 @@ public class Game {
 									 break;
 				case 'd' : player.move(direction, world);
 									 break;
-				case 'm' : world.mapChanger("map2.txt");
+				case '1' : world.mapChanger("map1.txt");
+									 break;
+				case '2' : world.mapChanger("map2.txt");
 									 break;
 				case '!' : replay=false;
 								   break;
