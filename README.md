@@ -1,2 +1,4 @@
-# DEADLINE - 14/05/2021 12h00
-# sokoban
+<h2>Tasks</h2>
+<ul>
+<li>./gradlew run     --     run app in CLI</li>
+</ul>
