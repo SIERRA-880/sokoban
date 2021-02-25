@@ -21,7 +21,7 @@ Gradle also handle documentation via javadoc. You can find the documentation by 
 
 ### Gradle tasks
 
-- `./gradlew clean` to clean the build folder.
-- `./gradlew build` to build the project.
-- `./gradlew run` to run the main app if you want to test it.
-- `./gradlew javadoc` to generate javadoc.
+- `./gradlew clean` clean the build folder.
+- `./gradlew build` build the project.
+- `./gradlew run` run the main app if you want to test it.
+- `./gradlew javadoc` generate javadoc.
