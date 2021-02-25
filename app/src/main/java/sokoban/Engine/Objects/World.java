@@ -35,15 +35,21 @@ public class World {
         return cellsArray;
     }
     
+    /**
+     * This method is called when the user want to change the map layout in the terminal.
+     * 
+     * @param file a string containing the path of a map
+     */
     public void mapChanger(String file) {
         int[] size = MapLoader.getSize(file);
         setList(Builder.init(MapLoader.load(file), player, size[0], size[1]));
         setMap(Builder.build(getList(), size[0], size[1]));
     }
     
+    /**
+     * Prints the matrix representing the map cell by cell in a terminal
+     */
     public void printMap() {
-        /**This print the matrix cell by cell in the terminal
-        */
         for (int line=0; line<height; line++) {
             for (int column=0; column<width; column++) {
                 System.out.print(cellsArray[line][column].getCellTexture()); 
@@ -70,6 +76,11 @@ public class World {
         cell2.setCellPos(save);
     }
     
+    /**
+     * 
+     * 
+     * @return false by default, true if the level is completed (all boxes on targets)
+     */
     public boolean winCondition() {
         return false;
     }
