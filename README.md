@@ -1,5 +1,10 @@
 # Sokoban
 
+## Documentation
+
+The project uses javadoc for commenting the code. The build process is automated by Gradle.
+To access the documentation, you can open this file in a web browser : `app/build/docs/javadoc/index.html`
+
 ## Gradle
 
 ### Working
