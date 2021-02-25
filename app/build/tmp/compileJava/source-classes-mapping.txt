@@ -1,22 +1,22 @@
 sokoban/Engine/Objects/Player.java
- Objects.Player
+ sokoban.Engine.Objects.Player
 sokoban/Engine/Objects/World.java
- Objects.World
+ sokoban.Engine.Objects.World
 sokoban/Game.java
  sokoban.Game
 sokoban/Engine/Objects/Pointer.java
- Objects.Pointer
+ sokoban.Engine.Objects.Pointer
 sokoban/Engine/Objects/Target.java
- Objects.Target
+ sokoban.Engine.Objects.Target
 sokoban/Engine/Tools/Builder.java
- Tools.Builder
+ sokoban.Engine.Tools.Builder
 sokoban/Engine/Objects/Cell.java
- Objects.Cell
+ sokoban.Engine.Objects.Cell
 sokoban/Engine/Objects/MoveableCell.java
- Objects.MoveableCell
+ sokoban.Engine.Objects.MoveableCell
 sokoban/Engine/Objects/Wall.java
- Objects.Wall
+ sokoban.Engine.Objects.Wall
 sokoban/Engine/Tools/MapLoader.java
- Tools.MapLoader
+ sokoban.Engine.Tools.MapLoader
 sokoban/Engine/Objects/Box.java
- Objects.Box
+ sokoban.Engine.Objects.Box

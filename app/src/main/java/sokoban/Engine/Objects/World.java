@@ -1,8 +1,9 @@
-package Objects;
+package sokoban.Engine.Objects;
 
-import Tools.*;
+import sokoban.Engine.Tools.Builder;
+import sokoban.Engine.Tools.MapLoader;
 
-import java.util.*;
+import java.util.Arrays;
 
 public class World {
     
@@ -36,7 +37,7 @@ public class World {
     
     public void mapChanger(String file) {
         int[] size = MapLoader.getSize(file);
-        setList(Builder.innit(MapLoader.load(file), player, size[0], size[1]));
+        setList(Builder.init(MapLoader.load(file), player, size[0], size[1]));
         setMap(Builder.build(getList(), size[0], size[1]));
     }
     

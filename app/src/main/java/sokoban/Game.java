@@ -1,9 +1,11 @@
 package sokoban;
 
-import Objects.*;
-import Tools.*;
-
 import java.util.Scanner;
+
+import sokoban.Engine.Objects.Player;
+import sokoban.Engine.Objects.World;
+import sokoban.Engine.Tools.Builder;
+import sokoban.Engine.Tools.MapLoader;
 
 public class Game {
     
@@ -24,7 +26,7 @@ public class Game {
         Player player = new Player(pos, '@');
         
         World world = new World(size[0], size[1], player);
-        world.setList(Builder.innit(map, player, size[0], size[1]));
+        world.setList(Builder.init(map, player, size[0], size[1]));
         world.setMap(Builder.build(world.getList(), size[0], size[1]));
         
         Scanner input = new Scanner(System.in);
@@ -53,6 +55,6 @@ public class Game {
                 break;
             }
         }
-        
+        input.close();
     }
 }

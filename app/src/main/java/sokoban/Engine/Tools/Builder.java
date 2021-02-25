@@ -1,11 +1,11 @@
-package Tools;
+package sokoban.Engine.Tools;
 
-import Objects.*;
+import sokoban.Engine.Objects.*;
 
 public class Builder {
     
-    public static Cell[] innit(String mapConfig, Player player, int width, int height) {
-        /** Builder.innit() :
+    public static Cell[] init(String mapConfig, Player player, int width, int height) {
+        /** Builder.init() :
         *
         * input : String, Player, int, int.
         * output: Cell[]

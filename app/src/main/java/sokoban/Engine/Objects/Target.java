@@ -1,4 +1,4 @@
-package Objects;
+package sokoban.Engine.Objects;
 
 public class Target extends Cell {
     

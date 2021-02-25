@@ -1,4 +1,4 @@
-package Objects;
+package sokoban.Engine.Objects;
 
 public class Wall extends Cell {
     
