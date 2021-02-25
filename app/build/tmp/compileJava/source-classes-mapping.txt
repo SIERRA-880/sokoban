@@ -1,22 +1,22 @@
-sokojav/Engine/Objects/Box.java
- Objects.Box
-sokojav/Engine/Objects/Player.java
+sokoban/Engine/Objects/Player.java
  Objects.Player
-sokojav/Game.java
- sokojav.Game
-sokojav/Engine/Tools/MapLoader.java
- Tools.MapLoader
-sokojav/Engine/Objects/Cell.java
- Objects.Cell
-sokojav/Engine/Objects/Target.java
- Objects.Target
-sokojav/Engine/Objects/World.java
+sokoban/Engine/Objects/World.java
  Objects.World
-sokojav/Engine/Objects/Wall.java
- Objects.Wall
-sokojav/Engine/Objects/MoveableCell.java
- Objects.MoveableCell
-sokojav/Engine/Tools/Builder.java
- Tools.Builder
-sokojav/Engine/Objects/Pointer.java
+sokoban/Game.java
+ sokoban.Game
+sokoban/Engine/Objects/Pointer.java
  Objects.Pointer
+sokoban/Engine/Objects/Target.java
+ Objects.Target
+sokoban/Engine/Tools/Builder.java
+ Tools.Builder
+sokoban/Engine/Objects/Cell.java
+ Objects.Cell
+sokoban/Engine/Objects/MoveableCell.java
+ Objects.MoveableCell
+sokoban/Engine/Objects/Wall.java
+ Objects.Wall
+sokoban/Engine/Tools/MapLoader.java
+ Tools.MapLoader
+sokoban/Engine/Objects/Box.java
+ Objects.Box

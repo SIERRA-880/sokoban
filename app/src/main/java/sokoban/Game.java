@@ -1,4 +1,4 @@
-package sokojav;
+package sokoban;
 
 import Objects.*;
 import Tools.*;
@@ -42,9 +42,9 @@ public class Game {
                 break;
                 case 'd' : player.move(direction, world);
                 break;
-                case '1' : world.mapChanger("map1.txt");
+                case '1' : world.mapChanger("build/resources/main/Maps/map1.txt");
                 break;
-                case '2' : world.mapChanger("map2.txt");
+                case '2' : world.mapChanger("build/resources/main/Maps/map2.txt");
                 break;
                 case '!' : replay=false;
                 break;
