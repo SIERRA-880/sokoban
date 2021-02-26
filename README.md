@@ -1,5 +1,10 @@
 # Sokoban
 
+## Documentation
+
+The project uses javadoc for commenting the code. The build process is automated by Gradle.
+To access the documentation, you can open this file in a web browser : `app/build/docs/javadoc/index.html`
+
 ## Gradle
 
 ### Working
@@ -16,7 +21,7 @@ Gradle also handle documentation via javadoc. You can find the documentation by 
 
 ### Gradle tasks
 
-- `./gradlew clean` to clean the build folder.
-- `./gradlew build` to build the project.
-- `./gradlew run` to run the main app if you want to test it.
-- `./gradlew javadoc` to generate javadoc.
+- `./gradlew clean` clean the build folder.
+- `./gradlew build` build the project.
+- `./gradlew run` run the main app if you want to test it.
+- `./gradlew javadoc` generate javadoc.

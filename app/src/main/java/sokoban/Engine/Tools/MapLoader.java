@@ -5,12 +5,15 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
 public class MapLoader {
-    public static String load(String file) {    
-        /** 
-        * The code used here comes from https://www.w3schools.com/java/java_files_read.asp
-        * This methods returns a string containing the entire map line by line.
-        * Usage exemple : MapLoader.load("map_path.txt");
-        */
+    /**
+     * The code used here comes from https://www.w3schools.com/java/java_files_read.asp
+     * 
+     * Usage exemple : MapLoader.load("map_path.txt");
+     * 
+     * @param file the path to the map. Maps should be .txt files
+     * @return a string containing all the lines of the map.
+     */
+    public static String load(String file) {
         String res = "";
         try {
             File myObj = new File(file);
@@ -26,12 +29,13 @@ public class MapLoader {
         }
         return res;
     }
-    
+
+    /**
+     * 
+     * @param file the path to the map. Maps should be .txt files
+     * @return an array containing [height, width] of the map
+     */
     public static int[] getSize(String file) {
-        /**
-        * This method returns an array [height, width]
-        * Usage exemple : MapLoader.getSize("map_path.txt");
-        */
         int[] res = new int[2];
         res[0] = 1;
         try {

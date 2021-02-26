@@ -4,17 +4,21 @@ import sokoban.Engine.Objects.*;
 
 public class Builder {
     
+    /**
+     * This method fills an array with corresponding objects on the proper position.
+     * The method works in two steps.
+     * First step: it fills the array with empty cells.
+     * Second step: it adds to empty cells the object corresponding to the position
+     * 
+     * You can call the method using sokoban.Engine.Tools.MapLoader methods for mapConfig, width and height
+     * 
+     * @param mapConfig string containing the initial configuration of the map
+     * @param player Player object created in sokoban.Game before calling this method
+     * @param width an integer equals to the width of the map
+     * @param height an integer eauqls to the height of the map
+     * @return an array cellsList containing Cell objects
+     */
     public static Cell[] init(String mapConfig, Player player, int width, int height) {
-        /** Builder.init() :
-        *
-        * input : String, Player, int, int.
-        * output: Cell[]
-        *
-        * This method fills an array of map's objects.
-        * This will first fill half of the said array with Empty Cells and the 
-        * second half will be filled with the objects of the map.
-        *
-        */
         int index = 0;
         
         Cell[] cellsList = new Cell[(width*height)*2];
@@ -81,9 +85,19 @@ public class Builder {
                 }
             }
         }
-        return cellsList;	
+        return cellsList;
     }
-    
+
+    /**
+     * 
+     * 
+     * You can call the method using sokoban.Engine.Tools.MapLoader methods width and height
+     * 
+     * @param cellsList 
+     * @param height an integer equals to the height of the map
+     * @param width an integer equals to the width of the map
+     * @return a matrix filled with Cell objects
+     */
     public static Cell[][] build(Cell[] cellsList, int height, int width) {
         /**This method return a matrix where each value is a cell object
         * It needs a list of all objects to place in the matrix, the width
@@ -97,5 +111,4 @@ public class Builder {
         }
         return mapMatrix;
     }
-    
 }

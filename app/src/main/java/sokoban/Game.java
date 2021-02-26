@@ -8,27 +8,25 @@ import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
 
 public class Game {
-    
+
     public static void main(String[] args) {
-        //String map = "########### .   .  ## # ## # ## $  #   ## $ $    ## #   # ### @#     ## . $ #.### #     ############";
         String map;
         int[] size;
         if (args.length > 0) {
             map = MapLoader.load(args[0]);
             size = MapLoader.getSize(args[0]);
-        }
-        else {
+        } else {
             map = MapLoader.load("build/resources/main/Maps/map1.txt");
             size = MapLoader.getSize("build/resources/main/Maps/map1.txt");
         }
-        
+
         int[] pos = {0, 0};
         Player player = new Player(pos, '@');
-        
+
         World world = new World(size[0], size[1], player);
         world.setList(Builder.init(map, player, size[0], size[1]));
         world.setMap(Builder.build(world.getList(), size[0], size[1]));
-        
+
         Scanner input = new Scanner(System.in);
         boolean replay = true;
         while (replay) {
