@@ -181,7 +181,11 @@ extends java.lang.Object</pre>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#load(java.lang.String)">load</a></span>&#8203;(java.lang.String&nbsp;file)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The code used here comes from https://www.w3schools.com/java/java_files_read.asp
+ 
+ Usage exemple : MapLoader.load("map_path.txt");</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -233,6 +237,15 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>load</h4>
 <pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;load&#8203;(java.lang.String&nbsp;file)</pre>
+<div class="block">The code used here comes from https://www.w3schools.com/java/java_files_read.asp
+ 
+ Usage exemple : MapLoader.load("map_path.txt");</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - the path to the map. Maps should be .txt files</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a string containing all the lines of the map.</dd>
+</dl>
 </li>
 </ul>
 <a id="getSize(java.lang.String)">
@@ -242,6 +255,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSize</h4>
 <pre class="methodSignature">public static&nbsp;int[]&nbsp;getSize&#8203;(java.lang.String&nbsp;file)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - the path to the map. Maps should be .txt files</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an array containing [height, width] of the map</dd>
+</dl>
 </li>
 </ul>
 </li>

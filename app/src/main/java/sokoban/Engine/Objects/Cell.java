@@ -1,20 +1,23 @@
 package sokoban.Engine.Objects;
 
+/**
+ * Object representing a cell on the map
+ */
 public class Cell {
-    
+
     private int[] pos;
     private char texture;
     private boolean hardCollision;
     private boolean softCollision;
-    
+
     public Cell(int[] pos, char texture, boolean hardCollision, boolean softCollision) {
         this.pos = pos;
-        this.texture = texture;	
+        this.texture = texture;
         this.hardCollision = hardCollision;
         this.softCollision = softCollision;
-        
+
     }
-    
+
     /**
      * 
      * @return position of the {@link sokoban.Engine.Objects.Cell}
@@ -22,7 +25,7 @@ public class Cell {
     public int[] getCellPos() {
         return pos;
     }
-    
+
     /**
      * Set the given position to the current {@link sokoban.Engine.Objects.Cell}
      * 
@@ -32,7 +35,7 @@ public class Cell {
         pos[0] = newPos[0];
         pos[1] = newPos[1];
     }
-    
+
     /**
      * 
      * @param direction char (z,q,s,d) representing (up,left,down,right) direction
@@ -70,18 +73,20 @@ public class Cell {
     public char getCellTexture() {
         return texture;
     }
-    
+
     /**
-     * 
-     * @return true if the {@link sokoban.Engine.Objects.Cell} cannot be pushed ({@link sokoban.Engine.Objects.Box} against {@link sokoban.Engine.Objects.Wall})
+     * Method used to access the value of the private variable hardCollision.
+     *
+     * @return true if the {@link sokoban.Engine.Objects.Cell} cannot be pushed or passes through ({@link sokoban.Engine.Objects.Box} against {@link sokoban.Engine.Objects.Wall})
      */
     public boolean hardCollision() {
         return hardCollision;
     }
-    
+
     /**
-     * 
-     * @return true if the {@link sokoban.Engine.Objects.Cell} can be pushed ({@link sokoban.Engine.Objects.Box})
+     * Method used to access the value of the private variable hardCollision.
+     *
+     * @return true if there is a soft colision ({@link sokoban.Engine.Objects.Player} pushing {@link sokoban.Engine.Objects.Box})
      */
     public boolean softCollision() {
         return softCollision;

@@ -15,14 +15,13 @@ public class MoveableCell extends Cell {
     public boolean isMoveable(char direction, World world) {
         int[] nextPos = getNextPos(direction);
         Cell nextCell;
-        
+
         // test of de type of the next cell :
         if (world.searchCell(nextPos) instanceof Box) {
             nextCell = world.searchBox(nextPos);
         } else {
             nextCell = world.searchCell(nextPos);
         }
-
 
         if (nextCell.hardCollision()) {
             return false;
