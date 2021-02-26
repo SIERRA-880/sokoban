@@ -203,7 +203,9 @@ extends java.lang.Object</pre>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCellPos(int%5B%5D)">setCellPos</a></span>&#8203;(int[]&nbsp;newPos)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Set the given position to the current <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a></div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -268,6 +270,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCellPos</h4>
 <pre class="methodSignature">public&nbsp;int[]&nbsp;getCellPos()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>position of the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="setCellPos(int[])">
@@ -277,6 +283,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setCellPos</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setCellPos&#8203;(int[]&nbsp;newPos)</pre>
+<div class="block">Set the given position to the current <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>newPos</code> - </dd>
+</dl>
 </li>
 </ul>
 <a id="getNextPos(char)">
@@ -286,6 +297,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getNextPos</h4>
 <pre class="methodSignature">public&nbsp;int[]&nbsp;getNextPos&#8203;(char&nbsp;direction)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>direction</code> - char (z,q,s,d) representing (up,left,down,right) direction</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the position of the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a> if the player wants to move it in the given direction</dd>
+</dl>
 </li>
 </ul>
 <a id="getCellTexture()">
@@ -295,6 +312,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCellTexture</h4>
 <pre class="methodSignature">public&nbsp;char&nbsp;getCellTexture()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the texture of the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="hardCollision()">
@@ -304,6 +325,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>hardCollision</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;hardCollision()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a> cannot be pushed (<a href="Box.html" title="class in sokoban.Engine.Objects"><code>Box</code></a> against <a href="Wall.html" title="class in sokoban.Engine.Objects"><code>Wall</code></a>)</dd>
+</dl>
 </li>
 </ul>
 <a id="softCollision()">
@@ -313,6 +338,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>softCollision</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;softCollision()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a> can be pushed (<a href="Box.html" title="class in sokoban.Engine.Objects"><code>Box</code></a>)</dd>
+</dl>
 </li>
 </ul>
 <a id="toString()">

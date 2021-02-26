@@ -195,7 +195,9 @@ extends <a href="Cell.html" title="class in sokoban.Engine.Objects">Cell</a></pr
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#move(char,sokoban.Engine.Objects.World)">move</a></span>&#8203;(char&nbsp;direction,
     <a href="World.html" title="class in sokoban.Engine.Objects">World</a>&nbsp;world)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Moves the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a> from initial position to next position using (<a href="Cell.html#getNextPos(char)"><code>Cell.getNextPos(char)</code></a>) to find it.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -258,6 +260,13 @@ extends <a href="Cell.html" title="class in sokoban.Engine.Objects">Cell</a></pr
 <h4>isMoveable</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;isMoveable&#8203;(char&nbsp;direction,
                           <a href="World.html" title="class in sokoban.Engine.Objects">World</a>&nbsp;world)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>direction</code> - char (z,q,s,d) representing (up,left,down,right) direction</dd>
+<dd><code>world</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a> is movable. That doesn't mean that it can actually be moved ! See <a href="Cell.html#hardCollision()"><code>Cell.hardCollision()</code></a> and <a href="Cell.html#softCollision()"><code>Cell.softCollision()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="move(char,sokoban.Engine.Objects.World)">
@@ -268,6 +277,12 @@ extends <a href="Cell.html" title="class in sokoban.Engine.Objects">Cell</a></pr
 <h4>move</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;move&#8203;(char&nbsp;direction,
                  <a href="World.html" title="class in sokoban.Engine.Objects">World</a>&nbsp;world)</pre>
+<div class="block">Moves the <a href="Cell.html" title="class in sokoban.Engine.Objects"><code>Cell</code></a> from initial position to next position using (<a href="Cell.html#getNextPos(char)"><code>Cell.getNextPos(char)</code></a>) to find it.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>direction</code> - char (z,q,s,d) representing (up,left,down,right) direction</dd>
+<dd><code>world</code> - </dd>
+</dl>
 </li>
 </ul>
 </li>

@@ -38,7 +38,7 @@ public class World {
     /**
      * This method is called when the user want to change the map layout in the terminal.
      * 
-     * @param file a string containing the path of a map
+     * @param file a string containing the path to the map
      */
     public void mapChanger(String file) {
         int[] size = MapLoader.getSize(file);
@@ -77,7 +77,9 @@ public class World {
     }
     
     /**
-     * 
+     * This methods search all {@link sokoban.Engine.Objects.Target} objects at the beginning of the game.
+     * Then it checks if there is a {@link sokoban.Engine.Objects.Box} at the first {@link sokoban.Engine.Objects.Target}, then at the second, etc... during the game.
+     * If all {@link sokoban.Engine.Objects.Target} contains a {@link sokoban.Engine.Objects.Box}, the method returns true.
      * 
      * @return false by default, true if the level is completed (all boxes on targets)
      */

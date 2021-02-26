@@ -15,19 +15,30 @@ public class Cell {
         
     }
     
+    /**
+     * 
+     * @return position of the {@link sokoban.Engine.Objects.Cell}
+     */
     public int[] getCellPos() {
-        /** return cell's position */
         return pos;
     }
     
+    /**
+     * Set the given position to the current {@link sokoban.Engine.Objects.Cell}
+     * 
+     * @param newPos
+     */
     public void setCellPos(int[] newPos) {
-        /** set the given cell's position */
         pos[0] = newPos[0];
         pos[1] = newPos[1];
     }
     
+    /**
+     * 
+     * @param direction char (z,q,s,d) representing (up,left,down,right) direction
+     * @return the position of the {@link sokoban.Engine.Objects.Cell} if the player wants to move it in the given direction
+     */
     public int[] getNextPos(char direction) {
-        /** return cell's position if it  would be moved in the given direction */
         int[] nextPos = new int[2];
         if (direction == 'z') {
             nextPos[0] = pos[0];
@@ -52,18 +63,27 @@ public class Cell {
         return nextPos;
     }
     
+    /**
+     * 
+     * @return the texture of the {@link sokoban.Engine.Objects.Cell}
+     */
     public char getCellTexture() {
-        /** return cell's texture */
         return texture;
     }
     
+    /**
+     * 
+     * @return true if the {@link sokoban.Engine.Objects.Cell} cannot be pushed ({@link sokoban.Engine.Objects.Box} against {@link sokoban.Engine.Objects.Wall})
+     */
     public boolean hardCollision() {
-        /** return true if the cell can't be gone trough */
         return hardCollision;
     }
     
+    /**
+     * 
+     * @return true if the {@link sokoban.Engine.Objects.Cell} can be pushed ({@link sokoban.Engine.Objects.Box})
+     */
     public boolean softCollision() {
-        /** return true if the cell can be pushed */
         return softCollision;
     }
     

@@ -238,7 +238,9 @@ extends java.lang.Object</pre>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#winCondition()">winCondition</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">This methods search all <a href="Target.html" title="class in sokoban.Engine.Objects"><code>Target</code></a> objects at the beginning of the game.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -331,7 +333,7 @@ extends java.lang.Object</pre>
 <div class="block">This method is called when the user want to change the map layout in the terminal.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>file</code> - a string containing the path of a map</dd>
+<dd><code>file</code> - a string containing the path to the map</dd>
 </dl>
 </li>
 </ul>
@@ -380,6 +382,9 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>winCondition</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;winCondition()</pre>
+<div class="block">This methods search all <a href="Target.html" title="class in sokoban.Engine.Objects"><code>Target</code></a> objects at the beginning of the game.
+ Then it checks if there is a <a href="Box.html" title="class in sokoban.Engine.Objects"><code>Box</code></a> at the first <a href="Target.html" title="class in sokoban.Engine.Objects"><code>Target</code></a>, then at the second, etc... during the game.
+ If all <a href="Target.html" title="class in sokoban.Engine.Objects"><code>Target</code></a> contains a <a href="Box.html" title="class in sokoban.Engine.Objects"><code>Box</code></a>, the method returns true.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>false by default, true if the level is completed (all boxes on targets)</dd>
