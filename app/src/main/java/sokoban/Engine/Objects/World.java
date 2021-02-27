@@ -4,6 +4,7 @@ import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class World {
     
@@ -12,6 +13,8 @@ public class World {
     private Cell[][] cellsArray;
     private Cell[] cellsList;
     private Player player;
+    private ArrayList<Target> targetsList = new ArrayList<Target>();
+    private ArrayList<Box> boxesList = new ArrayList<Box>();
     
     public World(int width, int height, Player player) {
         this.width = width;
@@ -35,6 +38,14 @@ public class World {
         return cellsArray;
     }
 
+    public void setTargetsList(ArrayList<Target> targetsList) {
+        this.targetsList = targetsList;
+    }
+
+    public void setBoxesList(ArrayList<Box> boxesList) {
+        this.boxesList = boxesList;
+    }
+
     /**
      * This method is called when the user want to change the map layout in the terminal.
      * 
@@ -42,7 +53,7 @@ public class World {
      */
     public void mapChanger(String file) {
         int[] size = MapLoader.getSize(file);
-        setList(Builder.init(MapLoader.load(file), player, size[0], size[1]));
+        setList(Builder.init(MapLoader.load(file), player, this, size[0], size[1]));
         setMap(Builder.build(getList(), size[0], size[1]));
     }
 
@@ -72,14 +83,28 @@ public class World {
     }
 
     /**
-     * This methods search all {@link sokoban.Engine.Objects.Target} objects at the beginning of the game.
-     * Then it checks if there is a {@link sokoban.Engine.Objects.Box} at the first {@link sokoban.Engine.Objects.Target}, then at the second, etc... during the game.
+     * This methods compare positions of all {@link sokoban.Engine.Objects.Target}'s positions and {@link sokoban.Engine.Objects.Box}'s positions.
      * If all {@link sokoban.Engine.Objects.Target} contains a {@link sokoban.Engine.Objects.Box}, the method returns true.
      * 
      * @return false by default, true if the level is completed (all boxes on targets)
      */
     public boolean winCondition() {
-        return false;
+        int counter = 0;
+        for (Target target : targetsList) {
+            for (Box box : boxesList) {
+                int[] targetPos = target.getCellPos();
+                int[] boxPos = box.getCellPos();
+                if (targetPos[0]==boxPos[0] && targetPos[1]==boxPos[1]) {
+                    counter++;
+                }
+            }
+        }
+        if (counter == targetsList.size()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

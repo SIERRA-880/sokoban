@@ -2,6 +2,8 @@ package sokoban.Engine.Tools;
 
 import sokoban.Engine.Objects.*;
 
+import java.util.ArrayList;
+
 public class Builder {
     
     /**
@@ -14,14 +16,19 @@ public class Builder {
      * 
      * @param mapConfig string containing the initial configuration of the map
      * @param player Player object created in sokoban.Game before calling this method
+     * @param world World object created in sokoban.Game
      * @param width an integer equals to the width of the map
      * @param height an integer eauqls to the height of the map
      * @return an array cellsList containing Cell objects
      */
-    public static Cell[] init(String mapConfig, Player player, int width, int height) {
+    public static Cell[] init(String mapConfig, Player player, World world, int width, int height) {
         int index = 0;
         
+        // array filled with all objects
         Cell[] cellsList = new Cell[(width*height)*2];
+        // lists of targets and boxes
+        ArrayList<Target> targetsList = new ArrayList<Target>();
+        ArrayList<Box> boxesList = new ArrayList<Box>();
         
         for (int line=0; line<height; line++) {
             for (int column=0; column<width; column++) {
@@ -49,6 +56,7 @@ public class Builder {
                 if (cellType == '.') {
                     Target target = new Target(pos, '.');
                     cellsList[index++] = target;
+                    targetsList.add(target);
                 }
             }
         }
@@ -60,6 +68,7 @@ public class Builder {
                 if (cellType == '$') {
                     Box box = new Box(pos, '$');
                     cellsList[index++] = box;
+                    boxesList.add(box);
                 }
             }
         }
@@ -85,6 +94,8 @@ public class Builder {
                 }
             }
         }
+        world.setTargetsList(targetsList);
+        world.setBoxesList(boxesList);
         return cellsList;
     }
 

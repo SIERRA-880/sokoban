@@ -24,7 +24,7 @@ public class Game {
         Player player = new Player(pos, '@');
 
         World world = new World(size[0], size[1], player);
-        world.setList(Builder.init(map, player, size[0], size[1]));
+        world.setList(Builder.init(map, player, world, size[0], size[1]));
         world.setMap(Builder.build(world.getList(), size[0], size[1]));
 
         Scanner input = new Scanner(System.in);
@@ -32,6 +32,10 @@ public class Game {
         while (replay) {
             world.upDate();
             world.printMap();
+            if (world.winCondition()) {
+                replay = false;
+                continue;
+            }
             char direction = input.next().charAt(0);
             switch (direction) {
                 case 'z' : player.move(direction, world); 
@@ -54,5 +58,6 @@ public class Game {
             }
         }
         input.close();
+        System.out.println("You win !");
     }
 }

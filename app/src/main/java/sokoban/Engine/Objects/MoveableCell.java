@@ -50,7 +50,6 @@ public class MoveableCell extends Cell {
         if (isMoveable(direction, world)) {
             int[] nextPos = getNextPos(direction);
             setCellPos(nextPos);
-            System.out.println(this);
         }
     }
 }
