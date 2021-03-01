@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij,eclipse,vim
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,intellij,eclipse,vim
+# Created by https://www.toptal.com/developers/gitignore/api/vim,vscode,visualstudiocode,eclipse,intellij,gradle
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim,vscode,visualstudiocode,eclipse,intellij,gradle
 
 ### Eclipse ###
 .metadata
@@ -203,4 +203,27 @@ tags
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij,eclipse,vim
+### vscode ###
+!.vscode/settings.json
+!.vscode/extensions.json
+
+### Gradle ###
+.gradle
+build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+### Gradle Patch ###
+**/build/
+
+# End of https://www.toptal.com/developers/gitignore/api/vim,vscode,visualstudiocode,eclipse,intellij,gradle
