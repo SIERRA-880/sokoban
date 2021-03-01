@@ -54,7 +54,7 @@ public class Builder {
                 char cellType = mapConfig.charAt(n++);
                 int[] pos = {column, line};
                 if (cellType == '.') {
-                    Target target = new Target(pos, "build/resources/main/Textures/Cells/ground.png");
+                    Target target = new Target(pos, "build/resources/main/Textures/Cells/target.png");
                     cellsList[index++] = target;
                     targetsList.add(target);
                 }
@@ -66,7 +66,7 @@ public class Builder {
                 char cellType = mapConfig.charAt(n++);
                 int[] pos = {column, line};
                 if (cellType == '$') {
-                    Box box = new Box(pos, "build/resources/main/Textures/Cells/ground.png");
+                    Box box = new Box(pos, "build/resources/main/Textures/Cells/box.png");
                     cellsList[index++] = box;
                     boxesList.add(box);
                 }

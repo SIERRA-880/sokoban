@@ -71,7 +71,7 @@ public class Game extends Application {
         size = MapLoader.getSize("build/resources/main/Maps/map1.txt");
      
         int[] pos = {0, 0};
-        Player player = new Player(pos, "build/resources/main/Textures/Cells/wall.png");
+        Player player = new Player(pos, "build/resources/main/Textures/Cells/player.png");
  
         World world = new World(size[0], size[1], player);
         world.setList(Builder.init(map, player, world, size[0], size[1]));
@@ -80,7 +80,7 @@ public class Game extends Application {
         for (int i = 0; i < cell.length; i++) {
             for (int j = 0; j < cell[0].length; j++) {
                 Image image = new Image(new FileInputStream(cell[i][j].getCellTexture()));
-                grid.add(new ImageView(image), i, j, 1, 1);
+                grid.add(new ImageView(image), j, i, 1, 1);
             }
  
         }
