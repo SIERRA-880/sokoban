@@ -50,6 +50,8 @@ public class Game {
                 break;
                 case '2' : world.mapChanger("build/resources/main/Maps/map2.txt");
                 break;
+                case '3' : world.mapChanger("build/resources/main/Maps/map3.txt");
+                break;
                 case '!' : replay=false;
                 break;
                 

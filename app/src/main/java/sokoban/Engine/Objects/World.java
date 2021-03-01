@@ -52,9 +52,11 @@ public class World {
      * @param file a string containing the path to the map
      */
     public void mapChanger(String file) {
-        int[] size = MapLoader.getSize(file);
-        setList(Builder.init(MapLoader.load(file), player, this, size[0], size[1]));
-        setMap(Builder.build(getList(), size[0], size[1]));
+        width = MapLoader.getSize(file)[0];
+        height = MapLoader.getSize(file)[1];
+        setList(Builder.init(MapLoader.load(file), player, this, width, height));
+        setMap(Builder.build(getList(), width, height));
+        System.out.println(this);
     }
 
     /**
