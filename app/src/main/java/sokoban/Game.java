@@ -52,8 +52,8 @@ public class Game extends Application {
         GridPane grid = new GridPane();
         String map;
         int[] size;
-        map = MapLoader.load("build/resources/main/Maps/map1.txt");
-        size = MapLoader.getSize("build/resources/main/Maps/map1.txt");
+        map = MapLoader.load("build/resources/main/levels/map1.xsb");
+        size = MapLoader.getSize("build/resources/main/levels/map1.xsb");
      
         int[] pos = {0, 0};
         Player player = new Player(pos, "/Cells/player.png");
