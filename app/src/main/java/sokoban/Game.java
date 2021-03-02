@@ -3,12 +3,16 @@ package sokoban;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
 import sokoban.UI.Map;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Game extends Application {
     Stage window;
@@ -36,15 +40,15 @@ public class Game extends Application {
         Map grid = new Map(world);
         grid.showMap();
         scene = new Scene(grid, 640, 640);
-        scene.setOnKeyPressed(e -> addKeyHandler(scene, player, world, grid));
+        scene.setOnKeyPressed(e -> addKeyHandler(scene, player, world, grid,e));
         window.setScene(scene);
         window.show();
 
 
     }
 
-    public void addKeyHandler(Scene scene, Player player, World world, Map grid) {
-        scene.setOnKeyPressed(ke -> {
+    public void addKeyHandler(Scene scene, Player player, World world, Map grid, KeyEvent ke) {
+
             KeyCode keyCode = ke.getCode();
             if (keyCode.equals(KeyCode.Z)) {
                 player.move('z', world);
@@ -65,8 +69,7 @@ public class Game extends Application {
             } catch (Exception yes) {
                 System.out.println(yes);
             }
-        });
-
+        }
     }
-}
+
 
