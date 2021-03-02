@@ -1,35 +1,28 @@
 package sokoban.UI;
-import javafx.application.Application;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+import sokoban.Engine.Objects.Cell;
+import sokoban.Engine.Objects.World;
 
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.io.FileInputStream;
-import java.util.concurrent.ExecutionException;
-
-import javafx.scene.input.KeyCode;
-import sokoban.Engine.Objects.*;
-import javafx.scene.input.KeyEvent;
-import sokoban.Engine.Tools.Builder;
-import sokoban.Engine.Tools.MapLoader;
-import sokoban.Engine.Tools.*;
 
 public class Map extends GridPane {
     World world;
-    public Map(World world) throws Exception{
-        super();
-       // addKeyListener(this);
-        this.world=world;
 
-        }
+    public Map(World world) throws Exception {
+        super();
+        // addKeyListener(this);
+        this.world = world;
+
+    }
+
     public void showMap() throws Exception {
+
+        this.getChildren().clear();
+
+
         Cell[][] cell = world.getMap();
         for (int i = 0; i < cell.length; i++) {
             for (int j = 0; j < cell[0].length; j++) {
