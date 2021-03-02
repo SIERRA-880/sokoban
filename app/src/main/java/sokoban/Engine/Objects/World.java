@@ -111,7 +111,7 @@ public class World {
     /**
      * Rebuild the map when the method is called by reading the position of all objects stored in cellsList variable
      */
-    public void upDate() {
+    public void update() {
         setMap(Builder.build(cellsList, width, height));
     }
 
