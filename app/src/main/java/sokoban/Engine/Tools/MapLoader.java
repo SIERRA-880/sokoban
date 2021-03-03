@@ -64,7 +64,7 @@ public class MapLoader {
     */
     public static String load(String file) {
         String res = "";
-        int width = getSize("app/build/resources/main/levels/map1.xsb")[1];
+        int width = getSize(file)[1];
 
         try {
             File myObj = new File(file);
