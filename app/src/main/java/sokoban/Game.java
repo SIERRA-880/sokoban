@@ -11,9 +11,6 @@ import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
 import sokoban.UI.Map;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class Game extends Application {
     Stage window;
     Scene scene;
@@ -43,32 +40,29 @@ public class Game extends Application {
         scene.setOnKeyPressed(e -> addKeyHandler(scene, player, world, grid,e));
         window.setScene(scene);
         window.show();
-
-
     }
 
     public void addKeyHandler(Scene scene, Player player, World world, Map grid, KeyEvent ke) {
 
-            KeyCode keyCode = ke.getCode();
-            if (keyCode.equals(KeyCode.Z)) {
-                player.move('z', world);
+        KeyCode keyCode = ke.getCode();
+        if (keyCode.equals(KeyCode.Z)) {
+            player.move('z', world);
 
-            } else if (keyCode.equals(KeyCode.Q)) {
-                player.move('q', world);
+        } else if (keyCode.equals(KeyCode.Q)) {
+            player.move('q', world);
 
-            } else if (keyCode.equals(KeyCode.S)) {
-                player.move('s', world);
+        } else if (keyCode.equals(KeyCode.S)) {
+            player.move('s', world);
 
-            } else if (keyCode.equals(KeyCode.D)) {
-                player.move('d', world);
+        } else if (keyCode.equals(KeyCode.D)) {
+            player.move('d', world);
 
-            }
-            world.update();
-            try {
-                grid.showMap();
-            } catch (Exception yes) {
-                System.out.println(yes);
-            }
+        }
+        world.update();
+        try {
+            grid.showMap();
+        } catch (Exception yes) {
+            System.out.println(yes);
         }
     }
 }
