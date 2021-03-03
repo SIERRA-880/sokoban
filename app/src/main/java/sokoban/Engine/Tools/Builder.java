@@ -70,11 +70,11 @@ public class Builder {
                         cellsMatrix[line][column] = wallCase;
                         break;
 
-                    // case '_':
-                    // Empty empty = new Empty(pos, "/Cells/empty.png");
-                    // MatrixCase emptycase = new MatrixCase(wall, wall);
-                    // cellsMatrix[line][column] = wallCase;
-                    // break;
+                    case '_':
+                        Empty empty = new Empty(pos, "/Cells/empty.png");
+                        MatrixCase emptyCase = new MatrixCase(empty, empty);
+                        cellsMatrix[line][column] = emptyCase;
+                        break;
 
                     default:
                         break;

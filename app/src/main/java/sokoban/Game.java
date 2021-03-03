@@ -15,9 +15,6 @@ public class Game extends Application {
     Stage window;
     Scene scene;
 
-    //*****
-
-    //*****
     public static void main(String[] args) throws Exception {
 
         launch(args);
