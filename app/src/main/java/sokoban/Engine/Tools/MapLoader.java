@@ -5,10 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MapLoader {
-    public static void main(String[] args) {
-        System.out.println(load("app/build/resources/main/levels/map1.xsb"));
-    }
-
     /**
     * Measure the height of the map and the max width (if the map is not a rectangle)
     * 
@@ -62,15 +58,11 @@ public class MapLoader {
                 System.out.println(currentLine.length());
                 String padded = "";
                 if (currentLine.length() < width) {
-                    System.out.println("true");
                     padded = String.format("%-" + width + "s", currentLine);
-                    System.out.println(padded);
                 } else {
-                    System.out.println("false");
                     padded = currentLine;
-                    System.out.println(padded);
                 }
-                res = res + padded + "|";
+                res = res + padded;
             }
             myReader.close();
         } catch (FileNotFoundException e) {
