@@ -76,6 +76,24 @@ public class Builder {
                         cellsMatrix[line][column] = emptyCase;
                         break;
 
+                    case '*':
+                        Target starTarget = new Target(pos, "/Cells/target.png");
+                        Box starBox = new Box(pos, "/Cells/box.png");
+                        MatrixCase starCase = new MatrixCase(starBox, starTarget);
+                        cellsMatrix[line][column] = starCase;
+                        boxesList.add(starBox);
+                        targetsList.add(starTarget);
+                        break;
+
+                    case '+':
+                        Target plusTarget = new Target(pos, "/Cells/target.png");
+                        player.setCellPos(pos);
+                        MatrixCase plusCase = new MatrixCase(player, plusTarget);
+                        cellsMatrix[line][column] = plusCase;
+                        targetsList.add(plusTarget);
+                        break;
+
+
                     default:
                         break;
                 }
