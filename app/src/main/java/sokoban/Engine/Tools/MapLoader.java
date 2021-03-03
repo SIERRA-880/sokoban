@@ -94,6 +94,7 @@ public class MapLoader {
                     padded = mapTrimmer(padded);
                 } else {
                     padded = currentLine;
+                    padded = mapTrimmer(padded);
                 }
                 res = res + padded;
             }
