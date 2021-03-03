@@ -6,22 +6,6 @@ import java.util.Scanner;
 
 public class MapLoader {
 
-    public static void main(String[] args) {
-        String file = "app/build/resources/main/levels/map1.xsb";
-
-        System.out.println(load(file).substring(0, getSize(file)[1]));
-        System.out.println(load(file).substring(getSize(file)[1], getSize(file)[1]*2));
-        System.out.println(load(file).substring(getSize(file)[1]*2, getSize(file)[1]*3));
-        System.out.println(load(file).substring(getSize(file)[1]*3, getSize(file)[1]*4));
-        System.out.println(load(file).substring(getSize(file)[1]*4, getSize(file)[1]*5));
-        System.out.println(load(file).substring(getSize(file)[1]*5, getSize(file)[1]*6));
-        System.out.println(load(file).substring(getSize(file)[1]*6, getSize(file)[1]*7));
-        System.out.println(load(file).substring(getSize(file)[1]*7, getSize(file)[1]*8));
-        System.out.println(load(file).substring(getSize(file)[1]*8, getSize(file)[1]*9));
-        System.out.println(load(file).substring(getSize(file)[1]*9, getSize(file)[1]*10));
-
-    }
-
     /**
     * Measure the height of the map and the max width (if the map is not a rectangle)
     * 
