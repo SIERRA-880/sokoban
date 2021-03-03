@@ -12,16 +12,15 @@ public class Map extends GridPane {
 
     public Map(World world) throws Exception {
         super();
-        // addKeyListener(this);
         this.world = world;
 
     }
 
     public void showMap() throws Exception {
 
+        //clean up
         this.getChildren().clear();
-
-
+        //refresh
         MatrixCase[][] matrix = world.getMap();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {

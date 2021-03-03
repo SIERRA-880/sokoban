@@ -15,30 +15,36 @@ public class World {
     private ArrayList<Target> targetsList = new ArrayList<Target>();
     private ArrayList<Box> boxesList = new ArrayList<Box>();
     
+
     public World(int width, int height, Player player) {
         this.width = width;
         this.height = height;
         this.player = player;
     }
 
+
     public void setMap(MatrixCase[][] matrix) {
         cellsArray = matrix;
     }
+
 
     public MatrixCase[][] getMap() {
         return cellsArray;
     }
 
+    
     public void setTargetsList(ArrayList<Target> targetsList) {
         this.targetsList = targetsList;
     }
+
 
     public void setBoxesList(ArrayList<Box> boxesList) {
         this.boxesList = boxesList;
     }
 
+
     /**
-     * This method is called when the user want to change the map layout in the terminal.
+     * This method is called when the user want to change the map layout.
      * 
      * @param file a string containing the path to the map
      */
@@ -47,6 +53,7 @@ public class World {
         height = MapLoader.getSize(file)[1];
         Builder.init(MapLoader.load(file), player, this, width, height);
     }
+
 
     /**
      * Prints the matrix representing the map cell by cell in a terminal
@@ -60,6 +67,7 @@ public class World {
         }
     }
 
+
     /**
      * 
      * @param pos an array [x,y]
@@ -69,14 +77,17 @@ public class World {
         return cellsArray[pos[1]][pos[0]].getCell();
     }
 
+
     public Cell searchBox(int[] pos) {
         return cellsArray[pos[1]][pos[0]].getCell();
     }
+
 
     public void moveCell(Cell cell, int[] oldPos, int[] newPos) {
         cellsArray[oldPos[1]][oldPos[0]].remove();
         cellsArray[newPos[1]][newPos[0]].add(cell);
     }
+
 
     /**
      * This methods compare positions of all {@link sokoban.Engine.Objects.Target}'s positions and {@link sokoban.Engine.Objects.Box}'s positions.
@@ -102,6 +113,7 @@ public class World {
             return false;
         }
     }
+
 
     @Override
     public String toString() {

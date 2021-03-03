@@ -40,24 +40,24 @@ public class Cell {
 
     /**
      * 
-     * @param direction char (z,q,s,d) representing (up,left,down,right) direction
+     * @param direction String (up,left,down,right) direction
      * @return the position of the {@link sokoban.Engine.Objects.Cell} if the player wants to move it in the given direction
      */
-    public int[] getNextPos(char direction) {
+    public int[] getNextPos(String direction) {
         int[] nextPos = new int[2];
-        if (direction == 'z') {
+        if (direction == "up") {
             nextPos[0] = pos[0];
             nextPos[1] = pos[1]-1;
         }
-        else if (direction == 'q') {
+        else if (direction == "left") {
             nextPos[0] = pos[0]-1;
             nextPos[1] = pos[1];
         }
-        else if (direction == 's') {
+        else if (direction == "down") {
             nextPos[0] = pos[0];
             nextPos[1] = pos[1]+1;
         }
-        else if (direction == 'd') {
+        else if (direction == "right") {
             nextPos[0] = pos[0]+1;
             nextPos[1] = pos[1];
         }

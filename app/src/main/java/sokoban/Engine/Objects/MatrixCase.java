@@ -1,5 +1,9 @@
 package sokoban.Engine.Objects;
 
+/**
+ * Object representing a case of a matrix.
+ * It contents 2 cell objects.
+ */
 public class MatrixCase {
 
     Cell cell1;
