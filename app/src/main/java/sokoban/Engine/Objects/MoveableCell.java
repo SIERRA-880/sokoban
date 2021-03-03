@@ -32,6 +32,7 @@ public class MoveableCell extends Cell {
             if (nextNextCell.hardCollision() || nextNextCell.softCollision()) {
                 return false;
             } else {
+                world.moveCell(nextCell, nextCell.getCellPos(), nextNextPos);
                 nextCell.setCellPos(nextNextPos);
                 return true;
             }
@@ -49,6 +50,7 @@ public class MoveableCell extends Cell {
         /** This method change the cell's position depending on the given direction */
         if (isMoveable(direction, world)) {
             int[] nextPos = getNextPos(direction);
+            world.moveCell(this, this.getCellPos(), nextPos);
             setCellPos(nextPos);
         }
     }

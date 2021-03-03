@@ -10,8 +10,7 @@ public class World {
     
     private int width;
     private int height;
-    private Cell[][] cellsArray;
-    private Cell[] cellsList;
+    private MatrixCase[][] cellsArray;
     private Player player;
     private ArrayList<Target> targetsList = new ArrayList<Target>();
     private ArrayList<Box> boxesList = new ArrayList<Box>();
@@ -22,19 +21,11 @@ public class World {
         this.player = player;
     }
 
-    public void setList(Cell[] list) {
-        cellsList = list;
-    }
-
-    public Cell[] getList() {
-        return cellsList;
-    }
-
-    public void setMap(Cell[][] matrix) {
+    public void setMap(MatrixCase[][] matrix) {
         cellsArray = matrix;
     }
 
-    public Cell[][] getMap() {
+    public MatrixCase[][] getMap() {
         return cellsArray;
     }
 
@@ -54,8 +45,7 @@ public class World {
     public void mapChanger(String file) {
         width = MapLoader.getSize(file)[0];
         height = MapLoader.getSize(file)[1];
-        setList(Builder.init(MapLoader.load(file), player, this, width, height));
-        setMap(Builder.build(getList(), width, height));
+        Builder.init(MapLoader.load(file), player, this, width, height);
     }
 
     /**
@@ -64,7 +54,7 @@ public class World {
     public void printMap() {
         for (int line=0; line<height; line++) {
             for (int column=0; column<width; column++) {
-                System.out.print(cellsArray[line][column].getTermTexture()); 
+                System.out.print(cellsArray[line][column].getCell().getTermTexture()); 
             }
             System.out.println("");
         }
@@ -76,11 +66,16 @@ public class World {
      * @return reference to the {@link sokoban.Engine.Objects.Cell} at the given positions
      */
     public Cell searchCell(int[] pos) {
-        return cellsArray[pos[1]][pos[0]];
+        return cellsArray[pos[1]][pos[0]].getCell();
     }
 
     public Cell searchBox(int[] pos) {
-        return cellsArray[pos[1]][pos[0]];
+        return cellsArray[pos[1]][pos[0]].getCell();
+    }
+
+    public void moveCell(Cell cell, int[] oldPos, int[] newPos) {
+        cellsArray[oldPos[1]][oldPos[0]].remove();
+        cellsArray[newPos[1]][newPos[0]].add(cell);
     }
 
     /**
@@ -106,13 +101,6 @@ public class World {
         else {
             return false;
         }
-    }
-
-    /**
-     * Rebuild the map when the method is called by reading the position of all objects stored in cellsList variable
-     */
-    public void update() {
-        setMap(Builder.build(cellsList, width, height));
     }
 
     @Override
