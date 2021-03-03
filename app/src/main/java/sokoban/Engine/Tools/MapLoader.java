@@ -52,7 +52,6 @@ public class MapLoader {
     public static String mapTrimmer(String input) {
         int i = input.indexOf('#');
         int j = input.lastIndexOf('#');
-        // System.out.println("i = " + i + ", j = " + j);
         input = input.substring(0, i).replaceAll(" ", "_") + input.substring(i, j) + input.substring(j).replaceAll(" ", "_");
         return input;
     }
