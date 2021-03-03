@@ -35,34 +35,49 @@ public class Builder {
                 char cellType = mapConfig.charAt(n++);
                 int[] pos = {column, line};
 
-                if (cellType == ' ') {
-                    Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
-                    MatrixCase cellCase = new MatrixCase(cell, cell);
-                    cellsMatrix[line][column] = cellCase;
-                }
-                else if (cellType == '.') {
-                    Target target = new Target(pos, "/Cells/target.png");
-                    MatrixCase targetCase = new MatrixCase(target, target);
-                    cellsMatrix[line][column] = targetCase;
-                    targetsList.add(target);
-                }
-                else if (cellType == '$') {
-                    Box box = new Box(pos, "/Cells/box.png");
-                    Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
-                    MatrixCase boxCase = new MatrixCase(box, cell);
-                    cellsMatrix[line][column] = boxCase;
-                    boxesList.add(box);
-                }
-                else if (cellType == '@') {
-                    player.setCellPos(pos);
-                    Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
-                    MatrixCase playerCase = new MatrixCase(player, cell);
-                    cellsMatrix[line][column] = playerCase;
-                }
-                else if (cellType == '#') {
-                    Wall wall = new Wall(pos, "/Cells/wall.png");
-                    MatrixCase wallCase = new MatrixCase(wall, wall);
-                    cellsMatrix[line][column] = wallCase;
+                switch (cellType) {
+                    case ' ':
+                        Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
+                        MatrixCase cellCase = new MatrixCase(cell, cell);
+                        cellsMatrix[line][column] = cellCase;
+                        break;
+
+                    case '.':
+                        Target target = new Target(pos, "/Cells/target.png");
+                        MatrixCase targetCase = new MatrixCase(target, target);
+                        cellsMatrix[line][column] = targetCase;
+                        targetsList.add(target);
+                        break;
+
+                    case '$':
+                        Box box = new Box(pos, "/Cells/box.png");
+                        Cell cell1 = new Cell(pos, "/Cells/ground.png", false, false);
+                        MatrixCase boxCase = new MatrixCase(box, cell1);
+                        cellsMatrix[line][column] = boxCase;
+                        boxesList.add(box);
+                        break;
+
+                    case '@':
+                        player.setCellPos(pos);
+                        Cell cell2 = new Cell(pos, "/Cells/ground.png", false, false);
+                        MatrixCase playerCase = new MatrixCase(player, cell2);
+                        cellsMatrix[line][column] = playerCase;
+                        break;
+
+                    case '#':
+                        Wall wall = new Wall(pos, "/Cells/wall.png");
+                        MatrixCase wallCase = new MatrixCase(wall, wall);
+                        cellsMatrix[line][column] = wallCase;
+                        break;
+
+                    // case '_':
+                    // Empty empty = new Empty(pos, "/Cells/empty.png");
+                    // MatrixCase emptycase = new MatrixCase(wall, wall);
+                    // cellsMatrix[line][column] = wallCase;
+                    // break;
+
+                    default:
+                        break;
                 }
             }
         }
