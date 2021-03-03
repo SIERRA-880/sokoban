@@ -2,7 +2,7 @@ package sokoban.Engine.Objects;
 
 public class MoveableCell extends Cell {
 
-    public MoveableCell(int[]  pos, char texture, boolean hardCollision, boolean softCollision) {
+    public MoveableCell(int[]  pos, String texture, boolean hardCollision, boolean softCollision) {
         super(pos, texture, hardCollision, softCollision);	
     }
 

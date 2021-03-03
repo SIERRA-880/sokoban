@@ -56,7 +56,6 @@ public class World {
         height = MapLoader.getSize(file)[1];
         setList(Builder.init(MapLoader.load(file), player, this, width, height));
         setMap(Builder.build(getList(), width, height));
-        System.out.println(this);
     }
 
     /**
@@ -65,7 +64,7 @@ public class World {
     public void printMap() {
         for (int line=0; line<height; line++) {
             for (int column=0; column<width; column++) {
-                System.out.print(cellsArray[line][column].getCellTexture()); 
+                System.out.print(cellsArray[line][column].getTermTexture()); 
             }
             System.out.println("");
         }
@@ -112,7 +111,7 @@ public class World {
     /**
      * Rebuild the map when the method is called by reading the position of all objects stored in cellsList variable
      */
-    public void upDate() {
+    public void update() {
         setMap(Builder.build(cellsList, width, height));
     }
 

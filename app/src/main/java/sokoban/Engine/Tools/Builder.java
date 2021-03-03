@@ -33,7 +33,7 @@ public class Builder {
         for (int line=0; line<height; line++) {
             for (int column=0; column<width; column++) {
                 int[] pos = {column, line};
-                Cell cell = new Cell(pos, ' ', false, false);
+                Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
                 cellsList[index++] = cell;
             }
         }
@@ -43,7 +43,7 @@ public class Builder {
                 char cellType = mapConfig.charAt(n++);
                 int[] pos = {column, line};
                 if (cellType == ' ') {
-                    Cell cell = new Cell(pos, ' ', false, false);
+                    Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
                     cellsList[index++] = cell;
                 }
             }
@@ -54,7 +54,7 @@ public class Builder {
                 char cellType = mapConfig.charAt(n++);
                 int[] pos = {column, line};
                 if (cellType == '.') {
-                    Target target = new Target(pos, '.');
+                    Target target = new Target(pos, "/Cells/target.png");
                     cellsList[index++] = target;
                     targetsList.add(target);
                 }
@@ -66,7 +66,7 @@ public class Builder {
                 char cellType = mapConfig.charAt(n++);
                 int[] pos = {column, line};
                 if (cellType == '$') {
-                    Box box = new Box(pos, '$');
+                    Box box = new Box(pos, "/Cells/box.png");
                     cellsList[index++] = box;
                     boxesList.add(box);
                 }
@@ -89,7 +89,7 @@ public class Builder {
                 char cellType = mapConfig.charAt(n++);
                 int[] pos = {column, line};
                 if (cellType == '#') {
-                    Wall wall = new Wall(pos, '#');
+                    Wall wall = new Wall(pos, "/Cells/wall.png");
                     cellsList[index++] = wall;
                 }
             }

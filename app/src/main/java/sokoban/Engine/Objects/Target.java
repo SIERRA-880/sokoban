@@ -1,9 +1,19 @@
 package sokoban.Engine.Objects;
 
 public class Target extends Cell {
-    
-    public Target(int[] pos, char texture) {
+
+    private char termTexture = '.';
+
+    public Target(int[] pos, String texture) {
         super(pos, texture, false, false);
+    }
+
+    /**
+     * @return the character of the {@link sokoban.Engine.Objects.Cell}
+     */
+    @Override
+    public char getTermTexture() {
+        return termTexture;
     }
     
 }

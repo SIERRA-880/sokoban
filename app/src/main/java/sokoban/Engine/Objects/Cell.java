@@ -6,13 +6,15 @@ package sokoban.Engine.Objects;
 public class Cell {
 
     private int[] pos;
-    private char texture;
+    private String texture;
     private boolean hardCollision;
     private boolean softCollision;
+    private char termTexture = ' ';
+    private String resourcePack = "build/resources/main/textures/Default";
 
-    public Cell(int[] pos, char texture, boolean hardCollision, boolean softCollision) {
+    public Cell(int[] pos, String texture, boolean hardCollision, boolean softCollision) {
         this.pos = pos;
-        this.texture = texture;
+        this.texture = resourcePack + texture;
         this.hardCollision = hardCollision;
         this.softCollision = softCollision;
 
@@ -70,8 +72,15 @@ public class Cell {
      * 
      * @return the texture of the {@link sokoban.Engine.Objects.Cell}
      */
-    public char getCellTexture() {
+    public String getCellTexture() {
         return texture;
+    }
+
+    /**
+     * @return the character of the {@link sokoban.Engine.Objects.Cell}
+     */
+    public char getTermTexture() {
+        return termTexture;
     }
 
     /**
@@ -90,6 +99,14 @@ public class Cell {
      */
     public boolean softCollision() {
         return softCollision;
+    }
+
+    /**
+     * Method used to set a given resource pack as current resource pack.
+     * @param resourcePack is the path to the resource pack's folder.
+     */
+    public void setResourcePack(String resourcePack) {
+        this.resourcePack = resourcePack;
     }
     
     @Override
