@@ -1,57 +1,83 @@
 package sokoban.Engine.Tools;
 
-import java.io.File; // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class MapLoader {
+    public static void main(String[] args) {
+        System.out.println(load("app/build/resources/main/levels/map1.xsb"));
+    }
+
     /**
-     * The code used here comes from https://www.w3schools.com/java/java_files_read.asp
-     * 
-     * Usage exemple : MapLoader.load("map_path.txt");
-     * 
-     * @param file the path to the map. Maps should be .txt files
-     * @return a string containing all the lines of the map.
-     */
+    * Measure the height of the map and the max width (if the map is not a rectangle)
+    * 
+    * Usage exemple : MapLoader.load("app/build/resources/main/levels/map1.xsb");
+    * 
+    * @param file the path to the map. Maps should be .xsb files
+    * @return an array containing [height, width] of the map
+    */
+    public static int[] getSize(String file) {
+        int[] res = {0, 0};
+        
+        try {
+            File myObj = new File(file);
+            Scanner myReader = new Scanner(myObj);
+            // Measure the height of the map based on the line count
+            while (myReader.hasNextLine()) {
+                // Storing current line since there is no method to call it
+                String currentLine = myReader.nextLine();
+                
+                res[0]++;
+                
+                // Changing the longest line value (res[1]) if the condition is true
+                if (currentLine.length() > res[1]) {
+                    res[1] = currentLine.length();
+                }
+            }
+            myReader.close(); 
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occured");
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    /**
+    * The code used here comes from https://www.w3schools.com/java/java_files_read.asp
+    * 
+    * @param file the path to the map. Maps should be .xsb files
+    * @return a string containing all the lines of the map.
+    */
     public static String load(String file) {
         String res = "";
+        int width = getSize("app/build/resources/main/levels/map1.xsb")[1];
+
         try {
             File myObj = new File(file);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                res = res + data;
+                String currentLine = myReader.nextLine();
+                System.out.println(currentLine.length());
+                String padded = "";
+                if (currentLine.length() < width) {
+                    System.out.println("true");
+                    padded = String.format("%-" + width + "s", currentLine);
+                    System.out.println(padded);
+                } else {
+                    System.out.println("false");
+                    padded = currentLine;
+                    System.out.println(padded);
+                }
+                res = res + padded + "|";
             }
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occured");
             e.printStackTrace();
         }
-        return res;
-    }
 
-    /**
-     * 
-     * @param file the path to the map. Maps should be .txt files
-     * @return an array containing [height, width] of the map
-     */
-    public static int[] getSize(String file) {
-        int[] res = new int[2];
-        res[0] = 1;
-        try {
-            File myObj = new File(file);
-            Scanner myReader = new Scanner(myObj);
-            res[1] = myReader.nextLine().length();     // The first line is used to measure de width of the map. If the map is not a rectangle, empty spaces should be filled with spaces !
-            while (myReader.hasNextLine()) {
-                myReader.nextLine();
-                res[0]++;
-            }
-            myReader.close();            
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occured");
-            e.printStackTrace();
-        }
         return res;
     }
-    
 }
