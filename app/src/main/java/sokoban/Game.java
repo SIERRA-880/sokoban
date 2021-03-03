@@ -32,8 +32,9 @@ public class Game extends Application {
         int[] pos = {0, 0};
         Player player = new Player(pos, "/Cells/player.png");
         World world = new World(size[0], size[1], player);
-        world.setList(Builder.init(map, player, world, size[0], size[1]));
-        world.setMap(Builder.build(world.getList(), size[0], size[1]));
+
+        Builder.init(map, player, world, size[0], size[1]);
+
         Map grid = new Map(world);
         grid.showMap();
         scene = new Scene(grid, 640, 640);
@@ -56,9 +57,7 @@ public class Game extends Application {
 
         } else if (keyCode.equals(KeyCode.D)) {
             player.move('d', world);
-
         }
-        world.update();
         try {
             grid.showMap();
         } catch (Exception yes) {
