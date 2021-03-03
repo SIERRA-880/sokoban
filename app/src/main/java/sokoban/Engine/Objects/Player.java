@@ -1,7 +1,7 @@
 package sokoban.Engine.Objects;
 
 public class Player extends MoveableCell {
-    
+
     private char termTexture = '@';
 
     public Player(int[] pos, String texture) {

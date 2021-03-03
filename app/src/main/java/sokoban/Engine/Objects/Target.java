@@ -1,7 +1,7 @@
 package sokoban.Engine.Objects;
 
 public class Target extends Cell {
-    
+
     private char termTexture = '.';
 
     public Target(int[] pos, String texture) {

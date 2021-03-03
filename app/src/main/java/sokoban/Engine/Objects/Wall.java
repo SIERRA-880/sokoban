@@ -1,7 +1,7 @@
 package sokoban.Engine.Objects;
 
 public class Wall extends Cell {
-    
+
     private char termTexture = '#';
 
     public Wall(int[] pos, String texture) {
