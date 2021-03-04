@@ -22,8 +22,22 @@ Gradle also handle documentation via javadoc. You can find the documentation by 
 
 ### Gradle tasks
 
-- `./gradlew clean` clean the build folder
-- `./gradlew build` build the project
-- `./gradlew run` run the main app
+- `./gradlew -q clean` clean the build folder
+- `./gradlew -q build` build the project
+- `./gradlew -q run` run the main app
 - `./gradlew test` run the tests
-- `./gradlew javadoc` generate javadoc
+- `./gradlew -q javadoc` generate javadoc
+- /!\ `-q` is mandatory. It's only used to remove the output in the console so Gradle won't flood your terminal.
+
+## Tools
+
+### MapChecker
+You can use the Gradle task `./gradlew CheckMap` with some parameters.
+To pass arguments in a Gradle task you have to use `--args="arg1 arg2..."` .
+These arguments will be split at each whitespaces, resulting in an array of strings containing `["arg1", "arg2", ...]` .
+
+The result of the check will be printed in the console. Please avoid using `-q` parameter for Gradle since it's removes the output and you will not see the result of this tool.
+
+Exemple:
+- `./gradlew CheckMap --args="f app/build/resources/main/levels/map1.xsb"` | check if a map1.xsb file is valid.
+- `./gradlew CheckMap --args="d app/build/resources/main/levels/"` | check if all the .xsb files in `levels/` are valid.
