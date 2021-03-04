@@ -16,6 +16,7 @@ import sokoban.Engine.Objects.World;
 import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
 import sokoban.UI.Map;
+import sokoban.UI.MenuLvl;
 
 import static javafx.geometry.Pos.CENTER;
 
@@ -23,6 +24,11 @@ public class Game extends Application {
     Stage window;
     Scene scene;
     VBox vbox = new VBox();
+    MenuLvl menuLvl= new MenuLvl();
+
+
+    public Game() throws Exception {
+    }
 
     public static void main(String[] args) throws Exception {
 
@@ -49,8 +55,10 @@ public class Game extends Application {
         grid.showMap();
         grid.setAlignment(CENTER);
 
+        menuLvl.setAlignment(CENTER);
+
         //Vbox
-        vbox.getChildren().addAll(grid);
+        vbox.getChildren().addAll(menuLvl);
         vbox.setAlignment(CENTER);
         vbox.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0), CornerRadii.EMPTY, Insets.EMPTY)));
 
