@@ -12,7 +12,7 @@ public class MoveableCell extends Cell {
      * @param world
      * @return true if the {@link sokoban.Engine.Objects.Cell} is movable. That doesn't mean that it can actually be moved ! See {@link sokoban.Engine.Objects.Cell#hardCollision()} and {@link sokoban.Engine.Objects.Cell#softCollision()}
      */
-    public boolean isMoveable(char direction, World world) {
+    public boolean isMoveable(String direction, World world) {
         int[] nextPos = getNextPos(direction);
         Cell nextCell;
 
@@ -46,7 +46,7 @@ public class MoveableCell extends Cell {
      * @param direction char (z,q,s,d) representing (up,left,down,right) direction
      * @param world
      */
-    public void move(char direction, World world) {
+    public void move(String direction, World world) {
         /** This method change the cell's position depending on the given direction */
         if (isMoveable(direction, world)) {
             int[] nextPos = getNextPos(direction);

@@ -7,19 +7,16 @@ import java.util.ArrayList;
 public class Builder {
     
     /**
-     * This method fills an array with corresponding objects on the proper position.
-     * The method works in two steps.
-     * First step: it fills the array with empty cells.
-     * Second step: it adds to empty cells the object corresponding to the position
-     * 
-     * You can call the method using sokoban.Engine.Tools.MapLoader methods for mapConfig, width and height
+     * This method will set a matrix filled of MatrixCase objects (it contents 2 cell objects) that represents 
+     * the map.
+     * This matrix is created by iterating a string that contents
+     * It set a list of all the boxes and an other of all the targets of the level.
      * 
      * @param mapConfig string containing the initial configuration of the map
      * @param player Player object created in sokoban.Game before calling this method
      * @param world World object created in sokoban.Game
      * @param width an integer equals to the width of the map
      * @param height an integer eauqls to the height of the map
-     * @return an array cellsList containing Cell objects
      */
     public static void init(String mapConfig, Player player, World world, int width, int height) {
         
@@ -70,11 +67,29 @@ public class Builder {
                         cellsMatrix[line][column] = wallCase;
                         break;
 
-                    // case '_':
-                    // Empty empty = new Empty(pos, "/Cells/empty.png");
-                    // MatrixCase emptycase = new MatrixCase(wall, wall);
-                    // cellsMatrix[line][column] = wallCase;
-                    // break;
+                    case '_':
+                        Empty empty = new Empty(pos, "/Cells/empty.png");
+                        MatrixCase emptyCase = new MatrixCase(empty, empty);
+                        cellsMatrix[line][column] = emptyCase;
+                        break;
+
+                    case '*':
+                        Target starTarget = new Target(pos, "/Cells/target.png");
+                        Box starBox = new Box(pos, "/Cells/box.png");
+                        MatrixCase starCase = new MatrixCase(starBox, starTarget);
+                        cellsMatrix[line][column] = starCase;
+                        boxesList.add(starBox);
+                        targetsList.add(starTarget);
+                        break;
+
+                    case '+':
+                        Target plusTarget = new Target(pos, "/Cells/target.png");
+                        player.setCellPos(pos);
+                        MatrixCase plusCase = new MatrixCase(player, plusTarget);
+                        cellsMatrix[line][column] = plusCase;
+                        targetsList.add(plusTarget);
+                        break;
+
 
                     default:
                         break;

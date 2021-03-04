@@ -52,7 +52,6 @@ public class MapLoader {
     public static String mapTrimmer(String input) {
         int i = input.indexOf('#');
         int j = input.lastIndexOf('#');
-        // System.out.println("i = " + i + ", j = " + j);
         input = input.substring(0, i).replaceAll(" ", "_") + input.substring(i, j) + input.substring(j).replaceAll(" ", "_");
         return input;
     }
@@ -65,7 +64,7 @@ public class MapLoader {
     */
     public static String load(String file) {
         String res = "";
-        int width = getSize("app/build/resources/main/levels/map1.xsb")[1];
+        int width = getSize(file)[1];
 
         try {
             File myObj = new File(file);

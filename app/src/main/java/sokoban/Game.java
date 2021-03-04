@@ -15,9 +15,6 @@ public class Game extends Application {
     Stage window;
     Scene scene;
 
-    //*****
-
-    //*****
     public static void main(String[] args) throws Exception {
 
         launch(args);
@@ -25,21 +22,28 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        //window
         window = primaryStage;
         window.setTitle("Sokoban");
+
+        //map
         String map = MapLoader.load("build/resources/main/levels/map1.xsb");
         int[] size = MapLoader.getSize("build/resources/main/levels/map1.xsb");
         int[] pos = {0, 0};
         Player player = new Player(pos, "/Cells/player.png");
         World world = new World(size[0], size[1], player);
-
         Builder.init(map, player, world, size[0], size[1]);
 
+        //GridPane
         Map grid = new Map(world);
         grid.showMap();
+
+        //scene
         scene = new Scene(grid, 640, 640);
         scene.setOnKeyPressed(e -> addKeyHandler(scene, player, world, grid,e));
         window.setScene(scene);
+
         window.show();
     }
 
@@ -47,16 +51,16 @@ public class Game extends Application {
 
         KeyCode keyCode = ke.getCode();
         if (keyCode.equals(KeyCode.Z)) {
-            player.move('z', world);
+            player.move("up", world);
 
         } else if (keyCode.equals(KeyCode.Q)) {
-            player.move('q', world);
+            player.move("left", world);
 
         } else if (keyCode.equals(KeyCode.S)) {
-            player.move('s', world);
+            player.move("down", world);
 
         } else if (keyCode.equals(KeyCode.D)) {
-            player.move('d', world);
+            player.move("right", world);
         }
         try {
             grid.showMap();

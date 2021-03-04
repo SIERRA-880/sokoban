@@ -1,14 +1,12 @@
 package sokoban.Engine.Objects;
 
-public class Wall extends Cell {
+public class Empty extends Cell {
 
-    private char termTexture = '#';
+    private char termTexture = ' ';
 
-
-    public Wall(int[] pos, String texture) {
-        super(pos, texture, true, false);
+    public Empty(int[] pos, String texture) {
+        super(pos, texture, false, false);
     }
-
 
     /**
      * @return the character of the {@link sokoban.Engine.Objects.Cell}
@@ -17,4 +15,5 @@ public class Wall extends Cell {
     public char getTermTexture() {
         return termTexture;
     }
+
 }
