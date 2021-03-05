@@ -1,8 +1,9 @@
-package sokoban.UI;
+package sokoban.UI.Widgets;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import sokoban.Game;
+import sokoban.UI.Scenes.*;
 
 import java.io.FileInputStream;
 

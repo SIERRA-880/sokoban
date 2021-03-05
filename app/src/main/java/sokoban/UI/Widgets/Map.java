@@ -1,4 +1,4 @@
-package sokoban.UI;
+package sokoban.UI.Widgets;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

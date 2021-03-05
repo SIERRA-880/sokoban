@@ -1,4 +1,4 @@
-package sokoban.UI;
+package sokoban.UI.Widgets;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

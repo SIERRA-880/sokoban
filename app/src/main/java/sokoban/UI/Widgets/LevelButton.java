@@ -1,14 +1,11 @@
-package sokoban.UI;
+package sokoban.UI.Widgets;
 
-import com.sun.glass.events.KeyEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
+import sokoban.UI.Widgets.ImageButton;
 
 public class LevelButton extends ImageButton {
     //type of button that is used to designate a level

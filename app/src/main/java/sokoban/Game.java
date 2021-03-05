@@ -1,5 +1,4 @@
 
-
 package sokoban;
 
 import javafx.application.Application;
@@ -13,10 +12,8 @@ import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
-import sokoban.UI.GridLvlButtons;
-import sokoban.UI.LevelScene;
-import sokoban.UI.Map;
-import sokoban.UI.MenuLvlScene;
+import sokoban.UI.Widgets.*;
+import sokoban.UI.Scenes.*;
 
 public class Game extends Application {
     //Main class that launches the game

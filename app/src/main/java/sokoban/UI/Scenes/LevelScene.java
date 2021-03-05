@@ -1,4 +1,4 @@
-package sokoban.UI;
+package sokoban.UI.Scenes;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -7,6 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
+import sokoban.UI.Widgets.*;
 
 public class LevelScene extends Scene {
     //Scene that will containe a Map type object and display a level
