@@ -25,7 +25,10 @@ public class GridLvlButtons extends GridPane {
                     button.setStyle("-fx-background-color: transparent;");
                     button.setOnAction(e -> {
                         try {
-                            Game.switchScene(new LevelScene(button.getMap()));
+                            LevelScene lvlscene = new LevelScene(button.getMap());
+                            lvlscene.setMap(button.getMap());
+                            lvlscene.setOnKeyPressed(event ->{lvlscene.addKeyHandler(lvlscene,button.player,button.world,event);});
+                            Game.switchScene(lvlscene);
                         } catch (Exception exception) {
                             exception.printStackTrace();
                         }

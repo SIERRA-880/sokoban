@@ -1,35 +1,30 @@
 package sokoban.UI;
 
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
-import sokoban.Engine.Tools.Builder;
-import sokoban.Engine.Tools.MapLoader;
-import sokoban.Game;
 
 public class LevelScene extends Scene {
     //Scene that will containe a Map type object and display a level
+    GridPane gridPane;
+    Map map;
+    public LevelScene(GridPane gridPane) throws Exception {
+        super(gridPane);
+        this.gridPane=gridPane;
+        // map.showMap();
+    }
 
-
-    public LevelScene(Map map) throws Exception {
-        super(map);
+    public void setMap(Map map) {
+        gridPane.getChildren().setAll(map);
+        this.map=map;
         map.showMap();
     }
-    
-
-
-
-
-
-
-
-    public static void addKeyHandler(Scene scene, Player player, World world, Map grid, KeyEvent ke) {
+    public void addKeyHandler(Scene scene, Player player, World world,KeyEvent ke) {
         //methode to move the player on th map
-        System.out.println("yes");
 
         KeyCode keyCode = ke.getCode();
         if (keyCode.equals(KeyCode.Z)) {
@@ -47,10 +42,8 @@ public class LevelScene extends Scene {
         } else if (keyCode.equals(KeyCode.D)) {
             player.move("right", world);
         }
-        grid.showMap();
+        map.showMap();
     }
-
-
 }
 
 

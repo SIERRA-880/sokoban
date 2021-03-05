@@ -31,7 +31,6 @@ public class Game extends Application {
         window.setScene(scene);
         window.setFullScreen(true);
 
-
     }
 
     @Override
