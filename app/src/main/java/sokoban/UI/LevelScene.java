@@ -21,7 +21,6 @@ public class LevelScene extends Scene {
 
 
 
-
     }
     public void addKeyHandler(Scene scene, Player player, World world, Map grid, KeyEvent ke) {
         //methode to move the player on th map
