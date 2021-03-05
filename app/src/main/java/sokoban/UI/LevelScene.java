@@ -29,15 +29,14 @@ public class LevelScene extends Scene {
         KeyCode keyCode = ke.getCode();
         if (keyCode.equals(KeyCode.Z)) {
             player.move("up", world);
-            System.out.println("yes");
+
 
         } else if (keyCode.equals(KeyCode.Q)) {
             player.move("left", world);
-            System.out.println("yes");
 
         } else if (keyCode.equals(KeyCode.S)) {
             player.move("down", world);
-            System.out.println("yes");
+
 
         } else if (keyCode.equals(KeyCode.D)) {
             player.move("right", world);
