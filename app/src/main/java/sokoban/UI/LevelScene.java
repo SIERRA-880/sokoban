@@ -4,25 +4,30 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
+import sokoban.Engine.Tools.Builder;
+import sokoban.Engine.Tools.MapLoader;
 import sokoban.Game;
 
 public class LevelScene extends Scene {
     //Scene that will containe a Map type object and display a level
 
-    public static Map map;
 
     public LevelScene(Map map) throws Exception {
         super(map);
-        LevelScene.map = map;
-        Game.window.setFullScreen(true);
         map.showMap();
-
-
-
     }
-    public void addKeyHandler(Scene scene, Player player, World world, Map grid, KeyEvent ke) {
+    
+
+
+
+
+
+
+
+    public static void addKeyHandler(Scene scene, Player player, World world, Map grid, KeyEvent ke) {
         //methode to move the player on th map
         System.out.println("yes");
 
