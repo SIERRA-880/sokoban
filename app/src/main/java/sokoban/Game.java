@@ -1,7 +1,10 @@
 package sokoban;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
@@ -12,6 +15,7 @@ import sokoban.UI.Map;
 import sokoban.UI.MenuLvlScene;
 
 public class Game extends Application {
+    //Main class that launches the game
     public static Stage window;
 
 
@@ -25,6 +29,7 @@ public class Game extends Application {
 
     public static void switchScene(Scene scene) {
         window.setScene(scene);
+        window.setFullScreen(true);
     }
 
     @Override
@@ -45,15 +50,14 @@ public class Game extends Application {
         LevelScene lvlscene = new LevelScene(lvlMap);
 
         MenuLvlScene menuLvlScene = new MenuLvlScene();
-
-        lvlscene.setOnKeyPressed(e -> lvlscene.addKeyHandler(lvlscene, player, world, lvlMap, e));
+        lvlscene.setOnKeyPressed(e-> lvlscene.addKeyHandler(lvlscene,player,world,lvlMap,e));
         window.setScene(menuLvlScene);
 
         // Window
+
         window.setFullScreen(true);
         window.show();
     }
-
 
 }
 

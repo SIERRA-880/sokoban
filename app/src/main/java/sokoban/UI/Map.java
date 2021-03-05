@@ -2,27 +2,32 @@ package sokoban.UI;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import sokoban.Engine.Objects.Cell;
 import sokoban.Engine.Objects.MatrixCase;
 import sokoban.Engine.Objects.World;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import static javafx.geometry.Pos.CENTER;
 
 public class Map extends GridPane {
+    //Type of GridPane that will containe the map of the current level
     World world;
 
-    public Map(World world) throws Exception {
+    public Map(World world)  {
         super();
         this.world = world;
         setAlignment(CENTER);
-
+        setStyle("-fx-background-color: #000000;");
 
     }
 
-    public void showMap() throws Exception {
+    public void showMap() {
 
         //clean up
         this.getChildren().clear();
@@ -31,12 +36,20 @@ public class Map extends GridPane {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 Cell cell = matrix[i][j].getCell();
-                Image image = new Image(new FileInputStream(cell.getCellTexture()));
+                Image image = null;
+                try {
+                    image = new Image(new FileInputStream(cell.getCellTexture()));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 this.add(new ImageView(image), j, i, 1, 1);
             }
 
         }
     }
+
+
+
 }
 
 

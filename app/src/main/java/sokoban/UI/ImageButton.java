@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 
 //idée tiré de stackOverflow https://stackoverflow.com/questions/10518458/javafx-create-custom-button-with-image
 public class ImageButton extends Button{
+    //Tyoe of button that contains an image
     public ImageButton(final Image selected, final Image unselected) throws Exception {
 
         setMaxSize(100, 100);

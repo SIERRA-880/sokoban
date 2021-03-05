@@ -1,7 +1,12 @@
 package sokoban.UI;
 
+import javafx.geometry.Insets;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.Engine.Tools.Builder;
@@ -13,6 +18,7 @@ import java.io.FileInputStream;
 import static javafx.geometry.Pos.CENTER;
 
 public class GridLvlButtons extends GridPane {
+    //Grid that contains the different lvl buttons
 
     public GridLvlButtons() {
         String nom_button_selected = "build/resources/main/textures/Default/Buttons/levelMenu/levelButton_";
@@ -28,8 +34,8 @@ public class GridLvlButtons extends GridPane {
                     World world = new World(size[0], size[1], player);
                     Builder.init(map, player, world, size[0], size[1]);
                     Image image_selected = new Image(new FileInputStream(nom_button_selected + (a) + ".png"));
-                    Image image_unselected = new Image(new FileInputStream(nom_button_unselected + (a) + ".png"));
-                    LevelButton button = new LevelButton(image_selected, image_unselected, (a++));
+                    Image image_unselected = new Image(new FileInputStream(nom_button_unselected + (a++) + ".png"));
+                    LevelButton button = new LevelButton(image_selected, image_unselected);
                     button.setOnAction(e -> {
                         try {
                             Game.switchScene(new LevelScene(new Map(world)));
@@ -52,6 +58,10 @@ public class GridLvlButtons extends GridPane {
         setHgap(30);
         setVgap(60);
         setAlignment(CENTER);
+
+        //choisisez celui que vous voulez !
+        setStyle("-fx-background-color: #000000;");
+        //setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
 
     }
 }
