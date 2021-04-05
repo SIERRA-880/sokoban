@@ -14,20 +14,16 @@ import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
 import sokoban.UI.Widgets.*;
 import sokoban.UI.Scenes.*;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
 public class Game extends Application {
     //Main class that launches the game
     public static Stage window;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
 
         launch(args);
-    }
-
-    public static void switchScene(Scene scene) {
-        window.setScene(scene);
-        window.setFullScreen(true);
-
     }
 
     @Override
@@ -39,12 +35,11 @@ public class Game extends Application {
         MenuLvlScene menuLvlScene = new MenuLvlScene();
 
         window.setScene(menuLvlScene);
-
         // Window
-
         window.setFullScreen(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
         window.show();
+
     }
 
 

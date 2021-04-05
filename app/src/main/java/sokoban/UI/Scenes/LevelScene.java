@@ -13,7 +13,7 @@ public class LevelScene extends Scene {
     //Scene that will containe a Map type object and display a level
     GridPane gridPane;
     Map map;
-    public LevelScene(GridPane gridPane) throws Exception {
+    public LevelScene(GridPane gridPane)  {
         super(gridPane);
         this.gridPane=gridPane;
         // map.showMap();

@@ -11,17 +11,17 @@ import javafx.scene.layout.*;
 //idée tiré de stackOverflow https://stackoverflow.com/questions/10518458/javafx-create-custom-button-with-image
 public class ImageButton extends Button{
     //Tyoe of button that contains an image
-    public ImageButton(final Image selected, final Image unselected) throws Exception {
+    public ImageButton(final Image selected, final Image unselected)  {
 
         setMaxSize(100, 100);
         final ImageView iv = new ImageView(selected);
         this.getChildren().add(iv);
 
-        this.setOnMouseEntered(e -> {iv.setImage(unselected);});
+        this.setOnMouseEntered(e -> iv.setImage(unselected));
 
-        this.setOnMouseExited(e -> {iv.setImage(selected);});
+        this.setOnMouseExited(e -> iv.setImage(selected));
 
-        setPadding(new Insets(0, 0, 0, 0));
+        //setPadding(new Insets(0, 0, 0, 0));
         setGraphic(iv);
     }
 
