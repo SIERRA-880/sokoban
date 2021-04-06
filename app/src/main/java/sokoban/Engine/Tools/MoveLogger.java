@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class MoveLogger {
     public static void main(String[] args) throws IOException {
-        createFile("lvl1");
+        logMovement('u');
     }
 
     /**Create a file "dd/mm/yy_hh:mm:ss_level.mov" in the directory to store movements
@@ -27,7 +27,27 @@ public class MoveLogger {
         myObj.createNewFile();
     }
 
-    public static void name() {
+    /**
+     * Append a char to the last modified file in the directory containing .mov files.
+     * 
+     * If the player is just moving, the method should be call with 'u','l','d','r'.
+     * If the player is moving a box, the method should be called with 'U','L','D','R'.
+     * Caps letter indicates that the player is moving a box.
+     * 
+     * @param direction A char 'u','l''d','r','U','L','D','R'.
+     */
+    public static void logMovement(char direction) {
         
+    }
+
+    /**
+     * This method looks for the most recent file in the directory containing .mov files.
+     * 
+     * @return A string containing the name of the most recent file.
+     */
+    public static String getNewestFile() {
+        String newestFile = "";
+
+        return newestFile;
     }
 }
