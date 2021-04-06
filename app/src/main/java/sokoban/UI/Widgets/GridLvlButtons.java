@@ -27,7 +27,7 @@ public class GridLvlButtons extends GridPane {
         //setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
 
     }
-
+//truc changé
     public void Assign(String nom_button_selected, String nom_button_unselected) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {

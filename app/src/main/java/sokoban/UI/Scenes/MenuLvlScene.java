@@ -6,8 +6,8 @@ import sokoban.UI.Widgets.*;
 
 public class MenuLvlScene extends Scene {
     //Scene that contains a grid of the different level buttons
-
-    public MenuLvlScene() throws Exception {
+//truc chnagé
+    public MenuLvlScene()  {
 
         super(new GridLvlButtons(), 640, 640, Color.BLACK);
 

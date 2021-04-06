@@ -25,10 +25,10 @@ public class Game extends Application {
 
         launch(args);
     }
+    //truc changé
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        //window
+    public void start(Stage primaryStage) {
         window = primaryStage;
         window.setTitle("Sokoban");
 

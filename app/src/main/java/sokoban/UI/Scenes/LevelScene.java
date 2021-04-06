@@ -18,6 +18,7 @@ public class LevelScene extends Scene {
         this.gridPane=gridPane;
         // map.showMap();
     }
+    //truc chnagé
 
     public void setMap(Map map) {
         gridPane.getChildren().setAll(map);

@@ -11,7 +11,7 @@ public class LevelButton extends ImageButton {
     int level;
     Player player;
     World world;
-
+//truc chnagé
     public LevelButton(Image selected, Image unselected, int level)  {
         super(selected, unselected);
         this.level = level;
