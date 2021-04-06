@@ -46,8 +46,6 @@ public class MoveLogger {
      * @return A string containing the name of the most recent file.
      */
     public static String getNewestFile() {
-        String newestFile = "";
-
-        return newestFile;
+        
     }
 }
