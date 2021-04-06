@@ -225,5 +225,6 @@ gradle-app.setting
 
 ### Gradle Patch ###
 **/build/
-
+.idea/
+.idea/*
 # End of https://www.toptal.com/developers/gitignore/api/vim,vscode,visualstudiocode,eclipse,intellij,gradle
