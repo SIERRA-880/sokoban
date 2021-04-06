@@ -2,10 +2,7 @@ package sokoban.UI.Widgets;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import sokoban.Engine.Objects.Cell;
 import sokoban.Engine.Objects.MatrixCase;
 import sokoban.Engine.Objects.World;
