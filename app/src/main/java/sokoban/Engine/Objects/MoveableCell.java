@@ -5,7 +5,7 @@ public class MoveableCell extends Cell {
     boolean boxMoved = false;
 
     public MoveableCell(int[]  pos, String texture, boolean hardCollision, boolean softCollision) {
-        super(pos, texture, hardCollision, softCollision);	
+    super(pos, texture, hardCollision, softCollision);	
     }
 
     /**
@@ -66,5 +66,37 @@ public class MoveableCell extends Cell {
                 System.out.println(direction.toLowerCase().charAt(0));
             }
         }
+    }
+
+    public void pull(String direction, World world) {
+        String oppositeDirection = "";
+        switch (direction) {
+            case "up":
+                oppositeDirection = "down";
+                break;
+            case "down":
+                oppositeDirection = "up";
+                break;
+            case "right":
+                oppositeDirection = "left";
+                break;
+            case "left":
+                oppositeDirection = "right";
+                break;
+            default:
+                break;
+        }
+        int[] nextPos = getNextPos(direction);
+        int[] boxPos = getNextPos(oppositeDirection);
+        int[] playerPos = this.getCellPos();
+        Cell nextCell = world.searchCell(nextPos);
+        if (world.searchCell(boxPos) instanceof Box && (!nextCell.hardCollision() && !nextCell.softCollision())) { 
+            Cell box = world.searchBox(boxPos);
+            world.moveCell(this, playerPos, nextPos);
+            world.moveCell(box, boxPos, playerPos);
+            box.setCellPos(playerPos);
+            setCellPos(nextPos);
+        }
+
     }
 }

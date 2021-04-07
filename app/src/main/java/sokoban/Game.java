@@ -81,6 +81,20 @@ public class Game extends Application {
         } else if (keyCode.equals(KeyCode.D)) {
             player.move("right", world);
         }
+///////////////////////////////////////////////////
+        if (keyCode.equals(KeyCode.K)) {
+            player.pull("up", world);
+
+        } else if (keyCode.equals(KeyCode.H)) {
+            player.pull("left", world);
+
+        } else if (keyCode.equals(KeyCode.J)) {
+            player.pull("down", world);
+
+        } else if (keyCode.equals(KeyCode.L)) {
+            player.pull("right", world);
+        }
+///////////////////////////////////////////////////
         try {
             grid.showMap();
         } catch (Exception yes) {
