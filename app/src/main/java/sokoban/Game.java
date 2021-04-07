@@ -45,7 +45,8 @@ public class Game extends Application {
         window.setFullScreen(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
         window.show();
-       /* primaryStage.setTitle("DRIFT STAGE");
+        /* 
+        primaryStage.setTitle("DRIFT STAGE");
         Pane game = new Pane();
         Scene gameScene = new Scene(game, 1000, 740);
         Image bgImg = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/background.jpg"));
@@ -76,10 +77,7 @@ public class Game extends Application {
         ParallelTransition parTrans = new ParallelTransition(trans2);
         parTrans.play();
         primaryStage.setScene(gameScene);
-        primaryStage.show()*/
-
+        primaryStage.show()
+        */
     }
-
-
 }
-
