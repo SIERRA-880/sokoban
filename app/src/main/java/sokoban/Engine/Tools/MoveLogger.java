@@ -18,7 +18,6 @@ public class MoveLogger {
     public static void createFile(String level) throws IOException {
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
-        // Format the original date pattern from "yyyy-MM-ddTHH:mm:ss.ms " to "10-03-2021_20-20-48 "
         String formattedDate = date.format(format);
 
         // Create file named "dd/mm/yy_hh:mm:ss_level.mov"
@@ -37,7 +36,7 @@ public class MoveLogger {
      * @param direction A char 'u','l''d','r','U','L','D','R'.
      */
     public static void logMovement(char direction) {
-        
+
     }
 
     /**
@@ -46,6 +45,13 @@ public class MoveLogger {
      * @return A string containing the name of the most recent file.
      */
     public static String getNewestFile() {
-        
+
+    }
+
+    /**
+     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger.getnewestFile} and write to it.
+     */
+    public static void writeToNewestFile() {
+
     }
 }
