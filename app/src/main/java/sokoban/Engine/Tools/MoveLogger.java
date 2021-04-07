@@ -2,15 +2,20 @@ package sokoban.Engine.Tools;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Optional;
 
 public class MoveLogger {
-    public static void main(String[] args) throws IOException {
-        logMovement('u');
-    }
 
-    /**Create a file "dd/mm/yy_hh:mm:ss_level.mov" in the directory to store movements
+    static ArrayList<Character> movements = new ArrayList<Character>();
+
+    /**
+     * Create a file "dd/mm/yy_hh:mm:ss_level.mov" in the directory to store movements
      * 
      * @param level The level name, this will be appended at the end of the file
      * @throws IOException
@@ -24,34 +29,54 @@ public class MoveLogger {
         String fileName = formattedDate + "_" + level + ".mov";
         File myObj = new File(fileName);
         myObj.createNewFile();
+
+        movements.clear();
     }
 
     /**
      * Append a char to the last modified file in the directory containing .mov files.
      * 
      * If the player is just moving, the method should be call with 'u','l','d','r'.
-     * If the player is moving a box, the method should be called with 'U','L','D','R'.
-     * Caps letter indicates that the player is moving a box.
+     * If the player is moving a box, the method should be called with
+     * 'U','L','D','R'. Caps letter indicates that the player is moving a box.
      * 
-     * @param direction A char 'u','l''d','r','U','L','D','R'.
+     * @param direction A char 'u','l','d','r','U','L','D','R'.
      */
     public static void logMovement(char direction) {
-
+        movements.add(direction);
     }
 
     /**
      * This method looks for the most recent file in the directory containing .mov files.
      * 
+     * Credit to : https://www.baeldung.com/java-last-modified-file
+     * 
      * @return A string containing the name of the most recent file.
+     * @throws IOException
      */
-    public static String getNewestFile() {
-
+     public static Path getNewestFile() throws IOException {
+        Path dir = Paths.get("");
+        if (Files.isDirectory(dir)) {
+            Optional<Path> opPath = Files.list(dir)
+            .filter(p -> !Files.isDirectory(p))
+            .sorted((p1, p2)-> Long.valueOf(p2.toFile().lastModified())
+            .compareTo(p1.toFile().lastModified()))
+            .findFirst();
+            
+            if (opPath.isPresent()){
+                return opPath.get();
+            }
+        }
+        
+        return null;
     }
 
     /**
-     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger.getnewestFile} and write to it.
+     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger.getNewestFile} and write to it.
+     * @throws IOException
      */
-    public static void writeToNewestFile() {
-
+    public static void writeToNewestFile() throws IOException {
+        Files.writeString(getNewestFile(), movements.toString());
+        movements.clear();
     }
 }
