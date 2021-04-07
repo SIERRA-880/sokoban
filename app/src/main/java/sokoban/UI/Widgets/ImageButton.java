@@ -1,5 +1,6 @@
 package sokoban.UI.Widgets;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +18,7 @@ public class ImageButton extends Button{
 
         this.setOnMouseExited(e -> iv.setImage(selected));
 
-        //setPadding(new Insets(0, 0, 0, 0));
+        setPadding(new Insets(0, 0, 0, 0));
         setGraphic(iv);
     }
 

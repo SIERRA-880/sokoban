@@ -26,18 +26,19 @@ public class GridLvlButtons extends GridPane {
         //setBackground(new Background(new BackgroundFill(Color.BLACK,null,null)));
 
     }
-//truc changé
+
     public void Assign(String nom_button_selected, String nom_button_unselected) {
+        int a=1;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
                 Image image_selected = null, image_unselected = null;
                 LevelButton button;
                 try {
-                    image_selected = new Image(new FileInputStream(nom_button_selected + (i+j+1) + ".png"));
-                    image_unselected = new Image(new FileInputStream(nom_button_unselected + (i+j+1) + ".png"));
+                    image_selected = new Image(new FileInputStream(nom_button_selected + (a) + ".png"));
+                    image_unselected = new Image(new FileInputStream(nom_button_unselected + (a) + ".png"));
                     
                 } catch (FileNotFoundException e) {e.printStackTrace();}
-                button = new LevelButton(image_selected, image_unselected, (i+j+1));
+                button = new LevelButton(image_selected, image_unselected, (a++));
                 button.setStyle("-fx-background-color: transparent;");
                 button.setOnAction(e -> {LevelScene lvlscene = new LevelScene(button.getMap());
                 lvlscene.setMap(button.getMap());
