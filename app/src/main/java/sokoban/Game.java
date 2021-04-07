@@ -1,108 +1,82 @@
 package sokoban;
 
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
+import javafx.animation.ParallelTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.Pane;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
-import sokoban.Engine.Objects.Player;
-import sokoban.Engine.Objects.World;
-import sokoban.Engine.Objects.Level;
-import sokoban.Engine.Tools.Builder;
-import sokoban.Engine.Tools.MapLoader;
-import sokoban.UI.Map;
+import javafx.util.Duration;
+import sokoban.UI.Scenes.BgScene;
+import sokoban.UI.Scenes.MenuLvlScene;
+import sokoban.UI.Widgets.MovingBg;
 
-import static javafx.geometry.Pos.CENTER;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Game extends Application {
-    Stage window;
-    Scene scene;
-    VBox vbox = new VBox();
+    //Main class that launches the game
+    public static Stage window;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
 
         launch(args);
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
 
-        //window
+    @Override
+    public void start(Stage primaryStage)  {
         window = primaryStage;
         window.setTitle("Sokoban");
 
-        //map
-        Level level1 = new Level("map1");
-        Level level2 = new Level("map2");
+        //MenuLvlScene menuLvlScene = new MenuLvlScene();
+        BgScene bgScene= new BgScene(new MovingBg("build/resources/main/textures/Default/Menus/background.jpg"));
 
-        // init map
-        Level currentLevel = level1;
-        World world = currentLevel.getWorld();
-        Player player = currentLevel.getPlayer();
-
-        //GridPane
-        Map grid = new Map(world);
-        grid.showMap();
-        grid.setAlignment(CENTER);
-
-        //Vbox
-        vbox.getChildren().addAll(grid);
-        vbox.setAlignment(CENTER);
-        vbox.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0), CornerRadii.EMPTY, Insets.EMPTY)));
-
-        //scene
-        scene = new Scene(vbox, 640, 640);
-        scene.setOnKeyPressed(e -> addKeyHandler(scene, player, world, grid, e));
-        window.setScene(scene);
-
+        window.setScene(bgScene);
         // Window
         window.setFullScreen(true);
+        window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
         window.show();
-    }
+        /* 
+        primaryStage.setTitle("DRIFT STAGE");
+        Pane game = new Pane();
+        Scene gameScene = new Scene(game, 1000, 740);
+        Image bgImg = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/background.jpg"));
+        ImageView background = new ImageView(bgImg);
+        game.getChildren().add(background);
 
-    public void addKeyHandler(Scene scene, Player player, World world, Map grid, KeyEvent ke) {
+        Image bgImg2 = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/background.jpg"));
+        ImageView background2 = new ImageView(bgImg2);
+        game.getChildren().add(background2);
+        background2.setRotationAxis(Rotate.Y_AXIS);
+        background2.setRotate(180);
+        //background2.setX(300);
 
-        KeyCode keyCode = ke.getCode();
-        if (keyCode.equals(KeyCode.Z)) {
-            player.move("up", world);
+        TranslateTransition trans1 = new TranslateTransition(Duration.seconds(10),background);
+        trans1.setFromX(0);
+        trans1.setToX(900);
+        trans1.setCycleCount(Animation.INDEFINITE);
+        trans1.setInterpolator(Interpolator.LINEAR);
 
-        } else if (keyCode.equals(KeyCode.Q)) {
-            player.move("left", world);
 
-        } else if (keyCode.equals(KeyCode.S)) {
-            player.move("down", world);
+        TranslateTransition trans2 = new TranslateTransition(Duration.seconds(10),background2);
+        trans2.setFromX(-900);
+        trans2.setToX(0);
+        trans2.setCycleCount(Animation.INDEFINITE);
+        trans2.setInterpolator(Interpolator.LINEAR);
+        trans2.setAutoReverse(false);
 
-        } else if (keyCode.equals(KeyCode.D)) {
-            player.move("right", world);
-        }
-///////////////////////////////////////////////////
-        if (keyCode.equals(KeyCode.K)) {
-            player.pull("up", world);
-
-        } else if (keyCode.equals(KeyCode.H)) {
-            player.pull("left", world);
-
-        } else if (keyCode.equals(KeyCode.J)) {
-            player.pull("down", world);
-
-        } else if (keyCode.equals(KeyCode.L)) {
-            player.pull("right", world);
-        }
-///////////////////////////////////////////////////
-        try {
-            grid.showMap();
-        } catch (Exception yes) {
-            System.out.println(yes);
-        }
-        
-        if (world.winCondition()) {
-            System.out.println("You win !");    
-        }
+        ParallelTransition parTrans = new ParallelTransition(trans2);
+        parTrans.play();
+        primaryStage.setScene(gameScene);
+        primaryStage.show()
+        */
     }
 }
