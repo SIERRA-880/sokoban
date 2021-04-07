@@ -1,5 +1,7 @@
 package sokoban.Engine.Objects;
 
+import sokoban.Engine.Tools.MoveLogger;
+
 public class MoveableCell extends Cell {
 
     boolean boxMoved = false;
@@ -60,10 +62,10 @@ public class MoveableCell extends Cell {
             world.moveCell(this, this.getCellPos(), nextPos);
             setCellPos(nextPos);
             if (boxMoved) {
-                System.out.println(direction.toUpperCase().charAt(0));
+                MoveLogger.logMovement(direction.toUpperCase().charAt(0));
             }
             else {
-                System.out.println(direction.toLowerCase().charAt(0));
+                MoveLogger.logMovement(direction.toLowerCase().charAt(0));
             }
         }
     }
