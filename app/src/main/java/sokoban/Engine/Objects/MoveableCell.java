@@ -1,6 +1,10 @@
 package sokoban.Engine.Objects;
 
+import sokoban.Engine.Tools.MoveLogger;
+
 public class MoveableCell extends Cell {
+
+    boolean boxMoved = false;
 
     public MoveableCell(int[]  pos, String texture, boolean hardCollision, boolean softCollision) {
         super(pos, texture, hardCollision, softCollision);	
@@ -25,18 +29,23 @@ public class MoveableCell extends Cell {
 
         if (nextCell.hardCollision()) {
             return false;
-        } else if (nextCell.softCollision()) {
+        } 
+        else if (nextCell.softCollision()) {
             // if the next cell can be pushed check the following :
             int[] nextNextPos = nextCell.getNextPos(direction);
             Cell nextNextCell = world.searchCell(nextNextPos);
             if (nextNextCell.hardCollision() || nextNextCell.softCollision()) {
                 return false;
-            } else {
+            }
+            else {
                 world.moveCell(nextCell, nextCell.getCellPos(), nextNextPos);
                 nextCell.setCellPos(nextNextPos);
+                boxMoved = true;
                 return true;
             }
-        } else {
+        } 
+        else {
+            boxMoved = false;
             return true;
         }
     }
@@ -52,6 +61,12 @@ public class MoveableCell extends Cell {
             int[] nextPos = getNextPos(direction);
             world.moveCell(this, this.getCellPos(), nextPos);
             setCellPos(nextPos);
+            if (boxMoved) {
+                MoveLogger.logMovement(direction.toUpperCase().charAt(0));
+            }
+            else {
+                MoveLogger.logMovement(direction.toLowerCase().charAt(0));
+            }
         }
     }
 }
