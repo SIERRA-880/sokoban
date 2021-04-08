@@ -34,6 +34,8 @@ public class Level {
 
     /**
      * This return the world of the current instance of a level.
+     * 
+     * @return world
      */
     public World getWorld() {
         return world;
@@ -41,6 +43,8 @@ public class Level {
 
     /** 
      * This return the player of the current isntance of a level.
+     * 
+     * @return player
      */
     public Player getPlayer() {
         return player;

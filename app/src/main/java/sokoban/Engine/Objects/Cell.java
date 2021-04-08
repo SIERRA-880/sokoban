@@ -31,7 +31,7 @@ public class Cell {
     /**
      * Set the given position to the current {@link sokoban.Engine.Objects.Cell}
      * 
-     * @param newPos
+     * @param newPos Array of int containg coordinates (x,y)
      */
     public void setCellPos(int[] newPos) {
         pos[0] = newPos[0];

@@ -51,7 +51,7 @@ public class MoveableCell extends Cell {
     }
 
     /**
-     * Moves the {@link sokoban.Engine.Objects.Cell} from initial position to next position using ({@link sokoban.Engine.Objects.Cell#getNextPos(char)}) to find it.
+     * Moves the {@link sokoban.Engine.Objects.Cell} from initial position to next position using ({@link sokoban.Engine.Objects.Cell#getNextPos(String)}) to find it.
      * @param direction char (z,q,s,d) representing (up,left,down,right) direction
      * @param world
      */

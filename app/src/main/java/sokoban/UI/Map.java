@@ -13,11 +13,9 @@ public class Map extends GridPane {
     public Map(World world) throws Exception {
         super();
         this.world = world;
-
     }
 
     public void showMap() throws Exception {
-
         //clean up
         this.getChildren().clear();
         //refresh
@@ -28,8 +26,6 @@ public class Map extends GridPane {
                 Image image = new Image(new FileInputStream(cell.getCellTexture()));
                 this.add(new ImageView(image), j, i, 1, 1);
             }
-
         }
     }
 }
-

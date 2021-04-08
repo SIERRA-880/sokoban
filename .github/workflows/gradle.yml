@@ -39,7 +39,7 @@ jobs:
         distribution: 'adopt'
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build with Gradle
+    - name: Run test with Gradle
       run: ./gradlew test
 
   javadoc:
@@ -55,5 +55,5 @@ jobs:
         distribution: 'adopt'
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build with Gradle
+    - name: Build javadoc with Gradle
       run: ./gradlew javadoc

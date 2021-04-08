@@ -18,9 +18,8 @@ public class MoveLogger {
      * Create a file "dd/mm/yy_hh:mm:ss_level.mov" in the directory to store movements
      * 
      * @param level The level name, this will be appended at the end of the file
-     * @throws IOException
      */
-    public static void createFile(String level) throws IOException {
+    public static void createFile(String level) {
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
         String formattedDate = date.format(format);
@@ -28,7 +27,11 @@ public class MoveLogger {
         // Create file named "dd/mm/yy_hh:mm:ss_level.mov"
         String fileName = formattedDate + "_" + level + ".mov";
         File myObj = new File(fileName);
-        myObj.createNewFile();
+        try {
+            myObj.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         movements.clear();
     }
@@ -52,19 +55,23 @@ public class MoveLogger {
      * Credit to : https://www.baeldung.com/java-last-modified-file
      * 
      * @return A string containing the name of the most recent file.
-     * @throws IOException
      */
-     public static Path getNewestFile() throws IOException {
+     public static Path getNewestFile() {
         Path dir = Paths.get("");
         if (Files.isDirectory(dir)) {
-            Optional<Path> opPath = Files.list(dir)
-            .filter(p -> !Files.isDirectory(p))
-            .sorted((p1, p2)-> Long.valueOf(p2.toFile().lastModified())
-            .compareTo(p1.toFile().lastModified()))
-            .findFirst();
-            
-            if (opPath.isPresent()){
-                return opPath.get();
+            Optional<Path> opPath;
+            try {
+                opPath = Files.list(dir)
+                .filter(p -> !Files.isDirectory(p))
+                .sorted((p1, p2)-> Long.valueOf(p2.toFile().lastModified())
+                .compareTo(p1.toFile().lastModified()))
+                .findFirst();
+
+                if (opPath.isPresent()){
+                    return opPath.get();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         
@@ -72,11 +79,14 @@ public class MoveLogger {
     }
 
     /**
-     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger.getNewestFile} and write to it.
-     * @throws IOException
+     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger#getNewestFile} and write to it.
      */
-    public static void writeToNewestFile() throws IOException {
-        Files.writeString(getNewestFile(), movements.toString());
+    public static void writeToNewestFile() {
+        try {
+            Files.writeString(getNewestFile(), movements.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         movements.clear();
     }
 }
