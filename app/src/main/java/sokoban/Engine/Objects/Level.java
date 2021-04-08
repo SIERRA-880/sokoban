@@ -10,7 +10,11 @@ public class Level {
     private World world;
     private Player player;
     private int[] size;
-    
+  
+    /**
+     * This create an instance of a level.
+     * @param map is a string containing a map name. ex: map1 
+     */
     public Level(String map) {
         int[] pos = {0, 0};
         this.map = MapLoader.load("build/resources/main/levels/"+map+".xsb"); 
@@ -20,14 +24,24 @@ public class Level {
         Builder.init(this.map, player, world, size[0], size[1]);
     }
 
+    /**
+     * By default, a level is locked but it can be 
+     * unlock by using this method.
+     */
     public void unlock() {
         locked = false;
     }
 
+    /**
+     * This return the world of the current instance of a level.
+     */
     public World getWorld() {
         return world;
     }
 
+    /** 
+     * This return the player of the current isntance of a level.
+     */
     public Player getPlayer() {
         return player;
     }
