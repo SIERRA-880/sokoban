@@ -48,6 +48,3 @@ public class LevelScene extends Scene {
         map.showMap();
     }
 }
-
-
-

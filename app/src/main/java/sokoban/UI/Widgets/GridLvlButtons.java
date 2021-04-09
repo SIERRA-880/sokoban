@@ -28,24 +28,30 @@ public class GridLvlButtons extends GridPane {
     }
 
     public void Assign(String nom_button_selected, String nom_button_unselected) {
+        int[] lock = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         int a=1;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
-                Image image_selected = null, image_unselected = null;
+                Image image_selected = null, image_unselected = null, image_locked = null;
                 LevelButton button;
                 try {
                     image_selected = new Image(new FileInputStream(nom_button_selected + (a) + ".png"));
                     image_unselected = new Image(new FileInputStream(nom_button_unselected + (a) + ".png"));
-                    
+                    image_locked = new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_locker.png"));                    
                 } catch (FileNotFoundException e) {e.printStackTrace();}
-                button = new LevelButton(image_selected, image_unselected, (a++));
-                button.setStyle("-fx-background-color: transparent;");
-                button.setOnAction(e -> {LevelScene lvlscene = new LevelScene(button.getMap());
-                lvlscene.setMap(button.getMap());
-                lvlscene.setOnKeyPressed(event ->
+                if (lock[a-1] == a) {
+                    button = new LevelButton(image_selected, image_unselected, (a++));
+                    button.setOnAction(e -> {LevelScene lvlscene = new LevelScene(button.getMap());
+                    lvlscene.setMap(button.getMap());
+                    lvlscene.setOnKeyPressed(event ->
                         lvlscene.addKeyHandler(lvlscene, button.player, button.world, event));
-                Controller.switchScene(lvlscene);
-                });
+                    Controller.switchScene(lvlscene);
+                    });
+                }
+                else {
+                    button = new LevelButton(image_locked, image_locked, (a++));
+                }
+                button.setStyle("-fx-background-color: transparent;");
                 add(button,j,i);
             }
         }
