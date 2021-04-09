@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import sokoban.UI.Scenes.BgScene;
 import sokoban.UI.Scenes.MenuLvlScene;
 
 import java.io.FileInputStream;
@@ -76,7 +77,8 @@ public class MovingBg extends Pane {
             System.out.println("Public void Button dans MovingBg.java");
         }
         ImageButton button = new ImageButton(image_selected,image_unselected);
-        button.setOnAction(e-> Controller.switchScene(new MenuLvlScene()));
+        button.setOnAction(e->{ Controller.switchScene(new MenuLvlScene()) ; BgScene.player.pause();});
+        button.setStyle("-fx-background-color: transparent;");
         getChildren().add(button);
     }
 
