@@ -13,8 +13,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
+import sokoban.Engine.Objects.MatrixCase;
 import sokoban.Engine.Tools.Builder;
 import sokoban.Engine.Tools.MapLoader;
+import sokoban.Engine.Tools.MapGenerator;
 import sokoban.UI.Map;
 
 import static javafx.geometry.Pos.CENTER;
@@ -37,12 +39,14 @@ public class Game extends Application {
         window.setTitle("Sokoban");
 
         //map
-        String map = MapLoader.load("build/resources/main/levels/map1.xsb");
-        int[] size = MapLoader.getSize("build/resources/main/levels/map1.xsb");
+        //String map = MapLoader.load("build/resources/main/levels/map1.xsb");
+        //int[] size = MapLoader.getSize("build/resources/main/levels/map1.xsb");
+        MatrixCase[][] map = MapGenerator.generate(10, 10, 2);
         int[] pos = {0, 0};
         Player player = new Player(pos, "/Cells/player.png");
-        World world = new World(size[0], size[1], player);
-        Builder.init(map, player, world, size[0], size[1]);
+        World world = new World(map.length, map[0].length, player);
+        world.setMap(map);
+        //Builder.init(map, player, world, size[0], size[1]);
 
         //GridPane
         Map grid = new Map(world);
