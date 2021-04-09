@@ -1,5 +1,6 @@
 package sokoban.UI.Scenes;
 
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -7,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.UI.Widgets.Map;
+
 
 public class LevelScene extends Scene {
     //Scene that will containe a Map type object and display a level
@@ -16,6 +18,7 @@ public class LevelScene extends Scene {
         super(gridPane);
         this.gridPane=gridPane;
         // map.showMap();
+        setCursor(Cursor.NONE);
     }
     //truc chnagé
 

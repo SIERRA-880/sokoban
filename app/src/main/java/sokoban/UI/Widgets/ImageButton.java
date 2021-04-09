@@ -5,11 +5,22 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 //idée tiré de stackOverflow https://stackoverflow.com/questions/10518458/javafx-create-custom-button-with-image
 public class ImageButton extends Button{
-    //Tyoe of button that contains an image
+    //Type of button that contains an image
+    Image locked=null;
     public ImageButton(final Image selected, final Image unselected)  {
-
+        try {
+            locked = new Image(
+                    new FileInputStream("build/resources/main/textures/Default/Buttons" +
+                            "/levelMenu/levelButton_locker.png"));
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+            System.out.println("File levelButton_locker.png");
+        }
         setMaxSize(100, 100);
         final ImageView iv = new ImageView(selected);
         this.getChildren().add(iv);
