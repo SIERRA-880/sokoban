@@ -26,15 +26,11 @@ public class BgScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
-        try {
         Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/menus/basshunter-dota-hq.wav").toURI().toString());
         player = new MediaPlayer(sound);
         player.setVolume(0.1);
         player.play();
-        }
-        catch (MediaException e) {
-            System.out.println("media error");
-        }
+
     }
 
     public BgScene(MovingBg bg, int X, int Y) {

@@ -12,12 +12,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.MediaException;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import sokoban.UI.Scenes.BgScene;
 import sokoban.UI.Scenes.MenuLvlScene;
+import sokoban.UI.Scenes.VideoScene;
 import sokoban.UI.Widgets.MovingBg;
+import sokoban.UI.Widgets.VideoBg;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,9 +41,9 @@ public class Game extends Application {
         window.setTitle("Sokoban");
 
         //MenuLvlScene menuLvlScene = new MenuLvlScene();
-        BgScene bgScene= new BgScene(new MovingBg("build/resources/main/textures/Default/Menus/background.jpg"));
-
-        window.setScene(bgScene);
+       // BgScene bgScene= new BgScene(new MovingBg("build/resources/main/textures/Default/Menus/background.jpg"));
+        VideoScene videoScene = new VideoScene(new VideoBg("build/resources/main/textures/Default/Videos/Cyber_loop_2c.mp4"));
+        window.setScene(videoScene);
         // Window
         window.setFullScreen(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));

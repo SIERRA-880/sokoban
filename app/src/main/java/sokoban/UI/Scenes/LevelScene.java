@@ -17,6 +17,7 @@ public class LevelScene extends Scene {
     //Scene that will containe a Map type object and display a level
     GridPane gridPane;
     Map map;
+    Boolean a=true;
     public LevelScene(GridPane gridPane)  {
         super(gridPane);
         this.gridPane=gridPane;
@@ -64,7 +65,8 @@ public class LevelScene extends Scene {
             }
         }
         map.showMap();
-        if (world.winCondition()) {
+        if (world.winCondition() && a) {
+            a=false;
             Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString());
             MediaPlayer  mplayer = new MediaPlayer(sound);
             mplayer.play();
