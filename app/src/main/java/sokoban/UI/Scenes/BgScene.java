@@ -46,11 +46,5 @@ public class BgScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
-        /*
-        Media sound = new Media(new File("build/resources/main/textures/Default/sounds/" +
-                "menus/basshunter-dota-offical-video.mp3").toURI().toString());
-        MediaPlayer player = new MediaPlayer(sound);
-        player.play();
-        */
     }
 }

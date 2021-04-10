@@ -52,10 +52,11 @@ public class MoveableCell extends Cell {
 
     /**
      * Moves the {@link sokoban.Engine.Objects.Cell} from initial position to next position using ({@link sokoban.Engine.Objects.Cell#getNextPos(char)}) to find it.
+     * and return true if a box has been moved.
      * @param direction char (z,q,s,d) representing (up,left,down,right) direction
      * @param world
      */
-    public void move(String direction, World world) {
+    public boolean move(String direction, World world) {
         /** This method change the cell's position depending on the given direction */
         if (isMoveable(direction, world)) {
             int[] nextPos = getNextPos(direction);
@@ -63,11 +64,13 @@ public class MoveableCell extends Cell {
             setCellPos(nextPos);
             if (boxMoved) {
                 MoveLogger.logMovement(direction.toUpperCase().charAt(0));
+                return true;
             }
             else {
                 MoveLogger.logMovement(direction.toLowerCase().charAt(0));
             }
         }
+        return false;
     }
 
     public void pull(String direction, World world) {

@@ -8,6 +8,9 @@ import javafx.scene.layout.GridPane;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.UI.Widgets.Map;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 
 public class LevelScene extends Scene {
@@ -32,19 +35,40 @@ public class LevelScene extends Scene {
 
         KeyCode keyCode = ke.getCode();
         if (keyCode.equals(KeyCode.Z)) {
-            player.move("up", world);
-
+            if (player.move("up", world)) {
+                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
+                MediaPlayer mplayer = new MediaPlayer(sound);
+                mplayer.play();
+            }
 
         } else if (keyCode.equals(KeyCode.Q)) {
-            player.move("left", world);
+            if (player.move("left", world)) {
+                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
+                MediaPlayer mplayer = new MediaPlayer(sound);
+                mplayer.play();
+            }
 
         } else if (keyCode.equals(KeyCode.S)) {
-            player.move("down", world);
+            if (player.move("down", world)) {
+                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
+                MediaPlayer mplayer = new MediaPlayer(sound);
+                mplayer.play();
+            }
 
 
         } else if (keyCode.equals(KeyCode.D)) {
-            player.move("right", world);
+            if (player.move("right", world)) {
+                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
+                MediaPlayer mplayer = new MediaPlayer(sound);
+                mplayer.play();
+            }
         }
         map.showMap();
+        if (world.winCondition()) {
+            Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString());
+            MediaPlayer  mplayer = new MediaPlayer(sound);
+            mplayer.play();
+            System.out.println("You win!");
+        }
     }
 }

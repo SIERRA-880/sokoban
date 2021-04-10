@@ -28,7 +28,7 @@ public class GridLvlButtons extends GridPane {
     }
 
     public void Assign(String nom_button_selected, String nom_button_unselected) {
-        int[] lock = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] lock = {1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         int a=1;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
