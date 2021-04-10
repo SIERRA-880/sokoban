@@ -30,7 +30,6 @@ public class MovingBg extends Pane {
         background1 = new ImageView(bgImg);
         background2 = new ImageView(bgImg);
         setTransition(background1, background2);
-        ButtonPlay();
     }
 
     public MovingBg(String image1, String image2) {
@@ -44,7 +43,7 @@ public class MovingBg extends Pane {
         background1 = new ImageView(bgImg);
         background2 = new ImageView(bgImg2);
         setTransition(background1, background2);
-        ButtonPlay();
+
 
     }
 
@@ -65,22 +64,7 @@ public class MovingBg extends Pane {
         getChildren().addAll(bg2);
     }
 
-    public void ButtonPlay() {
-        Image image_selected = null,image_unselected=null;
-        try {
-            image_selected = new Image(
-                    new FileInputStream("build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png"));
-            image_unselected = new Image(
-                    new FileInputStream("build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Public void Button dans MovingBg.java");
-        }
-        ImageButton button = new ImageButton(image_selected,image_unselected);
-        button.setOnAction(e->{ Controller.switchScene(new MenuLvlScene()); BgScene.player.stop();});
-        button.setStyle("-fx-background-color: transparent;");
-        getChildren().add(button);
-    }
+
 
     public Image getBgImg() {
         return bgImg;

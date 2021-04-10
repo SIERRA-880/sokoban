@@ -17,7 +17,7 @@ public class LevelButton extends ImageButton {
     World world;
     Image locked;
 
-    public LevelButton(Image selected, Image unselected, int level) {
+    public LevelButton(Image selected, Image unselected, int level)throws FileNotFoundException {
         super(selected, unselected);
         this.level = level;
 

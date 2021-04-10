@@ -1,33 +1,44 @@
 package sokoban.UI.Scenes;
 
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
+import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Map;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 
 public class LevelScene extends Scene {
     //Scene that will containe a Map type object and display a level
-    GridPane gridPane;
+    BorderPane borderPane= new BorderPane();
     Map map;
     Boolean a=true;
-    public LevelScene(GridPane gridPane)  {
+    public LevelScene(Map gridPane)  {
         super(gridPane);
-        this.gridPane=gridPane;
+        //borderPane.getChildren().add(gridPane);
+        setMap(gridPane);
         // map.showMap();
-        setCursor(Cursor.NONE);
+        //setCursor(Cursor.NONE);
     }
-    //truc chnagé
-
     public void setMap(Map map) {
-        gridPane.getChildren().setAll(map);
+        borderPane.setCenter(map);
+        BorderPane.setAlignment(map,Pos.CENTER);
+        BackButton backButton=null;
+        try {
+            backButton = new BackButton(new MenuLvlScene());
+        }catch (FileNotFoundException e){e.printStackTrace();}
+        borderPane.setLeft(backButton);
+        BorderPane.setAlignment(backButton, Pos.TOP_LEFT);
+        borderPane.setStyle("-fx-background-color: #000000;");
         this.map=map;
         map.showMap();
     }
