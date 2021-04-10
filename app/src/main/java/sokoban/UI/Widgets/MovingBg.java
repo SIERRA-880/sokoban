@@ -77,7 +77,7 @@ public class MovingBg extends Pane {
             System.out.println("Public void Button dans MovingBg.java");
         }
         ImageButton button = new ImageButton(image_selected,image_unselected);
-        button.setOnAction(e->{ Controller.switchScene(new MenuLvlScene()) ; BgScene.player.pause();});
+        button.setOnAction(e->{ Controller.switchScene(new MenuLvlScene()); BgScene.player.stop();});
         button.setStyle("-fx-background-color: transparent;");
         getChildren().add(button);
     }

@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import sokoban.UI.Widgets.MovingBg;
 import javafx.scene.media.*;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,12 +26,15 @@ public class BgScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
-        Media sound = new Media(new File("build/resources/main/textures/Default/sounds/" +
-                "Menus/basshunter-dota-hq.mp3").toURI().toString());
+        try {
+        Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/menus/basshunter-dota-hq.wav").toURI().toString());
         player = new MediaPlayer(sound);
+        player.setVolume(0.1);
         player.play();
-
-
+        }
+        catch (MediaException e) {
+            System.out.println("media error");
+        }
     }
 
     public BgScene(MovingBg bg, int X, int Y) {
@@ -42,10 +46,11 @@ public class BgScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
+        /*
         Media sound = new Media(new File("build/resources/main/textures/Default/sounds/" +
-                "Menus/basshunter-dota-offical-video.mp3").toURI().toString());
+                "menus/basshunter-dota-offical-video.mp3").toURI().toString());
         MediaPlayer player = new MediaPlayer(sound);
         player.play();
-
+        */
     }
 }
