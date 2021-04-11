@@ -14,15 +14,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class BgScene extends Scene {
+
     public static MediaPlayer player;
 
     public BgScene(MovingBg bg) {
         super(bg);
         try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus" +
-                    "/cursor_pointerFlat.png"));  //pass in the image path
+            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
             setCursor(new ImageCursor(image));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
@@ -38,7 +39,8 @@ public class BgScene extends Scene {
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));  //pass in the image path
             setCursor(new ImageCursor(image));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("cursor problem");
         }

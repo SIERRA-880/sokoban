@@ -8,7 +8,9 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+
 import javafx.util.Duration;
+
 import sokoban.UI.Scenes.BgScene;
 import sokoban.UI.Scenes.MenuLvlScene;
 
@@ -16,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class MovingBg extends Pane {
+
     private final ImageView background1;
     private final ImageView background2;
     private Image bgImg, bgImg2;
@@ -24,7 +27,8 @@ public class MovingBg extends Pane {
         super();
         try {
             bgImg = new Image(new FileInputStream(image));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         background1 = new ImageView(bgImg);
@@ -37,18 +41,16 @@ public class MovingBg extends Pane {
         try {
             bgImg = new Image(new FileInputStream(image1));
             bgImg2 = new Image(new FileInputStream(image2));
-        } catch (FileNotFoundException e) {
+        } 
+        catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         background1 = new ImageView(bgImg);
         background2 = new ImageView(bgImg2);
         setTransition(background1, background2);
-
-
     }
 
     public void setTransition(ImageView bg1, ImageView bg2) {
-
         TranslateTransition trans1 = new TranslateTransition(Duration.seconds(10), bg1);
         trans1.setFromX(900);
         trans1.setToX(0);
@@ -63,8 +65,6 @@ public class MovingBg extends Pane {
         parTrans.play();
         getChildren().addAll(bg2);
     }
-
-
 
     public Image getBgImg() {
         return bgImg;
