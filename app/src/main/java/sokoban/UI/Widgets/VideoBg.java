@@ -1,6 +1,8 @@
 package sokoban.UI.Widgets;
 
-import javafx.scene.Group;
+import javafx.scene.layout.StackPane;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -12,7 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class VideoBg extends Group {
+public class VideoBg extends StackPane {
     public MediaPlayer Vplayer;
     Media media;
 
@@ -27,6 +29,7 @@ public class VideoBg extends Group {
         System.out.println(Vplayer.getRate());
         MediaView mv = new MediaView(Vplayer);
         getChildren().add(mv);
+        setAlignment(mv, Pos.CENTER);
         ButtonPlay();
         Vplayer.play();
 
@@ -50,6 +53,8 @@ public class VideoBg extends Group {
         button.setOnAction(e->{ Controller.switchScene(new MenuLvlScene()); BgScene.player.stop();});
         button.setStyle("-fx-background-color: transparent;");
         getChildren().add(button);
+        setAlignment(button, Pos.TOP_LEFT);
+        setMargin(button, new Insets(400.0, 0.0, 0.0, 80.0));
     }
 
 }

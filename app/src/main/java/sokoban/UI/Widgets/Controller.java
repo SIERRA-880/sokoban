@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.geometry.Insets;
 import sokoban.Game;
 import sokoban.UI.Scenes.VideoScene;
 
@@ -32,6 +33,7 @@ public class Controller {
         borderPane.setStyle("-fx-background-color: #000000;");
         borderPane.setTop(button);
         BorderPane.setAlignment(button,Pos.TOP_LEFT);
+        BorderPane.setMargin(button, new Insets(20.0, 0.0, 0.0, 20.0));
         //borderPane.setTop(label);
         //BorderPane.setAlignment(label,Pos.TOP_CENTER);
 
