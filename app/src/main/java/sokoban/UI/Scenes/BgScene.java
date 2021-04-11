@@ -5,7 +5,6 @@ import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import sokoban.UI.Widgets.MovingBg;
-import javafx.scene.media.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -15,7 +14,7 @@ import java.io.FileNotFoundException;
 
 public class BgScene extends Scene {
 
-    public static MediaPlayer player;
+    public static MediaPlayer player=null;
 
     public BgScene(MovingBg bg) {
         super(bg);

@@ -24,23 +24,17 @@ public class LevelButton extends ImageButton {
      * 
      * @param selected is the image when de mouse is over the button.
      * @param unselected is the image when de mouse is not over the button.
-     * @param levek is the number of the level.
+     * @param level is the number of the level.
      */
-    public LevelButton(Image selected, Image unselected, int level)throws FileNotFoundException {
+    public LevelButton(String selected, String unselected, int level) {
         super(selected, unselected);
         this.level = level;
     }
 
     public Map getMap() {
-        try {
-            Level map = new Level("map" + level);
-            world = map.getWorld();
-            player = map.getPlayer();
-        } 
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        Level map = new Level("map" + level);
+        world = map.getWorld();
+        player = map.getPlayer();
         return new Map(world);
     }
 }

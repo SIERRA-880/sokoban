@@ -19,19 +19,16 @@ public class Controller {
         Game.window.setScene(scene);
         Game.window.setFullScreen(true);
     }
+    public static void setBlurr(Scene scene){
+
+    }
 
     public static BorderPane Bordermenu(GridLvlButtons gridLvlButtons) {
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(gridLvlButtons);
         BorderPane.setAlignment(gridLvlButtons, Pos.CENTER);
-        BackButton button = null;
         Label label = new Label("Choisisez votre niveau");
-        try {
-            button = new BackButton(new VideoScene(new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4")));
-        } 
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        BackButton button = new BackButton(new VideoScene(new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4")));
         borderPane.setStyle("-fx-background-color: #000000;");
         borderPane.setTop(button);
         BorderPane.setAlignment(button,Pos.TOP_LEFT);

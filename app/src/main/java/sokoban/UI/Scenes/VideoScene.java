@@ -21,5 +21,6 @@ public class VideoScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
+
     }
 }

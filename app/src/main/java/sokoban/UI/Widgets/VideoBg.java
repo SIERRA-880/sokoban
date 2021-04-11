@@ -13,6 +13,7 @@ import javafx.scene.media.MediaView;
 import sokoban.UI.Scenes.BgScene;
 import sokoban.UI.Scenes.MenuLvlScene;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,6 +22,7 @@ public class VideoBg extends StackPane {
 
     public MediaPlayer Vplayer;
     Media media;
+    Button button = new Button("Menu");
 
     public VideoBg(String pathVideo) {
         super();
@@ -36,23 +38,10 @@ public class VideoBg extends StackPane {
     }
 
     public void ButtonPlay() {
-        Image image_selected = null,image_unselected=null;
-        try {
-            image_selected = new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png"));
-            image_unselected = new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png"));
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Public void Button dans MovingBg.java");
-        }
-        ImageButton button=null;
-        try {
-            button = new ImageButton(image_selected, image_unselected);
-        }
-        catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        button.setOnAction(e->{ Controller.switchScene(new MenuLvlScene()); BgScene.player.stop();});
+        String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
+        String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
+        ImageButton button = new ImageButton(image_selected, image_unselected);
+        button.setOnAction(e->Controller.switchScene(new MenuLvlScene()));
         button.setStyle("-fx-background-color: transparent;");
         getChildren().add(button);
         setAlignment(button, Pos.TOP_LEFT);

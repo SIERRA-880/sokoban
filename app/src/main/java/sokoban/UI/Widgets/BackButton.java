@@ -14,9 +14,9 @@ public class BackButton extends ImageButton {
      *
      * @param scene is the previous scene.
      */
-    public BackButton(Scene scene)throws FileNotFoundException{
-        super(new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_back.png")),
-                        new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_back.png")));
+    public BackButton(Scene scene){
+        super("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_back.png",
+                        "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_back.png");
         setOnAction(event -> Controller.switchScene(scene));
     }
 }
