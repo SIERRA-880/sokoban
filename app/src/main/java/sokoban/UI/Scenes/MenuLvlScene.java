@@ -1,12 +1,14 @@
 package sokoban.UI.Scenes;
 
 import javafx.geometry.Pos;
+
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.GridLvlButtons;
@@ -23,13 +25,10 @@ public class MenuLvlScene extends Scene {
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));  //pass in the image path
             setCursor(new ImageCursor(image));
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
-
-
     }
-
-
 }

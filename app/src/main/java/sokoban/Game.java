@@ -1,4 +1,3 @@
-
 package sokoban;
 
 import javafx.animation.Animation;
@@ -27,13 +26,13 @@ import java.io.FileNotFoundException;
 
 public class Game extends Application {
     //Main class that launches the game
+
     public static Stage window;
 
     public static void main(String[] args)  {
 
         launch(args);
     }
-
 
     @Override
     public void start(Stage primaryStage)  {
