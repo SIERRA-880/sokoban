@@ -21,10 +21,12 @@ import java.io.FileNotFoundException;
 public class VideoBg extends StackPane {
 
     public MediaPlayer Vplayer;
+    public MediaPlayer Mplayer;
     Media media;
     String image_selected;
     String image_unselected;
     ImageButton button;
+    Media music = new Media(new File("build/resources/main/textures/Default/Sounds/menus/retroWave.wav").toURI().toString());
 
     public VideoBg(String pathVideo) {
         super();
@@ -37,11 +39,16 @@ public class VideoBg extends StackPane {
         setAlignment(mv, Pos.CENTER);
         Vplayer.play();
 
+        // music
+        Mplayer = new MediaPlayer(music);
+        Mplayer.setCycleCount(MediaPlayer.INDEFINITE);
+        Mplayer.setVolume(0.1);
+
         // play button
         image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
         image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
         button = new ImageButton(image_selected, image_unselected);
-        button.setOnAction(e->Controller.switchScene(new MenuLvlScene()));
+        button.setOnAction(e-> {Mplayer.stop(); Controller.switchScene(new MenuLvlScene());});
         button.setStyle("-fx-background-color: transparent;");
         getChildren().add(button);
         setAlignment(button, Pos.TOP_LEFT);

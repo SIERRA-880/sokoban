@@ -41,7 +41,9 @@ public class Game extends Application {
 
         //MenuLvlScene menuLvlScene = new MenuLvlScene();
        // BgScene bgScene= new BgScene(new MovingBg("build/resources/main/textures/Default/Menus/background.jpg"));
-        VideoScene videoScene = new VideoScene(new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4"));
+        VideoBg vbg = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
+        vbg.Mplayer.play();
+        VideoScene videoScene = new VideoScene(vbg);
         window.setScene(videoScene);
         // Window
         window.setFullScreen(true);
