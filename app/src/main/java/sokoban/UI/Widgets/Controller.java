@@ -19,6 +19,7 @@ public class Controller {
         Game.window.setScene(scene);
         Game.window.setFullScreen(true);
     }
+
     public static void setBlurr(Scene scene){
 
     }

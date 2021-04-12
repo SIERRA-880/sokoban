@@ -16,7 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
 import sokoban.Engine.Objects.Player;
@@ -36,6 +36,11 @@ public class LevelScene extends Scene {
 
     Map map;
     Boolean a = true;
+
+    // sounds 
+    String moveBoxSounds = new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString();
+    String allBoxesOnTargetSounds = new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
+    AudioClip moveBox = new AudioClip(moveBoxSounds);
 
     public LevelScene(Map map, StackPane stackPane)  {
         super(stackPane);
@@ -69,40 +74,30 @@ public class LevelScene extends Scene {
         KeyCode keyCode = ke.getCode();
         if (keyCode.equals(KeyCode.Z)) {
             if (player.move("up", world)) {
-                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
-                MediaPlayer mplayer = new MediaPlayer(sound);
-                mplayer.play();
+                moveBox.play();
             }
 
         } else if (keyCode.equals(KeyCode.Q)) {
             if (player.move("left", world)) {
-                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
-                MediaPlayer mplayer = new MediaPlayer(sound);
-                mplayer.play();
+                moveBox.play();
             }
 
         } else if (keyCode.equals(KeyCode.S)) {
             if (player.move("down", world)) {
-                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
-                MediaPlayer mplayer = new MediaPlayer(sound);
-                mplayer.play();
+                moveBox.play();
             }
 
 
         } else if (keyCode.equals(KeyCode.D)) {
             if (player.move("right", world)) {
-                Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString());
-                MediaPlayer mplayer = new MediaPlayer(sound);
-                mplayer.play();
+                moveBox.play();
             }
         }
         map.showMap();
         if (world.winCondition() && a) {
             a=false;
-            Media sound = new Media(new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString());
-            MediaPlayer  mplayer = new MediaPlayer(sound);
+            AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
             mplayer.play();
-            System.out.println("You win!");
         }
     }
 }
