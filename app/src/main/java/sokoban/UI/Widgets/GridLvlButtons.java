@@ -1,6 +1,7 @@
 package sokoban.UI.Widgets;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import sokoban.UI.Scenes.LevelScene;
 
 import static javafx.geometry.Pos.CENTER;
@@ -24,7 +25,6 @@ public class GridLvlButtons extends GridPane {
     public void Assign(String nom_button_selected, String nom_button_unselected) {
         int[] lock = {1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; // this has to be replace with a save file.
         int a = 1;
-
         String image_locked = "build/resources/main/textures/Default/Buttons/levelMenu/levelButton_locker.png";
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
@@ -34,16 +34,14 @@ public class GridLvlButtons extends GridPane {
                 if (lock[a - 1] == a) {
                     button = new LevelButton(nom_button_selected_b, nom_button_unselected_b, (a++));
                     LevelButton finalButton = button;
-                    Map map = finalButton.getMap();
-                    map.setAlignment(CENTER);
                     finalButton.setOnAction(e -> {
-                        LevelScene lvlscene = new LevelScene(map);
+                        LevelScene lvlscene = new LevelScene(finalButton.getMap(), new StackPane());
                         lvlscene.setOnKeyPressed(event -> lvlscene.addKeyHandler(finalButton.player, finalButton.world, event));
                         Controller.switchScene(lvlscene);
                     });
-                } else {
+                }
+                else {
                     button = new LevelButton(image_locked, image_locked, (a++));
-
                 }
                 add(button, j, i);
             }

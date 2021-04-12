@@ -27,7 +27,6 @@ public class Map extends GridPane {
         super();
         this.world = world;
         setAlignment(CENTER);
-        setStyle("-fx-background-color: #000000;");
     }
 
     public void showMap() {

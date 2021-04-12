@@ -28,7 +28,7 @@ public class ImageButton extends Button {
             imUnselected = new Image(new FileInputStream(unselected));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println(" The file of an Image in ImageButton was not found ");
+            System.out.println("Files "+ selected +" and "+ unselected +"not found ");
             System.exit(1);
         }
         setStyle("-fx-background-color: transparent;");
