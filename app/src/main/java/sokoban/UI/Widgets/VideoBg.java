@@ -22,7 +22,9 @@ public class VideoBg extends StackPane {
 
     public MediaPlayer Vplayer;
     Media media;
-    Button button = new Button("Menu");
+    String image_selected;
+    String image_unselected;
+    ImageButton button;
 
     public VideoBg(String pathVideo) {
         super();
@@ -33,18 +35,46 @@ public class VideoBg extends StackPane {
         MediaView mv = new MediaView(Vplayer);
         getChildren().add(mv);
         setAlignment(mv, Pos.CENTER);
-        ButtonPlay();
         Vplayer.play();
-    }
 
-    public void ButtonPlay() {
-        String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
-        String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
-        ImageButton button = new ImageButton(image_selected, image_unselected);
+        // play button
+        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
+        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
+        button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e->Controller.switchScene(new MenuLvlScene()));
         button.setStyle("-fx-background-color: transparent;");
         getChildren().add(button);
         setAlignment(button, Pos.TOP_LEFT);
         setMargin(button, new Insets(400.0, 0.0, 0.0, 80.0));
+
+        // arcade button
+        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_arcade.png";
+        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_arcade.png";
+        button = new ImageButton(image_selected, image_unselected);
+        //button.setOnAction(e->Controller.switchScene());
+        button.setStyle("-fx-background-color: transparent;");
+        getChildren().add(button);
+        setAlignment(button, Pos.TOP_LEFT);
+        setMargin(button, new Insets(500.0, 0.0, 0.0, 80.0));
+
+        // options button
+        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_options.png";
+        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_options.png";
+        button = new ImageButton(image_selected, image_unselected);
+        //button.setOnAction(e->Controller.switchScene());
+        button.setStyle("-fx-background-color: transparent;");
+        getChildren().add(button);
+        setAlignment(button, Pos.TOP_LEFT);
+        setMargin(button, new Insets(600.0, 0.0, 0.0, 80.0));
+
+        // exit button
+        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_exit.png";
+        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_exit.png";
+        button = new ImageButton(image_selected, image_unselected);
+        button.setOnAction(e->System.exit(0));
+        button.setStyle("-fx-background-color: transparent;");
+        getChildren().add(button);
+        setAlignment(button, Pos.TOP_LEFT);
+        setMargin(button, new Insets(700.0, 0.0, 0.0, 80.0));
     }
 }

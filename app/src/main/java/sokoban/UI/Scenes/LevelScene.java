@@ -8,6 +8,9 @@ import javafx.geometry.Insets;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
+
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -24,6 +27,7 @@ import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.BackButton;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 
@@ -35,12 +39,23 @@ public class LevelScene extends Scene {
 
     public LevelScene(Map map, StackPane stackPane)  {
         super(stackPane);
+        // cursor
+        try {
+            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
+            setCursor(new ImageCursor(image));
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("cursor problem");
+        }
+
         // map
         this.map = map;
         stackPane.setStyle("-fx-background-color: #000000;");
         stackPane.getChildren().add(map);
         stackPane.setAlignment(map, Pos.CENTER);
         map.showMap();
+
         // backButton
         BackButton bbutton = new BackButton(new MenuLvlScene());
         stackPane.getChildren().add(bbutton);
