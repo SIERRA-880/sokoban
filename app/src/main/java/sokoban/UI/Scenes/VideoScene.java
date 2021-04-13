@@ -28,10 +28,11 @@ public class VideoScene extends Scene {
     ImageButton button;
     Media music = new Media(new File("build/resources/main/textures/Default/Sounds/menus/retroWave.wav").toURI().toString());
 
-    public VideoScene(VideoBg vb, StackPane stackPane){
+    public VideoScene(StackPane stackPane) {
         super(stackPane);
 
         // video
+        VideoBg vb = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
         stackPane.getChildren().add(vb);
 
         // cursor

@@ -41,8 +41,7 @@ public class Game extends Application {
         window.setTitle("Sokoban");
 
         // main menu
-        VideoBg vbg = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
-        VideoScene videoScene = new VideoScene(vbg, new StackPane());
+        VideoScene videoScene = new VideoScene(new StackPane());
         videoScene.Mplayer.play();
         window.setScene(videoScene);
 

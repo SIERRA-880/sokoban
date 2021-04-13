@@ -29,7 +29,7 @@ public class Controller {
         BorderPane.setAlignment(gridLvlButtons, Pos.CENTER);
 
         // backButton
-        BackButton button = new BackButton(new VideoScene(new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4"), new StackPane()));
+        BackButton button = new BackButton(new VideoScene(new StackPane()));
         borderPane.setStyle("-fx-background-color: #000000;");
         borderPane.setTop(button);
         BorderPane.setAlignment(button,Pos.TOP_LEFT);
