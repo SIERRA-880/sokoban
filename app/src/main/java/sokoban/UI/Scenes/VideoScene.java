@@ -53,7 +53,6 @@ public class VideoScene extends Scene {
         Mplayer.setCycleCount(MediaPlayer.INDEFINITE);
         Mplayer.setVolume(0.1);
 
-
         //side menu
         AtomicBoolean shown = new AtomicBoolean(false);
         SideMenu sideMenu = new SideMenu();

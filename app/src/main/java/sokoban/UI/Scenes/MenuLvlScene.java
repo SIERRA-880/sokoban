@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 
 import sokoban.UI.Widgets.BackButton;
+import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.GridLvlButtons;
 
 import java.io.FileInputStream;
@@ -35,14 +36,15 @@ public class MenuLvlScene extends Scene {
         // gridLevelButtons
         GridLvlButtons glb = new GridLvlButtons();
         stackPane.getChildren().add(glb);
-        setAlignment(glb, Pos.CENTER);
+        StackPane.setAlignment(glb, Pos.CENTER);
 
         // backButton
         BackButton bbutton = new BackButton(new VideoScene(new StackPane()));
-        bbutton.setOnMouseReleased(e->VideoScene.Mplayer.play());
+        bbutton.setOnAction(e->{Controller.switchScene(bbutton.scene);
+            VideoScene.Mplayer.play();});
         stackPane.setStyle("-fx-background-color: #000000;");
         stackPane.getChildren().add(bbutton);
-        setAlignment(bbutton, Pos.TOP_LEFT);
-        setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
     }
 }

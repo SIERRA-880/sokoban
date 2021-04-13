@@ -18,6 +18,7 @@ public class Controller {
     public static void switchScene(Scene scene) {
         Game.window.setScene(scene);
         Game.window.setFullScreen(true);
+        Game.window.setFullScreenExitHint("");
     }
 
 }
