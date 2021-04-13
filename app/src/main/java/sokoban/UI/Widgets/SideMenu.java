@@ -53,9 +53,10 @@ public class SideMenu extends VBox {
         String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_options.png";
         ImageButton button = new ImageButton(image_selected, image_unselected);
         //Still to do
-        /*button.setOnAction(e->{  VideoBg.Vplayer.stop();
+        button.setOnAction(e->{
+            VideoBg.Vplayer.stop();
             VideoScene.Mplayer.stop();
-        Controller.switchScene())};*/
+        Controller.switchToOptionScene();});
         button.setStyle("-fx-background-color: transparent;");
         return button;
     }

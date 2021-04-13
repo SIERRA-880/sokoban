@@ -26,10 +26,9 @@ public class ImageButton extends Button {
             locked = new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_locker.png"));
             imSelected = new Image(new FileInputStream(selected));
             imUnselected = new Image(new FileInputStream(unselected));
-        } 
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Files "+ selected +" and "+ unselected +"not found ");
+            System.out.println("Files " + selected + " and " + unselected + "not found ");
             System.exit(1);
         }
         setStyle("-fx-background-color: transparent;");
@@ -43,4 +42,22 @@ public class ImageButton extends Button {
         setPadding(new Insets(0, 0, 0, 0));
         setGraphic(iv);
     }
+
+    public ImageButton(String path) {
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream(path));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        setStyle("-fx-background-color: transparent;");
+        setMaxSize(100, 100);
+        final ImageView iv = new ImageView(image);
+        this.getChildren().add(iv);
+        setPadding(new Insets(0, 0, 0, 0));
+        setGraphic(iv);
+    }
+
 }
+

@@ -1,7 +1,7 @@
 package sokoban.UI.Widgets;
 
-import javafx.scene.Scene;
 import sokoban.Game;
+import sokoban.UI.Scenes.OptionScene;
 
 public class Controller {
 
@@ -9,6 +9,7 @@ public class Controller {
         Game.window.setScene(Game.videoScene);
         Game.window.setFullScreen(true);
         Game.window.setFullScreenExitHint("");
+
     }
 
     public static void switchToMenuLvlScene() {
@@ -19,10 +20,11 @@ public class Controller {
 
     public static void switchToLevelScene() {
         Game.window.setScene(Game.levelScene);
+        Game.window.setFullScreen(true);
+        Game.window.setFullScreenExitHint("");
     }
-    public static void switchScene(Scene scene) {
-
-        Game.window.setScene(scene);
+    public static void switchToOptionScene(){
+        Game.window.setScene(new OptionScene());
         Game.window.setFullScreen(true);
         Game.window.setFullScreenExitHint("");
     }

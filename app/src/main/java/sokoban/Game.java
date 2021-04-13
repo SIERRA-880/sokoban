@@ -5,17 +5,24 @@ import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Slider;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.MediaException;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.shape.Shape;
 
 import sokoban.UI.Scenes.BgScene;
 import sokoban.UI.Scenes.MenuLvlScene;
@@ -26,6 +33,7 @@ import sokoban.UI.Widgets.VideoBg;
 
 import sokoban.Engine.Objects.Level;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -37,6 +45,7 @@ public class Game extends Application {
     public static VideoScene videoScene;
     public static MenuLvlScene menuLvlScene;
     public static LevelScene levelScene;
+    public static StackPane pane= new StackPane();
 
     public static void main(String[] args)  {
 
@@ -60,6 +69,8 @@ public class Game extends Application {
         menuLvlScene = new MenuLvlScene(new StackPane());
         levelScene = new LevelScene(new StackPane());
         window.setScene(videoScene);
+
+
 
         // window
         window.show();
