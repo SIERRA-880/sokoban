@@ -1,29 +1,18 @@
 package sokoban.UI.Scenes;
 
-import javafx.scene.Scene;
-
-import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-
+import javafx.geometry.Pos;
+import javafx.scene.ImageCursor;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-
-import javafx.scene.ImageCursor;
-import javafx.scene.image.Image;
-
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-
-import javafx.scene.media.Media;
 import javafx.scene.media.AudioClip;
-import javafx.scene.paint.Color;
-
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
-
-import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.BackButton;
+import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.Controller;
 
 import sokoban.Game;

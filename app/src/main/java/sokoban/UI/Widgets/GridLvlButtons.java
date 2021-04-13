@@ -1,11 +1,7 @@
 package sokoban.UI.Widgets;
 
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import sokoban.UI.Scenes.LevelScene;
-
 import sokoban.Game;
-import sokoban.UI.Widgets.Controller;
 
 import static javafx.geometry.Pos.CENTER;
 
