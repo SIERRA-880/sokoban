@@ -20,21 +20,4 @@ public class Controller {
         Game.window.setFullScreen(true);
     }
 
-    public static BorderPane Bordermenu(GridLvlButtons gridLvlButtons) {
-        // borderPane
-        BorderPane borderPane = new BorderPane();
-
-        // grid 
-        borderPane.setCenter(gridLvlButtons);
-        BorderPane.setAlignment(gridLvlButtons, Pos.CENTER);
-
-        // backButton
-        BackButton button = new BackButton(new VideoScene(new StackPane()));
-        borderPane.setStyle("-fx-background-color: #000000;");
-        borderPane.setTop(button);
-        BorderPane.setAlignment(button,Pos.TOP_LEFT);
-        BorderPane.setMargin(button, new Insets(20.0, 0.0, 0.0, 20.0));
-
-        return borderPane;
-    }
 }

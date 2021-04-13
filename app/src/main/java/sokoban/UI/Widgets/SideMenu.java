@@ -1,15 +1,21 @@
 package sokoban.UI.Widgets;
 
+import javafx.animation.TranslateTransition;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import sokoban.UI.Scenes.MenuLvlScene;
+import sokoban.UI.Scenes.VideoScene;
 
-public class SideMenuPane extends VBox {
+import java.util.concurrent.atomic.AtomicBoolean;
 
+public class SideMenu extends VBox {
 
-    public SideMenuPane() {
+    public SideMenu() {
         super();
         setPrefWidth(200);
-
         getChildren().addAll(PlayButton(), ArcadeButton(), OptionsButton(), ExitButton());
         setStyle("-fx-background-color: transparent;");
         setTranslateX(-200);
@@ -22,8 +28,9 @@ public class SideMenuPane extends VBox {
         String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
         ImageButton button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e -> {
-            VideoBg.Mplayer.stop();
-            Controller.switchScene(new MenuLvlScene());
+            VideoBg.Vplayer.stop();
+            VideoScene.Mplayer.stop();
+            Controller.switchScene(new MenuLvlScene(new StackPane()));
         });
         button.setStyle("-fx-background-color: transparent;");
         return button;
@@ -35,7 +42,9 @@ public class SideMenuPane extends VBox {
         String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_arcade.png";
         ImageButton button = new ImageButton(image_selected, image_unselected);
         //Still to do
-        //button.setOnAction(e->Controller.switchScene());
+        /*button.setOnAction(e->{ VideoBg.Vplayer.stop();
+                    VideoScene.Mplayer.stop()
+                    ;Controller.switchScene());*/
         button.setStyle("-fx-background-color: transparent;");
         return button;
     }
@@ -46,7 +55,9 @@ public class SideMenuPane extends VBox {
         String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_options.png";
         ImageButton button = new ImageButton(image_selected, image_unselected);
         //Still to do
-        //button.setOnAction(e->Controller.switchScene());
+        /*button.setOnAction(e->{  VideoBg.Vplayer.stop();
+            VideoScene.Mplayer.stop();
+        Controller.switchScene())};*/
         button.setStyle("-fx-background-color: transparent;");
         return button;
     }
@@ -61,3 +72,5 @@ public class SideMenuPane extends VBox {
         return button;
     }
 }
+
+

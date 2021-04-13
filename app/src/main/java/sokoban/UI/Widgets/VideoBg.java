@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 
 public class VideoBg extends StackPane {
 
-    public MediaPlayer Vplayer;
+    public static MediaPlayer Vplayer;
     Media media;
 
     /**
