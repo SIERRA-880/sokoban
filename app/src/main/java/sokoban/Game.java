@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.MediaException;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
@@ -39,16 +40,17 @@ public class Game extends Application {
         window = primaryStage;
         window.setTitle("Sokoban");
 
-        //MenuLvlScene menuLvlScene = new MenuLvlScene();
-       // BgScene bgScene= new BgScene(new MovingBg("build/resources/main/textures/Default/Menus/background.jpg"));
+        // main menu
         VideoBg vbg = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
-        vbg.Mplayer.play();
-        VideoScene videoScene = new VideoScene(vbg);
+        VideoScene videoScene = new VideoScene(vbg, new StackPane());
+        videoScene.Mplayer.play();
         window.setScene(videoScene);
+
         // Window
         window.setFullScreen(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
         window.show();
+
         /* 
         primaryStage.setTitle("DRIFT STAGE");
         Pane game = new Pane();

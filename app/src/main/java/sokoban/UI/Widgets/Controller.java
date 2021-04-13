@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 import sokoban.Game;
 import sokoban.UI.Scenes.VideoScene;
@@ -28,7 +29,7 @@ public class Controller {
         BorderPane.setAlignment(gridLvlButtons, Pos.CENTER);
 
         // backButton
-        BackButton button = new BackButton(new VideoScene(new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4")));
+        BackButton button = new BackButton(new VideoScene(new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4"), new StackPane()));
         borderPane.setStyle("-fx-background-color: #000000;");
         borderPane.setTop(button);
         BorderPane.setAlignment(button,Pos.TOP_LEFT);
