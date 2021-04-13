@@ -1,18 +1,15 @@
 package sokoban.UI.Scenes;
 
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.StackPane;
 
-import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.GridLvlButtons;
-import sokoban.UI.Widgets.VideoBg;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,15 +17,29 @@ import java.io.FileNotFoundException;
 public class MenuLvlScene extends Scene {
     //Scene that contains a grid of the different level buttons
 
-    public MenuLvlScene() {
-        super(Controller.Bordermenu(new GridLvlButtons()), 640, 640, Color.BLACK);
+    public MenuLvlScene(StackPane stackPane) {
+        super(stackPane);
+
+        //cursor
         try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));  //pass in the image path
+            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
             setCursor(new ImageCursor(image));
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
+       
+        // gridLevelButtons
+        GridLvlButtons glb = new GridLvlButtons();
+        stackPane.getChildren().add(glb);
+        stackPane.setAlignment(glb, Pos.CENTER);
+
+        // backButton
+        BackButton bbutton = new BackButton(new VideoScene(new StackPane()));
+        stackPane.setStyle("-fx-background-color: #000000;");
+        stackPane.getChildren().add(bbutton);
+        stackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+        stackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
     }
 }

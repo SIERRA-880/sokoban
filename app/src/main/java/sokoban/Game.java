@@ -39,6 +39,8 @@ public class Game extends Application {
     public void start(Stage primaryStage)  {
         window = primaryStage;
         window.setTitle("Sokoban");
+        window.setFullScreen(true);
+        window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
 
         // main menu
         VideoScene videoScene = new VideoScene(new StackPane());
@@ -46,8 +48,6 @@ public class Game extends Application {
         window.setScene(videoScene);
 
         // Window
-        window.setFullScreen(true);
-        window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
         window.show();
 
         /* 
