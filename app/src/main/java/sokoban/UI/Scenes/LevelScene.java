@@ -22,7 +22,6 @@ import javafx.scene.paint.Color;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 
-import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.BackButton;
 
