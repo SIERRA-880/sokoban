@@ -52,7 +52,7 @@ public class VideoScene extends Scene {
         Mplayer = new MediaPlayer(music);
         Mplayer.setCycleCount(MediaPlayer.INDEFINITE);
         Mplayer.setVolume(0.1);
-        Mplayer.setAutoPlay(true);
+
 
         //side menu
         AtomicBoolean shown = new AtomicBoolean(false);

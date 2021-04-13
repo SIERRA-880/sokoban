@@ -14,6 +14,8 @@ import sokoban.UI.Widgets.GridLvlButtons;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import static javafx.scene.layout.StackPane.*;
+
 public class MenuLvlScene extends Scene {
     //Scene that contains a grid of the different level buttons
 
@@ -33,13 +35,14 @@ public class MenuLvlScene extends Scene {
         // gridLevelButtons
         GridLvlButtons glb = new GridLvlButtons();
         stackPane.getChildren().add(glb);
-        stackPane.setAlignment(glb, Pos.CENTER);
+        setAlignment(glb, Pos.CENTER);
 
         // backButton
         BackButton bbutton = new BackButton(new VideoScene(new StackPane()));
+        bbutton.setOnMouseReleased(e->VideoScene.Mplayer.play());
         stackPane.setStyle("-fx-background-color: #000000;");
         stackPane.getChildren().add(bbutton);
-        stackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        stackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        setAlignment(bbutton, Pos.TOP_LEFT);
+        setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
     }
 }

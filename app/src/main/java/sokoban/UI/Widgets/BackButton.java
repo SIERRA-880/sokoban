@@ -17,6 +17,6 @@ public class BackButton extends ImageButton {
     public BackButton(Scene scene){
         super("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_back.png",
               "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_back.png");
-        setOnAction(event -> Controller.switchScene(scene));
+        setOnAction(event ->Controller.switchScene(scene));
     }
 }
