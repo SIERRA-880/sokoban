@@ -1,27 +1,21 @@
 package sokoban.UI.Widgets;
 
-import javafx.geometry.Pos;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
-
+import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
-import javafx.scene.image.Image;
-
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
-import sokoban.UI.Scenes.BgScene;
-import sokoban.UI.Scenes.MenuLvlScene;
-
-import java.awt.*;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class VideoBg extends StackPane {
 
+    public static MediaPlayer Mplayer;
     public MediaPlayer Vplayer;
-    public MediaPlayer Mplayer;
     Media media;
     String image_selected;
     String image_unselected;
@@ -30,6 +24,8 @@ public class VideoBg extends StackPane {
 
     public VideoBg(String pathVideo) {
         super();
+        AtomicBoolean shown = new AtomicBoolean(false);
+        byte i = 1;
         media = new Media(new File(pathVideo).toURI().toString());
         Vplayer = new MediaPlayer(media);
         Vplayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -44,44 +40,25 @@ public class VideoBg extends StackPane {
         Mplayer.setCycleCount(MediaPlayer.INDEFINITE);
         Mplayer.setVolume(0.1);
 
-        // play button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
-        button = new ImageButton(image_selected, image_unselected);
-        button.setOnAction(e-> {Mplayer.stop(); Controller.switchScene(new MenuLvlScene());});
-        button.setStyle("-fx-background-color: transparent;");
-        getChildren().add(button);
-        setAlignment(button, Pos.TOP_LEFT);
-        setMargin(button, new Insets(400.0, 0.0, 0.0, 80.0));
-
-        // arcade button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_arcade.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_arcade.png";
-        button = new ImageButton(image_selected, image_unselected);
-        //button.setOnAction(e->Controller.switchScene());
-        button.setStyle("-fx-background-color: transparent;");
-        getChildren().add(button);
-        setAlignment(button, Pos.TOP_LEFT);
-        setMargin(button, new Insets(500.0, 0.0, 0.0, 80.0));
-
-        // options button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_options.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_options.png";
-        button = new ImageButton(image_selected, image_unselected);
-        //button.setOnAction(e->Controller.switchScene());
-        button.setStyle("-fx-background-color: transparent;");
-        getChildren().add(button);
-        setAlignment(button, Pos.TOP_LEFT);
-        setMargin(button, new Insets(600.0, 0.0, 0.0, 80.0));
-
-        // exit button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_exit.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_exit.png";
-        button = new ImageButton(image_selected, image_unselected);
-        button.setOnAction(e->System.exit(0));
-        button.setStyle("-fx-background-color: transparent;");
-        getChildren().add(button);
-        setAlignment(button, Pos.TOP_LEFT);
-        setMargin(button, new Insets(700.0, 0.0, 0.0, 80.0));
+        //side menu
+        SideMenuPane sideMenuPane = new SideMenuPane();
+        sideMenuPane.prefHeightProperty().bind(this.heightProperty());
+        TranslateTransition menuTranslation = new TranslateTransition(Duration.millis(500), sideMenuPane);
+        menuTranslation.setFromX(-200);
+        menuTranslation.setToX(80);
+        getChildren().add(sideMenuPane);
+        setAlignment(sideMenuPane, Pos.TOP_LEFT);
+        setMargin(sideMenuPane, new Insets(300, 0.0, 0.0, 0));
+        setOnMouseClicked(evt -> {
+            if (!shown.get()) {
+                menuTranslation.setRate(1);
+                menuTranslation.play();
+                shown.set(true);
+            } else {
+                menuTranslation.setRate(-1);
+                menuTranslation.play();
+                shown.set(false);
+            }
+        });
     }
 }
