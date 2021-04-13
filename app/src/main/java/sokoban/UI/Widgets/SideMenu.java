@@ -1,15 +1,13 @@
 package sokoban.UI.Widgets;
 
-import javafx.animation.TranslateTransition;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
+
 import sokoban.UI.Scenes.MenuLvlScene;
 import sokoban.UI.Scenes.VideoScene;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+
 
 public class SideMenu extends VBox {
 

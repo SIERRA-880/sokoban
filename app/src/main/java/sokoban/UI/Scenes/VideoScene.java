@@ -21,7 +21,7 @@ import javafx.util.Duration;
 import sokoban.UI.Widgets.SideMenu;
 import sokoban.UI.Widgets.VideoBg;
 import sokoban.UI.Widgets.ImageButton;
-import sokoban.UI.Widgets.Controller;
+
 
 import static javafx.scene.layout.StackPane.setAlignment;
 import static javafx.scene.layout.StackPane.setMargin;
@@ -29,9 +29,7 @@ import static javafx.scene.layout.StackPane.setMargin;
 public class VideoScene extends Scene {
 
     public static MediaPlayer Mplayer;
-    String image_selected;
-    String image_unselected;
-    ImageButton button;
+
     public static Media music = new Media(new File("build/resources/main/textures/Default/Sounds/menus/retroWave.wav").toURI().toString());
 
     public VideoScene(StackPane stackPane) {
@@ -78,47 +76,7 @@ public class VideoScene extends Scene {
             }
         });
 
-/*
-        // play button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
-        button = new ImageButton(image_selected, image_unselected);
-        button.setOnAction(e-> {Mplayer.stop(); Controller.switchScene(new MenuLvlScene(new StackPane()));});
-        button.setStyle("-fx-background-color: transparent;");
-        stackPane.getChildren().add(button);
-        stackPane.setAlignment(button, Pos.TOP_LEFT);
-        stackPane.setMargin(button, new Insets(400.0, 0.0, 0.0, 80.0));
 
-        // arcade button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_arcade.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_arcade.png";
-        button = new ImageButton(image_selected, image_unselected);
-        //button.setOnAction(e->Controller.switchScene());
-        button.setStyle("-fx-background-color: transparent;");
-        stackPane.getChildren().add(button);
-        stackPane.setAlignment(button, Pos.TOP_LEFT);
-        stackPane.setMargin(button, new Insets(500.0, 0.0, 0.0, 80.0));
-
-        // options button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_options.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_options.png";
-        button = new ImageButton(image_selected, image_unselected);
-        //button.setOnAction(e->Controller.switchScene());
-        button.setStyle("-fx-background-color: transparent;");
-        stackPane.getChildren().add(button);
-        stackPane.setAlignment(button, Pos.TOP_LEFT);
-        stackPane.setMargin(button, new Insets(600.0, 0.0, 0.0, 80.0));
-
-        // exit button
-        image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_exit.png";
-        image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_exit.png";
-        button = new ImageButton(image_selected, image_unselected);
-        button.setOnAction(e->System.exit(0));
-        button.setStyle("-fx-background-color: transparent;");
-        stackPane.getChildren().add(button);
-        stackPane.setAlignment(button, Pos.TOP_LEFT);
-        stackPane.setMargin(button, new Insets(700.0, 0.0, 0.0, 80.0));
-        */
 
     }
 }
