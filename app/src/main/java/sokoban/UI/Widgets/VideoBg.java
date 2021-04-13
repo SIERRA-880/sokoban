@@ -30,6 +30,8 @@ public class VideoBg extends StackPane {
 
     public VideoBg(String pathVideo) {
         super();
+
+        // video
         media = new Media(new File(pathVideo).toURI().toString());
         Vplayer = new MediaPlayer(media);
         Vplayer.setCycleCount(MediaPlayer.INDEFINITE);

@@ -5,7 +5,6 @@ import sokoban.Engine.Tools.MapLoader;
 
 public class Level {
 
-    private boolean locked = true;
     private String map;
     private World world;
     private Player player;
@@ -13,6 +12,7 @@ public class Level {
   
     /**
      * This create an instance of a level.
+     *
      * @param map is a string containing a map name. ex: map1 
      */
     public Level(String map) {
@@ -22,14 +22,6 @@ public class Level {
         player = new Player(pos, "/Cells/player.png");
         world = new World(size[0], size[1], player);
         Builder.init(this.map, player, world, size[0], size[1]);
-    }
-
-    /**
-     * By default, a level is locked but it can be 
-     * unlock by using this method.
-     */
-    public void unlock() {
-        locked = false;
     }
 
     /**

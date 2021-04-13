@@ -26,7 +26,8 @@ public class ImageButton extends Button {
             locked = new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_locker.png"));
             imSelected = new Image(new FileInputStream(selected));
             imUnselected = new Image(new FileInputStream(unselected));
-        } catch (FileNotFoundException e) {
+        } 
+        catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Files "+ selected +" and "+ unselected +"not found ");
             System.exit(1);
