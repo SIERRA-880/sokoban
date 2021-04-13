@@ -43,6 +43,7 @@ public class LevelScene extends Scene {
 
     public LevelScene(Map map, StackPane stackPane)  {
         super(stackPane);
+
         // cursor
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
@@ -61,7 +62,7 @@ public class LevelScene extends Scene {
         map.showMap();
 
         // backButton
-        BackButton bbutton = new BackButton(new MenuLvlScene());
+        BackButton bbutton = new BackButton(new MenuLvlScene(new StackPane()));
         stackPane.getChildren().add(bbutton);
         stackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         stackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));

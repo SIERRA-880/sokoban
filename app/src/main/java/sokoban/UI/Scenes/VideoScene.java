@@ -54,7 +54,7 @@ public class VideoScene extends Scene {
         image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
         image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
         button = new ImageButton(image_selected, image_unselected);
-        button.setOnAction(e-> {Mplayer.stop(); Controller.switchScene(new MenuLvlScene());});
+        button.setOnAction(e-> {Mplayer.stop(); Controller.switchScene(new MenuLvlScene(new StackPane()));});
         button.setStyle("-fx-background-color: transparent;");
         stackPane.getChildren().add(button);
         stackPane.setAlignment(button, Pos.TOP_LEFT);
