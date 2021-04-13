@@ -19,10 +19,10 @@ import static javafx.scene.layout.StackPane.*;
 
 public class MenuLvlScene extends Scene {
     //Scene that contains a grid of the different level buttons
-
+    StackPane stackPane;
     public MenuLvlScene(StackPane stackPane) {
         super(stackPane);
-
+        this.stackPane = stackPane;
         //cursor
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
@@ -32,14 +32,13 @@ public class MenuLvlScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
-       
         // gridLevelButtons
         GridLvlButtons glb = new GridLvlButtons();
         stackPane.getChildren().add(glb);
         StackPane.setAlignment(glb, Pos.CENTER);
 
         // backButton
-        BackButton bbutton = new BackButton(new VideoScene(new StackPane()));
+        BackButton bbutton = new BackButton(new VideoScene(new StackPane()),stackPane);
         bbutton.setOnAction(e->{Controller.switchScene(bbutton.scene);
             VideoScene.Mplayer.play();});
         stackPane.setStyle("-fx-background-color: #000000;");

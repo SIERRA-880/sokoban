@@ -42,47 +42,11 @@ public class Game extends Application {
         window.setFullScreen(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
 
-        // main menu
         VideoScene videoScene = new VideoScene(new StackPane());
-        videoScene.Mplayer.play();
+        VideoScene.Mplayer.play();
         window.setScene(videoScene);
 
-        // Window
         window.show();
 
-        /* 
-        primaryStage.setTitle("DRIFT STAGE");
-        Pane game = new Pane();
-        Scene gameScene = new Scene(game, 1000, 740);
-        Image bgImg = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/background.jpg"));
-        ImageView background = new ImageView(bgImg);
-        game.getChildren().add(background);
-
-        Image bgImg2 = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/background.jpg"));
-        ImageView background2 = new ImageView(bgImg2);
-        game.getChildren().add(background2);
-        background2.setRotationAxis(Rotate.Y_AXIS);
-        background2.setRotate(180);
-        //background2.setX(300);
-
-        TranslateTransition trans1 = new TranslateTransition(Duration.seconds(10),background);
-        trans1.setFromX(0);
-        trans1.setToX(900);
-        trans1.setCycleCount(Animation.INDEFINITE);
-        trans1.setInterpolator(Interpolator.LINEAR);
-
-
-        TranslateTransition trans2 = new TranslateTransition(Duration.seconds(10),background2);
-        trans2.setFromX(-900);
-        trans2.setToX(0);
-        trans2.setCycleCount(Animation.INDEFINITE);
-        trans2.setInterpolator(Interpolator.LINEAR);
-        trans2.setAutoReverse(false);
-
-        ParallelTransition parTrans = new ParallelTransition(trans2);
-        parTrans.play();
-        primaryStage.setScene(gameScene);
-        primaryStage.show()
-        */
     }
 }

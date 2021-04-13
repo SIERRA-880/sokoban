@@ -35,6 +35,7 @@ public class LevelScene extends Scene {
 
     Map map;
     Boolean a = true;
+    StackPane stackPane;
 
     // sounds 
     String moveBoxSounds = new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString();
@@ -43,7 +44,7 @@ public class LevelScene extends Scene {
 
     public LevelScene(Map map, StackPane stackPane)  {
         super(stackPane);
-
+        this.stackPane= stackPane;
         // cursor
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
@@ -58,14 +59,14 @@ public class LevelScene extends Scene {
         this.map = map;
         stackPane.setStyle("-fx-background-color: #000000;");
         stackPane.getChildren().add(map);
-        stackPane.setAlignment(map, Pos.CENTER);
+        StackPane.setAlignment(map, Pos.CENTER);
         map.showMap();
 
         // backButton
-        BackButton bbutton = new BackButton(new MenuLvlScene(new StackPane()));
+        BackButton bbutton = new BackButton(new MenuLvlScene(new StackPane()),stackPane);
         stackPane.getChildren().add(bbutton);
-        stackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        stackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
     }
 
     public void addKeyHandler( Player player, World world,KeyEvent ke) {
