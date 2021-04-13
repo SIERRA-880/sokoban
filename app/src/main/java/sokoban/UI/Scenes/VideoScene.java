@@ -29,6 +29,7 @@ import static javafx.scene.layout.StackPane.setMargin;
 public class VideoScene extends Scene {
 
     public static MediaPlayer Mplayer;
+    public static VideoBg vb;
 
     public static Media music = new Media(new File("build/resources/main/textures/Default/Sounds/menus/retroWave.wav").toURI().toString());
 
@@ -36,7 +37,7 @@ public class VideoScene extends Scene {
         super(stackPane);
 
         // video
-        VideoBg vb = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
+        vb = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
         stackPane.getChildren().add(vb);
 
         // cursor
@@ -74,8 +75,5 @@ public class VideoScene extends Scene {
                 shown.set(false);
             }
         });
-
-
-
     }
 }

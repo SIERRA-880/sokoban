@@ -8,6 +8,8 @@ import sokoban.Engine.Objects.Cell;
 import sokoban.Engine.Objects.MatrixCase;
 import sokoban.Engine.Objects.World;
 
+import sokoban.Game;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -15,17 +17,14 @@ import static javafx.geometry.Pos.CENTER;
 
 public class Map extends GridPane {
 
-    World world;
-
     /**
      * A Map is a grid where each case is a game's cell from a matrix 
      * stored in a world object.
      *
      * @param world world object from the game engine.
      */
-    public Map(World world)  {
+    public Map()  {
         super();
-        this.world = world;
         setAlignment(CENTER);
     }
 
@@ -33,7 +32,7 @@ public class Map extends GridPane {
         //clean up
         this.getChildren().clear();
         //refresh
-        MatrixCase[][] matrix = world.getMap();
+        MatrixCase[][] matrix = Game.level.world.getMap();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 Cell cell = matrix[i][j].getCell();

@@ -28,7 +28,7 @@ public class SideMenu extends VBox {
         button.setOnAction(e -> {
             VideoBg.Vplayer.stop();
             VideoScene.Mplayer.stop();
-            Controller.switchScene(new MenuLvlScene(new StackPane()));
+            Controller.switchToMenuLvlScene();
         });
         button.setStyle("-fx-background-color: transparent;");
         return button;

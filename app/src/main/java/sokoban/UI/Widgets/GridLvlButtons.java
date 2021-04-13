@@ -4,6 +4,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import sokoban.UI.Scenes.LevelScene;
 
+import sokoban.Game;
+import sokoban.UI.Widgets.Controller;
+
 import static javafx.geometry.Pos.CENTER;
 
 public class GridLvlButtons extends GridPane {
@@ -30,9 +33,10 @@ public class GridLvlButtons extends GridPane {
                 if (lock[a - 1] == a) {
                     button = new LevelButton(imageButtonSelected, imageButtonUnselected, (a++));
                     button.setOnAction(e -> {
-                        LevelScene lvlscene = new LevelScene(button.getMap(), new StackPane());
-                        lvlscene.setOnKeyPressed(event -> lvlscene.addKeyHandler(button.player, button.world, event));
-                        Controller.switchScene(lvlscene);
+                        button.getMap();
+                        Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
+                        Game.levelScene.map.showMap();
+                        Controller.switchToLevelScene();
                     });
                 }
                 else {

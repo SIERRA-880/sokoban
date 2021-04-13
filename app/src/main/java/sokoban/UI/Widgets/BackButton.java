@@ -15,13 +15,8 @@ public class BackButton extends ImageButton {
      *
      * @param scene is the previous scene.
      */
-    public Scene scene;
-    public BackButton(Scene _scene, StackPane currentPane){
+    public BackButton(){
         super("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_back.png",
               "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_back.png");
-        scene= _scene;
-        setOnAction(event -> {
-            Controller.switchScene(scene);
-            currentPane.getChildren().clear();});
     }
 }

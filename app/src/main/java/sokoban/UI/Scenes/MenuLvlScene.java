@@ -38,9 +38,10 @@ public class MenuLvlScene extends Scene {
         StackPane.setAlignment(glb, Pos.CENTER);
 
         // backButton
-        BackButton bbutton = new BackButton(new VideoScene(new StackPane()),stackPane);
-        bbutton.setOnAction(e->{Controller.switchScene(bbutton.scene);
-            VideoScene.Mplayer.play();});
+        BackButton bbutton = new BackButton();
+        bbutton.setOnAction(e->{Controller.switchToVideoScene();
+                                VideoScene.vb.Vplayer.play();
+                                VideoScene.Mplayer.play();});
         stackPane.setStyle("-fx-background-color: #000000;");
         stackPane.getChildren().add(bbutton);
         StackPane.setAlignment(bbutton, Pos.TOP_LEFT);

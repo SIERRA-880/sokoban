@@ -1,5 +1,6 @@
 package sokoban.UI.Widgets;
 
+import sokoban.Game;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.Engine.Objects.Level;
@@ -14,9 +15,7 @@ import java.io.FileNotFoundException;
 
 public class LevelButton extends ImageButton {
 
-    int level;
-    Player player;
-    World world;
+    int nlevel;
     Image locked;
 
     /**
@@ -26,15 +25,12 @@ public class LevelButton extends ImageButton {
      * @param unselected is the image when de mouse is not over the button.
      * @param level is the number of the level.
      */
-    public LevelButton(String selected, String unselected, int level) {
+    public LevelButton(String selected, String unselected, int nlevel) {
         super(selected, unselected);
-        this.level = level;
+        this.nlevel = nlevel;
     }
 
-    public Map getMap() {
-        Level map = new Level("map" + level);
-        world = map.getWorld();
-        player = map.getPlayer();
-        return new Map(world);
+    public void getMap() {
+        Game.level.setLevel("map" + nlevel);
     }
 }

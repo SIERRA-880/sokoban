@@ -24,6 +24,9 @@ import sokoban.Engine.Objects.World;
 
 import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.BackButton;
+import sokoban.UI.Widgets.Controller;
+
+import sokoban.Game;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,8 +36,7 @@ import java.io.FileNotFoundException;
 public class LevelScene extends Scene {
     //Scene that will contain a Map type object and display a level
 
-    Map map;
-    Boolean a = true;
+    public Map map;
     StackPane stackPane;
 
     // sounds 
@@ -42,7 +44,7 @@ public class LevelScene extends Scene {
     String allBoxesOnTargetSounds = new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
     AudioClip moveBox = new AudioClip(moveBoxSounds);
 
-    public LevelScene(Map map, StackPane stackPane)  {
+    public LevelScene(StackPane stackPane)  {
         super(stackPane);
         this.stackPane= stackPane;
         // cursor
@@ -56,21 +58,24 @@ public class LevelScene extends Scene {
         }
 
         // map
-        this.map = map;
+        this.map = new Map();
         stackPane.setStyle("-fx-background-color: #000000;");
         stackPane.getChildren().add(map);
         StackPane.setAlignment(map, Pos.CENTER);
         map.showMap();
 
         // backButton
-        BackButton bbutton = new BackButton(new MenuLvlScene(new StackPane()),stackPane);
+        BackButton bbutton = new BackButton();
+        bbutton.setOnAction(e->Controller.switchToMenuLvlScene());
         stackPane.getChildren().add(bbutton);
         StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
     }
 
-    public void addKeyHandler( Player player, World world,KeyEvent ke) {
+    public void addKeyHandler(KeyEvent ke) {
         //method to move the player on the map
+        Player player = Game.level.player;
+        World world = Game.level.world;
 
         KeyCode keyCode = ke.getCode();
         if (keyCode.equals(KeyCode.Z)) {
@@ -94,9 +99,9 @@ public class LevelScene extends Scene {
                 moveBox.play();
             }
         }
+
         map.showMap();
-        if (world.winCondition() && a) {
-            a=false;
+        if (world.winCondition()) {
             AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
             mplayer.play();
         }

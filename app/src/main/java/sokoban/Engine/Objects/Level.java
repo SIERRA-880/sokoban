@@ -6,8 +6,8 @@ import sokoban.Engine.Tools.MapLoader;
 public class Level {
 
     private String map;
-    private World world;
-    private Player player;
+    public World world;
+    public Player player;
     private int[] size;
   
     /**
@@ -15,7 +15,10 @@ public class Level {
      *
      * @param map is a string containing a map name. ex: map1 
      */
-    public Level(String map) {
+    public Level() {
+    }
+
+    public void setLevel(String map) {
         int[] pos = {0, 0};
         this.map = MapLoader.load("build/resources/main/levels/"+map+".xsb"); 
         size = MapLoader.getSize("build/resources/main/levels/"+map+".xsb"); 
