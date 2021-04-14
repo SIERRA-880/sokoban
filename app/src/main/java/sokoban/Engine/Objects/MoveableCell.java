@@ -102,6 +102,5 @@ public class MoveableCell extends Cell {
             box.setCellPos(playerPos);
             setCellPos(nextPos);
         }
-
     }
 }
