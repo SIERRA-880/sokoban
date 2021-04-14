@@ -60,7 +60,7 @@ public class VideoScene extends Scene {
         menuTranslation.setToX(80);
         stackPane.getChildren().add(sideMenu);
         setAlignment(sideMenu, Pos.TOP_LEFT);
-        setMargin(sideMenu, new Insets(400, 0.0, 0.0, 0));
+        setMargin(sideMenu, new Insets(300, 0.0, 0.0, 0));
         setOnMouseClicked(evt -> {
             if (!shown.get()) {
                 menuTranslation.setRate(1.5);

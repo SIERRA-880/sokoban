@@ -26,14 +26,13 @@ public class OptionPane extends VBox {
     }
 
     public void Brightness() {
-        /*ImageButton brightness = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png");
-        brightness.setText("BRIGHTNESS");*/
 
         Slider slider = new Slider(-0.6, 0.6, 0.1);
         slider.setShowTickMarks(true);
         slider.setShowTickLabels(true);
         slider.setMajorTickUnit(0.1);
         ColorAdjust colorAdjust = new ColorAdjust();
+        slider.setValue(colorAdjust.getBrightness());
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
                                             colorAdjust.setBrightness(slider.getValue());
                                             Game.pane.setEffect(colorAdjust);});
@@ -48,10 +47,11 @@ public class OptionPane extends VBox {
         slider.setShowTickMarks(true);
         slider.setShowTickLabels(true);
         slider.setMajorTickUnit(0.1);
+        slider.setValue(Mplayer.getVolume());
         slider.setOnMousePressed(e -> Mplayer.play());
-        slider.setOnMouseReleased(event -> Mplayer.stop());
+        slider.setOnMouseReleased(event ->Mplayer.stop());
         slider.valueProperty().addListener((observable, oldValue, newValue) ->
-                                            Mplayer.setVolume(slider.getValue()));
+            Mplayer.setVolume(slider.getValue()));
         getChildren().add(new javafx.scene.control.Button("SOUND"));
         getChildren().add(slider);
     }
