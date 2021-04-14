@@ -35,9 +35,8 @@ public class OptionPane extends VBox {
         slider.setMajorTickUnit(0.1);
         ColorAdjust colorAdjust = new ColorAdjust();
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            colorAdjust.setBrightness(slider.getValue());
-            Game.pane.setEffect(colorAdjust);
-        });
+                                            colorAdjust.setBrightness(slider.getValue());
+                                            Game.pane.setEffect(colorAdjust);});
         getChildren().add(new Button("BRIGHTNESS"));
         getChildren().add(slider);
     }
@@ -52,9 +51,8 @@ public class OptionPane extends VBox {
         slider.setOnMousePressed(e -> Mplayer.play());
         slider.setOnMouseReleased(event -> Mplayer.stop());
         slider.valueProperty().addListener((observable, oldValue, newValue) ->
-            Mplayer.setVolume(slider.getValue()));
+                                            Mplayer.setVolume(slider.getValue()));
         getChildren().add(new javafx.scene.control.Button("SOUND"));
         getChildren().add(slider);
     }
 }
-

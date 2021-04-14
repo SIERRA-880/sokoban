@@ -10,14 +10,14 @@ public class Level {
     public Player player;
     private int[] size;
   
-    /**
-     * This create an instance of a level.
-     *
-     * @param map is a string containing a map name. ex: map1 
-     */
     public Level() {
     }
 
+    /**
+     * This method set the options for  an instance of a level.
+     *
+     * @param map is a string containing a map name. ex: map1 
+     */
     public void setLevel(String map) {
         int[] pos = {0, 0};
         this.map = MapLoader.load("build/resources/main/levels/"+map+".xsb"); 

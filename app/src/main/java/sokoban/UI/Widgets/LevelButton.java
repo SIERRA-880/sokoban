@@ -18,7 +18,7 @@ public class LevelButton extends ImageButton {
         this.nlevel = nlevel;
     }
 
-    public void getMap() {
+    public void setMap() {
         Game.level.setLevel("map" + nlevel);
     }
 }

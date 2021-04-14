@@ -10,7 +10,6 @@ import javafx.scene.media.MediaView;
 
 import java.io.File;
 
-
 public class VideoBg extends StackPane {
 
     public static MediaPlayer Vplayer;

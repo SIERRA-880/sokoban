@@ -20,8 +20,6 @@ public class Map extends GridPane {
     /**
      * A Map is a grid where each case is a game's cell from a matrix 
      * stored in a world object.
-     *
-     * @param world world object from the game engine.
      */
     public Map()  {
         super();

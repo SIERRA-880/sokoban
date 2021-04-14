@@ -28,7 +28,6 @@ public class VideoScene extends Scene {
 
     public static MediaPlayer Mplayer;
     public static VideoBg vb;
-
     public static Media music = new Media(new File("build/resources/main/textures/Default/Sounds/menus/retroWave.wav").toURI().toString());
 
     public VideoScene(StackPane stackPane) {
@@ -46,11 +45,11 @@ public class VideoScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
+
         // music
         Mplayer = new MediaPlayer(music);
         Mplayer.setCycleCount(MediaPlayer.INDEFINITE);
         Mplayer.setVolume(0.1);
-
 
         //side menu
         AtomicBoolean shown = new AtomicBoolean(false);

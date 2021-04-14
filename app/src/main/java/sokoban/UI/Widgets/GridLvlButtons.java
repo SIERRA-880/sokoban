@@ -29,7 +29,7 @@ public class GridLvlButtons extends GridPane {
                 if (lock[a - 1] == a) {
                     button = new LevelButton(imageButtonSelected, imageButtonUnselected, (a++));
                     button.setOnAction(e -> {
-                        button.getMap();
+                        button.setMap();
                         Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
                         Game.levelScene.map.showMap();
                         Controller.switchToLevelScene();

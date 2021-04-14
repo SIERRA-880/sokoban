@@ -36,6 +36,7 @@ public class LevelScene extends Scene {
     public LevelScene(StackPane stackPane)  {
         super(stackPane);
         this.stackPane= stackPane;
+
         // cursor
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));

@@ -26,8 +26,8 @@ public class OptionScene extends Scene {
         // backButton
         BackButton bbutton = new BackButton();
         bbutton.setOnAction(e->{Controller.switchToVideoScene();
-            VideoBg.Vplayer.play();
-            VideoScene.Mplayer.play();});
+                                VideoBg.Vplayer.play();
+                                VideoScene.Mplayer.play();});
         Game.pane.getChildren().add(bbutton);
         Game.pane.setAlignment(bbutton, Pos.TOP_LEFT);
     }

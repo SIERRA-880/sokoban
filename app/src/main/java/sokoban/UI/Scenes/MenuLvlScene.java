@@ -19,10 +19,13 @@ import java.io.FileNotFoundException;
 
 public class MenuLvlScene extends Scene {
     //Scene that contains a grid of the different level buttons
+
     StackPane stackPane;
+
     public MenuLvlScene(StackPane stackPane) {
         super(stackPane);
         this.stackPane = stackPane;
+
         //cursor
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
@@ -41,9 +44,8 @@ public class MenuLvlScene extends Scene {
         // backButton
         BackButton bbutton = new BackButton();
         bbutton.setOnAction(e->{Controller.switchToVideoScene();
-            VideoBg.Vplayer.play();
-            VideoScene.Mplayer.play();});
-
+                                VideoBg.Vplayer.play();
+                                VideoScene.Mplayer.play();});
         stackPane.setStyle("-fx-background-color: #000000;");
         stackPane.getChildren().add(bbutton);
         StackPane.setAlignment(bbutton, Pos.TOP_LEFT);

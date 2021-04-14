@@ -58,6 +58,4 @@ public class ImageButton extends Button {
         setPadding(new Insets(0, 0, 0, 0));
         setGraphic(iv);
     }
-
 }
-
