@@ -32,6 +32,7 @@ public class MenuLvlScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
+
         // gridLevelButtons
         GridLvlButtons glb = new GridLvlButtons();
         stackPane.getChildren().add(glb);

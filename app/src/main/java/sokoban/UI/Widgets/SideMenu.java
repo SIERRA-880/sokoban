@@ -14,7 +14,7 @@ public class SideMenu extends VBox {
     public SideMenu() {
         super();
         setPrefWidth(200);
-        getChildren().addAll(PlayButton(), ArcadeButton(), OptionsButton(), ExitButton());
+        getChildren().addAll(PlayButton(), ArcadeButton(), OptionsButton(), CreditsButton(), ExitButton());
         setStyle("-fx-background-color: transparent;");
         setTranslateX(-200);
 
@@ -61,6 +61,20 @@ public class SideMenu extends VBox {
         return button;
     }
 
+    public ImageButton CreditsButton() {
+        // credits button
+        String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_credits.png";
+        String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_credits.png";
+        ImageButton button = new ImageButton(image_selected, image_unselected);
+        //Still to do
+        button.setOnAction(e->{
+            VideoBg.Vplayer.stop();
+            VideoScene.Mplayer.stop();
+            Controller.switchToCreditsScene();});
+        button.setStyle("-fx-background-color: transparent;");
+        return button;
+    }
+
     public ImageButton ExitButton() {
         // exit button
         String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_exit.png";
@@ -71,5 +85,3 @@ public class SideMenu extends VBox {
         return button;
     }
 }
-
-

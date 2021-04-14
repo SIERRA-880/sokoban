@@ -28,6 +28,7 @@ import sokoban.UI.Scenes.BgScene;
 import sokoban.UI.Scenes.MenuLvlScene;
 import sokoban.UI.Scenes.LevelScene;
 import sokoban.UI.Scenes.VideoScene;
+import sokoban.UI.Scenes.CreditsScene;
 import sokoban.UI.Widgets.MovingBg;
 import sokoban.UI.Widgets.VideoBg;
 
@@ -45,7 +46,8 @@ public class Game extends Application {
     public static VideoScene videoScene;
     public static MenuLvlScene menuLvlScene;
     public static LevelScene levelScene;
-    public static StackPane pane= new StackPane();
+    public static CreditsScene creditsScene;
+    public static StackPane pane = new StackPane();
 
     public static void main(String[] args)  {
 
@@ -68,6 +70,7 @@ public class Game extends Application {
         VideoScene.Mplayer.play();
         menuLvlScene = new MenuLvlScene(new StackPane());
         levelScene = new LevelScene(new StackPane());
+        creditsScene = new CreditsScene(new StackPane());
         window.setScene(videoScene);
 
 

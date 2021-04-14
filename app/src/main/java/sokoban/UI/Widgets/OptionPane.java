@@ -8,31 +8,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import sokoban.Game;
+import javafx.geometry.Pos;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import static sokoban.UI.Scenes.VideoScene.Mplayer;
 
-public class OptionPane extends StackPane {
-    GridPane gridPane = new GridPane();
+public class OptionPane extends VBox {
 
     public OptionPane() {
-        super();
-       // gridPane.setStyle("-fx-background-color: transparent;");
+        super(8);
+        setStyle("-fx-background-color: transparent;");
+        setFillWidth(false);
         Brightness();
         Sound();
-        /*try {
-            BackgroundImage myBI = new BackgroundImage(new Image(new FileInputStream("build/resources/main/textures/Default" +
-                    "/Menus/background4.jpg"), 32, 32, false, true),
-                    BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                    BackgroundSize.DEFAULT);
-            gridPane.setBackground(new Background(myBI));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
-        getChildren().add(gridPane);
-        setStyle("-fx-background-color: BLUE");
     }
 
     public void Brightness() {
@@ -48,8 +38,8 @@ public class OptionPane extends StackPane {
             colorAdjust.setBrightness(slider.getValue());
             Game.pane.setEffect(colorAdjust);
         });
-        gridPane.add(new Button("BRIGHTNESS"), 0, 0);
-        gridPane.add(slider, 0, 2);
+        getChildren().add(new Button("BRIGHTNESS"));
+        getChildren().add(slider);
     }
 
     public void Sound() {
@@ -63,8 +53,8 @@ public class OptionPane extends StackPane {
         slider.setOnMouseReleased(event -> Mplayer.stop());
         slider.valueProperty().addListener((observable, oldValue, newValue) ->
             Mplayer.setVolume(slider.getValue()));
-        gridPane.add(new javafx.scene.control.Button("SOUND"), 1, 0);
-        gridPane.add(slider, 1, 2);
+        getChildren().add(new javafx.scene.control.Button("SOUND"));
+        getChildren().add(slider);
     }
 }
 
