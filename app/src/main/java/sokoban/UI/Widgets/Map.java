@@ -1,19 +1,17 @@
 package sokoban.UI.Widgets;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-
-import sokoban.Engine.Objects.Cell;
-import sokoban.Engine.Objects.MatrixCase;
-import sokoban.Engine.Objects.World;
-
-import sokoban.Game;
+import static javafx.geometry.Pos.CENTER;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import static javafx.geometry.Pos.CENTER;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+
+import sokoban.Game;
+import sokoban.Engine.Objects.Cell;
+import sokoban.Engine.Objects.MatrixCase;
 
 public class Map extends GridPane {
 

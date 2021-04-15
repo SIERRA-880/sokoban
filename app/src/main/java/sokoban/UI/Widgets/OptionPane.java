@@ -1,22 +1,15 @@
 package sokoban.UI.Widgets;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import sokoban.Game;
-import javafx.geometry.Pos;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import static sokoban.UI.Scenes.VideoScene.Mplayer;
 
-public class OptionPane extends VBox {
+import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.layout.VBox;
 
+import sokoban.Game;
+
+public class OptionPane extends VBox {
     public OptionPane() {
         super(8);
         setStyle("-fx-background-color: transparent;");

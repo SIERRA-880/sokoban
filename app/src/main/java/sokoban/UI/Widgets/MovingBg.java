@@ -1,5 +1,8 @@
 package sokoban.UI.Widgets;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
@@ -10,12 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import javafx.util.Duration;
-
-import sokoban.UI.Scenes.BgScene;
-import sokoban.UI.Scenes.MenuLvlScene;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class MovingBg extends Pane {
 

@@ -1,6 +1,5 @@
 package sokoban.UI.Widgets;
 
-import javafx.scene.image.Image;
 import sokoban.Game;
 
 public class LevelButton extends ImageButton {

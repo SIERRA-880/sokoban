@@ -1,9 +1,7 @@
 package sokoban.UI.Widgets;
 
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-import sokoban.UI.Scenes.MenuLvlScene;
 import sokoban.UI.Scenes.VideoScene;
 
 public class SideMenu extends VBox {

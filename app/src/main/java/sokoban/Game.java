@@ -1,42 +1,19 @@
 package sokoban;
 
-import javafx.animation.Animation;
-import javafx.animation.Interpolator;
-import javafx.animation.ParallelTransition;
-import javafx.animation.TranslateTransition;
-import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Slider;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.media.MediaException;
-import javafx.scene.transform.Rotate;
-import javafx.stage.Stage;
-import javafx.util.Duration;
-import javafx.scene.shape.Shape;
-
-import sokoban.UI.Scenes.BgScene;
-import sokoban.UI.Scenes.MenuLvlScene;
-import sokoban.UI.Scenes.LevelScene;
-import sokoban.UI.Scenes.VideoScene;
-import sokoban.UI.Scenes.CreditsScene;
-import sokoban.UI.Widgets.MovingBg;
-import sokoban.UI.Widgets.VideoBg;
-
 import sokoban.Engine.Objects.Level;
 
-import java.awt.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import sokoban.UI.Scenes.CreditsScene;
+import sokoban.UI.Scenes.LevelScene;
+import sokoban.UI.Scenes.MenuLvlScene;
+import sokoban.UI.Scenes.VideoScene;
+
+import javafx.application.Application;
+
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.StackPane;
+
+import javafx.stage.Stage;
 
 public class Game extends Application {
     //Main class that launches the game

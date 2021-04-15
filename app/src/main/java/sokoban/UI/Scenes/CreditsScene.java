@@ -1,27 +1,25 @@
 package sokoban.UI.Scenes;
 
-import javafx.geometry.Pos;
-import javafx.geometry.Insets;
-
-import javafx.scene.text.Font;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.ImageCursor;
-import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
 
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.VideoBg;
-import sokoban.UI.Scenes.VideoScene;
-
-import sokoban.Game;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+
+import javafx.scene.ImageCursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class CreditsScene extends Scene {
 
@@ -106,7 +104,7 @@ public class CreditsScene extends Scene {
         grid.add(l10, 1, 4);
 
         stackPane.getChildren().add(grid);
-        stackPane.setAlignment(grid, Pos.CENTER);
+        StackPane.setAlignment(grid, Pos.CENTER);
 
         // backButton
         BackButton bbutton = new BackButton();
