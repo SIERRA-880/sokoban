@@ -39,7 +39,7 @@ public class CreditsScene extends Scene {
         // credits 
         Font f = null;
         try {
-            f = Font.loadFont(new FileInputStream(new File("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf")), 20);
+            f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 20);
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -108,7 +108,7 @@ public class CreditsScene extends Scene {
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchToVideoScene();
+        bbutton.setOnAction(e->{Controller.switchScene("VideoScene");
             VideoBg.Vplayer.play();
             VideoScene.Mplayer.play();});
         stackPane.getChildren().add(bbutton);

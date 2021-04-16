@@ -25,11 +25,11 @@ public class MapLoader {
                 // Storing current line since there is no method to call it
                 String currentLine = myReader.nextLine();
                 
-                res[0]++;
+                res[1]++;
                 
                 // Changing the longest line value (res[1]) if the condition is true
                 if (currentLine.length() > res[1]) {
-                    res[1] = currentLine.length();
+                    res[0] = currentLine.length();
                 }
             }
             myReader.close(); 
@@ -71,7 +71,7 @@ public class MapLoader {
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String currentLine = myReader.nextLine();
-                String padded = "";
+                String padded ;
                 if (currentLine.length() < width) {
                     padded = String.format("%-" + width + "s", currentLine);
                     padded = mapTrimmer(padded);
@@ -79,7 +79,7 @@ public class MapLoader {
                     padded = currentLine;
                     padded = mapTrimmer(padded);
                 }
-                res = res + padded;
+                res += padded;
             }
             myReader.close();
         } catch (FileNotFoundException e) {

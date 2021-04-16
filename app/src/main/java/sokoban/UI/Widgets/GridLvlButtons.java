@@ -32,7 +32,7 @@ public class GridLvlButtons extends GridPane {
                         button.setMap();
                         Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
                         Game.levelScene.map.showMap();
-                        Controller.switchToLevelScene();
+                        Controller.switchScene("LevelScene");
                     });
                 }
                 else {

@@ -16,14 +16,14 @@ public class OptionScene extends Scene {
 
     public OptionScene(){
         super(Game.pane);
-        Game.pane.setStyle("-fx-background-color: #000000;");
+        Game.pane.setStyle("-fx-background-color: lightblue;");
         OptionPane optionPane = new OptionPane();
         Game.pane.getChildren().add(optionPane);
         StackPane.setMargin(optionPane, new Insets(200.0, 0.0, 0.0, 20.0));
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchToVideoScene();
+        bbutton.setOnAction(e->{Controller.switchScene("VideoScene");
                                 VideoBg.Vplayer.play();
                                 VideoScene.Mplayer.play();});
         Game.pane.getChildren().add(bbutton);

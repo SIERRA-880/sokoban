@@ -1,5 +1,6 @@
 package sokoban;
 
+import javafx.scene.text.Font;
 import sokoban.Engine.Objects.Level;
 
 import sokoban.UI.Scenes.CreditsScene;
@@ -26,6 +27,7 @@ public class Game extends Application {
     public static CreditsScene creditsScene;
     public static StackPane pane = new StackPane();
 
+
     public static void main(String[] args)  {
 
         launch(args);
@@ -43,17 +45,18 @@ public class Game extends Application {
         level.setLevel("map1");
 
         // scenes
-        videoScene = new VideoScene(new StackPane());
+        videoScene = new VideoScene(pane);
         VideoScene.Mplayer.play();
         menuLvlScene = new MenuLvlScene(new StackPane());
         levelScene = new LevelScene(new StackPane());
         creditsScene = new CreditsScene(new StackPane());
         window.setScene(videoScene);
 
-
-
         // window
         window.show();
+
+       // Font.getFamilies().forEach(System.out::println);
+
 
     }
 }

@@ -21,7 +21,7 @@ public class SideMenu extends VBox {
         ImageButton button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e -> {VideoBg.Vplayer.stop();
                                  VideoScene.Mplayer.stop();
-                                 Controller.switchToMenuLvlScene();});
+                                 Controller.switchScene("MenuLvlScene");});
         button.setStyle("-fx-background-color: transparent;");
         return button;
     }
@@ -33,8 +33,8 @@ public class SideMenu extends VBox {
         ImageButton button = new ImageButton(image_selected, image_unselected);
         //Still to do
         /*button.setOnAction(e->{ VideoBg.Vplayer.stop();
-                    VideoScene.Mplayer.stop()
-                    ;Controller.switchScene());*/
+                    VideoScene.Mplayer.stop();
+                    Controller.switchScene("ArcadeScene"));*/
         button.setStyle("-fx-background-color: transparent;");
         return button;
     }
@@ -46,7 +46,7 @@ public class SideMenu extends VBox {
         ImageButton button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e->{VideoBg.Vplayer.stop();
                                VideoScene.Mplayer.stop();
-                               Controller.switchToOptionScene();});
+                               Controller.switchScene("OptionScene");});
         button.setStyle("-fx-background-color: transparent;");
         return button;
     }
@@ -58,7 +58,7 @@ public class SideMenu extends VBox {
         ImageButton button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e->{VideoBg.Vplayer.stop();
                                VideoScene.Mplayer.stop();
-                               Controller.switchToCreditsScene();});
+                               Controller.switchScene("CreditsScene");});
         button.setStyle("-fx-background-color: transparent;");
         return button;
     }

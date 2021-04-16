@@ -56,7 +56,7 @@ public class LevelScene extends Scene {
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->Controller.switchToMenuLvlScene());
+        bbutton.setOnAction(e->Controller.switchScene("MenuLvlScene"));
         stackPane.getChildren().add(bbutton);
         StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));

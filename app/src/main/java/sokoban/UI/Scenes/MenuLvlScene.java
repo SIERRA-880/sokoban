@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 
+import sokoban.Game;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.GridLvlButtons;
@@ -19,12 +20,11 @@ import java.io.FileNotFoundException;
 
 public class MenuLvlScene extends Scene {
     //Scene that contains a grid of the different level buttons
-
-    StackPane stackPane;
+    StackPane stackPane ;
 
     public MenuLvlScene(StackPane stackPane) {
         super(stackPane);
-        this.stackPane = stackPane;
+        this.stackPane= stackPane;
 
         //cursor
         try {
@@ -43,7 +43,7 @@ public class MenuLvlScene extends Scene {
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchToVideoScene();
+        bbutton.setOnAction(e->{Controller.switchScene("VideoScene");
                                 VideoBg.Vplayer.play();
                                 VideoScene.Mplayer.play();});
         stackPane.setStyle("-fx-background-color: #000000;");

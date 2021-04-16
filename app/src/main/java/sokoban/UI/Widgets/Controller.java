@@ -1,42 +1,21 @@
 package sokoban.UI.Widgets;
 
+import javafx.scene.layout.StackPane;
 import sokoban.Game;
 import sokoban.UI.Scenes.OptionScene;
-import javafx.scene.layout.StackPane;
 
 public class Controller {
 
-    public static void switchToVideoScene() {
+    public static void switchScene(String scene) {
         Game.pane = new StackPane();
-        Game.window.setScene(Game.videoScene);
-        Game.window.setFullScreen(true);
-        Game.window.setFullScreenExitHint("");
-    }
-
-    public static void switchToMenuLvlScene() {
-        Game.pane = new StackPane();
-        Game.window.setScene(Game.menuLvlScene);
-        Game.window.setFullScreen(true);
-        Game.window.setFullScreenExitHint("");
-    }
-
-    public static void switchToLevelScene() {
-        Game.pane = new StackPane();
-        Game.window.setScene(Game.levelScene);
-        Game.window.setFullScreen(true);
-        Game.window.setFullScreenExitHint("");
-    }
-
-    public static void switchToOptionScene(){
-        Game.pane = new StackPane();
-        Game.window.setScene(new OptionScene());
-        Game.window.setFullScreen(true);
-        Game.window.setFullScreenExitHint("");
-    }
-
-    public static void switchToCreditsScene(){
-        Game.pane = new StackPane();
-        Game.window.setScene(Game.creditsScene);
+        switch (scene) {
+            case "VideoScene" -> Game.window.setScene(Game.videoScene);
+            case "MenuLvlScene" -> Game.window.setScene(Game.menuLvlScene);
+            case "OptionScene" -> Game.window.setScene(new OptionScene());
+            case "CreditsScene" -> Game.window.setScene(Game.creditsScene);
+            case "LevelScene" -> Game.window.setScene(Game.levelScene);
+            default -> System.out.println("I told you we would make a mistake !");
+        }
         Game.window.setFullScreen(true);
         Game.window.setFullScreenExitHint("");
     }
