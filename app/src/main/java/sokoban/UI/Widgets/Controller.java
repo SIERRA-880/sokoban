@@ -9,12 +9,24 @@ public class Controller {
     public static void switchScene(String scene) {
         Game.pane = new StackPane();
         switch (scene) {
-            case "VideoScene" -> Game.window.setScene(Game.videoScene);
-            case "MenuLvlScene" -> Game.window.setScene(Game.menuLvlScene);
-            case "OptionScene" -> Game.window.setScene(new OptionScene());
-            case "CreditsScene" -> Game.window.setScene(Game.creditsScene);
-            case "LevelScene" -> Game.window.setScene(Game.levelScene);
-            default -> System.out.println("I told you we would make a mistake !");
+            case "VideoScene":
+                Game.window.setScene(Game.videoScene);
+                break;
+            case "MenuLvlScene":
+                Game.window.setScene(Game.menuLvlScene);
+                break;
+            case "OptionScene":
+                Game.window.setScene(new OptionScene());
+                break;
+            case "CreditsScene":
+                Game.window.setScene(Game.creditsScene);
+                break;
+            case "LevelScene":
+                Game.window.setScene(Game.levelScene);
+                break;
+            default:
+                System.out.println("I told you we would make a mistake !");
+                break;
         }
         Game.window.setFullScreen(true);
         Game.window.setFullScreenExitHint("");
