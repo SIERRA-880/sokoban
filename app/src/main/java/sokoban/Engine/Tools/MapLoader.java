@@ -25,11 +25,11 @@ public class MapLoader {
                 // Storing current line since there is no method to call it
                 String currentLine = myReader.nextLine();
                 
-                res[0]++;
+                res[1]++;
                 
                 // Changing the longest line value (res[1]) if the condition is true
                 if (currentLine.length() > res[1]) {
-                    res[1] = currentLine.length();
+                    res[0] = currentLine.length();
                 }
             }
             myReader.close(); 
