@@ -15,7 +15,7 @@ public class MoveLogger {
     static ArrayList<Character> movements = new ArrayList<Character>();
 
     /**
-     * Create a file "dd/mm/yy_hh:mm:ss_level.mov" in the directory to store movements
+     * Create a file "dd/mm/yy_hh:mm:ss_level.mov" in the directory app/build/resources/main/movements/ to store movements
      * 
      * @param level The level name, this will be appended at the end of the file
      */
@@ -25,10 +25,15 @@ public class MoveLogger {
         String formattedDate = date.format(format);
 
         // Create file named "dd/mm/yy_hh:mm:ss_level.mov"
-        String fileName = formattedDate + "_" + level + ".mov";
-        File myObj = new File(fileName);
         try {
-            myObj.createNewFile();
+            String fileName = formattedDate + "_" + level + ".mov";
+            String workingDirectory = System.getProperty("user.dir");
+            String absoluteFilePath = "";
+            
+            absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "movements" + File.separator + fileName;
+        
+            File file = new File(absoluteFilePath);
+            file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,7 +62,13 @@ public class MoveLogger {
      * @return A string containing the name of the most recent file.
      */
      public static Path getNewestFile() {
-        Path dir = Paths.get("");
+        String workingDirectory = System.getProperty("user.dir");
+        String absoluteFilePath = "";
+            
+        absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "movements";
+        
+        Path dir = Paths.get(absoluteFilePath);
+
         if (Files.isDirectory(dir)) {
             try {
                 Optional<Path> opPath = Files.list(dir)
@@ -66,6 +77,8 @@ public class MoveLogger {
                 .compareTo(p1.toFile().lastModified()))
                 .findFirst();
                 
+                System.out.println(opPath);
+
                 if (opPath.isPresent()){
                     return opPath.get();
                 }
