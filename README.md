@@ -16,7 +16,7 @@ To use Gradle, refers as the section below and use theses commands in a terminal
 The main files are stored in `app/src/main/java/sokoban` .
 The resources files (maps, textures, sound...) are stored in `app/src/main/resources` .
 
-Dependencies are handled by Gradle, they are automatically downloaded from mavenCentral repository. You should add them in the `app/build.gradle` file following [this guide](https://docs.gradle.org/current/userguide/declaring_dependencies.html). You can find dependencies at [maven.org](https://search.maven.org/).
+Java dependencies are handled by Gradle, they are automatically downloaded from mavenCentral repository. You should add them in the `app/build.gradle` file following [this guide](https://docs.gradle.org/current/userguide/declaring_dependencies.html). You can find dependencies at [maven.org](https://search.maven.org/).
 
 Gradle also handle documentation via javadoc. You can find the documentation by opening `app/build/docs/javadoc/index.htm` in a web browser.
 
@@ -32,12 +32,37 @@ Gradle also handle documentation via javadoc. You can find the documentation by 
 ## Tools
 
 ### MapChecker
-You can use the Gradle task `./gradlew CheckMap` with some parameters.
+You can use the Gradle task `./gradlew checkMap` with some parameters.
 To pass arguments in a Gradle task you have to use `--args="arg1 arg2..."` .
 These arguments will be split at each whitespaces, resulting in an array of strings containing `["arg1", "arg2", ...]` .
 
-The result of the check will be printed in the console. Please avoid using `-q` parameter for Gradle since it's removes the output and you will not see the result of this tool.
+The result of the check will be printed in the console. Please avoid using `-q` parameter for Gradle since it's removes the output and you will not see the result of this tool.  
+
+Parameters :
+* `f` | file
+* `d` | directory
 
 Exemple:
-- `./gradlew CheckMap --args="f app/build/resources/main/levels/map1.xsb"` | check if a map1.xsb file is valid.
-- `./gradlew CheckMap --args="d app/build/resources/main/levels/"` | check if all the .xsb files in `levels/` are valid.
+
+- `./gradlew checkMap --args="f app/build/resources/main/levels/map1.xsb"` | check if a map1.xsb file is valid.
+- `./gradlew checkMap --args="d app/build/resources/main/levels/"` | check if all the .xsb files in `levels/` are valid.
+
+### Move Replay
+You can use the Gradle task `./gradlew movReplay` with some parameters.
+To pass arguments in a Gradle task you have to use `--args="arg1 arg2..."` .
+These arguments will be split at each whitespaces, resulting in an array of strings containing `["arg1", "arg2", ...]` .
+
+The result will be printed in the console. Please avoid using `-q` parameter for Gradle since it's removes the output and you will not see the result of this tool.
+
+Parameters :
+* `map.xsb` | 
+* `movements.mov` |
+* `output.xsb` |
+
+Exemples :
+`./gradlew movReplay -args=""` 
+
+## Dependencies
+### ffmpeg
+On Unix systems, you have to install ffmpeg manually.  
+https://ffmpeg.org/
