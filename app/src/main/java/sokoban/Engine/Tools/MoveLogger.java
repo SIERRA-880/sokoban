@@ -76,8 +76,6 @@ public class MoveLogger {
                 .sorted((p1, p2)-> Long.valueOf(p2.toFile().lastModified())
                 .compareTo(p1.toFile().lastModified()))
                 .findFirst();
-                
-                System.out.println(opPath);
 
                 if (opPath.isPresent()){
                     return opPath.get();
@@ -90,8 +88,7 @@ public class MoveLogger {
     }
 
     /**
-     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger.getNewestFile} and write to it.
-     * @throws IOException
+     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger#getNewestFile()} and write to it.
      */
     public static void writeToNewestFile() {
         try {
