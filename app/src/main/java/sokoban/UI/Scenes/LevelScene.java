@@ -16,6 +16,7 @@ import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.Controller;
 
 import sokoban.Game;
+import sokoban.Engine.Tools.MoveLogger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -98,6 +99,7 @@ public class LevelScene extends Scene {
         if (world.winCondition()) {
             AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
             mplayer.play();
+            MoveLogger.writeToNewestFile();
         }
     }
 }

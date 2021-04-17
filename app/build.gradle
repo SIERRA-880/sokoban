@@ -37,3 +37,10 @@ task checkMap(type : JavaExec){
     standardInput = System.in // dirige le System.in comme étant la source d'input de l'app
     main = 'sokoban.Engine.Tools.MapChecker'
 }
+
+task movReplay(type : JavaExec){
+    description = "Apply a given .mov file to a given .xsb (map) file"
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in // dirige le System.in comme étant la source d'input de l'app
+    main = 'sokoban.Engine.Tools.MovReplay'
+}

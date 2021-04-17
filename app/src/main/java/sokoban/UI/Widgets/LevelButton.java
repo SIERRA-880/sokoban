@@ -1,6 +1,7 @@
 package sokoban.UI.Widgets;
 
 import sokoban.Game;
+import sokoban.Engine.Tools.MoveLogger;
 
 public class LevelButton extends ImageButton {
 
@@ -19,5 +20,6 @@ public class LevelButton extends ImageButton {
 
     public void setMap() {
         Game.level.setLevel("map" + nlevel);
+        MoveLogger.createFile(nlevel+"");
     }
 }
