@@ -18,9 +18,8 @@ public class MoveLogger {
      * Create a file "dd/mm/yy_hh:mm:ss_level.mov" in the directory to store movements
      * 
      * @param level The level name, this will be appended at the end of the file
-     * @throws IOException
      */
-    public static void createFile(String level){
+    public static void createFile(String level) {
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
         String formattedDate = date.format(format);
@@ -56,7 +55,6 @@ public class MoveLogger {
      * Credit to : https://www.baeldung.com/java-last-modified-file
      * 
      * @return A string containing the name of the most recent file.
-     * @throws IOException
      */
      public static Path getNewestFile() {
         Path dir = Paths.get("");
