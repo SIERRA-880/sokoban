@@ -14,14 +14,19 @@ import sokoban.Engine.Objects.World;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.Controller;
+import java.util.Scanner;
 
 import sokoban.Game;
 import sokoban.Engine.Tools.MoveLogger;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
+import java.io.IOException;
+import java.io.FileInputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class LevelScene extends Scene {
     //Scene that will contain a Map type object and display a level
@@ -96,10 +101,44 @@ public class LevelScene extends Scene {
         }
 
         map.showMap();
+
+        // win conditions 
         if (world.winCondition()) {
             AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
             mplayer.play();
             MoveLogger.writeToNewestFile();
+
+            // store the save file in an array
+            try {
+                int currentLevel = Game.level.nlevel;
+                int[] levels = new int[15];
+                String workingDirectory = System.getProperty("user.dir");
+                String absoluteFilePath = "";
+                absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "saves";
+                Path dir = Paths.get(absoluteFilePath);
+                File saves = new File(absoluteFilePath);
+                Scanner myReader = new Scanner(saves);
+                int i = 0;
+                while (myReader.hasNextLine()) {
+                    String currentLine = myReader.nextLine();
+                    levels[i] = Integer.parseInt(currentLine);
+                    i++;
+                }
+                myReader.close();
+                boolean write = true;
+                for (int n : levels) {
+                    if (currentLevel+1 == n) {
+                        write = false;
+                    }
+                }
+                if (currentLevel==levels[currentLevel-1] && currentLevel!=15 && write) { 
+                    currentLevel++;
+                    Files.writeString(dir, "\n"+currentLevel+"", StandardOpenOption.APPEND);
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

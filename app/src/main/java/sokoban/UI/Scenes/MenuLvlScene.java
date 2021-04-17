@@ -38,8 +38,14 @@ public class MenuLvlScene extends Scene {
             e.printStackTrace();
             System.out.println("cursor problem");
         }
+        
+        // show all objects
+        refresh();
+    }
 
-        // gridLevelButtons
+    public void refresh() {
+         
+        //gridLvlButtons
         GridLvlButtons glb = new GridLvlButtons();
         stackPane.getChildren().add(glb);
         StackPane.setAlignment(glb, Pos.CENTER);

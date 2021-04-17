@@ -13,6 +13,7 @@ public class Controller {
                 Game.window.setScene(Game.videoScene);
                 break;
             case "MenuLvlScene":
+                Game.menuLvlScene.refresh();
                 Game.window.setScene(Game.menuLvlScene);
                 break;
             case "OptionScene":
