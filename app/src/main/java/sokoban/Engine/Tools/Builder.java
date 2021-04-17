@@ -46,6 +46,12 @@ public class Builder {
                         cellsMatrix[line][column] = cellCase;
                         break;
 
+                    case '-':
+                        Cell cell0 = new Cell(pos, "/Cells/ground.png", false, false);
+                        MatrixCase cellCase0 = new MatrixCase(cell0, cell0);
+                        cellsMatrix[line][column] = cellCase0;
+                        break;
+
                     case '.':
                         Target target = new Target(pos, "/Cells/target.png");
                         MatrixCase targetCase = new MatrixCase(target, target);

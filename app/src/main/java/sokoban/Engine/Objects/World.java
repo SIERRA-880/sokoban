@@ -81,12 +81,12 @@ public class World {
     public Cell searchBox(int[] pos) {
         return cellsArray[pos[1]][pos[0]].getCell();
     }
+
 /*
-    public char[] getNearbyCells(int[] pos) {
+    public Cell[] getNearbyCells(int[] pos) {
         int x = pos[0];
         int y = pos[1];
-        return {searchCell(x-1, y).getTermTexture(); searchCell(x, y+1).getTermTexture(); 
-                searchCell(x+1, y).getTermTexture(); searchCell(x, y-1).getTermTexture()};
+        return {searchCell(x-1, y); searchCell(x, y+1); searchCell(x+1, y); searchCell(x, y-1)};
     }
 */
 
@@ -94,7 +94,6 @@ public class World {
         cellsArray[oldPos[1]][oldPos[0]].remove();
         cellsArray[newPos[1]][newPos[0]].add(cell);
     }
-
 
     /**
      * This methods compare positions of all {@link sokoban.Engine.Objects.Target}'s positions and {@link sokoban.Engine.Objects.Box}'s positions.
