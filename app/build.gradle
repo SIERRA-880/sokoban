@@ -10,11 +10,18 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework.
-    testImplementation 'junit:junit:4.13'
-
-    // This dependency is used by the application.
+	testImplementation("junit:junit:4.13.2")
+	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.7.1")
     implementation 'com.google.guava:guava:29.0-jre'
+}
+
+test {
+	useJUnitPlatform {
+		excludeTags("slow")
+	}
+	testLogging {
+		events("passed", "skipped", "failed")
+	}
 }
 
 application {
