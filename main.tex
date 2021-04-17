@@ -1,7 +1,8 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[french]{babel}
 \usepackage{graphicx}
+\usepackage[T1]{fontenc}
 \graphicspath{{images/}}
 
 \usepackage{blindtext}
@@ -13,15 +14,80 @@
 \date{ }
 
 \begin{document}
+\begin{titlepage}
+    \begin{center}
+        
+        {\Large Université de Mons}\\[1ex]
+        {\Large Faculté des sciences}\\[1ex]
+        {\Large Département d'Informatique}\\[2.5cm]
+        
+        \newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+        % Title
+        \HRule \\[0.3cm]
+        { \LARGE \bfseries Sokoban \\[0.3cm]}
+        { \LARGE \bfseries Rapport de projet \\[0.1cm]} % Commenter si pas besoin
+        \HRule \\[1.5cm]
+        
+        % Author and supervisor
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushleft} \large
+                \emph{Professeur:}\\
+                Hadrien \textsc{Melot}\\
+            \end{flushleft}
+        \end{minipage}
+        \begin{minipage}[t]{0.45\textwidth}
+            \begin{flushright} \large
+                \emph{Auteurs:} \\
+                Christian \textsc{Agbenda} \\
+                Theo \textsc{Godin} \\
+                Ugo \textsc{Proietti}
+            \end{flushright}
+        \end{minipage}\\[2ex]
+        
+        \vfill
+        
+        % Bottom of the page
+        \begin{center}
+            \begin{tabular}[t]{c c c}
+                \includegraphics[height=1.5cm]{logoumons.jpg} &
+                \hspace{0.3cm} &
+                \includegraphics[height=1.5cm]{logofs.jpg}
+            \end{tabular}
+        \end{center}~\\
+        
+        {\large Année académique 2020-2021}
+        
+    \end{center}
+\end{titlepage}
 
-\maketitle
+\tableofcontents
+
+\newpage
 
 \section{Introduction}
 
 \subfile{sections/introduction}
 
-\section{Second section}
+\section{Mode d'emploi (optionnel)}
 
-\subfile{sections/section2}
+\subfile{sections/mode_demploi}
+
+\section{Algorithme}
+
+\subfile{sections/algorithme}
+
+\subfile{sections/algorithme}
+
+\section{Choix personnel}
+
+\subfile{sections/choix_personnels}
+
+\section{Problème survenus}
+
+\subfile{sections/problemes}
+
+\section{Conclusion}
+
+\subfile{sections/conclusion}
 
 \end{document}
