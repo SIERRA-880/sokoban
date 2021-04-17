@@ -1,6 +1,13 @@
 package sokoban.Engine.Tools;
 
-import sokoban.Engine.Objects.*;
+import sokoban.Engine.Objects.Player;
+import sokoban.Engine.Objects.World;
+import sokoban.Engine.Objects.Target;
+import sokoban.Engine.Objects.Box;
+import sokoban.Engine.Objects.Wall;
+import sokoban.Engine.Objects.Empty;
+import sokoban.Engine.Objects.Cell;
+import sokoban.Engine.Objects.MatrixCase;
 
 import java.util.ArrayList;
 

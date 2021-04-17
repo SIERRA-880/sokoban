@@ -35,7 +35,7 @@ run {
 
 javafx {
     version = "15.0.1"
-    modules = [ 'javafx.controls' ]
+    modules = [ 'javafx.controls', 'javafx.fxml','javafx.media']
 }
 
 task checkMap(type : JavaExec){
@@ -43,4 +43,11 @@ task checkMap(type : JavaExec){
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in // dirige le System.in comme étant la source d'input de l'app
     main = 'sokoban.Engine.Tools.MapChecker'
+}
+
+task movReplay(type : JavaExec){
+    description = "Apply a given .mov file to a given .xsb (map) file"
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in // dirige le System.in comme étant la source d'input de l'app
+    main = 'sokoban.Engine.Tools.MovReplay'
 }

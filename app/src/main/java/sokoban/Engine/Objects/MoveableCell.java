@@ -7,7 +7,7 @@ public class MoveableCell extends Cell {
     boolean boxMoved = false;
 
     public MoveableCell(int[]  pos, String texture, boolean hardCollision, boolean softCollision) {
-        super(pos, texture, hardCollision, softCollision);	
+    super(pos, texture, hardCollision, softCollision);	
     }
 
     /**
@@ -47,7 +47,7 @@ public class MoveableCell extends Cell {
     }
 
     /**
-     * Moves the {@link sokoban.Engine.Objects.Cell} from initial position to next position using ({@link sokoban.Engine.Objects.Cell#getNextPos(String)}) to find it.
+     * Moves the {@link sokoban.Engine.Objects.Cell} from initial position to next position using ({@link sokoban.Engine.Objects.Cell#getNextPos(char)}) to find it.
      * and return true if a box has been moved.
      * @param direction char (z,q,s,d) representing (up,left,down,right) direction
      * @param world

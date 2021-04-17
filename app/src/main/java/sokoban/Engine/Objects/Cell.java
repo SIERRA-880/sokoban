@@ -6,7 +6,7 @@ package sokoban.Engine.Objects;
 public class Cell {
 
     private int[] pos;
-    private String texture;
+    protected String texture;
     private boolean hardCollision;
     private boolean softCollision;
     private char termTexture = ' ';

@@ -59,31 +59,34 @@ public class MoveLogger {
      public static Path getNewestFile() {
         Path dir = Paths.get("");
         if (Files.isDirectory(dir)) {
-            Optional<Path> opPath;
             try {
-                opPath = Files.list(dir)
+                Optional<Path> opPath = Files.list(dir)
                 .filter(p -> !Files.isDirectory(p))
                 .sorted((p1, p2)-> Long.valueOf(p2.toFile().lastModified())
                 .compareTo(p1.toFile().lastModified()))
                 .findFirst();
-
+                
                 if (opPath.isPresent()){
                     return opPath.get();
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        
         return null;
     }
 
     /**
-     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger#getNewestFile} and write to it.
+     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger.getNewestFile} and write to it.
+     * @throws IOException
      */
     public static void writeToNewestFile() {
         try {
-            Files.writeString(getNewestFile(), movements.toString());
+            StringBuilder sb = new StringBuilder();
+            for (char s : movements) {
+                sb.append(s);
+            }
+            Files.writeString(getNewestFile(), sb.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
