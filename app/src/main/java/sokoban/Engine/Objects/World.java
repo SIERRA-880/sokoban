@@ -81,7 +81,14 @@ public class World {
     public Cell searchBox(int[] pos) {
         return cellsArray[pos[1]][pos[0]].getCell();
     }
-
+/*
+    public char[] getNearbyCells(int[] pos) {
+        int x = pos[0];
+        int y = pos[1];
+        return {searchCell(x-1, y).getTermTexture(); searchCell(x, y+1).getTermTexture(); 
+                searchCell(x+1, y).getTermTexture(); searchCell(x, y-1).getTermTexture()};
+    }
+*/
 
     public void moveCell(Cell cell, int[] oldPos, int[] newPos) {
         cellsArray[oldPos[1]][oldPos[0]].remove();
