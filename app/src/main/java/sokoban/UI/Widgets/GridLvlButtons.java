@@ -22,7 +22,7 @@ public class GridLvlButtons extends GridPane {
     /**
      * This widget is a grid of 15 LevelButtons.
      */
-public GridLvlButtons() {
+    public GridLvlButtons() {
         int[] lock = new int[15];
 
         File saves = null;

@@ -26,7 +26,10 @@ public class Game extends Application {
     public static LevelScene levelScene;
     public static CreditsScene creditsScene;
     public static StackPane pane = new StackPane();
-
+    public static KeyCode up;
+    public static KeyCode left;
+    public static KeyCode down;
+    public static KeyCode right;
 
     public static void main(String[] args)  {
 
@@ -39,6 +42,12 @@ public class Game extends Application {
         window.setTitle("Sokoban");
         window.setFullScreen(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
+
+        // binds
+        up = KeyCode.Z;
+        left = KeyCode.Q;
+        down = KeyCode.S;
+        right = KeyCode.D;
 
         // Level
         level = new Level();

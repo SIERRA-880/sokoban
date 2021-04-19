@@ -74,26 +74,26 @@ public class LevelScene extends Scene {
         World world = Game.level.world;
 
         KeyCode keyCode = ke.getCode();
-        if (keyCode.equals(KeyCode.Z)) {
+        if (keyCode.equals(Game.up)) {
             player.setTexture("up");
             if (player.move("up", world)) {
                 moveBox.play();
             }
 
-        } else if (keyCode.equals(KeyCode.Q)) {
+        } else if (keyCode.equals(Game.left)) {
             player.setTexture("left");
             if (player.move("left", world)) {
                 moveBox.play();
             }
 
-        } else if (keyCode.equals(KeyCode.S)) {
+        } else if (keyCode.equals(Game.down)) {
             player.setTexture("down");
             if (player.move("down", world)) {
                 moveBox.play();
             }
 
 
-        } else if (keyCode.equals(KeyCode.D)) {
+        } else if (keyCode.equals(Game.right)) {
             player.setTexture("right");
             if (player.move("right", world)) {
                 moveBox.play();

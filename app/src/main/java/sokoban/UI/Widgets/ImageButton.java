@@ -8,6 +8,11 @@ import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundSize;
 public class ImageButton extends Button {
 
     Image locked;
@@ -31,16 +36,15 @@ public class ImageButton extends Button {
             System.out.println("Files " + selected + " and " + unselected + "not found ");
             System.exit(1);
         }
-        setStyle("-fx-background-color: transparent;");
-        setMaxSize(100, 100);
-        final ImageView iv = new ImageView(imSelected);
-        this.getChildren().add(iv);
-        Image finalImSelected = imSelected;
-        Image finalImUnselected = imUnselected;
-        this.setOnMouseEntered(e -> iv.setImage(finalImUnselected));
-        this.setOnMouseExited(e -> iv.setImage(finalImSelected));
+        setMinSize(imSelected.getWidth(), imSelected.getHeight());
+        BackgroundImage finalImSelected = new BackgroundImage(imSelected,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundImage finalImUnselected = new BackgroundImage(imUnselected, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundSelected = new Background(finalImSelected);
+        Background backgroundUnselected = new Background(finalImUnselected);
+        setOnMouseEntered(e -> setBackground(backgroundUnselected));
+        setOnMouseExited(e -> setBackground(backgroundSelected));
         setPadding(new Insets(0, 0, 0, 0));
-        setGraphic(iv);
+        setBackground(backgroundSelected);
     }
 
     public ImageButton(String path) {
