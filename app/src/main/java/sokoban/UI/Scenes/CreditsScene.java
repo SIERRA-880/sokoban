@@ -1,6 +1,5 @@
 package sokoban.UI.Scenes;
 
-
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.VideoBg;

@@ -100,7 +100,6 @@ public class LevelScene extends Scene {
                 moveBox.play();
             }
         }
-
         map.showMap();
 
         // win conditions 

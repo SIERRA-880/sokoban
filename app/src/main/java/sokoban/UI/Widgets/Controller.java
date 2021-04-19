@@ -30,7 +30,7 @@ public class Controller {
                 System.out.println("I told you we would make a mistake !");
                 break;
         }
-        Game.window.setFullScreen(true);
+        Game.window.setMaximized(true);
         Game.window.setFullScreenExitHint("");
     }
 }

@@ -42,7 +42,8 @@ public class Game extends Application {
     public void start(Stage primaryStage)  {
         window = primaryStage;
         window.setTitle("Sokoban");
-        window.setFullScreen(true);
+        //window.setFullScreen(true);
+        window.setMaximized(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
 
         // binds

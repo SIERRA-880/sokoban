@@ -80,7 +80,6 @@ public class VideoScene extends Scene {
                     menuTranslation.setRate(-1.5);
                     menuTranslation.play();
                     shown.set(false);
-
                 }
             }
         });
