@@ -17,6 +17,7 @@ import sokoban.UI.Widgets.Controller;
 import java.util.Scanner;
 
 import sokoban.Game;
+import sokoban.ScenesEnum;
 import sokoban.Engine.Tools.MoveLogger;
 
 import java.io.File;
@@ -62,7 +63,7 @@ public class LevelScene extends Scene {
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->Controller.switchScene("MenuLvlScene"));
+        bbutton.setOnAction(e->Controller.switchScene(ScenesEnum.MENULVLSCENE));
         stackPane.getChildren().add(bbutton);
         StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));

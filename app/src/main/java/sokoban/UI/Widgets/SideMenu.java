@@ -3,6 +3,7 @@ package sokoban.UI.Widgets;
 import javafx.scene.layout.VBox;
 
 import sokoban.UI.Scenes.VideoScene;
+import sokoban.ScenesEnum;
 
 public class SideMenu extends VBox {
 
@@ -21,7 +22,7 @@ public class SideMenu extends VBox {
         ImageButton button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e -> {VideoBg.Vplayer.stop();
                                  VideoScene.Mplayer.stop();
-                                 Controller.switchScene("MenuLvlScene");});
+                                 Controller.switchScene(ScenesEnum.MENULVLSCENE);});
         return button;
     }
 
@@ -44,7 +45,7 @@ public class SideMenu extends VBox {
         ImageButton button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e->{VideoBg.Vplayer.stop();
                                VideoScene.Mplayer.stop();
-                               Controller.switchScene("OptionScene");});
+                               Controller.switchScene(ScenesEnum.OPTIONSCENE);});
         return button;
     }
 
@@ -55,7 +56,7 @@ public class SideMenu extends VBox {
         ImageButton button = new ImageButton(image_selected, image_unselected);
         button.setOnAction(e->{VideoBg.Vplayer.stop();
                                VideoScene.Mplayer.stop();
-                               Controller.switchScene("CreditsScene");});
+                               Controller.switchScene(ScenesEnum.CREDITSSCENE);});
         return button;
     }
 

@@ -2,6 +2,7 @@ package sokoban.UI.Widgets;
 
 import javafx.scene.layout.GridPane;
 import sokoban.Game;
+import sokoban.ScenesEnum;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -69,7 +70,7 @@ public class GridLvlButtons extends GridPane {
                         button.setMap();
                         Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
                         Game.levelScene.map.showMap();
-                        Controller.switchScene("LevelScene");
+                        Controller.switchScene(ScenesEnum.LEVELSCENE);
                     });
                 }
                 else {

@@ -4,6 +4,7 @@ package sokoban.UI.Scenes;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.VideoBg;
+import sokoban.ScenesEnum;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -108,7 +109,7 @@ public class CreditsScene extends Scene {
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchScene("VideoScene");
+        bbutton.setOnAction(e->{Controller.switchScene(ScenesEnum.VIDEOSCENE);
             VideoBg.Vplayer.play();
             VideoScene.Mplayer.play();});
         stackPane.getChildren().add(bbutton);

@@ -7,6 +7,7 @@ import sokoban.UI.Scenes.CreditsScene;
 import sokoban.UI.Scenes.LevelScene;
 import sokoban.UI.Scenes.MenuLvlScene;
 import sokoban.UI.Scenes.VideoScene;
+import sokoban.UI.Scenes.OptionScene;
 
 import javafx.application.Application;
 
@@ -25,6 +26,7 @@ public class Game extends Application {
     public static MenuLvlScene menuLvlScene;
     public static LevelScene levelScene;
     public static CreditsScene creditsScene;
+    public static OptionScene optionScene;
     public static StackPane pane = new StackPane();
     public static KeyCode up;
     public static KeyCode left;
@@ -59,13 +61,10 @@ public class Game extends Application {
         menuLvlScene = new MenuLvlScene(new StackPane());
         levelScene = new LevelScene(new StackPane());
         creditsScene = new CreditsScene(new StackPane());
+        optionScene = new OptionScene(new StackPane());
         window.setScene(videoScene);
 
         // window
         window.show();
-
-       // Font.getFamilies().forEach(System.out::println);
-
-
     }
 }

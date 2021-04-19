@@ -1,0 +1,5 @@
+package sokoban;
+
+public enum ScenesEnum {
+    CREDITSSCENE, LEVELSCENE, MENULVLSCENE, OPTIONSCENE, VIDEOSCENE
+}

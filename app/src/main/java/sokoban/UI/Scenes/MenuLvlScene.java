@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import sokoban.Game;
+import sokoban.ScenesEnum;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.GridLvlButtons;
@@ -52,7 +53,7 @@ public class MenuLvlScene extends Scene {
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchScene("VideoScene");
+        bbutton.setOnAction(e->{Controller.switchScene(ScenesEnum.VIDEOSCENE);
                                 VideoBg.Vplayer.play();
                                 VideoScene.Mplayer.play();});
         stackPane.setStyle("-fx-background-color: #000000;");
