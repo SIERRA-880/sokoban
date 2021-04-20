@@ -70,12 +70,11 @@ public class GridLvlButtons extends GridPane {
                         Game.levelScene.map.showMap();
                         Controller.switchScene(ScenesEnum.LEVELSCENE);
                     });
+                    button.setText(a++ + "");
                 }
                 else {
-                    button = new LevelButton(imageLocked, imageLocked, (a));
+                    button = new LevelButton(imageLocked, imageLocked, (a++));
                 }
-                button.setText(a++ + "");
-                button.setStyle("-fx-font: 48 sans-serif-bold; -fx-text-fill: #A7F5F4;");
                 add(button, j, i);
             }
         }
