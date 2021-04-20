@@ -1,12 +1,14 @@
 package sokoban.Engine.Objects;
 
+import sokoban.CellsEnum;
+
 public class Target extends Cell {
 
     private char termTexture = '.';
 
 
     public Target(int[] pos, String texture) {
-        super(pos, texture, false, false);
+        super(pos, CellsEnum.TARGET, texture, false, false);
     }
 
 

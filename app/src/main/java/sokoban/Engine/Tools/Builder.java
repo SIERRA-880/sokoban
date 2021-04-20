@@ -9,6 +9,8 @@ import sokoban.Engine.Objects.Empty;
 import sokoban.Engine.Objects.Cell;
 import sokoban.Engine.Objects.MatrixCase;
 
+import sokoban.CellsEnum;
+
 import java.util.ArrayList;
 
 public class Builder {
@@ -41,13 +43,13 @@ public class Builder {
 
                 switch (cellType) {
                     case ' ':
-                        Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
+                        Cell cell = new Cell(pos, CellsEnum.CELL, "/Cells/ground.png", false, false);
                         MatrixCase cellCase = new MatrixCase(cell, cell);
                         cellsMatrix[line][column] = cellCase;
                         break;
 
                     case '-':
-                        Cell cell0 = new Cell(pos, "/Cells/ground.png", false, false);
+                        Cell cell0 = new Cell(pos, CellsEnum.CELL, "/Cells/ground.png", false, false);
                         MatrixCase cellCase0 = new MatrixCase(cell0, cell0);
                         cellsMatrix[line][column] = cellCase0;
                         break;
@@ -61,7 +63,7 @@ public class Builder {
 
                     case '$':
                         Box box = new Box(pos, "/Cells/box.png");
-                        Cell cell1 = new Cell(pos, "/Cells/ground.png", false, false);
+                        Cell cell1 = new Cell(pos, CellsEnum.CELL, "/Cells/ground.png", false, false);
                         MatrixCase boxCase = new MatrixCase(box, cell1);
                         cellsMatrix[line][column] = boxCase;
                         boxesList.add(box);
@@ -69,7 +71,7 @@ public class Builder {
 
                     case '@':
                         player.setCellPos(pos);
-                        Cell cell2 = new Cell(pos, "/Cells/ground.png", false, false);
+                        Cell cell2 = new Cell(pos, CellsEnum.CELL, "/Cells/ground.png", false, false);
                         MatrixCase playerCase = new MatrixCase(player, cell2);
                         cellsMatrix[line][column] = playerCase;
                         break;
@@ -103,7 +105,6 @@ public class Builder {
                         targetsList.add(plusTarget);
                         break;
 
-
                     default:
                         break;
                 }
@@ -113,5 +114,4 @@ public class Builder {
         world.setBoxesList(boxesList);
         world.setMap(cellsMatrix);
     }
-
 }

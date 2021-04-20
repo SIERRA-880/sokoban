@@ -1,5 +1,7 @@
 package sokoban.Engine.Objects;
 
+import sokoban.CellsEnum;
+
 /**
  * Object representing a cell on the map
  */
@@ -11,13 +13,14 @@ public class Cell {
     private boolean softCollision;
     private char termTexture = ' ';
     private String resourcePack = "build/resources/main/textures/Default";
+    private CellsEnum cellType;
 
-    public Cell(int[] pos, String texture, boolean hardCollision, boolean softCollision) {
+    public Cell(int[] pos, CellsEnum cellType, String texture, boolean hardCollision, boolean softCollision) {
         this.pos = pos;
         this.texture = resourcePack + texture;
         this.hardCollision = hardCollision;
         this.softCollision = softCollision;
-
+        this.cellType = cellType;
     }
 
     /**
@@ -69,11 +72,17 @@ public class Cell {
     }
     
     /**
-     * 
      * @return the texture of the {@link sokoban.Engine.Objects.Cell}
      */
     public String getCellTexture() {
         return texture;
+    }
+
+    /**
+     * @return the type of the {@link sokoban.Engine.Objects.Cell}
+     */
+    public CellsEnum getCellType() {
+        return cellType;
     }
 
     /**

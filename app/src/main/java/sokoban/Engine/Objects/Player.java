@@ -1,11 +1,13 @@
 package sokoban.Engine.Objects;
 
+import sokoban.CellsEnum;
+
 public class Player extends MoveableCell {
 
     private char termTexture = '@';
 
     public Player(int[] pos, String texture) {
-        super(pos, texture, false, false);
+        super(pos, CellsEnum.PLAYER, texture, false, false);
     }
 
     public void setTexture(String direction) {

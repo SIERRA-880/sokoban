@@ -4,6 +4,8 @@ import sokoban.Engine.Objects.MatrixCase;
 import sokoban.Engine.Objects.Wall;
 import sokoban.Engine.Objects.Cell;
 
+import sokoban.CellsEnum;
+
 import java.util.Random;
 
 public class MapGenerator {
@@ -25,7 +27,7 @@ public class MapGenerator {
                     cellsMatrix[line][column] = wallCase;
                 }
                 else {
-                   Cell cell = new Cell(pos, "/Cells/ground.png", false, false);
+                   Cell cell = new Cell(pos, CellsEnum.CELL, "/Cells/ground.png", false, false);
                    MatrixCase groundCase = new MatrixCase(cell, cell);
                    cellsMatrix[line][column] = groundCase;
                 }

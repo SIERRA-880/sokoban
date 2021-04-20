@@ -1,13 +1,14 @@
 package sokoban.Engine.Objects;
 
 import sokoban.Engine.Tools.MoveLogger;
+import sokoban.CellsEnum;
 
 public class MoveableCell extends Cell {
 
     boolean boxMoved = false;
 
-    public MoveableCell(int[]  pos, String texture, boolean hardCollision, boolean softCollision) {
-    super(pos, texture, hardCollision, softCollision);	
+    public MoveableCell(int[]  pos, CellsEnum cellType, String texture, boolean hardCollision, boolean softCollision) {
+    super(pos, cellType, texture, hardCollision, softCollision);	
     }
 
     /**

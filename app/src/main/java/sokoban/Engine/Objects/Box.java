@@ -1,11 +1,13 @@
 package sokoban.Engine.Objects;
 
+import sokoban.CellsEnum;
+
 public class Box extends MoveableCell {
 
     private char termTexture = '$';
     
     public Box(int[] pos, String texture) {
-        super(pos, texture, false, true);
+        super(pos, CellsEnum.BOX, texture, false, true);
     }
 
     /**

@@ -1,11 +1,13 @@
 package sokoban.Engine.Objects;
 
+import sokoban.CellsEnum;
+
 public class Empty extends Cell {
 
     private char termTexture = ' ';
 
     public Empty(int[] pos, String texture) {
-        super(pos, texture, false, false);
+        super(pos, CellsEnum.EMPTY, texture, false, false);
     }
 
     /**
