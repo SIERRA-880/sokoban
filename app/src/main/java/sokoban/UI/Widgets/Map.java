@@ -35,7 +35,7 @@ public class Map extends GridPane {
             wall = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/wall.png"));
             box = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/box.png"));
             target = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/target.png"));
-            player = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/player.png"));
+            player = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/player_down.png"));
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
