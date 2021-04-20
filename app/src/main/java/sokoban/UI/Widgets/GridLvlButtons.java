@@ -16,8 +16,8 @@ import static javafx.geometry.Pos.CENTER;
 
 public class GridLvlButtons extends GridPane {
 
-    private final String buttonSelected = "build/resources/main/textures/Default/Buttons/levelMenu/levelButton_";
-    private final String buttonUnselected = "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_";
+    private final String buttonSelected = "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png";
+    private final String buttonUnselected = "build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png";
     private final String imageLocked = "build/resources/main/textures/Default/Buttons/levelMenu/levelButton_locker.png";
 
     /**
@@ -60,12 +60,10 @@ public class GridLvlButtons extends GridPane {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
                 LevelButton button;
-                String imageButtonSelected = buttonSelected + a + ".png";
-                String imageButtonUnselected = buttonUnselected + a + ".png";
 
                 // here we check if the level has been completed or not 
                 if (lock[a - 1]==a) {
-                    button = new LevelButton(imageButtonSelected, imageButtonUnselected, (a++));
+                    button = new LevelButton(buttonUnselected, buttonSelected, (a));
                     button.setOnAction(e -> {
                         button.setMap();
                         Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
@@ -74,8 +72,10 @@ public class GridLvlButtons extends GridPane {
                     });
                 }
                 else {
-                    button = new LevelButton(imageLocked, imageLocked, (a++));
+                    button = new LevelButton(imageLocked, imageLocked, (a));
                 }
+                button.setText(a++ + "");
+                button.setStyle("-fx-font: 48 sans-serif-bold; -fx-text-fill: #A7F5F4;");
                 add(button, j, i);
             }
         }

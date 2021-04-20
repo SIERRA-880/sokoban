@@ -36,13 +36,16 @@ public class ImageButton extends Button {
             System.out.println("Files " + selected + " and " + unselected + "not found ");
             System.exit(1);
         }
+        setStyle("-fx-font: 48 sans-serif-bold; -fx-text-fill: #A7F5F4;");
         setMinSize(imSelected.getWidth(), imSelected.getHeight());
         BackgroundImage finalImSelected = new BackgroundImage(imSelected,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         BackgroundImage finalImUnselected = new BackgroundImage(imUnselected, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background backgroundSelected = new Background(finalImSelected);
         Background backgroundUnselected = new Background(finalImUnselected);
-        setOnMouseEntered(e -> setBackground(backgroundUnselected));
-        setOnMouseExited(e -> setBackground(backgroundSelected));
+        setOnMouseEntered(e -> {setBackground(backgroundUnselected);
+                                setStyle("-fx-font: 48 sans-serif-bold; -fx-text-fill: #EA470D;");});
+        setOnMouseExited(e -> {setBackground(backgroundSelected);
+                               setStyle("-fx-font: 48 sans-serif-bold; -fx-text-fill: #A7F5F4;");});
         setPadding(new Insets(0, 0, 0, 0));
         setBackground(backgroundSelected);
     }

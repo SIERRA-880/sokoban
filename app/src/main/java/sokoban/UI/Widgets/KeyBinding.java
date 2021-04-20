@@ -39,7 +39,6 @@ public class KeyBinding extends HBox {
                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
         String btnText = key.toString();
         button.setText(key.toString());
-        button.setStyle("-fx-font: 22 arial; -fx-text-fill: #A7F5F4;");
 
         // placement
         getChildren().add(button);
