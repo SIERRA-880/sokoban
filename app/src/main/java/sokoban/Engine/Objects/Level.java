@@ -30,17 +30,11 @@ public class Level {
         Builder.init(this.map, player, world, size[0], size[1]);
     }
 
-    /**
-     * This return the world of the current instance of a level.
-     */
-    public World getWorld() {
-        return world;
+    public void setWorld(World world) {
+        this.world = world;
     }
 
-    /** 
-     * This return the player of the current isntance of a level.
-     */
-    public Player getPlayer() {
-        return player;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

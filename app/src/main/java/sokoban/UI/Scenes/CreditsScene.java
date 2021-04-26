@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
-import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,20 +20,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-public class CreditsScene extends Scene {
+public class CreditsScene extends BasicScene {
 
     public CreditsScene(StackPane stackPane) {
         super(stackPane);
-        stackPane.setStyle("-fx-background-color: #000000;");
-
-        // cursor
-        try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
-            setCursor(new ImageCursor(image));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("cursor problem");
-        }
 
         // credits 
         Font f = null;

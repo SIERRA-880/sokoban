@@ -2,7 +2,6 @@ package sokoban.UI.Scenes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -29,7 +28,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class LevelScene extends Scene {
+public class LevelScene extends BasicScene {
     //Scene that will contain a Map type object and display a level
 
     public Map map;
@@ -43,16 +42,6 @@ public class LevelScene extends Scene {
     public LevelScene(StackPane stackPane)  {
         super(stackPane);
         this.stackPane= stackPane;
-
-        // cursor
-        try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
-            setCursor(new ImageCursor(image));
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("cursor problem");
-        }
 
         // map
         this.map = new Map();

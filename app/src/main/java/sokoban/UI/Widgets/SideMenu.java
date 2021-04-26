@@ -32,9 +32,9 @@ public class SideMenu extends VBox {
         String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_arcade.png";
         ImageButton button = new ImageButton(image_selected, image_unselected);
         //Still to do
-        /*button.setOnAction(e->{ VideoBg.Vplayer.stop();
-                    VideoScene.Mplayer.stop();
-                    Controller.switchScene("ArcadeScene"));*/
+        button.setOnAction(e->{VideoBg.Vplayer.stop();
+                               VideoScene.Mplayer.stop();
+                               Controller.switchScene(ScenesEnum.ARCADESCENE);});
         return button;
     }
 

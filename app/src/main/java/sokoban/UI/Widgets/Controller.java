@@ -26,6 +26,12 @@ public class Controller {
             case LEVELSCENE:
                 Game.window.setScene(Game.levelScene);
                 break;
+            case ARCADESCENE:
+                Game.window.setScene(Game.arcadeScene);
+                break;
+            case RANDOMLEVELSCENE:
+                Game.window.setScene(Game.randomLevelScene);
+                break;
             default:
                 System.out.println("I told you we would make a mistake !");
                 break;

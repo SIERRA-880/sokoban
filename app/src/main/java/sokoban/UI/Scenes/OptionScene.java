@@ -14,11 +14,10 @@ import sokoban.UI.Widgets.OptionPane;
 import sokoban.UI.Widgets.VideoBg;
 import sokoban.UI.Widgets.KeyBindingPane;
 
-public class OptionScene extends Scene {
+public class OptionScene extends BasicScene {
 
     public OptionScene(StackPane stackPane){
         super(stackPane);
-        stackPane.setStyle("-fx-background-color: #000000;");
         OptionPane optionPane = new OptionPane();
         stackPane.getChildren().add(optionPane);
         StackPane.setMargin(optionPane, new Insets(200.0, 0.0, 0.0, 20.0));

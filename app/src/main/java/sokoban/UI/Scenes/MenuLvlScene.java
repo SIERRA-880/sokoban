@@ -3,7 +3,6 @@ package sokoban.UI.Scenes;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
-import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
@@ -22,23 +21,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 
-public class MenuLvlScene extends Scene {
+public class MenuLvlScene extends BasicScene {
     //Scene that contains a grid of the different level buttons
     StackPane stackPane ;
 
     public MenuLvlScene(StackPane stackPane) {
         super(stackPane);
         this.stackPane= stackPane;
-
-        //cursor
-        try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
-            setCursor(new ImageCursor(image));
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("cursor problem");
-        }
         
         // show all objects
         refresh();
@@ -68,7 +57,7 @@ public class MenuLvlScene extends Scene {
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Fonts file not found (MenuLvlScene:44)");
+            System.out.println("Fonts file not found (MenuLvlScene:56)");
         }
         Label selectLabel = new Label("Select a level :");
         selectLabel.setFont(f);

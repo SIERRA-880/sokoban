@@ -3,11 +3,7 @@ package sokoban;
 import javafx.scene.text.Font;
 import sokoban.Engine.Objects.Level;
 
-import sokoban.UI.Scenes.CreditsScene;
-import sokoban.UI.Scenes.LevelScene;
-import sokoban.UI.Scenes.MenuLvlScene;
-import sokoban.UI.Scenes.VideoScene;
-import sokoban.UI.Scenes.OptionScene;
+import sokoban.UI.Scenes.*;
 
 import javafx.application.Application;
 
@@ -27,6 +23,8 @@ public class Game extends Application {
     public static LevelScene levelScene;
     public static CreditsScene creditsScene;
     public static OptionScene optionScene;
+    public static ArcadeScene arcadeScene;
+    public static RandomLevelScene randomLevelScene;
     public static StackPane pane = new StackPane();
     public static KeyCode up;
     public static KeyCode left;
@@ -63,6 +61,8 @@ public class Game extends Application {
         levelScene = new LevelScene(new StackPane());
         creditsScene = new CreditsScene(new StackPane());
         optionScene = new OptionScene(new StackPane());
+        arcadeScene = new ArcadeScene(new StackPane());
+        randomLevelScene = new RandomLevelScene(new StackPane());
         window.setScene(videoScene);
 
         // window

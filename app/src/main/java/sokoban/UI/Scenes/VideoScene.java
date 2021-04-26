@@ -5,7 +5,6 @@ import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
-import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
@@ -24,7 +23,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static javafx.scene.layout.StackPane.setAlignment;
 import static javafx.scene.layout.StackPane.setMargin;
 
-public class VideoScene extends Scene {
+public class VideoScene extends BasicScene {
 
     public static MediaPlayer Mplayer;
     public static VideoBg vb;
@@ -36,15 +35,6 @@ public class VideoScene extends Scene {
         // video
         vb = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
         stackPane.getChildren().add(vb);
-
-        // cursor
-        try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
-            setCursor(new ImageCursor(image));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("cursor problem");
-        }
 
         // music
         Mplayer = new MediaPlayer(music);
