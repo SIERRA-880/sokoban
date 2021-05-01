@@ -14,7 +14,6 @@ public class World {
     private Player player;
     private ArrayList<Target> targetsList = new ArrayList<Target>();
     private ArrayList<Box> boxesList = new ArrayList<Box>();
-    
 
     public World(int width, int height, Player player) {
         this.width = width;
@@ -22,26 +21,21 @@ public class World {
         this.player = player;
     }
 
-
     public void setMap(MatrixCase[][] matrix) {
         cellsArray = matrix;
     }
 
-
     public MatrixCase[][] getMap() {
         return cellsArray;
     }
-
     
     public void setTargetsList(ArrayList<Target> targetsList) {
         this.targetsList = targetsList;
     }
 
-
     public void setBoxesList(ArrayList<Box> boxesList) {
         this.boxesList = boxesList;
     }
-
 
     /**
      * This method is called when the user want to change the map layout.
@@ -53,7 +47,6 @@ public class World {
         height = MapLoader.getSize(file)[1];
         Builder.init(MapLoader.load(file), player, this, width, height);
     }
-
 
     /**
      * Prints the matrix representing the map cell by cell in a terminal
@@ -67,7 +60,6 @@ public class World {
         }
     }
 
-
     /**
      * 
      * @param pos an array [x,y]
@@ -77,18 +69,20 @@ public class World {
         return cellsArray[pos[1]][pos[0]].getCell();
     }
 
-
     public Cell searchBox(int[] pos) {
         return cellsArray[pos[1]][pos[0]].getCell();
     }
 
-/*
     public Cell[] getNearbyCells(int[] pos) {
         int x = pos[0];
         int y = pos[1];
-        return {searchCell(x-1, y); searchCell(x, y+1); searchCell(x+1, y); searchCell(x, y-1)};
+        int[] up = {x, y-1};
+        int[] left = {x-1, y};
+        int[] down = {x, y+1};
+        int[] right = {x+1, y};
+        Cell[] nearbyCellsArray = {searchCell(up), searchCell(left), searchCell(right), searchCell(down)};
+        return nearbyCellsArray;
     }
-*/
 
     public void moveCell(Cell cell, int[] oldPos, int[] newPos) {
         cellsArray[oldPos[1]][oldPos[0]].remove();
@@ -119,7 +113,6 @@ public class World {
             return false;
         }
     }
-
 
     @Override
     public String toString() {

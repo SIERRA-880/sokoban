@@ -14,7 +14,7 @@ public class MovReplay {
         level.setLevel(args[0]);
         String moves = "";
         try {
-            File myObj = new File("build/resources/main/levels/replays/"+args[1]);
+            File myObj = new File("build/resources/main/appdata/movements/"+args[1]);
             Scanner myReader = new Scanner(myObj);
             moves = myReader.nextLine();
         }

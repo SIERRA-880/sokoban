@@ -111,6 +111,18 @@ public class Cell {
     }
 
     /**
+     * Method used to check both the soft collisions and hard collisions.
+     *
+     * @return true if there is a soft collision or hard collision.
+     */
+    public boolean collisions() {
+        if (softCollision() || hardCollision()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Method used to set a given resource pack as current resource pack.
      * @param resourcePack is the path to the resource pack's folder.
      */

@@ -12,7 +12,7 @@ import sokoban.Engine.Objects.Level;
 import sokoban.Game;
 import sokoban.ScenesEnum;
 
-import sokoban.Engine.Tools.MapGenerator;
+import sokoban.Engine.Tools.Generation.*;
 import sokoban.Engine.Objects.*;
 
 public class RandomLevelScene extends BasicScene {

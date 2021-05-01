@@ -1,4 +1,4 @@
-package sokoban.Engine.Tools;
+package sokoban.Engine.Tools.Generation;
 
 import sokoban.Engine.Objects.MatrixCase;
 import sokoban.Engine.Objects.Wall;
