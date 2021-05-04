@@ -101,6 +101,7 @@ public class MapGenerator {
         // move player 
         int[] newPos = rngPos(world);
         world.moveCell(player, pos, newPos); 
+        player.setCellPos(newPos);
 
         level.setWorld(world);
         level.setPlayer(player);

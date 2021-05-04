@@ -41,6 +41,7 @@ public class RandomLevelScene extends BasicScene {
 
     public void mkRandom(int width, int height) {
         Game.level = MapGenerator.generate(width, height, 2);
+        Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
         Game.levelScene.map.showMap();
         Controller.switchScene(ScenesEnum.LEVELSCENE);
     }

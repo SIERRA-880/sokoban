@@ -82,7 +82,6 @@ public class LevelScene extends BasicScene {
                 moveBox.play();
             }
 
-
         } else if (keyCode.equals(Game.right)) {
             player.setTexture("right");
             if (player.move("right", world)) {
