@@ -24,7 +24,6 @@ public class Cell {
     }
 
     /**
-     * 
      * @return position of the {@link sokoban.Engine.Objects.Cell}
      */
     public int[] getCellPos() {
@@ -33,7 +32,6 @@ public class Cell {
 
     /**
      * Set the given position to the current {@link sokoban.Engine.Objects.Cell}
-     * 
      * @param newPos Array of int containg coordinates (x,y)
      */
     public void setCellPos(int[] newPos) {
@@ -42,7 +40,6 @@ public class Cell {
     }
 
     /**
-     * 
      * @param direction String (up,left,down,right) direction
      * @return the position of the {@link sokoban.Engine.Objects.Cell} if the player wants to move it in the given direction
      */
@@ -94,7 +91,6 @@ public class Cell {
 
     /**
      * Method used to access the value of the private variable hardCollision.
-     *
      * @return true if the {@link sokoban.Engine.Objects.Cell} cannot be pushed or passes through ({@link sokoban.Engine.Objects.Box} against {@link sokoban.Engine.Objects.Wall})
      */
     public boolean hardCollision() {
@@ -103,7 +99,6 @@ public class Cell {
 
     /**
      * Method used to access the value of the private variable hardCollision.
-     *
      * @return true if there is a soft colision ({@link sokoban.Engine.Objects.Player} pushing {@link sokoban.Engine.Objects.Box})
      */
     public boolean softCollision() {
@@ -112,7 +107,6 @@ public class Cell {
 
     /**
      * Method used to check both the soft collisions and hard collisions.
-     *
      * @return true if there is a soft collision or hard collision.
      */
     public boolean collisions() {

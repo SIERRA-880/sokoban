@@ -13,27 +13,31 @@ public class MoveableCell extends Cell {
 
     /**
      * 
-     * @param direction char (z,q,s,d) representing (up,left,down,right) direction
-     * @param world
+     * @param direction String (up, down, right, left) for the direction.
+     * @param world current working world.
      * @return true if the {@link sokoban.Engine.Objects.Cell} is movable. That doesn't mean that it can actually be moved ! See {@link sokoban.Engine.Objects.Cell#hardCollision()} and {@link sokoban.Engine.Objects.Cell#softCollision()}
      */
     public boolean isMoveable(String direction, World world) {
         int[] nextPos = getNextPos(direction);
         Cell nextCell;
-
-        // test of the type of the next cell :
         nextCell = world.searchCell(nextPos);
 
+        // if next cell has hardCollision
         if (nextCell.hardCollision()) {
             return false;
         } 
+
+        // if next cell has softCollision 
         else if (nextCell.softCollision()) {
-            // if the next cell can be pushed check the following :
             int[] nextNextPos = nextCell.getNextPos(direction);
             Cell nextNextCell = world.searchCell(nextNextPos);
-            if (nextNextCell.hardCollision() || nextNextCell.softCollision()) {
+
+            // if next next cell has collisions
+            if (nextNextCell.collisions()) {
                 return false;
             }
+
+            // if next next cell hasn't collisions
             else {
                 world.moveCell(nextCell, nextCell.getCellPos(), nextNextPos);
                 nextCell.setCellPos(nextNextPos);
@@ -41,6 +45,8 @@ public class MoveableCell extends Cell {
                 return true;
             }
         } 
+
+        // if next cell hasn't collisions
         else {
             boxMoved = false;
             return true;
@@ -50,8 +56,8 @@ public class MoveableCell extends Cell {
     /**
      * Moves the {@link sokoban.Engine.Objects.Cell} from initial position to next position using ({@link sokoban.Engine.Objects.Cell#getNextPos(String)}) to find it.
      * and return true if a box has been moved.
-     * @param direction char (z,q,s,d) representing (up,left,down,right) direction
-     * @param world
+     * @param direction String (up, down, right, left) for the direction.
+     * @param world is the current working world.
      */
     public boolean move(String direction, World world) {
         /** This method change the cell's position depending on the given direction */

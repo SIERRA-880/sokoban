@@ -17,7 +17,7 @@ public class Level {
      * @param map is a string containing a map name. ex: map1 
      */
     public void setLevel(String map) {
-        //nlevel = Integer.parseInt(map.charAt(map.length()-1)+"");
+        // regex to get the level number
         nlevel = Integer.parseInt(map.replaceAll("[^0-9]", ""));
         int[] pos = {0, 0};
         this.map = MapLoader.load("build/resources/main/levels/"+map+".xsb"); 

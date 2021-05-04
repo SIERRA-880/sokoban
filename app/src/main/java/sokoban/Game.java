@@ -32,7 +32,6 @@ public class Game extends Application {
     public static KeyCode right;
 
     public static void main(String[] args)  {
-
         launch(args);
     }
 

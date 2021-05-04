@@ -16,10 +16,8 @@ import java.util.ArrayList;
 public class Builder {
     
     /**
-     * This method will set a matrix filled of MatrixCase objects (it contents 2 cell objects) that represents 
-     * the map.
-     * This matrix is created by iterating a string that contents
-     * It set a list of all the boxes and an other of all the targets of the level.
+     * This build a map for a given World with a given String.
+     * Each character of the String will be a cell on the map.
      * 
      * @param mapConfig string containing the initial configuration of the map
      * @param player Player object created in sokoban.Game before calling this method

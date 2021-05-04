@@ -17,5 +17,4 @@ public class Box extends MoveableCell {
     public char getTermTexture() {
         return termTexture;
     }
-    
 }

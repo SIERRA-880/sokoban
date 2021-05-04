@@ -17,5 +17,4 @@ public class Empty extends Cell {
     public char getTermTexture() {
         return termTexture;
     }
-
 }
