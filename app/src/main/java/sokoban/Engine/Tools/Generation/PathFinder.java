@@ -55,6 +55,7 @@ public class PathFinder {
 
         for (int i=0; i<height; i++) {
             for (int j=0; j<width; j++) {
+                nodeDetails[i][j] = new Node();
                 nodeDetails[i][j].f = Double.MAX_VALUE;    
                 nodeDetails[i][j].g = Double.MAX_VALUE;    
                 nodeDetails[i][j].h = Double.MAX_VALUE;    
@@ -125,8 +126,8 @@ public class PathFinder {
                 // If the destination node is the same as the current successor
                 int[] pos = {j, i+1};
                 if (isDestination(j, i+1, end[0], end[1])) {
-                    nodeDetails[i-1][j].parent_i = i;
-                    nodeDetails[i-1][j].parent_j = j;
+                    nodeDetails[i+1][j].parent_i = i;
+                    nodeDetails[i+1][j].parent_j = j;
                     System.out.println("Ending cell found");
                     foundDest = true;
                     return;
@@ -217,6 +218,9 @@ public class PathFinder {
         if (foundDest==false) {
             System.out.println("Failed to find the destination");
             return;
+        }
+        else if (foundDest==true) {
+            System.out.println("Destination found");
         }
     }
 }

@@ -98,35 +98,37 @@ public class LevelScene extends BasicScene {
             MoveLogger.writeToNewestFile();
 
             // store the save file in an array
-            try {
-                int currentLevel = Game.level.nlevel;
-                int[] levels = new int[15];
-                String workingDirectory = System.getProperty("user.dir");
-                String absoluteFilePath = "";
-                absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "saves";
-                Path dir = Paths.get(absoluteFilePath);
-                File saves = new File(absoluteFilePath);
-                Scanner myReader = new Scanner(saves);
-                int i = 0;
-                while (myReader.hasNextLine()) {
-                    String currentLine = myReader.nextLine();
-                    levels[i] = Integer.parseInt(currentLine);
-                    i++;
-                }
-                myReader.close();
-                boolean write = true;
-                for (int n : levels) {
-                    if (currentLevel+1 == n) {
-                        write = false;
+            if (Game.level.nlevel > 0) {
+                try {
+                    int currentLevel = Game.level.nlevel;
+                    int[] levels = new int[15];
+                    String workingDirectory = System.getProperty("user.dir");
+                    String absoluteFilePath = "";
+                    absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "saves";
+                    Path dir = Paths.get(absoluteFilePath);
+                    File saves = new File(absoluteFilePath);
+                    Scanner myReader = new Scanner(saves);
+                    int i = 0;
+                    while (myReader.hasNextLine()) {
+                        String currentLine = myReader.nextLine();
+                        levels[i] = Integer.parseInt(currentLine);
+                        i++;
+                    }
+                    myReader.close();
+                    boolean write = true;
+                    for (int n : levels) {
+                        if (currentLevel+1 == n) {
+                            write = false;
+                        }
+                    }
+                    if (currentLevel==levels[currentLevel-1] && currentLevel!=15 && write) { 
+                        currentLevel++;
+                        Files.writeString(dir, "\n"+currentLevel+"", StandardOpenOption.APPEND);
                     }
                 }
-                if (currentLevel==levels[currentLevel-1] && currentLevel!=15 && write) { 
-                    currentLevel++;
-                    Files.writeString(dir, "\n"+currentLevel+"", StandardOpenOption.APPEND);
+                catch (IOException e) {
+                    e.printStackTrace();
                 }
-            }
-            catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }

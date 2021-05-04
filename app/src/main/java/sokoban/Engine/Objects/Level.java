@@ -11,9 +11,6 @@ public class Level {
     private int[] size;
     public int nlevel;
   
-    public Level() {
-    }
-
     /**
      * This method set the options for  an instance of a level.
      *
@@ -36,5 +33,9 @@ public class Level {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void setNLevel(int n) {
+        nlevel = n;
     }
 }

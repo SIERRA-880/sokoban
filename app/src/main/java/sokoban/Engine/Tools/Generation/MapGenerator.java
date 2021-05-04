@@ -3,6 +3,9 @@ package sokoban.Engine.Tools.Generation;
 import sokoban.Engine.Objects.MatrixCase;
 import sokoban.Engine.Objects.Wall;
 import sokoban.Engine.Objects.Cell;
+import sokoban.Engine.Objects.World;
+import sokoban.Engine.Objects.Player;
+import sokoban.Engine.Objects.Level;
 
 import sokoban.CellsEnum;
 
@@ -66,8 +69,48 @@ public class MapGenerator {
         return wallsMap;
     }
 
-    public static MatrixCase[][] generate(int width, int height, int difficulty) {
+    public static int[] rngPos(World world) {
+        Random random = new Random();
+        boolean stop = true;
+        int[] pos = new int[2];
+        while (stop) { 
+            pos[0] = random.nextInt(world.width);
+            pos[1] = random.nextInt(world.height);
+            if (!world.searchCell(pos).collisions() && pos[0]!=0 && pos[1]!=0) {
+                stop = false;     
+            }
+        }
+        return pos;
+    }
+
+    public static Level generate(int width, int height, int difficulty) {
+        // level
+        Level level = new Level();
+
+        // player
+        int[] pos = {0, 0};
+        Player player = new Player(pos, "/Cells/player_down.png");
+
+        // world
+        World world = new World(width, height, player);
         MatrixCase[][] map = mkWalls(mkMap(width, height), difficulty);
-        return map;
+        Wall wall  = new Wall(pos, "/Cells/wall.png");
+        MatrixCase playerCase = new MatrixCase(player, wall);
+        map[pos[1]][pos[0]] = playerCase; 
+        world.setMap(map);
+        // move player 
+        int[] newPos = rngPos(world);
+        world.moveCell(player, pos, newPos); 
+
+        level.setWorld(world);
+        level.setPlayer(player);
+        level.setNLevel(0);
+
+        // pathfinding
+        int[] start = {1, 1};
+        int[] end = {8, 8};
+        PathFinder.find(world, start, end);
+
+        return level;
     }
 }

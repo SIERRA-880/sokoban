@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class World {
     
-    private int width;
-    private int height;
+    public int width;
+    public int height;
     private MatrixCase[][] cellsArray;
     private Player player;
     private ArrayList<Target> targetsList = new ArrayList<Target>();

@@ -40,14 +40,7 @@ public class RandomLevelScene extends BasicScene {
     }
 
     public void mkRandom(int width, int height) {
-        Level level = new Level();
-        int[] pos = {0, 0};
-        Player player = new Player(pos, "/Cells/player_down.png");
-        World world = new World(width, height, player);
-        world.setMap(MapGenerator.generate(width, height, 2));
-        level.setWorld(world);
-        level.setPlayer(player);
-        Game.level = level;
+        Game.level = MapGenerator.generate(width, height, 2);
         Game.levelScene.map.showMap();
         Controller.switchScene(ScenesEnum.LEVELSCENE);
     }
