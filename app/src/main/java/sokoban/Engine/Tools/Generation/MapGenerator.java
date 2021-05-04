@@ -1,11 +1,6 @@
 package sokoban.Engine.Tools.Generation;
 
-import sokoban.Engine.Objects.MatrixCase;
-import sokoban.Engine.Objects.Wall;
-import sokoban.Engine.Objects.Cell;
-import sokoban.Engine.Objects.World;
-import sokoban.Engine.Objects.Player;
-import sokoban.Engine.Objects.Level;
+import sokoban.Engine.Objects.*;
 
 import sokoban.CellsEnum;
 
@@ -95,6 +90,15 @@ public class MapGenerator {
         return pos;
     }
 
+    public static void mkBox(World world) {
+        MatrixCase[][] map = world.getMap();
+        int[] pos = rngPos(world);
+        Box box  = new Box(pos, "/Cells/box.png");
+        Target target  = new Target(pos, "/Cells/target.png");
+        MatrixCase boxCase = new MatrixCase(box, target);
+        map[pos[1]][pos[0]] = boxCase; 
+    }
+
     public static Level generate(int width, int height, int difficulty) {
         // player
         int[] pos = {0, 0};
@@ -112,6 +116,9 @@ public class MapGenerator {
         int[] newPos = rngPos(world);
         world.moveCell(player, pos, newPos); 
         player.setCellPos(newPos);
+
+        // box
+        mkBox(world);
 
         // level
         Level level = new Level();

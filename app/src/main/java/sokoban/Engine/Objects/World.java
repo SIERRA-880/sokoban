@@ -25,6 +25,12 @@ public class World {
         cellsArray = matrix;
     }
 
+    public void setWall(int[] pos) {
+        Wall wall = new Wall(pos, "/Cells/wall.png");
+        MatrixCase wallCase = new MatrixCase(wall, wall);
+        cellsArray[pos[1]][pos[0]] = wallCase;
+    }
+
     public MatrixCase[][] getMap() {
         return cellsArray;
     }
