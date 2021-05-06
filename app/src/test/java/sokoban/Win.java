@@ -6,6 +6,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class Win {
+
+    /*
+     * Check if this game is a win. (all boxes on target)
+     */
     @Test public void win1() {
         Level level = new Level();
         level.setLevel("test1");
@@ -13,6 +17,9 @@ public class Win {
         assertEquals(true,level.world.winCondition());
     }
 
+    /*
+     * Check if this game is a win. (all boxes on target)
+     */
     @Test public void win2() {
         Level level = new Level();
         level.setLevel("test2");
@@ -20,4 +27,15 @@ public class Win {
         level.player.move("left", level.world);
         assertEquals(true,level.world.winCondition());
     }
+    
+    /*
+     * Check if this game is a win. (all boxes on target)
+     */
+    /*
+    @Test public void win3() {
+        Level level = new Level();
+        level.setLevel("map1");
+        assertEquals(true,XsbComparator.compare(MovReplay.replay(level, map1.mov),solved1.xsb));
+    }
+    */
 }

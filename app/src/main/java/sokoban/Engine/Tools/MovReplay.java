@@ -1,20 +1,19 @@
 package sokoban.Engine.Tools;
 
 import sokoban.Engine.Objects.Level;
+import sokoban.Engine.Objects.World;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MovReplay {
-   
-    public static void main(String[] args) {
-
-        Level level = new Level();
-        level.setLevel(args[0]);
-        String moves = "";
+    
+    public static Level replay(Level level, String moves) {
+        
+//        String moves = "";
         try {
-            File myObj = new File("build/resources/main/appdata/movements/"+args[1]);
+            File myObj = new File("build/resources/main/appdata/movements/"+moves);
             Scanner myReader = new Scanner(myObj);
             moves = myReader.nextLine();
         }
@@ -40,12 +39,19 @@ public class MovReplay {
             }
             level.world.printMap();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
                 System.out.println("Problem with Thread.sleep() (MovReplay:28)");
             }
         }
+        return level;
+    }
+
+    public static void main(String[] args) {
+        Level level = new Level();
+        level.setLevel(args[0]);
+        System.out.println(replay(level, args[1]));
     }
 }

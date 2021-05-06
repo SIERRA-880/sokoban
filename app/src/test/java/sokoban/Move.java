@@ -12,18 +12,27 @@ public class Move {
         assertEquals('$', box.getTermTexture());
     }
 
+    /*
+     * Check if a box being push is moved to the good position
+     */
     @Test public void pushBox() {
         Level level = new Level();
         level.setLevel("test1");
         assertEquals(true,level.player.move("right", level.world));
     }
 
+    /*
+     * Check if a box being pushed against a wall stays at it's original position
+     */
     @Test public void pushBoxOnWall() {
         Level level = new Level();
         level.setLevel("test1");
         assertEquals(false,level.player.move("down", level.world));
     }
 
+    /*
+     * Check if a player can walk into a wall
+     */
     @Test public void goInWall() {
         Level level = new Level();
         level.setLevel("test1");
@@ -33,6 +42,9 @@ public class Move {
         assertEquals(pos[1],level.player.getCellPos()[1]);
     }
 
+    /*
+     * Check if player can move to an empty cell
+     */
     @Test public void goInEmpty() {
         Level level = new Level();
         level.setLevel("test1");
