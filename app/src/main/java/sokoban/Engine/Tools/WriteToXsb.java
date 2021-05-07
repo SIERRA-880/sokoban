@@ -1,6 +1,12 @@
 package sokoban.Engine.Tools;
 
 import sokoban.Engine.Objects.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileOutputStream;
 
 public class WriteToXsb {
 
@@ -29,10 +35,26 @@ public class WriteToXsb {
     }
 
     /**
-     * @param map The level stored on one String from {@link #levelToString(Level level)}
-     * @param width An int, the width of the level
+     * Output a Level to .xsb format in build/resources/main/levels/
+     * @param fileName A String containing the name of the output file
      */
-    public static void writeToXsb(String map, int width) {
+    public static void write(String fileName, Level level) {
+        try {
+            // Use of System.getProperty("user.dir") to get the actual directory (eg. /home/ugo/games/sokoban)
+            String workingDirectory = System.getProperty("user.dir");
+            String absoluteFilePath = "";
+            // Use of File.separator so it's working regardless the operating system
+            absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "levels" + File.separator + fileName + ".xsb";
         
+            File file = new File(absoluteFilePath);
+            file.createNewFile();
+            
+            FileOutputStream writer = new FileOutputStream(file);
+            byte[] strToByte = levelToString(level).getBytes();
+            writer.write(strToByte);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //createFile(fileName);
     }
 }

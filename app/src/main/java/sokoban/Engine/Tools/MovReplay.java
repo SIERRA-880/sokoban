@@ -2,6 +2,7 @@ package sokoban.Engine.Tools;
 
 import sokoban.Engine.Objects.Level;
 import sokoban.Engine.Objects.World;
+import sokoban.Engine.Tools.WriteToXsb;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,7 +14,7 @@ public class MovReplay {
         
 //        String moves = "";
         try {
-            File myObj = new File("build/resources/main/appdata/movements/"+moves);
+            File myObj = new File("build/resources/main/appdata/movements/"+ moves + ".mov");
             Scanner myReader = new Scanner(myObj);
             moves = myReader.nextLine();
         }
@@ -46,6 +47,7 @@ public class MovReplay {
                 System.out.println("Problem with Thread.sleep() (MovReplay:28)");
             }
         }
+        WriteToXsb.write("out1", level);
         return level;
     }
 
