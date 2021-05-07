@@ -20,6 +20,7 @@ public class MoveLogger {
      * @param level The level name, this will be appended at the end of the file
      */
     public static void createFile(String level) {
+        // Format the actual time and date
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
         String formattedDate = date.format(format);
@@ -27,9 +28,10 @@ public class MoveLogger {
         // Create file named "dd/mm/yy_hh:mm:ss_level.mov"
         try {
             String fileName = formattedDate + "_" + level + ".mov";
+            // Use of System.getProperty("user.dir") to get the actual directory (eg. /home/ugo/games/sokoban)
             String workingDirectory = System.getProperty("user.dir");
             String absoluteFilePath = "";
-            
+            // Use of File.separator so it's working regardless the operating system
             absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "movements" + File.separator + fileName;
         
             File file = new File(absoluteFilePath);
@@ -37,7 +39,7 @@ public class MoveLogger {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        // Emptying movements to avoid concatenating multiple levels movements when the user starts another level.
         movements.clear();
     }
 
@@ -88,7 +90,7 @@ public class MoveLogger {
     }
 
     /**
-     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger#getNewestFile()} and write to it.
+     * Find the newest file with the method {@link sokoban.Engine.Tools.MoveLogger#getNewestFile()} and write movements to it.
      */
     public static void writeToNewestFile() {
         try {
