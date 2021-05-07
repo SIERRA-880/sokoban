@@ -9,31 +9,6 @@ import java.io.IOException;
 import java.io.FileOutputStream;
 
 public class WriteToXsb {
-
-    /**
-     * @param level take a Level as parameter
-     * @return A String containing the entire level on one line
-     */
-    public static String levelToString(Level level) {
-        // Takes the attribute world fron the class Level
-        World world = level.world;
-
-        // Initializing the String that will contains the output
-        String output = "";
-
-        // Double for loop to iterate trough the entire world
-        for (int i = 0; i < world.height; i++) {
-            for (int j = 0; j < world.width; j++) {
-                // Creating an array of int to pass as a parameter for searchCell(pos)
-                int[] pos = {j,i};
-
-                Cell cell = world.searchCell(pos);
-                output += cell.getTermTexture();
-            }
-        }
-        return output;
-    }
-
     /**
      * Output a Level to .xsb format in build/resources/main/levels/
      * @param fileName A String containing the name of the output file
@@ -48,10 +23,18 @@ public class WriteToXsb {
         
             File file = new File(absoluteFilePath);
             file.createNewFile();
-            
-            FileOutputStream writer = new FileOutputStream(file);
-            byte[] strToByte = levelToString(level).getBytes();
-            writer.write(strToByte);
+            FileWriter writer = new FileWriter(file);
+
+            String mapString = level.toString();
+            int n = 0;
+            while (n < mapString.length()) {
+                for (int i=0; i<level.world.width; i++) {
+                    char mapChar = mapString.charAt(n++);
+                    writer.write(mapChar+"");
+                }
+                writer.write("\n");
+            }
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

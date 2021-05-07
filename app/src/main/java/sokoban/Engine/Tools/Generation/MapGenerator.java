@@ -1,10 +1,10 @@
 package sokoban.Engine.Tools.Generation;
 
 import sokoban.Engine.Objects.*;
-
 import sokoban.CellsEnum;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 public class MapGenerator {
 
@@ -56,15 +56,15 @@ public class MapGenerator {
         // for each cell that is not a wall it try to spawn a new wall
         for (int line=0; line<map.length; line++) {
             for (int column=0; column<map[line].length; column++) {
-               Cell cell = map[line][column].getCell(); 
-               if (!(cell.getTermTexture()=='#')) {
-                   if (spawnRate >= random.nextInt(100)+1) {
-                       int[] pos = {column, line};
-                       Wall wall = new Wall(pos, "/Cells/wall.png");
-                       MatrixCase wallCase = new MatrixCase(wall, wall);
-                       wallsMap[line][column] = wallCase;
-                   }
-               }
+                Cell cell = map[line][column].getCell(); 
+                if (!(cell.getTermTexture()=='#')) {
+                    if (spawnRate >= random.nextInt(100)+1) {
+                        int[] pos = {column, line};
+                        Wall wall = new Wall(pos, "/Cells/wall.png");
+                        MatrixCase wallCase = new MatrixCase(wall, wall);
+                        wallsMap[line][column] = wallCase;
+                    }
+                }
             }
         }
         return wallsMap;
@@ -90,13 +90,93 @@ public class MapGenerator {
         return pos;
     }
 
-    public static void mkBox(World world) {
-        MatrixCase[][] map = world.getMap();
-        int[] pos = rngPos(world);
-        Box box  = new Box(pos, "/Cells/box.png");
-        Target target  = new Target(pos, "/Cells/target.png");
-        MatrixCase boxCase = new MatrixCase(box, target);
-        map[pos[1]][pos[0]] = boxCase; 
+    public static void mvBox(World world, Player player) {
+        // arrayLists
+        ArrayList<Target> targetList = new ArrayList<Target>();
+        ArrayList<Box> boxesList = new ArrayList<Box>();
+
+        System.out.println("----------------------------------------");
+        for (int nb = 4; nb > 0; nb--) {
+            // make a box and a target 
+            MatrixCase[][] map = world.getMap();
+            int[] rng = rngPos(world);
+            int[] pos = {rng[0], rng[1]};
+            int[] tPos = {rng[0], rng[1]};
+            Target target  = new Target(tPos, "/Cells/target.png");
+            Box box  = new Box(pos, "/Cells/box.png");
+            MatrixCase boxCase = new MatrixCase(box, target);
+            map[pos[1]][pos[0]] = boxCase; 
+            targetList.add(target);
+            boxesList.add(box);
+
+            int[] iPos = box.getCellPos();
+            System.out.println("init : " + iPos[0] + " " + iPos[1]);
+            for (int nm = 0; nm<10; nm++) {
+                boolean playerNextToBox = false;
+                Cell[] nearbyCells = world.getNearbyCells(box.getCellPos());
+                int n = 0;
+
+                // check if there's a path to the box
+                for (Cell cell : nearbyCells) {
+                    n+=1;
+
+                    // move the player if a path is found 
+                    if (PathFinder.find(world, player.getCellPos(), cell.getCellPos())) {
+                        world.moveCell(player, player.getCellPos(), cell.getCellPos());
+                        player.setCellPos(cell.getCellPos());
+                        playerNextToBox = true;
+                        break;
+                    }
+                    
+                    // if there's no path to the box
+                    else if (n==4 && !playerNextToBox) {
+                        break;
+                    }
+                }
+
+                if (playerNextToBox) {
+                     int o = 0;
+                     Cell[] playerNearbyCells = world.getNearbyCells(player.getCellPos());
+                     String direction = "up";
+                     for (Cell cell1 : playerNearbyCells) {
+                         if (cell1.getCellType() == CellsEnum.BOX) {
+                             switch(o) {
+                                 case 0:
+                                     direction = "down";
+                                     break;
+                                 case 1:
+                                     direction = "right";
+                                     break;
+                                 case 2:
+                                     direction = "left";
+                                     break;
+                                 case 3:
+                                     direction = "up";
+                                     break;
+                             }
+                         }
+                         o+=1;
+                     }
+                     player.pull(direction, world);
+                }
+
+                /*
+                // remove the box if there's no path to the box
+                for (int e=checkList.size()-1; e>=0; e--) {
+                    MatrixCase[][] wmap = world.getMap();
+                    Box rmBox = boxesList.get(checkList.get(e));
+                    int[] boxPos = rmBox.getCellPos();
+                    System.out.println(boxPos[0] + " " + boxPos[1]);
+                    Cell cell = new Cell(boxPos, CellsEnum.CELL, "/Cells/ground.png", false, false);
+                    MatrixCase cellCase = new MatrixCase(cell, cell);
+                    wmap[boxPos[1]][boxPos[0]] = cellCase;
+                    boxesList.remove(checkList.get(e));
+                }
+                */
+            }
+        }
+        world.setTargetsList(targetList);
+        world.setBoxesList(boxesList);
     }
 
     public static Level generate(int width, int height, int difficulty) {
@@ -118,18 +198,13 @@ public class MapGenerator {
         player.setCellPos(newPos);
 
         // box
-        mkBox(world);
+        mvBox(world, player);
 
         // level
         Level level = new Level();
         level.setWorld(world);
         level.setPlayer(player);
         level.setNLevel(0);
-
-        // pathfinding
-        int[] start = {1, 1};
-        int[] end = {8, 8};
-        PathFinder.find(world, start, end);
 
         return level;
     }
