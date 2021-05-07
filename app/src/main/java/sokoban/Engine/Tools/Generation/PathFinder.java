@@ -20,7 +20,7 @@ public class PathFinder {
      * This algorithm and the explanations for it can be found here :
      * https://www.geeksforgeeks.org/a-search-algorithm/
      */
-    public static void find(World world, int[] start, int[] end) {
+    public static boolean find(World world, int[] start, int[] end) {
 
         final MatrixCase[][] matrix = world.getMap();
         final int width = matrix[0].length;
@@ -38,14 +38,14 @@ public class PathFinder {
         
         // If the starting or ending cell is blocked
         if (world.searchCell(start).collisions() || world.searchCell(end).collisions()) {
-            System.out.println("Starting or ending cell is blocked");
-            return;
+            //System.out.println("Starting or ending cell is blocked");
+            return false;
         }
 
         // If the starting and ending cell are the same
         if (start[0]==end[0] && start[1]==end[1]) {
-            System.out.println("The starting cell is the ending cell");
-            return;
+            //System.out.println("The starting cell is the ending cell");
+            return false;
         }
 
         // closed list
@@ -97,9 +97,9 @@ public class PathFinder {
                 if (isDestination(j, i-1, end[0], end[1])) {
                     nodeDetails[i-1][j].parent_i = i;
                     nodeDetails[i-1][j].parent_j = j;
-                    System.out.println("Ending cell found");
+                    //System.out.println("Ending cell found");
                     foundDest = true;
-                    return;
+                    return true;
                 }
                 // If the successor is already on the closed list or if it is blocked
                 // ignore it. Else do the following
@@ -128,9 +128,9 @@ public class PathFinder {
                 if (isDestination(j, i+1, end[0], end[1])) {
                     nodeDetails[i+1][j].parent_i = i;
                     nodeDetails[i+1][j].parent_j = j;
-                    System.out.println("Ending cell found");
+                    //System.out.println("Ending cell found");
                     foundDest = true;
-                    return;
+                    return true;
                 }
                 // If the successor is already on the closed list or if it is blocked
                 // ignore it. Else do the following
@@ -159,9 +159,9 @@ public class PathFinder {
                 if (isDestination(j-1, i, end[0], end[1])) {
                     nodeDetails[i][j-1].parent_i = i;
                     nodeDetails[i][j-1].parent_j = j;
-                    System.out.println("Ending cell found");
+                    //System.out.println("Ending cell found");
                     foundDest = true;
-                    return;
+                    return true;
                 }
                 // If the successor is already on the closed list or if it is blocked
                 // ignore it. Else do the following
@@ -190,9 +190,9 @@ public class PathFinder {
                 if (isDestination(j+1, i, end[0], end[1])) {
                     nodeDetails[i][j+1].parent_i = i;
                     nodeDetails[i][j+1].parent_j = j;
-                    System.out.println("Ending cell found");
+                    //System.out.println("Ending cell found");
                     foundDest = true;
-                    return;
+                    return true;
                 }
                 // If the successor is already on the closed list or if it is blocked
                 // ignore it. Else do the following
@@ -216,11 +216,11 @@ public class PathFinder {
         }
 
         if (foundDest==false) {
-            System.out.println("Failed to find the destination");
-            return;
+            //System.out.println("Failed to find the destination");
         }
         else if (foundDest==true) {
-            System.out.println("Destination found");
+            //System.out.println("Destination found");
         }
+        return false;
     }
 }

@@ -38,4 +38,21 @@ public class Level {
     public void setNLevel(int n) {
         nlevel = n;
     }
+
+    @Override
+    public String toString() {
+        // Initializing the String that will contains the output
+        String output = "";
+
+        // Double for loop to iterate trough the entire world
+        for (int i = 0; i < world.height; i++) {
+            for (int j = 0; j < world.width; j++) {
+                // Creating an array of int to pass as a parameter for searchCell(pos)
+                int[] pos = {j,i};
+                Cell cell = world.searchCell(pos);
+                output += cell.getTermTexture();
+            }
+        }
+        return output;
+    }
 }

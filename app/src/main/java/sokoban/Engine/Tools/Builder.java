@@ -87,7 +87,8 @@ public class Builder {
                         break;
 
                     case '*':
-                        Target starTarget = new Target(pos, "/Cells/target.png");
+                        int[] tPos = {column, line}; 
+                        Target starTarget = new Target(tPos, "/Cells/target.png");
                         Box starBox = new Box(pos, "/Cells/box.png");
                         MatrixCase starCase = new MatrixCase(starBox, starTarget);
                         cellsMatrix[line][column] = starCase;
