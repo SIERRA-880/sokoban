@@ -16,6 +16,7 @@ import sokoban.UI.Widgets.OptionPane;
 import sokoban.UI.Widgets.VideoBg;
 import sokoban.UI.Widgets.KeyBindingPane;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
@@ -32,23 +33,33 @@ public class OptionScene extends BasicScene {
         StackPane.setMargin(optionPane, new Insets(200.0, 0.0, 0.0, 20.0));
 
         // backButton
-        BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchScene(ScenesEnum.VIDEOSCENE);
-                                VideoBg.Vplayer.play();
-                                VideoScene.Mplayer.play();});
-        stackPane.getChildren().add(bbutton);
-        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+        BackButton bbutton = null;
+        try {
+            bbutton = new BackButton();
+            bbutton.setOnAction(e -> {
+                Controller.switchScene(ScenesEnum.VIDEOSCENE);
+                VideoBg.Vplayer.play();
+                VideoScene.Mplayer.play();
+            });
+            stackPane.getChildren().add(bbutton);
+            StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+            StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+        }catch (FileNotFoundException e) {
+            Controller.alert("The image of the back button could not be loaded please check the file path in the OptionScene",
+                    ScenesEnum.VIDEOSCENE);
+        }
 
         // keyBind
         KeyBindingPane kbp = new KeyBindingPane();
         stackPane.getChildren().add(kbp);
         StackPane.setMargin(kbp, new Insets(20.0, 0.0, 0.0, 500.0));
-        bbutton.setOnAction(e -> {
-            Controller.switchScene(ScenesEnum.VIDEOSCENE);
-            VideoBg.Vplayer.play();
-            VideoScene.Mplayer.play();
-        });
+        if (bbutton != null) {
+            bbutton.setOnAction(e -> {
+                Controller.switchScene(ScenesEnum.VIDEOSCENE);
+                VideoBg.Vplayer.play();
+                VideoScene.Mplayer.play();
+            });
+        }
         try {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/" +
                     "cursor_pointerFlat.png"));  //pass in the image path

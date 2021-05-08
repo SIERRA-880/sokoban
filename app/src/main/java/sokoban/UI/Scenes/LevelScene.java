@@ -59,12 +59,16 @@ public class LevelScene extends BasicScene {
         map.showMap();
 
         // backButton
-        BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->Controller.switchScene(previousScene));
-        stackPane.getChildren().add(bbutton);
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
-
+        try {
+            BackButton bbutton = new BackButton();
+            bbutton.setOnAction(e -> Controller.switchScene(previousScene));
+            stackPane.getChildren().add(bbutton);
+            StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+            StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        }catch (FileNotFoundException e) {
+            Controller.alert("The image of the back button could not be loaded please check the file path in the LevelScene",
+                    previousScene);
+        }
         // up button
         try {
             ImageButton upButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",

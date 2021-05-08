@@ -112,17 +112,22 @@ public class BuilderScene extends BasicScene {
                 ScenesEnum.ARCADESCENE);}
 
         // backButton
-        BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->Controller.switchScene(ScenesEnum.ARCADESCENE));
-
-        // stackPane
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        try {
+            BackButton bbutton = new BackButton();
+            bbutton.setOnAction(e -> Controller.switchScene(ScenesEnum.ARCADESCENE));
+            // stackPane
+            StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+            StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+            stackPane.getChildren().add(bbutton);
+        }catch (FileNotFoundException e) {
+            Controller.alert("The image of the back button could not be loaded please check the file path in the BuilderScene",
+                    ScenesEnum.VIDEOSCENE);
+        }
 
         StackPane.setAlignment(vPane, Pos.CENTER_LEFT);
         StackPane.setMargin(vPane, new Insets(200.0, 0.0, 0.0, 20.0));
 
-        stackPane.getChildren().addAll(vPane, bbutton);
+        stackPane.getChildren().addAll(vPane);
         refresh();
     }
 

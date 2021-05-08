@@ -23,14 +23,20 @@ public class ArcadeScene extends BasicScene {
         super(stackPane);
 
         // backButton
-        BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchScene(ScenesEnum.VIDEOSCENE);
-            VideoBg.Vplayer.play();
-            VideoScene.Mplayer.play();});
-        stackPane.getChildren().add(bbutton);
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
-
+        try {
+            BackButton bbutton = new BackButton();
+            bbutton.setOnAction(e -> {
+                Controller.switchScene(ScenesEnum.VIDEOSCENE);
+                VideoBg.Vplayer.play();
+                VideoScene.Mplayer.play();
+            });
+            stackPane.getChildren().add(bbutton);
+            StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+            StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        }catch (FileNotFoundException e) {
+            Controller.alert("The image of the back button could not be loaded please check the file path in ArcadeScene",
+                    ScenesEnum.VIDEOSCENE);
+        }
         // randomButton
         try {
             ImageButton rButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
@@ -43,7 +49,7 @@ public class ArcadeScene extends BasicScene {
             StackPane.setAlignment(rButton, Pos.CENTER_LEFT);
             StackPane.setMargin(rButton, new Insets(100.0, 0.0, 0.0, 20.0));
         }catch (FileNotFoundException e){
-            Controller.alert("The image of the randomButton could not be loaded please check the file path",
+            Controller.alert("The image of the randomButton could not be loaded please check the file path in the ArcadeScene",
                     ScenesEnum.VIDEOSCENE);
         }
 
@@ -59,7 +65,7 @@ public class ArcadeScene extends BasicScene {
             StackPane.setAlignment(builderButton, Pos.CENTER);
             StackPane.setMargin(builderButton, new Insets(0.0, 20.0, 100.0, 0.0));
         }catch (FileNotFoundException e){
-            Controller.alert("The image of the Builder could not be loaded please check the file path",
+            Controller.alert("The image of the Builder could not be loaded please check the file path in the ArcadeScene",
                     ScenesEnum.VIDEOSCENE);
         }
 
@@ -74,7 +80,7 @@ public class ArcadeScene extends BasicScene {
             StackPane.setAlignment(loadButton, Pos.CENTER);
             StackPane.setMargin(loadButton, new Insets(0.0, 0.0, 0.0, 1000.0));
         }catch (FileNotFoundException e){
-            Controller.alert("The image of the Load button could not be loaded please check the file path",
+            Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene",
                     ScenesEnum.VIDEOSCENE);
         }
 

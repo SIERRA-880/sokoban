@@ -108,12 +108,19 @@ public class CreditsScene extends BasicScene {
         StackPane.setAlignment(grid, Pos.CENTER);
 
         // backButton
-        BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchScene(ScenesEnum.VIDEOSCENE);
-            VideoBg.Vplayer.play();
-            VideoScene.Mplayer.play();});
-        stackPane.getChildren().add(bbutton);
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        try {
+            BackButton bbutton = new BackButton();
+            bbutton.setOnAction(e -> {
+                Controller.switchScene(ScenesEnum.VIDEOSCENE);
+                VideoBg.Vplayer.play();
+                VideoScene.Mplayer.play();
+            });
+            stackPane.getChildren().add(bbutton);
+            StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+            StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        }catch (FileNotFoundException e) {
+            Controller.alert("The image of the back button could not be loaded please check the file path in the CreditScene",
+                    ScenesEnum.VIDEOSCENE);
+        }
     }
 }

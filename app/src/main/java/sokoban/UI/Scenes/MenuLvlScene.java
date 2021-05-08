@@ -41,23 +41,29 @@ public class MenuLvlScene extends BasicScene {
         StackPane.setAlignment(glb, Pos.CENTER);
 
         // backButton
-        BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->{Controller.switchScene(ScenesEnum.VIDEOSCENE);
-                                VideoBg.Vplayer.play();
-                                VideoScene.Mplayer.play();});
-        stackPane.setStyle("-fx-background-color: #000000;");
-        stackPane.getChildren().add(bbutton);
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
-
+        try {
+            BackButton bbutton = new BackButton();
+            bbutton.setOnAction(e -> {
+                Controller.switchScene(ScenesEnum.VIDEOSCENE);
+                VideoBg.Vplayer.play();
+                VideoScene.Mplayer.play();
+            });
+            stackPane.setStyle("-fx-background-color: #000000;");
+            stackPane.getChildren().add(bbutton);
+            StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
+            StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+        }catch (FileNotFoundException e) {
+            Controller.alert("The image of the back button could not be loaded please check the file path in the MenuLvlScene",
+                    ScenesEnum.VIDEOSCENE);
+        }
         // label
         Font f = null;
         try {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 40);
         }
         catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Fonts file not found (MenuLvlScene:56)");
+            Controller.alert("The label font could not be loaded please check the file path in the LevelScene",
+                    ScenesEnum.VIDEOSCENE);
         }
         Label selectLabel = new Label("Select a level :");
         selectLabel.setFont(f);

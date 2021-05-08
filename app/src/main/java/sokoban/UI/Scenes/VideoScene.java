@@ -18,6 +18,8 @@ import sokoban.UI.Widgets.VideoBg;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static javafx.scene.layout.StackPane.setAlignment;
@@ -45,6 +47,7 @@ public class VideoScene extends BasicScene {
         // label
         Font f = null;
         Font f2 = null;
+
         try {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 100);
             f2 = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 20);

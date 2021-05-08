@@ -62,22 +62,36 @@ public class GridLvlButtons extends GridPane {
         // for each button on the grid we assign a level number
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
-                LevelButton button;
+                LevelButton button=null;
 
                 // here we check if the level has been completed or not 
                 if (lock[a - 1]==a) {
-                    button = new LevelButton(buttonUnselected, buttonSelected, (a));
-                    button.setOnAction(e -> {
-                        button.setMap();
-                        Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
-                        Game.levelScene.map.showMap();
-                        Controller.switchScene(ScenesEnum.LEVELSCENE);
+                    try {
+                        button = new LevelButton(buttonUnselected, buttonSelected, (a));
+                        LevelButton finalButton = button;
+                        button.setOnAction(e -> {
+                            finalButton.setMap();
+                            Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
+                            Game.levelScene.map.showMap();
+                            Controller.switchScene(ScenesEnum.LEVELSCENE);
 
-                    });
-                    button.setText(a++ + "");
+                        });
+                        button.setText(a++ + "");
+                    }catch (FileNotFoundException e){
+                        Controller.alert("The image of the LevelButton could not be loaded please check the file path in the GridLvlButton",
+                                ScenesEnum.VIDEOSCENE);
+                    }
+
                 }
                 else {
-                    button = new LevelButton(imageLocked, imageLocked, (a++));
+                    try {
+                        button = new LevelButton(imageLocked, imageLocked, (a++));
+                    }catch (FileNotFoundException e){
+                        Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene",
+                                ScenesEnum.VIDEOSCENE);
+                    }
+
+
                 }
                 add(button, j, i);
             }
