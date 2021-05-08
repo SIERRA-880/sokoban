@@ -58,11 +58,11 @@ public class Game extends Application {
         videoScene = new VideoScene(pane);
         VideoScene.Mplayer.play();
         menuLvlScene = new MenuLvlScene(new StackPane());
-        levelScene = new LevelScene(new StackPane());
+        levelScene = new LevelScene(new StackPane(), ScenesEnum.MENULVLSCENE);
         creditsScene = new CreditsScene(new StackPane());
         optionScene = new OptionScene(new StackPane());
         arcadeScene = new ArcadeScene(new StackPane());
-        randomLevelScene = new RandomLevelScene(new StackPane());
+        randomLevelScene = new RandomLevelScene(new StackPane(), ScenesEnum.ARCADESCENE);
         builderScene = new BuilderScene(new StackPane());
         window.setScene(videoScene);
 

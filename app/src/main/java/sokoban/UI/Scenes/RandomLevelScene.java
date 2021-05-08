@@ -17,8 +17,8 @@ import sokoban.Engine.Objects.*;
 
 public class RandomLevelScene extends LevelScene {
 
-    public RandomLevelScene(StackPane stackPane) {
-        super(stackPane);
+    public RandomLevelScene(StackPane stackPane, ScenesEnum previousScene) {
+        super(stackPane, previousScene);
 
         // save button
         ImageButton saveButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",

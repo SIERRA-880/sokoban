@@ -24,6 +24,7 @@ public class Controller {
                 Game.window.setScene(Game.creditsScene);
                 break;
             case LEVELSCENE:
+                Game.levelScene.reset();
                 Game.window.setScene(Game.levelScene);
                 break;
             case ARCADESCENE:

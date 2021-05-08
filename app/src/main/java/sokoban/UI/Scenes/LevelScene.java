@@ -33,15 +33,18 @@ public class LevelScene extends BasicScene {
 
     public Map map;
     StackPane stackPane;
+    ScenesEnum previousScene;
+    boolean move = true;
 
     // sounds 
     String moveBoxSounds = new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString();
     String allBoxesOnTargetSounds = new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
     AudioClip moveBox = new AudioClip(moveBoxSounds);
 
-    public LevelScene(StackPane stackPane)  {
+    public LevelScene(StackPane stackPane, ScenesEnum previousScene)  {
         super(stackPane);
         this.stackPane= stackPane;
+        this.previousScene = previousScene;
 
         // map
         this.map = new Map();
@@ -52,10 +55,14 @@ public class LevelScene extends BasicScene {
 
         // backButton
         BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->Controller.switchScene(ScenesEnum.MENULVLSCENE));
+        bbutton.setOnAction(e->Controller.switchScene(previousScene));
         stackPane.getChildren().add(bbutton);
         StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+    }
+
+    public void reset() {
+        move = true;
     }
 
     public void addKeyHandler(KeyEvent ke) {
@@ -63,6 +70,9 @@ public class LevelScene extends BasicScene {
         Player player = Game.level.player;
         World world = Game.level.world;
 
+        if (!move) {
+            return;
+        }
         KeyCode keyCode = ke.getCode();
         if (keyCode.equals(Game.up)) {
             player.setTexture("up");
@@ -94,6 +104,7 @@ public class LevelScene extends BasicScene {
         if (world.winCondition()) {
             AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
             mplayer.play();
+            move = false;
             MoveLogger.writeToNewestFile();
 
             // store the save file in an array
