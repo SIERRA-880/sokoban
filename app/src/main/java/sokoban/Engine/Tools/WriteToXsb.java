@@ -17,7 +17,7 @@ public class WriteToXsb {
      * Output a Level to .xsb format in build/resources/main/levels/
      * @param fileName A String containing the name of the output file
      */
-    public static void write(String fileName, Level level) {
+    public static void write(String fileName, String mapString, int mapWidth) {
         try {
             // Use of System.getProperty("user.dir") to get the actual directory (eg. /home/ugo/games/sokoban)
             String workingDirectory = System.getProperty("user.dir");
@@ -29,10 +29,9 @@ public class WriteToXsb {
             file.createNewFile();
             FileWriter writer = new FileWriter(file);
 
-            String mapString = level.toString();
             int n = 0;
             while (n < mapString.length()) {
-                for (int i=0; i<level.world.width; i++) {
+                for (int i=0; i<mapWidth; i++) {
                     char mapChar = mapString.charAt(n++);
                     writer.write(mapChar+"");
                 }

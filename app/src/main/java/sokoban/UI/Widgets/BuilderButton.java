@@ -50,25 +50,31 @@ public class BuilderButton extends Button {
         setBackground(backgroundSelected);
     }
 
-    public void changeCell(CellsEnum cell) {
+    public void changeCell(CellsEnum cell, String[][] map) {
         switch(cell) {
             case CELL:
                 changeImg(ground);
+                map[y][x] = " ";
                 break;
             case WALL:
                 changeImg(wall);
+                map[y][x] = "#";
                 break;
             case EMPTY:
                 changeImg(empty);
+                map[y][x] = "_";
                 break;
             case TARGET:
                 changeImg(target);
+                map[y][x] = ".";
                 break;
             case BOX:
                 changeImg(box);
+                map[y][x] = "$";
                 break;
             case PLAYER:
                 changeImg(player);
+                map[y][x] = "@";
                 break;
         }
     }

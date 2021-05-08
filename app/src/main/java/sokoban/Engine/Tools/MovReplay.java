@@ -47,7 +47,7 @@ public class MovReplay {
                 System.out.println("Problem with Thread.sleep() (MovReplay:28)");
             }
         }
-        WriteToXsb.write("out1", level);
+        WriteToXsb.write("out1", level.toString(), level.world.width);
         return level;
     }
 

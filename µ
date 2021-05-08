@@ -27,7 +27,6 @@ public class BuilderScene extends BasicScene {
     private CellsEnum currentCell = CellsEnum.WALL;
     private StackPane stackPane;
     private String[][] map;
-    private TextField saveText;
 
     public BuilderScene(StackPane stackPane) {
         super(stackPane);
@@ -40,12 +39,12 @@ public class BuilderScene extends BasicScene {
         vPane.maxHeightProperty().bind(vPane.widthProperty());
 
         // text input 
-        saveText = new TextField();
+        TextField saveText = new TextField();
         saveText.setPromptText("map name");
         stackPane.getChildren().add(saveText);
 
         StackPane.setAlignment(saveText, Pos.CENTER_RIGHT);
-        StackPane.setMargin(saveText, new Insets(0.0, 200.0, -250.0, 1525.0));
+        StackPane.setMargin(saveText, new Insets(0.0, 0.0, 200.0, 0.0));
 
         // save button
         ImageButton saveButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
@@ -132,6 +131,6 @@ public class BuilderScene extends BasicScene {
                 mapString += map[i][j];
             }
         }
-        WriteToXsb.write(saveText.getText(), mapString, map[0].length);
+        WriteToXsb.write("customMap", mapString, map[0].length);
     }
 }

@@ -35,6 +35,7 @@ public class Controller {
                 Game.window.setScene(Game.randomLevelScene);
                 break;
             case BUILDERSCENE:
+                Game.builderScene.refresh();
                 Game.window.setScene(Game.builderScene);
                 break;
             default:
