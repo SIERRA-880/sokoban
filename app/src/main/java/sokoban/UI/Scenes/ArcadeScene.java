@@ -77,7 +77,7 @@ public class ArcadeScene extends BasicScene {
             Controller.alert("The image of the Load button could not be loaded please check the file path",
                     ScenesEnum.VIDEOSCENE);
         }
-    }
+
 
 }
 
