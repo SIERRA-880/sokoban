@@ -8,6 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileOutputStream;
 
+/**
+ * Store a {@link sokoban.Engine.Objects.Level} in .xsb format. Useful if you want to save a game.
+ * @author Ugo Proietti
+ */
 public class WriteToXsb {
     /**
      * Output a Level to .xsb format in build/resources/main/levels/

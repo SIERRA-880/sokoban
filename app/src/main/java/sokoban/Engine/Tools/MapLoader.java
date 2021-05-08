@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * The game engine needs to get map data in a certain format, MapLoader repond to it's need by formatting a map in .xsb format to an understandable String for the engine.
+ * @author Ugo Proietti
+ */
 public class MapLoader {
 
     /**

@@ -10,6 +10,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Get player moves and store them in a file to retrieve later
+ * @author Ugo Proietti
+ */
 public class MoveLogger {
 
     static ArrayList<Character> movements = new ArrayList<Character>();

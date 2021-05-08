@@ -3,7 +3,10 @@ package sokoban.Engine.Tools;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+/**
+ * This class can be used to check if a map in .xsb format complies with the conventions used to represent objects
+ * @author Ugo Proietti
+ */
 public class MapChecker {
 
     public static final String ANSI_RED = "\u001B[31m";
