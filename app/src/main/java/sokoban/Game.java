@@ -25,6 +25,7 @@ public class Game extends Application {
     public static OptionScene optionScene;
     public static ArcadeScene arcadeScene;
     public static RandomLevelScene randomLevelScene;
+    public static BuilderScene builderScene;
     public static StackPane pane = new StackPane();
     public static KeyCode up;
     public static KeyCode left;
@@ -62,6 +63,7 @@ public class Game extends Application {
         optionScene = new OptionScene(new StackPane());
         arcadeScene = new ArcadeScene(new StackPane());
         randomLevelScene = new RandomLevelScene(new StackPane());
+        builderScene = new BuilderScene(new StackPane());
         window.setScene(videoScene);
 
         // window

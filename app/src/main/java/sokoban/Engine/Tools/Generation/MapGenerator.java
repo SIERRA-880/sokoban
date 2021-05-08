@@ -95,7 +95,6 @@ public class MapGenerator {
         ArrayList<Target> targetList = new ArrayList<Target>();
         ArrayList<Box> boxesList = new ArrayList<Box>();
 
-        System.out.println("----------------------------------------");
         for (int nb = 4; nb > 0; nb--) {
             // make a box and a target 
             MatrixCase[][] map = world.getMap();
@@ -110,7 +109,6 @@ public class MapGenerator {
             boxesList.add(box);
 
             int[] iPos = box.getCellPos();
-            System.out.println("init : " + iPos[0] + " " + iPos[1]);
             for (int nm = 0; nm<10; nm++) {
                 boolean playerNextToBox = false;
                 Cell[] nearbyCells = world.getNearbyCells(box.getCellPos());
@@ -166,7 +164,6 @@ public class MapGenerator {
                     MatrixCase[][] wmap = world.getMap();
                     Box rmBox = boxesList.get(checkList.get(e));
                     int[] boxPos = rmBox.getCellPos();
-                    System.out.println(boxPos[0] + " " + boxPos[1]);
                     Cell cell = new Cell(boxPos, CellsEnum.CELL, "/Cells/ground.png", false, false);
                     MatrixCase cellCase = new MatrixCase(cell, cell);
                     wmap[boxPos[1]][boxPos[0]] = cellCase;

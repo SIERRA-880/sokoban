@@ -15,34 +15,21 @@ import sokoban.ScenesEnum;
 import sokoban.Engine.Tools.Generation.*;
 import sokoban.Engine.Objects.*;
 
-public class RandomLevelScene extends BasicScene {
+public class RandomLevelScene extends LevelScene {
 
     public RandomLevelScene(StackPane stackPane) {
         super(stackPane);
 
-        // backButton
-        BackButton bbutton = new BackButton();
-        bbutton.setOnAction(e->Controller.switchScene(ScenesEnum.ARCADESCENE));
-        stackPane.getChildren().add(bbutton);
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
-
-        // start level
-        ImageButton rButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
+        // save button
+        ImageButton saveButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
                                               "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
-        rButton.setText("Start");
-        rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-
-        rButton.setOnAction(e->mkRandom(10, 10));
-        stackPane.getChildren().add(rButton);
-        StackPane.setAlignment(rButton, Pos.CENTER_LEFT);
-        StackPane.setMargin(rButton, new Insets(100.0, 0.0, 0.0, 20.0));
+        saveButton.setText("save");
+        saveButton.setOnAction(e->save());
+        stackPane.getChildren().add(saveButton);
+        StackPane.setAlignment(saveButton, Pos.CENTER_RIGHT);
+        StackPane.setMargin(saveButton, new Insets(400.0, 200.0, 0.0, 0.0));
     }
 
-    public void mkRandom(int width, int height) {
-        Game.level = MapGenerator.generate(width, height, 2);
-        Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
-        Game.levelScene.map.showMap();
-        Controller.switchScene(ScenesEnum.LEVELSCENE);
+    public void save() {
     }
 }

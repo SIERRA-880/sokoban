@@ -32,6 +32,9 @@ public class Controller {
             case RANDOMLEVELSCENE:
                 Game.window.setScene(Game.randomLevelScene);
                 break;
+            case BUILDERSCENE:
+                Game.window.setScene(Game.builderScene);
+                break;
             default:
                 System.out.println("I told you we would make a mistake !");
                 break;
