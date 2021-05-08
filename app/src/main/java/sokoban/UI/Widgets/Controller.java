@@ -31,6 +31,7 @@ public class Controller {
                 Game.window.setScene(Game.arcadeScene);
                 break;
             case RANDOMLEVELSCENE:
+                Game.randomLevelScene.reset();
                 Game.window.setScene(Game.randomLevelScene);
                 break;
             case BUILDERSCENE:
