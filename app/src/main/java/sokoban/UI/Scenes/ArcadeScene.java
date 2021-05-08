@@ -56,13 +56,30 @@ public class ArcadeScene extends BasicScene {
 
             builderButton.setOnAction(e -> mkBuilder());
             stackPane.getChildren().add(builderButton);
-            StackPane.setAlignment(builderButton, Pos.CENTER_RIGHT);
+            StackPane.setAlignment(builderButton, Pos.CENTER);
             StackPane.setMargin(builderButton, new Insets(0.0, 20.0, 100.0, 0.0));
         }catch (FileNotFoundException e){
-            Controller.alert("The image of the randomButton could not be loaded please check the file path",
+            Controller.alert("The image of the Builder could not be loaded please check the file path",
+                    ScenesEnum.VIDEOSCENE);
+        }
+
+        // load Button
+        try {
+            ImageButton loadButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            loadButton.setText("Load");
+            loadButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+            loadButton.setOnAction(e -> mkBuilder());
+            stackPane.getChildren().add(loadButton);
+            StackPane.setAlignment(loadButton, Pos.CENTER);
+            StackPane.setMargin(loadButton, new Insets(0.0, 0.0, 0.0, 1000.0));
+        }catch (FileNotFoundException e){
+            Controller.alert("The image of the Load button could not be loaded please check the file path",
                     ScenesEnum.VIDEOSCENE);
         }
     }
+
+}
 
     public void mkRandom(int width, int height) {
         Game.level = MapGenerator.generate(width, height, 2);

@@ -9,6 +9,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import sokoban.UI.Widgets.SideMenu;
 import sokoban.UI.Widgets.VideoBg;
@@ -38,6 +41,29 @@ public class VideoScene extends BasicScene {
         Mplayer = new MediaPlayer(music);
         Mplayer.setCycleCount(MediaPlayer.INDEFINITE);
         Mplayer.setVolume(0.1);
+
+        // label
+        Font f = null;
+        Font f2 = null;
+        try {
+            f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 100);
+            f2 = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 20);
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Label selectLabel = new Label("sokoban");
+        selectLabel.setFont(f);
+        selectLabel.setTextFill(Color.web("#A7F5F4"));
+        stackPane.getChildren().add(selectLabel);
+        stackPane.setAlignment(selectLabel, Pos.TOP_RIGHT);
+        stackPane.setMargin(selectLabel, new Insets(150.0, 100.0, 0.0, 0.0));
+        Label startLabel = new Label("Click on the screen to start");
+        startLabel.setFont(f2);
+        startLabel.setTextFill(Color.web("#A7F5F4"));
+        stackPane.getChildren().add(startLabel);
+        stackPane.setAlignment(startLabel, Pos.TOP_RIGHT);
+        stackPane.setMargin(startLabel, new Insets(250.0, 100.0, 0.0, 0.0));
 
         //side menu
         AtomicBoolean shown = new AtomicBoolean(false);
