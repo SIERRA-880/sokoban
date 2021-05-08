@@ -34,22 +34,29 @@ public class ArcadeScene extends BasicScene {
                                               "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
         rButton.setText("Random");
         rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-
         rButton.setOnAction(e->mkRandom(10, 10));
         stackPane.getChildren().add(rButton);
-        StackPane.setAlignment(rButton, Pos.CENTER_LEFT);
-        StackPane.setMargin(rButton, new Insets(100.0, 0.0, 0.0, 20.0));
+        StackPane.setAlignment(rButton, Pos.CENTER);
+        StackPane.setMargin(rButton, new Insets(0.0, 1000.0, 0.0, 0.0));
 
         // mapBuilder Button
         ImageButton builderButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
                                               "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
         builderButton.setText("Builder");
         builderButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-
         builderButton.setOnAction(e->mkBuilder());
         stackPane.getChildren().add(builderButton);
-        StackPane.setAlignment(builderButton, Pos.CENTER_RIGHT);
-        StackPane.setMargin(rButton, new Insets(0.0, 20.0, 100.0, 0.0));
+        StackPane.setAlignment(builderButton, Pos.CENTER);
+
+        // load Button
+        ImageButton loadButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
+                                              "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+        loadButton.setText("Load");
+        loadButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        loadButton.setOnAction(e->mkBuilder());
+        stackPane.getChildren().add(loadButton);
+        StackPane.setAlignment(loadButton, Pos.CENTER);
+        StackPane.setMargin(loadButton, new Insets(0.0, 0.0, 0.0, 1000.0));
     }
 
     public void mkRandom(int width, int height) {
