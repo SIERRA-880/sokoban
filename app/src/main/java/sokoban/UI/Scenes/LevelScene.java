@@ -46,6 +46,7 @@ public class LevelScene extends BasicScene {
 
     public LevelScene(StackPane stackPane, ScenesEnum previousScene)  {
         super(stackPane);
+
         this.stackPane= stackPane;
         this.previousScene = previousScene;
         robot = new Robot();
@@ -65,44 +66,77 @@ public class LevelScene extends BasicScene {
         StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
 
         // up button
-        ImageButton upButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
-        upButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-        upButton.setText("UP");
-        upButton.setOnAction(e->{robot.keyPress(Game.up); robot.keyRelease(Game.up);});
-        stackPane.getChildren().add(upButton);
-        StackPane.setAlignment(upButton, Pos.CENTER_LEFT);
-        StackPane.setMargin(upButton, new Insets(-160.0, 0.0, 0.0, 135.0));
+        try {
+            ImageButton upButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            upButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+            upButton.setText("UP");
+            upButton.setOnAction(e -> {
+                robot.keyPress(Game.up);
+                robot.keyRelease(Game.up);
+            });
+            stackPane.getChildren().add(upButton);
+            StackPane.setAlignment(upButton, Pos.CENTER_LEFT);
+            StackPane.setMargin(upButton, new Insets(-160.0, 0.0, 0.0, 135.0));
+        }catch (FileNotFoundException e){
+
+            Controller.alert("Image of the up button in LevelScene could not be" +
+                    " loaded please check the path file",previousScene);
+        }
 
         // left button
-        ImageButton leftButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
-        leftButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-        leftButton.setText("LEFT");
-        leftButton.setOnAction(e->{robot.keyPress(Game.left); robot.keyRelease(Game.left);});
-        stackPane.getChildren().add(leftButton);
-        StackPane.setAlignment(leftButton, Pos.CENTER_LEFT);
-        StackPane.setMargin(leftButton, new Insets(0.0, 0.0, 0.0, 0.0));
+        try {
+            ImageButton leftButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            leftButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+            leftButton.setText("LEFT");
+            leftButton.setOnAction(e -> {
+                robot.keyPress(Game.left);
+                robot.keyRelease(Game.left);
+            });
+            stackPane.getChildren().add(leftButton);
+            StackPane.setAlignment(leftButton, Pos.CENTER_LEFT);
+            StackPane.setMargin(leftButton, new Insets(0.0, 0.0, 0.0, 0.0));
+        }catch (FileNotFoundException e){
+            Controller.alert("Image of the left button in LevelScene could not be" +
+                    " loaded please check the path file",previousScene);
+        }
 
         // down button
-        ImageButton downButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
-        downButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-        downButton.setText("DOWN");
-        downButton.setOnAction(e->{robot.keyPress(Game.down); robot.keyRelease(Game.down);});
-        stackPane.getChildren().add(downButton);
-        StackPane.setAlignment(downButton, Pos.CENTER_LEFT);
-        StackPane.setMargin(downButton, new Insets(0.0, 0.0, 0.0, 120.0));
+        try {
+            ImageButton downButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            downButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+            downButton.setText("DOWN");
+            downButton.setOnAction(e -> {
+                robot.keyPress(Game.down);
+                robot.keyRelease(Game.down);
+            });
+            stackPane.getChildren().add(downButton);
+            StackPane.setAlignment(downButton, Pos.CENTER_LEFT);
+            StackPane.setMargin(downButton, new Insets(0.0, 0.0, 0.0, 120.0));
+        }catch (FileNotFoundException e){
+            Controller.alert("Image of the down button in LevelScene could not be" +
+                    " loaded please check the path file",previousScene);
+        }
 
         // right button
-        ImageButton rightButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
-        rightButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-        rightButton.setText("RIGHT");
-        rightButton.setOnAction(e->{robot.keyPress(Game.right); robot.keyRelease(Game.right);});
-        stackPane.getChildren().add(rightButton);
-        StackPane.setAlignment(rightButton, Pos.CENTER_LEFT);
-        StackPane.setMargin(rightButton, new Insets(0.0, 0.0, 0.0, 240.0));
+        try {
+            ImageButton rightButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            rightButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+            rightButton.setText("RIGHT");
+            rightButton.setOnAction(e -> {
+                robot.keyPress(Game.right);
+                robot.keyRelease(Game.right);
+            });
+            stackPane.getChildren().add(rightButton);
+            StackPane.setAlignment(rightButton, Pos.CENTER_LEFT);
+            StackPane.setMargin(rightButton, new Insets(0.0, 0.0, 0.0, 240.0));
+        }catch (FileNotFoundException e){
+            Controller.alert("Image of the right button in LevelScene could not be" +
+                    " loaded please check the path file",previousScene);
+        }
     }
 
     public void reset() {
@@ -157,7 +191,7 @@ public class LevelScene extends BasicScene {
                     int currentLevel = Game.level.nlevel;
                     int[] levels = new int[15];
                     String workingDirectory = System.getProperty("user.dir");
-                    String absoluteFilePath = "";
+                    String absoluteFilePath;
                     absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "saves";
                     Path dir = Paths.get(absoluteFilePath);
                     File saves = new File(absoluteFilePath);
@@ -171,8 +205,9 @@ public class LevelScene extends BasicScene {
                     myReader.close();
                     boolean write = true;
                     for (int n : levels) {
-                        if (currentLevel+1 == n) {
+                        if (currentLevel + 1 == n) {
                             write = false;
+
                         }
                     }
                     if (currentLevel==levels[currentLevel-1] && currentLevel!=15 && write) { 

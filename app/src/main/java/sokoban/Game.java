@@ -1,17 +1,14 @@
 package sokoban;
 
-import javafx.scene.text.Font;
-import sokoban.Engine.Objects.Level;
-
-import sokoban.UI.Scenes.*;
-
 import javafx.application.Application;
-
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.StackPane;
-
 import javafx.stage.Stage;
+import sokoban.Engine.Objects.Level;
+import sokoban.UI.Scenes.*;
+
+import java.io.FileNotFoundException;
 
 public class Game extends Application {
     //Main class that launches the game
@@ -33,15 +30,14 @@ public class Game extends Application {
     public static KeyCode down;
     public static KeyCode right;
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage)  {
+    public void start(Stage primaryStage) {
         window = primaryStage;
         window.setTitle("Sokoban");
-        //window.setFullScreen(true);
         window.setMaximized(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
 
@@ -66,8 +62,6 @@ public class Game extends Application {
         randomLevelScene = new RandomLevelScene(new StackPane(), ScenesEnum.ARCADESCENE);
         builderScene = new BuilderScene(new StackPane());
         window.setScene(videoScene);
-
-        // window
         window.show();
     }
 }

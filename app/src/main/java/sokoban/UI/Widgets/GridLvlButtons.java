@@ -26,10 +26,10 @@ public class GridLvlButtons extends GridPane {
     public GridLvlButtons() {
         int[] lock = new int[15];
 
-        File saves = null;
+        File saves;
         try {
             String workingDirectory = System.getProperty("user.dir");
-            String absoluteFilePath = "";
+            String absoluteFilePath;
             absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "saves";
             Path dir = Paths.get(absoluteFilePath);
             saves = new File(absoluteFilePath);
@@ -48,9 +48,12 @@ public class GridLvlButtons extends GridPane {
                 Files.writeString(dir, "1");
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Controller.alert("The images for the button in the GridLvlButton could not be loaded please " +
+                            "check the file path",
+                    ScenesEnum.VIDEOSCENE);
         }
         catch (IOException e) {
+            //HUGO JAI BESOIN DE TOI POUR SAVOIR QUOI METTRE ICI !!!!!!!!
             e.printStackTrace();
         }
 
@@ -69,6 +72,7 @@ public class GridLvlButtons extends GridPane {
                         Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
                         Game.levelScene.map.showMap();
                         Controller.switchScene(ScenesEnum.LEVELSCENE);
+
                     });
                     button.setText(a++ + "");
                 }

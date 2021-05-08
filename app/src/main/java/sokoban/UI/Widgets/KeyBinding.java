@@ -9,6 +9,7 @@ import javafx.scene.input.KeyCode;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import sokoban.ScenesEnum;
 import sokoban.UI.Widgets.ImageButton;
 import sokoban.Game;
 
@@ -25,24 +26,24 @@ public class KeyBinding extends HBox {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 40);
         }
         catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Fonts file not found (CreditsScene:43)");
+             Controller.alert("Fonts file not found (CreditsScene:43)",ScenesEnum.OPTIONSCENE);
         }
 
         // label
         Label label = new Label(text);  
         label.setFont(f);
         label.setTextFill(Color.web("#A7F5F4"));
-
-        // button
-        button = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                                             "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
-        String btnText = key.toString();
-        button.setText(key.toString());
-
-        // placement
-        getChildren().add(button);
         getChildren().add(label);
+        // button
+        try {
+            button = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            String btnText = key.toString();
+            button.setText(key.toString());
+            getChildren().add(button);
+        }catch (FileNotFoundException e){ Controller.alert("The image of the button could not be loaded please check the file path in KeyBinding",
+                ScenesEnum.OPTIONSCENE);}
+
     }
 }
 

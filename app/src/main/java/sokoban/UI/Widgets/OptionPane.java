@@ -6,10 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.control.CheckBox;
 import sokoban.Game;
 
+import javax.swing.*;
+import java.io.FileNotFoundException;
+
 public class OptionPane extends VBox {
+    public static CheckBox exposion = new CheckBox("EXPLOSION") ;
     public OptionPane() {
         super(8);
         setStyle("-fx-background-color: transparent;");
@@ -19,7 +23,9 @@ public class OptionPane extends VBox {
         Brightness(sliderLabelbrightness.slider);
         SliderLabel sliderLabelsound = new SliderLabel(0,1,0.1,0.1,"SOUND");
         Sound(sliderLabelsound.slider);
-        getChildren().addAll(sliderLabelsound,sliderLabelbrightness);
+        getChildren().addAll(sliderLabelsound,sliderLabelbrightness,exposion);
+
+
         //Sound();
     }
 

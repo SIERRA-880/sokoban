@@ -15,6 +15,8 @@ import sokoban.UI.Widgets.ImageButton;
 import sokoban.Engine.Tools.Generation.*;
 import sokoban.Game;
 
+import java.io.FileNotFoundException;
+
 public class ArcadeScene extends BasicScene {
 
     public ArcadeScene(StackPane stackPane) {
@@ -30,26 +32,36 @@ public class ArcadeScene extends BasicScene {
         StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
 
         // randomButton
-        ImageButton rButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
-                                              "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
-        rButton.setText("Random");
-        rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        try {
+            ImageButton rButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            rButton.setText("Random");
+            rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
-        rButton.setOnAction(e->mkRandom(10, 10));
-        stackPane.getChildren().add(rButton);
-        StackPane.setAlignment(rButton, Pos.CENTER_LEFT);
-        StackPane.setMargin(rButton, new Insets(100.0, 0.0, 0.0, 20.0));
+            rButton.setOnAction(e -> mkRandom(10, 10));
+            stackPane.getChildren().add(rButton);
+            StackPane.setAlignment(rButton, Pos.CENTER_LEFT);
+            StackPane.setMargin(rButton, new Insets(100.0, 0.0, 0.0, 20.0));
+        }catch (FileNotFoundException e){
+            Controller.alert("The image of the randomButton could not be loaded please check the file path",
+                    ScenesEnum.VIDEOSCENE);
+        }
 
         // mapBuilder Button
-        ImageButton builderButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
-                                              "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
-        builderButton.setText("Builder");
-        builderButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        try {
+            ImageButton builderButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            builderButton.setText("Builder");
+            builderButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
-        builderButton.setOnAction(e->mkBuilder());
-        stackPane.getChildren().add(builderButton);
-        StackPane.setAlignment(builderButton, Pos.CENTER_RIGHT);
-        StackPane.setMargin(rButton, new Insets(0.0, 20.0, 100.0, 0.0));
+            builderButton.setOnAction(e -> mkBuilder());
+            stackPane.getChildren().add(builderButton);
+            StackPane.setAlignment(builderButton, Pos.CENTER_RIGHT);
+            StackPane.setMargin(builderButton, new Insets(0.0, 20.0, 100.0, 0.0));
+        }catch (FileNotFoundException e){
+            Controller.alert("The image of the randomButton could not be loaded please check the file path",
+                    ScenesEnum.VIDEOSCENE);
+        }
     }
 
     public void mkRandom(int width, int height) {

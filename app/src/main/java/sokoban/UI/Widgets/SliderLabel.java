@@ -33,12 +33,12 @@ public class SliderLabel extends BorderPane {
             e.printStackTrace();
         }
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(200);
-        imageView.setFitWidth(113);
+        imageView.setFitHeight(300);
+        imageView.setFitWidth(213);
         imageView.setPreserveRatio(true);
 
         Label label = new Label(text);
-        label.setFont(Font.font("Segoe UI Light", 14));
+        label.setFont(Font.font("Segoe UI Light", 20));
         //label.setStyle("-fx-background-color : white");
         label.setTextFill(WHITE);
 

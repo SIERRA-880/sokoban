@@ -1,5 +1,6 @@
 package sokoban.UI.Scenes;
 
+import javafx.scene.ImageCursor;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.VideoBg;
@@ -24,6 +25,17 @@ public class CreditsScene extends BasicScene {
 
     public CreditsScene(StackPane stackPane) {
         super(stackPane);
+
+        stackPane.setStyle("-fx-background-color: #000000;");
+
+        // cursor
+        try {
+            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
+            setCursor(new ImageCursor(image));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("cursor problem");
+        }
 
         // credits 
         Font f = null;

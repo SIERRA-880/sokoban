@@ -5,8 +5,6 @@ import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
@@ -15,9 +13,8 @@ import javafx.util.Duration;
 import sokoban.UI.Widgets.SideMenu;
 import sokoban.UI.Widgets.VideoBg;
 
+import java.awt.*;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static javafx.scene.layout.StackPane.setAlignment;
@@ -25,6 +22,7 @@ import static javafx.scene.layout.StackPane.setMargin;
 
 public class VideoScene extends BasicScene {
 
+    public static Boolean bomb;
     public static MediaPlayer Mplayer;
     public static VideoBg vb;
     public static Media music = new Media(new File("build/resources/main/textures/Default/Sounds/menus/retroWave.wav").toURI().toString());
@@ -34,7 +32,7 @@ public class VideoScene extends BasicScene {
 
         // video
         vb = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
-        stackPane.getChildren().add(vb);
+
 
         // music
         Mplayer = new MediaPlayer(music);
@@ -51,6 +49,13 @@ public class VideoScene extends BasicScene {
         stackPane.getChildren().add(sideMenu);
         setAlignment(sideMenu, Pos.TOP_LEFT);
         setMargin(sideMenu, new Insets(300, 0.0, 0.0, 0));
+
+        TextField textField = new TextField();
+        textField.setVisible(false);
+        // stackPane.getChildren().add(textField);
+        System.out.println(textField.getText());
+
+
         setOnMouseClicked(evt -> {
             if (!shown.get()) {
                 menuTranslation.setRate(1.5);

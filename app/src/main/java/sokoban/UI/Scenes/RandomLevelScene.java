@@ -16,6 +16,8 @@ import sokoban.Engine.Tools.WriteToXsb;
 import sokoban.Engine.Tools.Generation.*;
 import sokoban.Engine.Objects.*;
 
+import java.io.FileNotFoundException;
+
 public class RandomLevelScene extends LevelScene {
 
     private TextField saveText;
@@ -32,13 +34,16 @@ public class RandomLevelScene extends LevelScene {
         StackPane.setMargin(saveText, new Insets(0.0, 200.0, -250.0, 1525.0));
 
         // save button
-        ImageButton saveButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
-                                              "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
-        saveButton.setText("save");
-        saveButton.setOnAction(e->save());
-        stackPane.getChildren().add(saveButton);
-        StackPane.setAlignment(saveButton, Pos.CENTER_RIGHT);
-        StackPane.setMargin(saveButton, new Insets(400.0, 200.0, 0.0, 0.0));
+        try {
+            ImageButton saveButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            saveButton.setText("save");
+            saveButton.setOnAction(e -> save());
+            stackPane.getChildren().add(saveButton);
+            StackPane.setAlignment(saveButton, Pos.CENTER_RIGHT);
+            StackPane.setMargin(saveButton, new Insets(400.0, 200.0, 0.0, 0.0));
+        }catch (FileNotFoundException e){ Controller.alert("The image of the save button could not be loaded please check the file path in RandomLevelScene",
+                previousScene);}
     }
 
     public void save() {
