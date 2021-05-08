@@ -29,6 +29,7 @@ public class Game extends Application {
     public static StackPane pane = new StackPane();
     public static KeyCode up;
     public static KeyCode left;
+    public static KeyCode left2;
     public static KeyCode down;
     public static KeyCode right;
 

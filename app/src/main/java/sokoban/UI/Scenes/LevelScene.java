@@ -2,6 +2,7 @@ package sokoban.UI.Scenes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.robot.Robot;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -11,6 +12,7 @@ import javafx.scene.media.AudioClip;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
 import sokoban.UI.Widgets.BackButton;
+import sokoban.UI.Widgets.ImageButton;
 import sokoban.UI.Widgets.Map;
 import sokoban.UI.Widgets.Controller;
 import java.util.Scanner;
@@ -40,11 +42,13 @@ public class LevelScene extends BasicScene {
     String moveBoxSounds = new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString();
     String allBoxesOnTargetSounds = new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
     AudioClip moveBox = new AudioClip(moveBoxSounds);
+    Robot robot;
 
     public LevelScene(StackPane stackPane, ScenesEnum previousScene)  {
         super(stackPane);
         this.stackPane= stackPane;
         this.previousScene = previousScene;
+        robot = new Robot();
 
         // map
         this.map = new Map();
@@ -59,6 +63,46 @@ public class LevelScene extends BasicScene {
         stackPane.getChildren().add(bbutton);
         StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
+
+        // up button
+        ImageButton upButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+        upButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        upButton.setText("UP");
+        upButton.setOnAction(e->{robot.keyPress(Game.up); robot.keyRelease(Game.up);});
+        stackPane.getChildren().add(upButton);
+        StackPane.setAlignment(upButton, Pos.CENTER_LEFT);
+        StackPane.setMargin(upButton, new Insets(-160.0, 0.0, 0.0, 135.0));
+
+        // left button
+        ImageButton leftButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+        leftButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        leftButton.setText("LEFT");
+        leftButton.setOnAction(e->{robot.keyPress(Game.left); robot.keyRelease(Game.left);});
+        stackPane.getChildren().add(leftButton);
+        StackPane.setAlignment(leftButton, Pos.CENTER_LEFT);
+        StackPane.setMargin(leftButton, new Insets(0.0, 0.0, 0.0, 0.0));
+
+        // down button
+        ImageButton downButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+        downButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        downButton.setText("DOWN");
+        downButton.setOnAction(e->{robot.keyPress(Game.down); robot.keyRelease(Game.down);});
+        stackPane.getChildren().add(downButton);
+        StackPane.setAlignment(downButton, Pos.CENTER_LEFT);
+        StackPane.setMargin(downButton, new Insets(0.0, 0.0, 0.0, 120.0));
+
+        // right button
+        ImageButton rightButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
+                                              "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+        rightButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        rightButton.setText("RIGHT");
+        rightButton.setOnAction(e->{robot.keyPress(Game.right); robot.keyRelease(Game.right);});
+        stackPane.getChildren().add(rightButton);
+        StackPane.setAlignment(rightButton, Pos.CENTER_LEFT);
+        StackPane.setMargin(rightButton, new Insets(0.0, 0.0, 0.0, 240.0));
     }
 
     public void reset() {
