@@ -92,7 +92,7 @@ public class BuilderScene extends BasicScene {
 
         // box
         try {
-            ImageButton boxButton = new ImageButton("-build/resources/main/textures/Default/Cells/box.png", "build/resources/main/textures/Default/Cells/box.png");
+            ImageButton boxButton = new ImageButton("build/resources/main/textures/Default/Cells/box.png", "build/resources/main/textures/Default/Cells/box.png");
             boxButton.setOnAction(e -> changeCell(CellsEnum.BOX));
             vPane.getChildren().add(boxButton);
         } catch (FileNotFoundException e) {
