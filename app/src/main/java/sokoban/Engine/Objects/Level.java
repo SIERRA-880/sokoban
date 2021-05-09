@@ -27,6 +27,17 @@ public class Level {
         Builder.init(this.map, player, world, size[0], size[1]);
     }
 
+    public void loadLevel(String map) {
+        // regex to get the level number
+        nlevel = 0;
+        int[] pos = {0, 0};
+        this.map = MapLoader.load("build/resources/main/levels/save/"+map+".xsb"); 
+        size = MapLoader.getSize("build/resources/main/levels/save/"+map+".xsb"); 
+        player = new Player(pos, "/Cells/player_down.png");
+        world = new World(size[0], size[1], player);
+        Builder.init(this.map, player, world, size[0], size[1]);
+    }
+
     public void setWorld(World world) {
         this.world = world;
     }

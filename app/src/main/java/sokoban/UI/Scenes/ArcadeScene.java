@@ -71,7 +71,7 @@ public class ArcadeScene extends BasicScene {
                     "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver.png");
             loadButton.setText("Load");
             loadButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-            loadButton.setOnAction(e -> mkBuilder());
+            loadButton.setOnAction(e -> load());
             stackPane.getChildren().add(loadButton);
             StackPane.setAlignment(loadButton, Pos.CENTER);
             StackPane.setMargin(loadButton, new Insets(0.0, 0.0, 0.0, 1000.0));
@@ -89,5 +89,12 @@ public class ArcadeScene extends BasicScene {
 
     public void mkBuilder() {
         Controller.switchScene(ScenesEnum.BUILDERSCENE);
+    }
+
+    public void load() {
+        Game.level.loadLevel("custom");
+        Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
+        Game.levelScene.map.showMap();
+        Controller.switchScene(ScenesEnum.LEVELSCENE);
     }
 }

@@ -23,7 +23,7 @@ public class WriteToXsb {
             String workingDirectory = System.getProperty("user.dir");
             String absoluteFilePath = "";
             // Use of File.separator so it's working regardless the operating system
-            absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "levels" + File.separator + fileName + ".xsb";
+            absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "levels" + File.separator + "save" + File.separator + fileName + ".xsb";
         
             File file = new File(absoluteFilePath);
             file.createNewFile();
