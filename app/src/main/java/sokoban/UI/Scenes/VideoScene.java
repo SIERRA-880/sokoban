@@ -1,5 +1,6 @@
 package sokoban.UI.Scenes;
 
+import javafx.scene.effect.Bloom;
 import javafx.animation.KeyFrame;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
@@ -51,6 +52,10 @@ public class VideoScene extends BasicScene {
         Font f = null;
         Font f2 = null;
 
+        // Setting Threshold
+
+
+
         try {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 100);
             f2 = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 20);
@@ -59,6 +64,9 @@ public class VideoScene extends BasicScene {
         }
         Label selectLabel = new Label("sokoban");
         selectLabel.setFont(f);
+        Bloom bloom = new Bloom();
+        bloom.setThreshold(0.8);
+        selectLabel.setEffect(bloom);
         selectLabel.setTextFill(Color.web("#A7F5F4"));
         stackPane.getChildren().add(selectLabel);
         setAlignment(selectLabel, Pos.TOP_RIGHT);
