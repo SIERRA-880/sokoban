@@ -31,8 +31,7 @@ public class SideMenu extends VBox {
             return button;
         } catch (FileNotFoundException e) {
             Controller.alert("The image of the play button could not be loaded" +
-                            " please check the file path in SideMenu.PlayButton()",
-                    ScenesEnum.VIDEOSCENE);
+                            " please check the file path in SideMenu.PlayButton()");
             return null;
         }
 
@@ -53,8 +52,7 @@ public class SideMenu extends VBox {
             return button;
         } catch (FileNotFoundException e) {
             Controller.alert("The image of the Arcade button could not be loaded " +
-                            "please check the file path in SideMenu.ArcadeButton()",
-                    ScenesEnum.VIDEOSCENE);
+                            "please check the file path in SideMenu.ArcadeButton()");
             return null;
         }
     }
@@ -73,8 +71,7 @@ public class SideMenu extends VBox {
             return button;
         } catch (FileNotFoundException e) {
             Controller.alert("The image of the option Button could not be loaded" +
-                            " please check the file path in SideMenu.OptionButton()",
-                    ScenesEnum.VIDEOSCENE);
+                            " please check the file path in SideMenu.OptionButton()");
             return null;
         }
     }
@@ -93,8 +90,7 @@ public class SideMenu extends VBox {
             return button;
         } catch (FileNotFoundException e) {
             Controller.alert("The image of the credits button could not be loaded " +
-                            "please check the file path in SideMenu.CreditsButton()",
-                    ScenesEnum.VIDEOSCENE);
+                            "please check the file path in SideMenu.CreditsButton()");
             return null;
         }
     }
@@ -109,8 +105,7 @@ public class SideMenu extends VBox {
             return button;
         } catch (FileNotFoundException e) {
             Controller.alert("The image of the exit button could not be loaded " +
-                            "please check the file path in SideMenu.ExitButton()",
-                    ScenesEnum.VIDEOSCENE);
+                            "please check the file path in SideMenu.ExitButton()");
             return null;
         }
     }

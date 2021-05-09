@@ -66,8 +66,7 @@ public class LevelScene extends BasicScene {
             StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
             StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
         }catch (FileNotFoundException e) {
-            Controller.alert("The image of the back button could not be loaded please check the file path in the LevelScene",
-                    previousScene);
+            Controller.alert("The image of the back button could not be loaded please check the file path in the LevelScene");
         }
         // up button
         try {
@@ -85,7 +84,7 @@ public class LevelScene extends BasicScene {
         }catch (FileNotFoundException e){
 
             Controller.alert("Image of the up button in LevelScene could not be" +
-                    " loaded please check the path file",previousScene);
+                    " loaded please check the path file");
         }
 
         // left button
@@ -103,7 +102,7 @@ public class LevelScene extends BasicScene {
             StackPane.setMargin(leftButton, new Insets(0.0, 0.0, 0.0, 0.0));
         }catch (FileNotFoundException e){
             Controller.alert("Image of the left button in LevelScene could not be" +
-                    " loaded please check the path file",previousScene);
+                    " loaded please check the path file");
         }
 
         // down button
@@ -121,7 +120,7 @@ public class LevelScene extends BasicScene {
             StackPane.setMargin(downButton, new Insets(0.0, 0.0, 0.0, 120.0));
         }catch (FileNotFoundException e){
             Controller.alert("Image of the down button in LevelScene could not be" +
-                    " loaded please check the path file",previousScene);
+                    " loaded please check the path file");
         }
 
         // right button
@@ -139,7 +138,7 @@ public class LevelScene extends BasicScene {
             StackPane.setMargin(rightButton, new Insets(0.0, 0.0, 0.0, 240.0));
         }catch (FileNotFoundException e){
             Controller.alert("Image of the right button in LevelScene could not be" +
-                    " loaded please check the path file",previousScene);
+                    " loaded please check the path file");
         }
     }
 

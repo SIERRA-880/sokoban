@@ -34,8 +34,7 @@ public class ArcadeScene extends BasicScene {
             StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
             StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
         }catch (FileNotFoundException e) {
-            Controller.alert("The image of the back button could not be loaded please check the file path in ArcadeScene",
-                    ScenesEnum.VIDEOSCENE);
+            Controller.alert("The image of the back button could not be loaded please check the file path in ArcadeScene");
         }
         // randomButton
         try {
@@ -49,8 +48,7 @@ public class ArcadeScene extends BasicScene {
             StackPane.setAlignment(rButton, Pos.CENTER);
             StackPane.setMargin(rButton, new Insets(0.0, 1000.0, 0.0, 0.0));
         }catch (FileNotFoundException e){
-            Controller.alert("The image of the randomButton could not be loaded please check the file path in the ArcadeScene",
-                    ScenesEnum.VIDEOSCENE);
+            Controller.alert("The image of the randomButton could not be loaded please check the file path in the ArcadeScene");
         }
 
         // mapBuilder Button
@@ -64,8 +62,7 @@ public class ArcadeScene extends BasicScene {
             stackPane.getChildren().add(builderButton);
             StackPane.setAlignment(builderButton, Pos.CENTER);
         }catch (FileNotFoundException e){
-            Controller.alert("The image of the Builder could not be loaded please check the file path in the ArcadeScene",
-                    ScenesEnum.VIDEOSCENE);
+            Controller.alert("The image of the Builder could not be loaded please check the file path in the ArcadeScene");
         }
 
         // load Button
@@ -79,8 +76,7 @@ public class ArcadeScene extends BasicScene {
             StackPane.setAlignment(loadButton, Pos.CENTER);
             StackPane.setMargin(loadButton, new Insets(0.0, 0.0, 0.0, 1000.0));
         }catch (FileNotFoundException e){
-            Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene",
-                    ScenesEnum.VIDEOSCENE);
+            Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene");
         }
 }
 

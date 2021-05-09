@@ -26,7 +26,7 @@ public class KeyBinding extends HBox {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Fonts/Kenney Rocket Square.ttf"), 40);
         }
         catch (FileNotFoundException e) {
-             Controller.alert("Fonts file not found (CreditsScene:43)",ScenesEnum.OPTIONSCENE);
+             Controller.alert("Fonts file not found (CreditsScene:43)");
         }
 
         // label
@@ -41,8 +41,7 @@ public class KeyBinding extends HBox {
             String btnText = key.toString();
             button.setText(key.toString());
             getChildren().add(button);
-        }catch (FileNotFoundException e){ Controller.alert("The image of the button could not be loaded please check the file path in KeyBinding",
-                ScenesEnum.OPTIONSCENE);}
+        }catch (FileNotFoundException e){ Controller.alert("The image of the button could not be loaded please check the file path in KeyBinding");}
 
     }
 }

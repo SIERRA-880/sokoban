@@ -42,8 +42,8 @@ public class RandomLevelScene extends LevelScene {
             stackPane.getChildren().add(saveButton);
             StackPane.setAlignment(saveButton, Pos.CENTER_RIGHT);
             StackPane.setMargin(saveButton, new Insets(400.0, 200.0, 0.0, 0.0));
-        }catch (FileNotFoundException e){ Controller.alert("The image of the save button could not be loaded please check the file path in RandomLevelScene",
-                previousScene);}
+        }catch (FileNotFoundException e){ Controller.alert("The image of the save button could not be loaded please check the file path in RandomLevelScene");
+        }
     }
 
     public void save() {

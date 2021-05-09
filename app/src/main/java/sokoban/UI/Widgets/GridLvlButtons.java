@@ -49,8 +49,7 @@ public class GridLvlButtons extends GridPane {
             }
         } catch (FileNotFoundException e) {
             Controller.alert("The images for the button in the GridLvlButton could not be loaded please " +
-                            "check the file path",
-                    ScenesEnum.VIDEOSCENE);
+                            "check the file path");
         }
         catch (IOException e) {
             //HUGO JAI BESOIN DE TOI POUR SAVOIR QUOI METTRE ICI !!!!!!!!
@@ -78,8 +77,7 @@ public class GridLvlButtons extends GridPane {
                         });
                         button.setText(a++ + "");
                     }catch (FileNotFoundException e){
-                        Controller.alert("The image of the LevelButton could not be loaded please check the file path in the GridLvlButton",
-                                ScenesEnum.VIDEOSCENE);
+                        Controller.alert("The image of the LevelButton could not be loaded please check the file path in the GridLvlButton");
                     }
 
                 }
@@ -87,8 +85,7 @@ public class GridLvlButtons extends GridPane {
                     try {
                         button = new LevelButton(imageLocked, imageLocked, (a++));
                     }catch (FileNotFoundException e){
-                        Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene",
-                                ScenesEnum.VIDEOSCENE);
+                        Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene");
                     }
                 }
                 add(button, j, i);

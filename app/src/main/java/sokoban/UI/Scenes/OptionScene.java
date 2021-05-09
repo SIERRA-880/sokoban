@@ -45,8 +45,7 @@ public class OptionScene extends BasicScene {
             StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
             StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         }catch (FileNotFoundException e) {
-            Controller.alert("The image of the back button could not be loaded please check the file path in the OptionScene",
-                    ScenesEnum.VIDEOSCENE);
+            Controller.alert("The image of the back button could not be loaded please check the file path in the OptionScene");
         }
 
         // keyBind

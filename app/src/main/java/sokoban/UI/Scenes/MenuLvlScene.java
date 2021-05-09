@@ -53,8 +53,7 @@ public class MenuLvlScene extends BasicScene {
             StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
             StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
         }catch (FileNotFoundException e) {
-            Controller.alert("The image of the back button could not be loaded please check the file path in the MenuLvlScene",
-                    ScenesEnum.VIDEOSCENE);
+            Controller.alert("The image of the back button could not be loaded please check the file path in the MenuLvlScene");
         }
         // label
         Font f = null;
@@ -62,8 +61,7 @@ public class MenuLvlScene extends BasicScene {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Fonts/Kenney Rocket Square.ttf"), 40);
         }
         catch (FileNotFoundException e) {
-            Controller.alert("The label font could not be loaded please check the file path in the LevelScene",
-                    ScenesEnum.VIDEOSCENE);
+            Controller.alert("The label font could not be loaded please check the file path in the LevelScene");
         }
         Label selectLabel = new Label("Select a level :");
         selectLabel.setFont(f);

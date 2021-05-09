@@ -53,32 +53,21 @@ public class Controller {
                 break;
         }
         Game.window.setMaximized(true);
-        Game.window.setFullScreenExitHint("");
+
     }
 
-    public static void alert(String message, ScenesEnum SCENE) {
+    public static void alert(String message) {
         Alert alert;
         alert = new Alert(Alert.AlertType.ERROR, message);
         alert.setTitle("Loading image error");
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        alert.getButtonTypes().clear();
         ButtonType exit = new ButtonType("Exit");
+        alert.getButtonTypes().add(exit);
         // Button methodes
+
         Optional<ButtonType> option = alert.showAndWait();
         if (option.get().equals(exit)) {
             System.exit(0);
-        }
-        try {
-            // Add corner icon
-            stage.getIcons().add(new Image(new FileInputStream(("build/resources/main/textures/" +
-                    ""+Game.resourcePack+"/Buttons/levelMenu/levelButton_1.png"))));
-            // Add Stage icon
-            alert.setGraphic(new ImageView(new Image(new FileInputStream("build/resources/main/textures/" +
-                    ""+Game.resourcePack+"/Buttons/levelMenu/levelButton_1.png"))));
-        }catch (FileNotFoundException e ){
-            alert = new Alert(Alert.AlertType.ERROR, "The images for the alert could not be found in" +
-                    " Controller.java");
-            alert.setTitle("Loading image error");
-            alert.show();
         }
         alert.show();
     }
