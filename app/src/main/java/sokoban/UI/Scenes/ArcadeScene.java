@@ -44,7 +44,7 @@ public class ArcadeScene extends BasicScene {
             rButton.setText("Random");
             rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
-            rButton.setOnAction(e -> mkRandom(10, 10));
+            rButton.setOnAction(e -> mkRandom());
             stackPane.getChildren().add(rButton);
             StackPane.setAlignment(rButton, Pos.CENTER);
             StackPane.setMargin(rButton, new Insets(0.0, 1000.0, 0.0, 0.0));
@@ -84,8 +84,8 @@ public class ArcadeScene extends BasicScene {
         }
 }
 
-    public void mkRandom(int width, int height) {
-        Game.level = MapGenerator.generate(width, height, 2);
+    public void mkRandom() {
+        Game.level = MapGenerator.generate(Game.genWidth, Game.genHeight, 2);
         Game.randomLevelScene.setOnKeyPressed(event -> Game.randomLevelScene.addKeyHandler(event));
         Game.randomLevelScene.map.showMap();
         Controller.switchScene(ScenesEnum.RANDOMLEVELSCENE);

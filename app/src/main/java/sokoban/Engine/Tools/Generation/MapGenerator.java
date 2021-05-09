@@ -2,6 +2,7 @@ package sokoban.Engine.Tools.Generation;
 
 import sokoban.Engine.Objects.*;
 import sokoban.CellsEnum;
+import sokoban.Game;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -95,7 +96,7 @@ public class MapGenerator {
         ArrayList<Target> targetList = new ArrayList<Target>();
         ArrayList<Box> boxesList = new ArrayList<Box>();
 
-        for (int nb = 4; nb > 0; nb--) {
+        for (int nb = Game.genBox; nb > 0; nb--) {
             // make a box and a target 
             MatrixCase[][] map = world.getMap();
             int[] rng = rngPos(world);

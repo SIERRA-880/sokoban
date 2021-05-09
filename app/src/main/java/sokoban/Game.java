@@ -29,6 +29,9 @@ public class Game extends Application {
     public static KeyCode down;
     public static KeyCode right;
     public static String resourcePack;
+    public static int genWidth;
+    public static int genHeight;
+    public static int genBox;
 
     public static void main(String[] args) {
         launch(args);
@@ -43,6 +46,11 @@ public class Game extends Application {
 
         // resource pack
         resourcePack = "Default"; 
+        
+        // generation parameters
+        genWidth = 10;
+        genHeight = 10;
+        genBox = 4;
 
         // binds
         up = KeyCode.Z;
