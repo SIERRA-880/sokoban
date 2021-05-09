@@ -1,7 +1,6 @@
 package sokoban.UI.Scenes;
 
-import javafx.animation.RotateTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
@@ -90,6 +89,10 @@ public class VideoScene extends BasicScene {
                 menuTranslation.setRate(1.5);
                 menuTranslation.play();
                 shown.set(true);
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.05), event -> startLabel.setVisible(true)),
+                        new KeyFrame(Duration.seconds( 0.1),event -> startLabel.setVisible(false)));
+                timeline.setCycleCount(2);
+                timeline.play();
                 startLabel.setVisible(false);
             } else {
                 if (evt.getButton().equals(MouseButton.PRIMARY) && evt.getClickCount() == 3) {
