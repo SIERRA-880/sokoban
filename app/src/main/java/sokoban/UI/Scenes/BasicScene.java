@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import sokoban.Game;
+import sokoban.UI.Widgets.Controller;
 
 public class BasicScene extends Scene {
     
@@ -20,8 +21,7 @@ public class BasicScene extends Scene {
             setCursor(new ImageCursor(image));
         }
         catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("cursor problem");
+            Controller.alert("The image on the cursor could not be loaded please check the file path in BasicScene.");
         }
     }
 }

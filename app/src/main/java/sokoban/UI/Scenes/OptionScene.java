@@ -69,8 +69,6 @@ public class OptionScene extends BasicScene {
             System.out.println("cursor problem");
         }
         //LayerPane
-        Game.pane.getChildren().add(bbutton);
-        StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
         AnchorPane pane = new AnchorPane();
         setOnMousePressed(event -> {
             try {

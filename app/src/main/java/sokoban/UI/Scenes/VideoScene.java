@@ -90,6 +90,7 @@ public class VideoScene extends BasicScene {
                 menuTranslation.setRate(1.5);
                 menuTranslation.play();
                 shown.set(true);
+                startLabel.setVisible(false);
             } else {
                 if (evt.getButton().equals(MouseButton.PRIMARY) && evt.getClickCount() == 3) {
                     RotateTransition rt = new RotateTransition(Duration.millis(2000), sideMenu);
@@ -103,6 +104,7 @@ public class VideoScene extends BasicScene {
                     menuTranslation.setRate(-1.5);
                     menuTranslation.play();
                     shown.set(false);
+                    startLabel.setVisible(true);
                 }
             }
         });
