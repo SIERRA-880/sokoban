@@ -7,6 +7,7 @@ import javafx.scene.layout.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import sokoban.Game;
 
 public class ImageButton extends Button {
 
@@ -23,7 +24,7 @@ public class ImageButton extends Button {
     public ImageButton(String selected, String unselected) throws FileNotFoundException {
         Image imSelected, imUnselected ;
 
-        locked = new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_locker.png"));
+        locked = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_locker.png"));
         imSelected = new Image(new FileInputStream(selected));
         imUnselected = new Image(new FileInputStream(unselected));
 

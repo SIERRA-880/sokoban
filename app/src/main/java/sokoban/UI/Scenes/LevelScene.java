@@ -39,8 +39,8 @@ public class LevelScene extends BasicScene {
     boolean move = true;
 
     // sounds 
-    String moveBoxSounds = new File("build/resources/main/textures/Default/Sounds/level/moveBox.wav").toURI().toString();
-    String allBoxesOnTargetSounds = new File("build/resources/main/textures/Default/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
+    String moveBoxSounds = new File("build/resources/main/textures/"+Game.resourcePack+"/Sounds/level/moveBox.wav").toURI().toString();
+    String allBoxesOnTargetSounds = new File("build/resources/main/textures/"+Game.resourcePack+"/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
     AudioClip moveBox = new AudioClip(moveBoxSounds);
     Robot robot;
 
@@ -71,8 +71,8 @@ public class LevelScene extends BasicScene {
         }
         // up button
         try {
-            ImageButton upButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            ImageButton upButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButtonOver_empty.png");
             upButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
             upButton.setText("UP");
             upButton.setOnAction(e -> {
@@ -90,8 +90,8 @@ public class LevelScene extends BasicScene {
 
         // left button
         try {
-            ImageButton leftButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            ImageButton leftButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButtonOver_empty.png");
             leftButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
             leftButton.setText("LEFT");
             leftButton.setOnAction(e -> {
@@ -108,8 +108,8 @@ public class LevelScene extends BasicScene {
 
         // down button
         try {
-            ImageButton downButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            ImageButton downButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButtonOver_empty.png");
             downButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
             downButton.setText("DOWN");
             downButton.setOnAction(e -> {
@@ -126,8 +126,8 @@ public class LevelScene extends BasicScene {
 
         // right button
         try {
-            ImageButton rightButton = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            ImageButton rightButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButtonOver_empty.png");
             rightButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
             rightButton.setText("RIGHT");
             rightButton.setOnAction(e -> {

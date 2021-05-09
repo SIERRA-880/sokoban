@@ -61,7 +61,7 @@ public class OptionScene extends BasicScene {
             });
         }
         try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/" +
+            Image image = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Menus/" +
                     "cursor_pointerFlat.png"));  //pass in the image path
             setCursor(new ImageCursor(image));
         }
@@ -76,7 +76,7 @@ public class OptionScene extends BasicScene {
         setOnMousePressed(event -> {
             try {
                 Image image = new Image(new FileInputStream("build/resources/main/textures/" +
-                        "Default/Cells/explosion.png"));
+                        ""+Game.resourcePack+"/Cells/explosion.png"));
                 setCursor(new ImageCursor(image));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -84,7 +84,7 @@ public class OptionScene extends BasicScene {
         });
         setOnMouseReleased(event -> {
             try {
-                Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/" +
+                Image image = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Menus/" +
                         "cursor_pointerFlat.png"));  //pass in the image path
                 setCursor(new ImageCursor(image));
             }

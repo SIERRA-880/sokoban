@@ -21,6 +21,7 @@ import sokoban.UI.Widgets.BuilderButton;
 import sokoban.Engine.Tools.WriteToXsb;
 import sokoban.ScenesEnum;
 import sokoban.CellsEnum;
+import sokoban.Game;
 
 public class BuilderScene extends BasicScene {
 
@@ -142,7 +143,7 @@ public class BuilderScene extends BasicScene {
         for (int i=0; i<15; i++) {
             for (int j=0; j<15; j++) {
                 map[j][i] = " ";
-                BuilderButton button = new BuilderButton("build/resources/main/textures/Default/Cells/ground.png", j, i);
+                BuilderButton button = new BuilderButton("build/resources/main/textures/"+Game.resourcePack+"/Cells/ground.png", j, i);
                 button.setOnAction(e->button.changeCell(currentCell, map));
                 gPane.add(button, j, i, 1, 1);
             }

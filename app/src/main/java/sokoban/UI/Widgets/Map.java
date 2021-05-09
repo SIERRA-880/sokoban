@@ -30,12 +30,12 @@ public class Map extends GridPane {
         super();
         setAlignment(CENTER);
         try {
-            ground = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/ground.png"));
-            empty = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/empty.png"));
-            wall = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/wall.png"));
-            box = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/box.png"));
-            target = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/target.png"));
-            player = new Image(new FileInputStream("build/resources/main/textures/Default/Cells/player_down.png"));
+            ground = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/ground.png"));
+            empty = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/empty.png"));
+            wall = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/wall.png"));
+            box = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/box.png"));
+            target = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/target.png"));
+            player = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/player_down.png"));
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();

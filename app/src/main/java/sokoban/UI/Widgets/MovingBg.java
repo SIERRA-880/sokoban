@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import javafx.util.Duration;
+import sokoban.Game;
 
 public class MovingBg extends Pane {
 

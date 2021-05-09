@@ -39,15 +39,15 @@ public class ArcadeScene extends BasicScene {
         }
         // randomButton
         try {
-            ImageButton rButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
-                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            ImageButton rButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver.png");
             rButton.setText("Random");
             rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
             rButton.setOnAction(e -> mkRandom(10, 10));
             stackPane.getChildren().add(rButton);
-            StackPane.setAlignment(rButton, Pos.CENTER_LEFT);
-            StackPane.setMargin(rButton, new Insets(100.0, 0.0, 0.0, 20.0));
+            StackPane.setAlignment(rButton, Pos.CENTER);
+            StackPane.setMargin(rButton, new Insets(0.0, 1000.0, 0.0, 0.0));
         }catch (FileNotFoundException e){
             Controller.alert("The image of the randomButton could not be loaded please check the file path in the ArcadeScene",
                     ScenesEnum.VIDEOSCENE);
@@ -55,15 +55,14 @@ public class ArcadeScene extends BasicScene {
 
         // mapBuilder Button
         try {
-            ImageButton builderButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
-                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            ImageButton builderButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver.png");
             builderButton.setText("Builder");
             builderButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
             builderButton.setOnAction(e -> mkBuilder());
             stackPane.getChildren().add(builderButton);
             StackPane.setAlignment(builderButton, Pos.CENTER);
-            StackPane.setMargin(builderButton, new Insets(0.0, 20.0, 100.0, 0.0));
         }catch (FileNotFoundException e){
             Controller.alert("The image of the Builder could not be loaded please check the file path in the ArcadeScene",
                     ScenesEnum.VIDEOSCENE);
@@ -71,8 +70,8 @@ public class ArcadeScene extends BasicScene {
 
         // load Button
         try {
-            ImageButton loadButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
-                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            ImageButton loadButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver.png");
             loadButton.setText("Load");
             loadButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
             loadButton.setOnAction(e -> mkBuilder());
@@ -83,8 +82,6 @@ public class ArcadeScene extends BasicScene {
             Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene",
                     ScenesEnum.VIDEOSCENE);
         }
-
-
 }
 
     public void mkRandom(int width, int height) {

@@ -23,7 +23,7 @@ public class KeyBinding extends HBox {
         // font
         Font f = null;
         try {
-            f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 40);
+            f = Font.loadFont(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Fonts/Kenney Rocket Square.ttf"), 40);
         }
         catch (FileNotFoundException e) {
              Controller.alert("Fonts file not found (CreditsScene:43)",ScenesEnum.OPTIONSCENE);
@@ -36,8 +36,8 @@ public class KeyBinding extends HBox {
         getChildren().add(label);
         // button
         try {
-            button = new ImageButton("build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png",
-                    "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png");
+            button = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_empty.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButtonOver_empty.png");
             String btnText = key.toString();
             button.setText(key.toString());
             getChildren().add(button);

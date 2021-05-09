@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import sokoban.CellsEnum;
+import sokoban.Game;
 
 public class BuilderButton extends Button {
 
@@ -29,12 +30,12 @@ public class BuilderButton extends Button {
         this.y = y;
         changeImg(selected);
 
-            ground = "build/resources/main/textures/Default/Cells/ground.png";
-            empty = "build/resources/main/textures/Default/Cells/empty.png";
-            wall = "build/resources/main/textures/Default/Cells/wall.png";
-            box = "build/resources/main/textures/Default/Cells/box.png";
-            target = "build/resources/main/textures/Default/Cells/target.png";
-            player = "build/resources/main/textures/Default/Cells/player_down.png";
+            ground = "build/resources/main/textures/"+Game.resourcePack+"/Cells/ground.png";
+            empty = "build/resources/main/textures/"+Game.resourcePack+"/Cells/empty.png";
+            wall = "build/resources/main/textures/"+Game.resourcePack+"/Cells/wall.png";
+            box = "build/resources/main/textures/"+Game.resourcePack+"/Cells/box.png";
+            target = "build/resources/main/textures/"+Game.resourcePack+"/Cells/target.png";
+            player = "build/resources/main/textures/"+Game.resourcePack+"/Cells/player_down.png";
     }
 
     public void changeImg(String selected) {

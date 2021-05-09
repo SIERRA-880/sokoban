@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import sokoban.UI.Widgets.SideMenu;
 import sokoban.UI.Widgets.VideoBg;
+import sokoban.Game;
 
 import java.awt.*;
 import java.io.File;
@@ -30,14 +31,14 @@ public class VideoScene extends BasicScene {
     public static Boolean bomb;
     public static MediaPlayer Mplayer;
     public static VideoBg vb;
-    public static Media music = new Media(new File("build/resources/main/textures/Default/Sounds/menus/retroWave.wav").toURI().toString());
+    public static Media music = new Media(new File("build/resources/main/textures/"+Game.resourcePack+"/Sounds/menus/retroWave.wav").toURI().toString());
 
     public VideoScene(StackPane stackPane) {
         super(stackPane);
 
         // video
-        vb = new VideoBg("build/resources/main/textures/Default/Videos/cyber_loop.mp4");
-
+        vb = new VideoBg("build/resources/main/textures/"+Game.resourcePack+"/Videos/cyber_loop.mp4");
+        stackPane.getChildren().add(vb);
 
         // music
         Mplayer = new MediaPlayer(music);
@@ -49,8 +50,8 @@ public class VideoScene extends BasicScene {
         Font f2 = null;
 
         try {
-            f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 100);
-            f2 = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 20);
+            f = Font.loadFont(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Fonts/Kenney Rocket Square.ttf"), 100);
+            f2 = Font.loadFont(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Fonts/Kenney Rocket Square.ttf"), 20);
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -84,7 +85,6 @@ public class VideoScene extends BasicScene {
         // stackPane.getChildren().add(textField);
         System.out.println(textField.getText());
 
-
         setOnMouseClicked(evt -> {
             if (!shown.get()) {
                 menuTranslation.setRate(1.5);
@@ -100,7 +100,6 @@ public class VideoScene extends BasicScene {
 
                     rt.play();
                 } else {
-
                     menuTranslation.setRate(-1.5);
                     menuTranslation.play();
                     shown.set(false);

@@ -35,8 +35,8 @@ public class RandomLevelScene extends LevelScene {
 
         // save button
         try {
-            ImageButton saveButton = new ImageButton("build/resources/main/textures/Default/Buttons/mainMenu/mainButton.png",
-                    "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png");
+            ImageButton saveButton = new ImageButton("build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton.png",
+                    "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver.png");
             saveButton.setText("save");
             saveButton.setOnAction(e -> save());
             stackPane.getChildren().add(saveButton);

@@ -59,7 +59,7 @@ public class MenuLvlScene extends BasicScene {
         // label
         Font f = null;
         try {
-            f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 40);
+            f = Font.loadFont(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Fonts/Kenney Rocket Square.ttf"), 40);
         }
         catch (FileNotFoundException e) {
             Controller.alert("The label font could not be loaded please check the file path in the LevelScene",

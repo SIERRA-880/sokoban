@@ -16,9 +16,9 @@ import static javafx.geometry.Pos.CENTER;
 
 public class GridLvlButtons extends GridPane {
 
-    private final String buttonSelected = "build/resources/main/textures/Default/Buttons/levelMenu/levelButtonOver_empty.png";
-    private final String buttonUnselected = "build/resources/main/textures/Default/Buttons/levelMenu/levelButton_empty.png";
-    private final String imageLocked = "build/resources/main/textures/Default/Buttons/levelMenu/levelButton_locker.png";
+    private final String buttonSelected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButtonOver_empty.png";
+    private final String buttonUnselected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_empty.png";
+    private final String imageLocked = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_locker.png";
 
     /**
      * This widget is a grid of 15 LevelButtons.
@@ -90,8 +90,6 @@ public class GridLvlButtons extends GridPane {
                         Controller.alert("The image of the Load button could not be loaded please check the file path in the ArcadeScene",
                                 ScenesEnum.VIDEOSCENE);
                     }
-
-
                 }
                 add(button, j, i);
             }

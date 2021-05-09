@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
+import sokoban.Game;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,7 +29,7 @@ public class SliderLabel extends BorderPane {
 
         Image image = null;
         try {
-            image = new Image(new FileInputStream("build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver.png"));
+            image = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver.png"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

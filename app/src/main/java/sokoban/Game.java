@@ -26,9 +26,9 @@ public class Game extends Application {
     public static StackPane pane = new StackPane();
     public static KeyCode up;
     public static KeyCode left;
-    public static KeyCode left2;
     public static KeyCode down;
     public static KeyCode right;
+    public static String resourcePack;
 
     public static void main(String[] args) {
         launch(args);
@@ -40,6 +40,9 @@ public class Game extends Application {
         window.setTitle("Sokoban");
         window.setMaximized(true);
         window.setFullScreenExitKeyCombination(KeyCombination.keyCombination(String.valueOf(KeyCode.F11)));
+
+        // resource pack
+        resourcePack = "Default"; 
 
         // binds
         up = KeyCode.Z;

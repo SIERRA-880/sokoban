@@ -62,29 +62,24 @@ public class Controller {
         alert.setTitle("Loading image error");
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         ButtonType exit = new ButtonType("Exit");
-        ButtonType back = new ButtonType("Back");
         // Button methodes
         Optional<ButtonType> option = alert.showAndWait();
-        if (option.get().equals(back)) {
-            switchScene(SCENE);
-        } else if (option.get().equals(exit)) {
+        if (option.get().equals(exit)) {
             System.exit(0);
         }
         try {
             // Add corner icon
             stage.getIcons().add(new Image(new FileInputStream(("build/resources/main/textures/" +
-                    "Default/Buttons/levelMenu/levelButton_1.png"))));
+                    ""+Game.resourcePack+"/Buttons/levelMenu/levelButton_1.png"))));
             // Add Stage icon
             alert.setGraphic(new ImageView(new Image(new FileInputStream("build/resources/main/textures/" +
-                    "Default/Buttons/levelMenu/levelButton_1.png"))));
+                    ""+Game.resourcePack+"/Buttons/levelMenu/levelButton_1.png"))));
         }catch (FileNotFoundException e ){
             alert = new Alert(Alert.AlertType.ERROR, "The images for the alert could not be found in" +
                     " Controller.java");
             alert.setTitle("Loading image error");
             alert.show();
-
         }
         alert.show();
-
     }
 }

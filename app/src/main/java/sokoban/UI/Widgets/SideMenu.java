@@ -3,6 +3,7 @@ package sokoban.UI.Widgets;
 import javafx.scene.layout.VBox;
 import sokoban.ScenesEnum;
 import sokoban.UI.Scenes.VideoScene;
+import sokoban.Game;
 
 import java.io.FileNotFoundException;
 
@@ -19,8 +20,8 @@ public class SideMenu extends VBox {
     public ImageButton PlayButton() {
         // play button
         try {
-            String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_play.png";
-            String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_play.png";
+            String image_selected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton_play.png";
+            String image_unselected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver_play.png";
             ImageButton button = new ImageButton(image_selected, image_unselected);
             button.setOnAction(e -> {
                 VideoBg.Vplayer.stop();
@@ -40,8 +41,8 @@ public class SideMenu extends VBox {
     public ImageButton ArcadeButton() {
         // arcade button
         try {
-            String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_arcade.png";
-            String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_arcade.png";
+            String image_selected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton_arcade.png";
+            String image_unselected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver_arcade.png";
             ImageButton button = new ImageButton(image_selected, image_unselected);
             //Still to do
             button.setOnAction(e -> {
@@ -61,8 +62,8 @@ public class SideMenu extends VBox {
     public ImageButton OptionsButton() {
         // options button
         try {
-            String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_options.png";
-            String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_options.png";
+            String image_selected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton_options.png";
+            String image_unselected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver_options.png";
             ImageButton button = new ImageButton(image_selected, image_unselected);
             button.setOnAction(e -> {
                 VideoBg.Vplayer.stop();
@@ -81,8 +82,8 @@ public class SideMenu extends VBox {
     public ImageButton CreditsButton() {
         // credits button
         try {
-            String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_credits.png";
-            String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_credits.png";
+            String image_selected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton_credits.png";
+            String image_unselected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver_credits.png";
             ImageButton button = new ImageButton(image_selected, image_unselected);
             button.setOnAction(e -> {
                 VideoBg.Vplayer.stop();
@@ -101,8 +102,8 @@ public class SideMenu extends VBox {
     public ImageButton ExitButton() {
         // exit button
         try {
-            String image_selected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButton_exit.png";
-            String image_unselected = "build/resources/main/textures/Default/Buttons/mainMenu/mainButtonOver_exit.png";
+            String image_selected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButton_exit.png";
+            String image_unselected = "build/resources/main/textures/"+Game.resourcePack+"/Buttons/mainMenu/mainButtonOver_exit.png";
             ImageButton button = new ImageButton(image_selected, image_unselected);
             button.setOnAction(e -> System.exit(0));
             return button;
