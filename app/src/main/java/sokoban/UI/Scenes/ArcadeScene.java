@@ -21,8 +21,12 @@ import sokoban.UI.Widgets.VideoBg;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import javafx.event.*;
 
 public class ArcadeScene extends BasicScene {
+
+    String selectedLevel;
+    boolean canLoad = false;
 
     public ArcadeScene(StackPane stackPane) {
         super(stackPane);
@@ -140,10 +144,12 @@ public class ArcadeScene extends BasicScene {
     }
 
     public void load() {
-        Game.level.loadLevel("custom");
-        Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
-        Game.levelScene.map.showMap();
-        Controller.switchScene(ScenesEnum.LEVELSCENE);
+        if (canLoad) {
+            Game.level.loadLevel(selectedLevel);
+            Game.loadScene.setOnKeyPressed(event -> Game.loadScene.addKeyHandler(event));
+            Game.loadScene.map.showMap();
+            Controller.switchScene(ScenesEnum.LOADSCENE);
+        }
     }
 
     public VBox sliderH(Font f) {
@@ -177,7 +183,6 @@ public class ArcadeScene extends BasicScene {
             Game.genWidth = (int) slider.getValue();
             slider.setValue((int) slider.getValue());
         });
-        System.out.println(Game.level.world.width);
 
         VBox vBox1 = new VBox(slider);
         vBox1.setPrefWidth(300);
@@ -210,17 +215,16 @@ public class ArcadeScene extends BasicScene {
     public VBox randomInfo(Font f) {
         Label label = new Label("\t    RANDOM:\nCreate a random map, you can modify the map's height,width and the number of boxes. ");
         return getvBox(f, label);
-
     }
+
     public VBox builderInfo(Font f) {
         Label label = new Label("\t    BUILDER :\n The ultimate creative mode where you can place all the elements of a map yourself!");
         return getvBox(f, label);
-
     }
+
     public VBox loadInfo(Font f) {
         Label label = new Label("\t  LOAD :\n Select and load the different kinds of maps you have created yourself.");
         return getvBox(f, label);
-
     }
 
     private VBox getvBox(Font f, Label label) {
@@ -234,7 +238,7 @@ public class ArcadeScene extends BasicScene {
     }
 
     public ComboBox<String> loadCbox(){
-        File folder = new File("build/resources/main/levels/");
+        File folder = new File("build/resources/main/levels/save/");
         File[] listOfFiles = folder.listFiles();
         ComboBox<String> comboBox = new ComboBox<>();
         for (File file : listOfFiles) {
@@ -242,8 +246,13 @@ public class ArcadeScene extends BasicScene {
                 comboBox.getItems().add(file.getName());
             }
         }
+        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                selectedLevel = comboBox.getValue().replaceAll(".[^.]*$", "");
+                canLoad = true;
+            }
+        };
+        comboBox.setOnAction(event);
         return  comboBox;
     }
-
 }
-

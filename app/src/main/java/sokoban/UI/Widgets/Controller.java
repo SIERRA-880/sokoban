@@ -48,6 +48,9 @@ public class Controller {
                 Game.builderScene.refresh();
                 Game.window.setScene(Game.builderScene);
                 break;
+            case LOADSCENE:
+                Game.window.setScene(Game.loadScene);
+                break;
             default:
                 System.out.println("I told you we would make a mistake !");
                 break;

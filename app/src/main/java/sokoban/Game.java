@@ -23,6 +23,7 @@ public class Game extends Application {
     public static ArcadeScene arcadeScene;
     public static RandomLevelScene randomLevelScene;
     public static BuilderScene builderScene;
+    public static LoadScene loadScene;
     public static StackPane pane = new StackPane();
     public static KeyCode up;
     public static KeyCode left;
@@ -71,6 +72,7 @@ public class Game extends Application {
         arcadeScene = new ArcadeScene(new StackPane());
         randomLevelScene = new RandomLevelScene(new StackPane(), ScenesEnum.ARCADESCENE);
         builderScene = new BuilderScene(new StackPane());
+        loadScene = new LoadScene(new StackPane(), ScenesEnum.ARCADESCENE);
         window.setScene(videoScene);
         window.show();
     }
