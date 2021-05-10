@@ -3,6 +3,7 @@ package sokoban.Engine.Tools;
 import sokoban.Engine.Objects.Level;
 import sokoban.Engine.Objects.World;
 import sokoban.Engine.Tools.WriteToXsb;
+import sokoban.Game;
 
 import java.io.File;
 import java.io.FileNotFoundException;

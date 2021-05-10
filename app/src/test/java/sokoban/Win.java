@@ -36,6 +36,6 @@ public class Win {
         Level level = new Level();
         level.setLevel("map1");
         MovReplay.replay(level, "map1");
-        assertEquals(true,XsbComparator.compare("build/resources/main/levels/out1.xsb", "build/resources/main/levels/solved1.xsb"));
+        assertEquals(true,XsbComparator.compare("build/resources/main/levels/save/out1.xsb", "build/resources/main/levels/solved1.xsb"));
     }
 }
