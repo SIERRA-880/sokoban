@@ -208,17 +208,17 @@ public class ArcadeScene extends BasicScene {
     }
 
     public VBox randomInfo(Font f) {
-        Label label = new Label("\t    RANDOM:\nCreat a random map, you can modify the map's hiight,widht and the number of boxes. ");
+        Label label = new Label("\t    RANDOM:\nCreate a random map, you can modify the map's height,width and the number of boxes. ");
         return getvBox(f, label);
 
     }
     public VBox builderInfo(Font f) {
-        Label label = new Label("\t    BUILDER :\n The ultimate creative mode were you can place all the elements of a map yourself!");
+        Label label = new Label("\t    BUILDER :\n The ultimate creative mode where you can place all the elements of a map yourself!");
         return getvBox(f, label);
 
     }
     public VBox loadInfo(Font f) {
-        Label label = new Label("\t  LOAD :\n Select and load the different kinds maps you have created yourself.");
+        Label label = new Label("\t  LOAD :\n Select and load the different kinds of maps you have created yourself.");
         return getvBox(f, label);
 
     }
