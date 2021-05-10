@@ -27,7 +27,7 @@ Gradle also handle documentation via javadoc. You can find the documentation by 
 - `./gradlew -q run` run the main app
 - `./gradlew test` run the tests
 - `./gradlew -q javadoc` generate javadoc
-- :warning: `-q` is mandatory. It's only used to remove the output in the console so Gradle won't flood your terminal.
+- :warning: `-q` is not mandatory. It's only used to remove the output in the console so Gradle won't flood your terminal.
 
 ## Tools
 
@@ -52,15 +52,14 @@ You can use the Gradle task `./gradlew movReplay` with some parameters.
 To pass arguments in a Gradle task you have to use `--args="arg1 arg2..."` .
 These arguments will be split at each whitespaces, resulting in an array of strings containing `["arg1", "arg2", ...]` .
 
-The result will be printed in the console. Please avoid using `-q` parameter for Gradle since it's removes the output and you will not see the result of this tool.
+The result will be printed in the console and a new .xsb will be created in build/resources/main/levels/save/). Please avoid using `-q` parameter for Gradle since it's removes the output and you will not see the result of this tool.
 
 Parameters :
-* `map.xsb` | 
-* `movements.mov` |
-* `output.xsb` |
+* `map.xsb` | name of the original map (build/resources/main/levels/)
+* `movements.mov` | name of the move file (build/resources/main/appdata/movements/)
 
 Exemples :
-`./gradlew movReplay -args=""` 
+`./gradlew movReplay -args="ma1.xsb mov1.xsb"` 
 
 ## Dependencies
 ### ffmpeg
