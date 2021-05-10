@@ -57,7 +57,7 @@ public class ArcadeScene extends BasicScene {
             rButton.setText("Random");
             rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
-            rButton.setOnAction(e ->{ mkRandom(); System.out.println(Game.level.world.width);});
+            rButton.setOnAction(e ->mkRandom());
             stackPane.getChildren().add(rButton);
             StackPane.setAlignment(rButton, Pos.CENTER);
             StackPane.setMargin(rButton, new Insets(0.0, 1000.0, 0.0, 0.0));
@@ -151,8 +151,9 @@ public class ArcadeScene extends BasicScene {
         Slider slider = new Slider(5, 15, 1);
         slider.setShowTickLabels(true);
         slider.setMajorTickUnit(1);
+        Game.genHeight = (int) slider.getValue();
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            Game.level.world.height = (int) slider.getValue();
+            Game.genHeight = (int) slider.getValue();
             slider.setValue((int) slider.getValue());
         });
         VBox vBox1 = new VBox(slider);
@@ -171,10 +172,10 @@ public class ArcadeScene extends BasicScene {
         Slider slider = new Slider(5, 15, 1);
         slider.setShowTickLabels(true);
         slider.setMajorTickUnit(1);
+        Game.genWidth = (int) slider.getValue();
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            Game.level.world.width = (int) slider.getValue();
+            Game.genWidth = (int) slider.getValue();
             slider.setValue((int) slider.getValue());
-            System.out.println(Game.level.world.width);
         });
         System.out.println(Game.level.world.width);
 
