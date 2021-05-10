@@ -86,7 +86,8 @@ public class World {
         int[] left = {x-1, y};
         int[] down = {x, y+1};
         int[] right = {x+1, y};
-        Cell[] nearbyCellsArray = {searchCell(up), searchCell(left), searchCell(right), searchCell(down)};
+        Cell[] nearbyCellsArray;
+        nearbyCellsArray = new Cell[]{searchCell(up), searchCell(left), searchCell(right), searchCell(down)};
         return nearbyCellsArray;
     }
 
@@ -112,13 +113,9 @@ public class World {
                 }
             }
         }
-        if (counter == targetsList.size()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return counter == targetsList.size();
     }
+
 
     @Override
     public String toString() {
