@@ -13,4 +13,23 @@ Nous avons ajoute deux task a Gradle, trouvable a la fin du fichier \textit{buil
 \subsection{Dépendances}
 ffmpeg - nécessaire sur les systèmes UNIX afin d'afficher correctement la video de fond de l'écran principal.
 \subsection{Guide d'utilisation}
+Notre sokoban comporte 3 modes. \\
+
+La campagne principale disponible via le menu play. Ce mode permet aux joueurs de jouer
+15 niveaux prédéfinis qui se déloquent les uns après les autres. Afin de compléter
+un niveau, il faut pousser toutes les caisses sur les croix. Le déplacement du personnage se fait
+avec les touches \path{z,q,s,d} ou avec les boutons présents sur l'interface graphique. Ces touches 
+peuvent être redéfinie via le menu option. \\
+
+Les modes Random et Builder accessibles via le menu Arcade. Le mode Random génére 
+une map aléatoire dont on peut choisir les dimensions ainsi que le nombre de boites à pousser. \\
+Le mode Builder permet au joueur de designer ses propres niveaux de jeux. \\
+L'interface de Builder propose un niveau vide, de dimension 15*15, où chaque case peut être modifiée 
+en cliquant dessus après avoir séléctionné un type de case dans la barre de gauche. \\
+
+En plus de ces modes, n'importe quel niveau de Sokoban peut également être joué si le joueur possède le fichier d'extension \path{.xsb}.
+Il suffit copier celui-ci dans le répertoire \path{sokoban/app/src/main/resources/levels/save}.
+Il apparaitra ensuite dans la liste déroulante de la section load dans le menu Arcade avec les 
+niveaux crées par le joueur et les niveau Random enregistrés.
+
 \end{document}
