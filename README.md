@@ -27,7 +27,7 @@ Gradle also handle documentation via javadoc. You can find the documentation by 
 - `./gradlew -q run` run the main app
 - `./gradlew test` run the tests
 - `./gradlew -q javadoc` generate javadoc
-- :warning: `-q` is mandatory. It's only used to remove the output in the console so Gradle won't flood your terminal.
+- :warning: `-q` is not mandatory. It's only used to remove the output in the console so Gradle won't flood your terminal.
 
 ## Tools
 
