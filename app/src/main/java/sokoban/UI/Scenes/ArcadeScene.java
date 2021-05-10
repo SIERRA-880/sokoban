@@ -208,28 +208,21 @@ public class ArcadeScene extends BasicScene {
 
     public VBox randomInfo(Font f) {
         Label label = new Label("\t    RANDOM:\nCreat a random map, you can modify the map's hiight,widht and the number of boxes. ");
-        label.setFont(f);
-        label.setTextFill(Color.web("#FFFFFF"));
-        label.setWrapText(true);
-        VBox vBox= new VBox(label);
-        vBox.setMaxWidth(350);
-        vBox.setMaxHeight(180);
-        return vBox;
+        return getvBox(f, label);
 
     }
     public VBox builderInfo(Font f) {
         Label label = new Label("\t    BUILDER :\n The ultimate creative mode were you can place all the elements of a map yourself!");
-        label.setFont(f);
-        label.setTextFill(Color.web("#FFFFFF"));
-        label.setWrapText(true);
-        VBox vBox= new VBox(label);
-        vBox.setMaxWidth(350);
-        vBox.setMaxHeight(180);
-        return vBox;
+        return getvBox(f, label);
 
     }
     public VBox loadInfo(Font f) {
         Label label = new Label("\t  LOAD :\n Select and load the different kinds maps you have created yourself.");
+        return getvBox(f, label);
+
+    }
+
+    private VBox getvBox(Font f, Label label) {
         label.setFont(f);
         label.setTextFill(Color.web("#FFFFFF"));
         label.setWrapText(true);
@@ -237,8 +230,8 @@ public class ArcadeScene extends BasicScene {
         vBox.setMaxWidth(350);
         vBox.setMaxHeight(180);
         return vBox;
-
     }
+
     public ComboBox<String> loadCbox(){
         File folder = new File("build/resources/main/levels/");
         File[] listOfFiles = folder.listFiles();
