@@ -1,6 +1,5 @@
 package sokoban.UI.Scenes;
 
-import javafx.scene.effect.Bloom;
 import javafx.animation.KeyFrame;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
@@ -9,7 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Point3D;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Bloom;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
@@ -19,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import sokoban.Game;
+import sokoban.UI.Widgets.OptionPane;
 import sokoban.UI.Widgets.SideMenu;
 import sokoban.UI.Widgets.VideoBg;
 
@@ -37,6 +37,7 @@ public class VideoScene extends BasicScene {
     public static MediaPlayer Mplayer;
     public static VideoBg vb;
     public static Media music = new Media(new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/retroWave.wav").toURI().toString());
+
     public VideoScene(StackPane stackPane) {
         super(stackPane);
 
@@ -54,7 +55,6 @@ public class VideoScene extends BasicScene {
         Font f2 = null;
 
         // Setting Threshold
-
 
 
         try {
@@ -97,11 +97,13 @@ public class VideoScene extends BasicScene {
 
         setOnMouseClicked(evt -> {
             if (!shown.get()) {
+                if (OptionPane.soundCheckBox.isSelected()) {
+                    String showSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/teleport.wav").toURI().toString();
+                    AudioClip audioClip = new AudioClip(showSound);
+                    audioClip.setVolume(0.1);
+                    audioClip.play();
 
-                String showSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/teleport.wav").toURI().toString();
-                AudioClip audioClip= new AudioClip(showSound);
-                audioClip.setVolume(0.1);
-
+                }
                 menuTranslation.setRate(1.5);
                 menuTranslation.play();
                 shown.set(true);
@@ -109,7 +111,7 @@ public class VideoScene extends BasicScene {
                         new KeyFrame(Duration.seconds(0.1), event -> startLabel.setVisible(false)));
                 timeline.setCycleCount(2);
                 timeline.play();
-                audioClip.play();
+
                 startLabel.setVisible(false);
             } else {
                 if (evt.getButton().equals(MouseButton.PRIMARY) && evt.getClickCount() == 3) {
@@ -121,16 +123,18 @@ public class VideoScene extends BasicScene {
 
                     rt.play();
                 } else {
-                    String showSound =new File( "build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/openDoors.wav").toURI().toString();
-                    AudioClip audioClip= new AudioClip(showSound);
-                    audioClip.setVolume(0.1);
+                    String showSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/openDoors.wav").toURI().toString();
+                    if (OptionPane.soundCheckBox.isSelected()) {
+                        AudioClip audioClip = new AudioClip(showSound);
+                        audioClip.setVolume(0.1);
+                        audioClip.play();
+                    }
                     TranslateTransition menuTranslation2 = new TranslateTransition(Duration.millis(500), sideMenu);
                     menuTranslation2.setFromX(80);
                     menuTranslation2.setToX(-200);
                     menuTranslation2.setRate(1.5);
                     menuTranslation2.play();
                     shown.set(true);
-                    audioClip.play();
                     shown.set(false);
                     startLabel.setVisible(true);
                 }

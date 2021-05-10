@@ -2,6 +2,7 @@ package sokoban.UI.Widgets;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.input.KeyCode;
@@ -13,7 +14,7 @@ import sokoban.ScenesEnum;
 import sokoban.UI.Widgets.ImageButton;
 import sokoban.Game;
 
-public class KeyBinding extends HBox {
+public class KeyBinding extends VBox {
 
     public ImageButton button;
     

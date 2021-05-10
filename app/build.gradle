@@ -2,6 +2,8 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.9'
+    id "com.liferay.css.builder" version "5.0.1"
+
 }
 
 repositories {
@@ -35,7 +37,7 @@ run {
 
 javafx {
     version = "15.0.1"
-    modules = [ 'javafx.controls', 'javafx.fxml','javafx.media']
+    modules = [ 'javafx.controls','javafx.media']
 }
 
 task checkMap(type : JavaExec){

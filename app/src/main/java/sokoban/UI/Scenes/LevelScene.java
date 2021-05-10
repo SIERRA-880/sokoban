@@ -3,18 +3,14 @@ package sokoban.UI.Scenes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.robot.Robot;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
-import sokoban.UI.Widgets.BackButton;
-import sokoban.UI.Widgets.ImageButton;
-import sokoban.UI.Widgets.Map;
-import sokoban.UI.Widgets.Controller;
+import sokoban.UI.Widgets.*;
+
 import java.util.Scanner;
 
 import sokoban.Game;
@@ -24,7 +20,6 @@ import sokoban.Engine.Tools.MoveLogger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.FileInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -155,27 +150,27 @@ public class LevelScene extends BasicScene {
             return;
         }
         KeyCode keyCode = ke.getCode();
-        if (keyCode.equals(Game.up)) {
+        if (keyCode.equals(Game.up) ) {
             player.setTexture("up");
-            if (player.move("up", world)) {
+            if (player.move("up", world) && OptionPane.soundCheckBox.isSelected()) {
                 moveBox.play();
             }
 
         } else if (keyCode.equals(Game.left)) {
             player.setTexture("left");
-            if (player.move("left", world)) {
+            if (player.move("left", world)&& OptionPane.soundCheckBox.isSelected()) {
                 moveBox.play();
             }
 
         } else if (keyCode.equals(Game.down)) {
             player.setTexture("down");
-            if (player.move("down", world)) {
+            if (player.move("down", world)&& OptionPane.soundCheckBox.isSelected()) {
                 moveBox.play();
             }
 
         } else if (keyCode.equals(Game.right)) {
             player.setTexture("right");
-            if (player.move("right", world)) {
+            if (player.move("right", world)&& OptionPane.soundCheckBox.isSelected()) {
                 moveBox.play();
             }
         }
@@ -210,7 +205,6 @@ public class LevelScene extends BasicScene {
                     for (int n : levels) {
                         if (currentLevel + 1 == n) {
                             write = false;
-
                         }
                     }
                     if (currentLevel==levels[currentLevel-1] && currentLevel!=15 && write) { 

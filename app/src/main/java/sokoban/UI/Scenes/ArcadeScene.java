@@ -103,7 +103,7 @@ public class ArcadeScene extends BasicScene {
         sliderVBox.setFillWidth(false);
         stackPane.getChildren().add(sliderVBox);
         StackPane.setAlignment(sliderVBox, Pos.CENTER);
-        StackPane.setMargin(sliderVBox, new Insets(600, 0, 0.0, 350.0));
+        StackPane.setMargin(sliderVBox, new Insets(600, 0, 0.0, 300));
 
         //info for random button
         VBox randomInfoBox= randomInfo(font);
@@ -246,11 +246,9 @@ public class ArcadeScene extends BasicScene {
                 comboBox.getItems().add(file.getName());
             }
         }
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
-                selectedLevel = comboBox.getValue().replaceAll(".[^.]*$", "");
-                canLoad = true;
-            }
+        EventHandler<ActionEvent> event = e -> {
+            selectedLevel = comboBox.getValue().replaceAll(".[^.]*$", "");
+            canLoad = true;
         };
         comboBox.setOnAction(event);
         return  comboBox;

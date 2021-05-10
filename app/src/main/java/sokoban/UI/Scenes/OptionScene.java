@@ -1,24 +1,15 @@
 package sokoban.UI.Scenes;
 
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.ImageCursor;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import sokoban.Game;
 import sokoban.ScenesEnum;
+import sokoban.UI.Widgets.*;
 
-import sokoban.UI.Widgets.BackButton;
-import sokoban.UI.Widgets.Controller;
-import sokoban.UI.Widgets.OptionPane;
-import sokoban.UI.Widgets.VideoBg;
-import sokoban.UI.Widgets.KeyBindingPane;
-
-import java.awt.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -26,7 +17,7 @@ import java.io.FileNotFoundException;
 public class OptionScene extends BasicScene {
 
 
-    public OptionScene(StackPane stackPane){
+    public OptionScene(StackPane stackPane) {
         super(stackPane);
         OptionPane optionPane = new OptionPane();
         stackPane.getChildren().add(optionPane);
@@ -44,14 +35,15 @@ public class OptionScene extends BasicScene {
             stackPane.getChildren().add(bbutton);
             StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
             StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Controller.alert("The image of the back button could not be loaded please check the file path in the OptionScene");
         }
 
         // keyBind
         KeyBindingPane kbp = new KeyBindingPane();
         stackPane.getChildren().add(kbp);
-        StackPane.setMargin(kbp, new Insets(20.0, 0.0, 0.0, 500.0));
+        StackPane.setMargin(kbp, new Insets(300, 50.0, 0, 0.0));
+        stackPane.setAlignment(kbp,Pos.TOP_RIGHT);
         if (bbutton != null) {
             bbutton.setOnAction(e -> {
                 Controller.switchScene(ScenesEnum.VIDEOSCENE);
@@ -59,37 +51,11 @@ public class OptionScene extends BasicScene {
                 VideoScene.Mplayer.play();
             });
         }
-        try {
-            Image image = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Menus/" +
-                    "cursor_pointerFlat.png"));  //pass in the image path
-            setCursor(new ImageCursor(image));
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("cursor problem");
-        }
-        //LayerPane
-        AnchorPane pane = new AnchorPane();
-        setOnMousePressed(event -> {
-            try {
-                Image image = new Image(new FileInputStream("build/resources/main/textures/" +
-                        ""+Game.resourcePack+"/Cells/explosion.png"));
-                setCursor(new ImageCursor(image));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        });
-        setOnMouseReleased(event -> {
-            try {
-                Image image = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Menus/" +
-                        "cursor_pointerFlat.png"));  //pass in the image path
-                setCursor(new ImageCursor(image));
-            }
-            catch (FileNotFoundException e) {
-                e.printStackTrace();
-                System.out.println("cursor problem");
-            }
-        });
+
 
     }
+
+
 }
+
+

@@ -24,7 +24,6 @@ public class Game extends Application {
     public static RandomLevelScene randomLevelScene;
     public static BuilderScene builderScene;
     public static LoadScene loadScene;
-    public static StackPane pane = new StackPane();
     public static KeyCode up;
     public static KeyCode left;
     public static KeyCode down;
@@ -33,6 +32,18 @@ public class Game extends Application {
     public static int genWidth;
     public static int genHeight;
     public static int genBox;
+    public static StackPane videoScenePane = new StackPane();
+    public static StackPane menuLvlScenePane = new StackPane();
+    public static StackPane levelScenePane = new StackPane();
+    public static StackPane creditsScenePane = new StackPane();
+    public static StackPane optionScenePane = new StackPane();
+    public static StackPane arcadeScenePane = new StackPane();
+    public static StackPane randomLevelScenePane = new StackPane();
+    public static StackPane builderScenePane = new StackPane();
+    public static StackPane loadScenePane = new StackPane();
+
+
+
 
     public static void main(String[] args) {
         launch(args);
@@ -63,16 +74,16 @@ public class Game extends Application {
         level.setLevel("map1");
 
         // scenes
-        videoScene = new VideoScene(pane);
+        videoScene = new VideoScene(videoScenePane);
         VideoScene.Mplayer.play();
-        menuLvlScene = new MenuLvlScene(new StackPane());
-        levelScene = new LevelScene(new StackPane(), ScenesEnum.MENULVLSCENE);
-        creditsScene = new CreditsScene(new StackPane());
-        optionScene = new OptionScene(new StackPane());
-        arcadeScene = new ArcadeScene(new StackPane());
-        randomLevelScene = new RandomLevelScene(new StackPane(), ScenesEnum.ARCADESCENE);
-        builderScene = new BuilderScene(new StackPane());
-        loadScene = new LoadScene(new StackPane(), ScenesEnum.ARCADESCENE);
+        menuLvlScene = new MenuLvlScene(menuLvlScenePane);
+        levelScene = new LevelScene(levelScenePane, ScenesEnum.MENULVLSCENE);
+        creditsScene = new CreditsScene(creditsScenePane);
+        optionScene = new OptionScene(optionScenePane);
+        arcadeScene = new ArcadeScene(arcadeScenePane);
+        randomLevelScene = new RandomLevelScene(randomLevelScenePane, ScenesEnum.ARCADESCENE);
+        builderScene = new BuilderScene(builderScenePane);
+        loadScene = new LoadScene(loadScenePane, ScenesEnum.ARCADESCENE);
         window.setScene(videoScene);
         window.show();
     }
