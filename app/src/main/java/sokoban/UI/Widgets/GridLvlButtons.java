@@ -3,6 +3,7 @@ package sokoban.UI.Widgets;
 import javafx.scene.layout.GridPane;
 import sokoban.Game;
 import sokoban.ScenesEnum;
+import sokoban.UI.Scenes.LevelScene;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -73,7 +74,6 @@ public class GridLvlButtons extends GridPane {
                             Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
                             Game.levelScene.map.showMap();
                             Controller.switchScene(ScenesEnum.LEVELSCENE);
-
                         });
                         button.setText(a++ + "");
                     }catch (FileNotFoundException e){

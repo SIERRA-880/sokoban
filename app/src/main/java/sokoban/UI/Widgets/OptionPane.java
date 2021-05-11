@@ -138,7 +138,7 @@ public class OptionPane extends VBox {
 
     }
 
-    public Font font() {
+    public static Font font() {
         Font f = null;
         try {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 40);

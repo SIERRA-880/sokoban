@@ -12,6 +12,7 @@ import javafx.scene.layout.GridPane;
 import sokoban.Game;
 import sokoban.Engine.Objects.Cell;
 import sokoban.Engine.Objects.MatrixCase;
+import sokoban.UI.Scenes.LevelScene;
 
 public class Map extends GridPane {
 
@@ -48,6 +49,7 @@ public class Map extends GridPane {
     public void showMap() {
         //clean up
         this.getChildren().clear();
+       // LevelScene.label1.setVisible(false);
         //refresh
         MatrixCase[][] matrix = Game.level.world.getMap();
         for (int i = 0; i < matrix.length; i++) {

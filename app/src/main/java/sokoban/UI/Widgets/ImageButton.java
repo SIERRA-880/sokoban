@@ -45,5 +45,17 @@ public class ImageButton extends Button {
         setPadding(new Insets(0, 0, 0, 0));
         setBackground(backgroundSelected);
     }
+    public ImageButton(String selected) throws FileNotFoundException {
+        Image imSelected;
+        locked = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Buttons/levelMenu/levelButton_locker.png"));
+        imSelected = new Image(new FileInputStream(selected));
+
+        setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
+        setMinSize(imSelected.getWidth(), imSelected.getHeight());
+        BackgroundImage finalImSelected = new BackgroundImage(imSelected, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundSelected = new Background(finalImSelected);
+        setPadding(new Insets(0, 0, 0, 0));
+        setBackground(backgroundSelected);
+    }
 
 }
