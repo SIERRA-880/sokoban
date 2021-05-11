@@ -37,7 +37,7 @@ public class KeyBindingPane extends GridPane {
             Game.down = k.getCode();
             kb3.button.setText(k.getCode().toString());
         }));
-       // getChildren().add(kb3);
+        // getChildren().add(kb3);
 
         //right
         KeyBinding kb4 = new KeyBinding("  right", Game.right);
@@ -45,18 +45,17 @@ public class KeyBindingPane extends GridPane {
             System.out.println(event.getCode());
             event.consume();
         }));
-        getChildren().addAll(kb1,kb2,kb3,kb4);
-        GridPane.setRowIndex(kb1,0);
-        GridPane.setColumnIndex(kb1,1);
-        GridPane.setRowIndex(kb2,1);
-        GridPane.setColumnIndex(kb2,0);
-        GridPane.setRowIndex(kb3,1);
-        GridPane.setColumnIndex(kb3,1);
-        GridPane.setRowIndex(kb4,1);
-        GridPane.setColumnIndex(kb4,2);
+        getChildren().addAll(kb1, kb2, kb3, kb4);
+        GridPane.setRowIndex(kb1, 0);
+        GridPane.setColumnIndex(kb1, 1);
+        GridPane.setRowIndex(kb2, 1);
+        GridPane.setColumnIndex(kb2, 0);
+        GridPane.setRowIndex(kb3, 1);
+        GridPane.setColumnIndex(kb3, 1);
+        GridPane.setRowIndex(kb4, 1);
+        GridPane.setColumnIndex(kb4, 2);
 
         setAlignment(Pos.TOP_RIGHT);
-
 
 
     }

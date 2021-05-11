@@ -131,7 +131,7 @@ public class OptionPane extends VBox {
         vBox.setFillWidth(true);
         label.setTextFill(Color.web("#A7F5F4"));
         vBox.getChildren().addAll(label, slider);
-        vBox.setStyle("-fx-background-color: yellow");
+
 
         return vBox;
 

@@ -15,9 +15,6 @@ public class OptionScene extends BasicScene {
 
     public OptionScene(StackPane stackPane) {
         super(stackPane);
-        OptionPane optionPane = new OptionPane();
-        stackPane.getChildren().add(optionPane);
-        StackPane.setMargin(optionPane, new Insets(200.0, 0.0, 0.0, 20.0));
         // backButton
         BackButton bbutton = null;
         try {
@@ -47,6 +44,9 @@ public class OptionScene extends BasicScene {
             });
         }
 
+        OptionPane optionPane = new OptionPane();
+        stackPane.getChildren().add(optionPane);
+        StackPane.setMargin(optionPane, new Insets(200.0, 0.0, 0.0, 20.0));
 
     }
 
