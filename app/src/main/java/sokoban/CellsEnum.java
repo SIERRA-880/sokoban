@@ -1,5 +1,5 @@
 package sokoban;
 
 public enum CellsEnum {
-    CELL, EMPTY, BOX, PLAYER, TARGET, WALL 
+    CELL, EMPTY, BOX, PLAYER, TARGET, WALL, BOXONTARGET
 }

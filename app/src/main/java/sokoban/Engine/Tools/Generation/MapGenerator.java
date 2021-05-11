@@ -103,7 +103,7 @@ public class MapGenerator {
             int[] pos = {rng[0], rng[1]};
             int[] tPos = {rng[0], rng[1]};
             Target target  = new Target(tPos, "/Cells/target.png");
-            Box box  = new Box(pos, "/Cells/box.png");
+            Box box  = new Box(pos, CellsEnum.BOXONTARGET, "/Cells/box.png");
             MatrixCase boxCase = new MatrixCase(box, target);
             map[pos[1]][pos[0]] = boxCase; 
             targetList.add(target);

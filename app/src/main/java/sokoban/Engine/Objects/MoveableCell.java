@@ -27,7 +27,7 @@ public class MoveableCell extends Cell {
             return false;
         } 
 
-        // if next cell has softCollision 
+        // if next cell has softCollision i.e. Box
         else if (nextCell.softCollision()) {
             int[] nextNextPos = nextCell.getNextPos(direction);
             Cell nextNextCell = world.searchCell(nextNextPos);
@@ -42,6 +42,12 @@ public class MoveableCell extends Cell {
                 world.moveCell(nextCell, nextCell.getCellPos(), nextNextPos);
                 nextCell.setCellPos(nextNextPos);
                 boxMoved = true;
+                if (nextNextCell.getCellType() == CellsEnum.TARGET) {
+                    nextCell.setCellType(CellsEnum.BOXONTARGET);
+                }
+                else {
+                    nextCell.setCellType(CellsEnum.BOX);
+                }
                 return true;
             }
         } 

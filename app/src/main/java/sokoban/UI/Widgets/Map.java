@@ -21,6 +21,7 @@ public class Map extends GridPane {
     Image player = null;
     Image box = null;
     Image target = null;
+    Image boxOnTarget = null;
 
     /**
      * A Map is a grid where each case is a game's cell from a matrix 
@@ -36,6 +37,7 @@ public class Map extends GridPane {
             box = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/box.png"));
             target = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/target.png"));
             player = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/player_down.png"));
+            boxOnTarget = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/boxOnTarget.png"));
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -76,6 +78,9 @@ public class Map extends GridPane {
                         break;
                     case TARGET:
                         this.add(new ImageView(target), j, i, 1, 1);
+                        break;
+                    case BOXONTARGET:
+                        this.add(new ImageView(boxOnTarget), j, i, 1, 1);
                         break;
                 }
             }

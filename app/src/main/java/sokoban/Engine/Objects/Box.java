@@ -6,8 +6,8 @@ public class Box extends MoveableCell {
 
     private char termTexture = '$';
     
-    public Box(int[] pos, String texture) {
-        super(pos, CellsEnum.BOX, texture, false, true);
+    public Box(int[] pos, CellsEnum cellType, String texture) {
+        super(pos, cellType, texture, false, true);
     }
 
     /**

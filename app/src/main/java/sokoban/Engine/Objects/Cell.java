@@ -40,6 +40,17 @@ public class Cell {
     }
 
     /**
+     * @return the type of the {@link sokoban.Engine.Objects.Cell}
+     */
+    public CellsEnum getCellType() {
+        return cellType;
+    }
+
+    public void setCellType(CellsEnum cellType) {
+        this.cellType = cellType;
+    }
+
+    /**
      * @param direction String (up,left,down,right) direction
      * @return the position of the {@link sokoban.Engine.Objects.Cell} if the player wants to move it in the given direction
      */
@@ -73,13 +84,6 @@ public class Cell {
      */
     public String getCellTexture() {
         return texture;
-    }
-
-    /**
-     * @return the type of the {@link sokoban.Engine.Objects.Cell}
-     */
-    public CellsEnum getCellType() {
-        return cellType;
     }
 
     /**

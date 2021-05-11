@@ -60,7 +60,7 @@ public class Builder {
                         break;
 
                     case '$':
-                        Box box = new Box(pos, "/Cells/box.png");
+                        Box box = new Box(pos, CellsEnum.BOX, "/Cells/box.png");
                         Cell cell1 = new Cell(pos, CellsEnum.CELL, "/Cells/ground.png", false, false);
                         MatrixCase boxCase = new MatrixCase(box, cell1);
                         cellsMatrix[line][column] = boxCase;
@@ -89,7 +89,7 @@ public class Builder {
                     case '*':
                         int[] tPos = {column, line}; 
                         Target starTarget = new Target(tPos, "/Cells/target.png");
-                        Box starBox = new Box(pos, "/Cells/box.png");
+                        Box starBox = new Box(pos, CellsEnum.BOXONTARGET, "/Cells/boxOnTarget.png");
                         MatrixCase starCase = new MatrixCase(starBox, starTarget);
                         cellsMatrix[line][column] = starCase;
                         boxesList.add(starBox);
