@@ -1,6 +1,7 @@
 package sokoban;
 
 import sokoban.Engine.Objects.*;
+import sokoban.CellsEnum;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -8,7 +9,7 @@ import static org.junit.Assert.*;
 public class Move {
     @Test public void testBoxGetTerm() {
         int[] pos = {0,0};
-        Box box = new Box(pos, "/Cells/box.png");
+        Box box = new Box(pos, CellsEnum.BOX, "/Cells/box.png");
         assertEquals('$', box.getTermTexture());
     }
 

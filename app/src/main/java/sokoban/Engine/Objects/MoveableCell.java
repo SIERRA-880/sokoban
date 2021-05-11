@@ -104,10 +104,12 @@ public class MoveableCell extends Cell {
         int[] boxPos = getNextPos(oppositeDirection);
         int[] playerPos = this.getCellPos();
         Cell nextCell = world.searchCell(nextPos);
+        Cell boxCell = world.searchCell(boxPos);
         if (world.searchCell(boxPos) instanceof Box && (!nextCell.hardCollision() && !nextCell.softCollision())) { 
             Cell box = world.searchBox(boxPos);
             world.moveCell(this, playerPos, nextPos);
             world.moveCell(box, boxPos, playerPos);
+            boxCell.setCellType(CellsEnum.BOX);
             box.setCellPos(playerPos);
             setCellPos(nextPos);
         }
