@@ -24,9 +24,10 @@ public class OptionPane extends VBox {
 
     public OptionPane() {
         super(8);
-        setStyle("-fx-background-color: transparent;");
+
         setSpacing(30);
-        // setPrefWidth(400);
+        setPrefWidth(400);
+        setMaxWidth(700);
         setFillWidth(false);
         VBox sliderLabelbrightness = SliderLabel(0, 100, 10, 10, "BRIGHTNESS", font());
         Brightness((Slider) sliderLabelbrightness.getChildren().get(1));

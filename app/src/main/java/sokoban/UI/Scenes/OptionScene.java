@@ -47,6 +47,7 @@ public class OptionScene extends BasicScene {
         OptionPane optionPane = new OptionPane();
         stackPane.getChildren().add(optionPane);
         StackPane.setMargin(optionPane, new Insets(200.0, 0.0, 0.0, 20.0));
+        stackPane.setAlignment(optionPane,Pos.TOP_LEFT);
 
     }
 
