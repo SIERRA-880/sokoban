@@ -61,7 +61,7 @@ public class Game extends Application {
         // generation parameters
         genWidth = 10;
         genHeight = 10;
-        genBox = 4;
+        genBox = 1;
 
         // binds
         up = KeyCode.Z;
