@@ -19,13 +19,13 @@ import static sokoban.UI.Scenes.VideoScene.Mplayer;
 public class OptionPane extends VBox {
     public static CheckBox soundCheckBox = new CheckBox();
     public static CheckBox explosionCheckBox = new CheckBox();
+
     public static Slider slider = new Slider(0, 100, 10);
 
     public OptionPane() {
         super(8);
         setStyle("-fx-background-color: transparent;");
         setSpacing(30);
-
         // setPrefWidth(400);
         setFillWidth(false);
         VBox sliderLabelbrightness = SliderLabel(0, 100, 10, 10, "BRIGHTNESS", font());
@@ -35,6 +35,8 @@ public class OptionPane extends VBox {
         getChildren().addAll(sliderLabelsound, sliderLabelbrightness);
         //sound effect checkboxes
         getChildren().addAll(soundEffectbox(font()), explosionBoxSlider(font()));
+
+
 
 
         explosionCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> Controller.setExplosion(explosionCheckBox.isSelected()));
@@ -75,7 +77,6 @@ public class OptionPane extends VBox {
         soundCheckBox.setSelected(true);
         //
 
-
         // soundCheckBox.getStylesheets().add("app/build/resources/main/CheckB.scss");
 
 
@@ -84,6 +85,7 @@ public class OptionPane extends VBox {
         label.setTextFill(Color.web("#A7F5F4"));
         //vbox.setSpacing(30);
         vbox.getChildren().add(label);
+
         vbox.getChildren().add(soundCheckBox);
         vbox.setPrefWidth(800);
         vbox.setFillWidth(false);
@@ -109,6 +111,8 @@ public class OptionPane extends VBox {
         vBox.getChildren().add(vBox1);
         vBox.setPrefWidth(700);
 
+
+
         return vBox;
 
     }
@@ -127,6 +131,8 @@ public class OptionPane extends VBox {
         vBox.setFillWidth(true);
         label.setTextFill(Color.web("#A7F5F4"));
         vBox.getChildren().addAll(label, slider);
+        vBox.setStyle("-fx-background-color: yellow");
+
         return vBox;
 
     }

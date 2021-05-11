@@ -201,6 +201,7 @@ public class ArcadeScene extends BasicScene {
         slider.setMajorTickUnit(1);
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
             slider.setValue((int) slider.getValue());
+            Game.genBox=(int)slider.getValue();
         });
         VBox vBox1 = new VBox(slider);
         vBox1.setPrefWidth(300);

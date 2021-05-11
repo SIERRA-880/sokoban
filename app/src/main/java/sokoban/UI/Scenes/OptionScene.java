@@ -3,14 +3,10 @@ package sokoban.UI.Scenes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.ImageCursor;
-import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
-import sokoban.Game;
 import sokoban.ScenesEnum;
 import sokoban.UI.Widgets.*;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 
@@ -22,7 +18,6 @@ public class OptionScene extends BasicScene {
         OptionPane optionPane = new OptionPane();
         stackPane.getChildren().add(optionPane);
         StackPane.setMargin(optionPane, new Insets(200.0, 0.0, 0.0, 20.0));
-
         // backButton
         BackButton bbutton = null;
         try {
