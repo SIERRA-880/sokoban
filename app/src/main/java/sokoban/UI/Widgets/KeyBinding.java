@@ -14,10 +14,18 @@ import sokoban.ScenesEnum;
 import sokoban.UI.Widgets.ImageButton;
 import sokoban.Game;
 
+/**
+ * Layout in form of a VBox containing a button that is able to remap the keyboard's keys used to move the player
+ */
 public class KeyBinding extends VBox {
 
-    public ImageButton button;
-    
+    protected ImageButton button;
+
+    /**
+     * Constructor of KeyBinding
+     * @param text text displayed on the button
+     * @param key KeyCode that will be associated to a direction
+     */
     public KeyBinding(String text, KeyCode key) {
         super();
 
@@ -42,7 +50,7 @@ public class KeyBinding extends VBox {
             String btnText = key.toString();
             button.setText(key.toString());
             getChildren().add(button);
-        }catch (FileNotFoundException e){ Controller.alert("The image of the button could not be loaded please check the file path in KeyBinding");}
+        }catch (FileNotFoundException e){ Controller.alert("The image of the button could not be loaded please check the file path in KeyBinding:48");}
 
     }
 }

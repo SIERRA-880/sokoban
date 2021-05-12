@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import sokoban.Game;
+import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.OptionPane;
 import sokoban.UI.Widgets.SideMenu;
 import sokoban.UI.Widgets.VideoBg;
@@ -26,18 +27,26 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ConcurrentModificationException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static javafx.scene.layout.StackPane.setAlignment;
 import static javafx.scene.layout.StackPane.setMargin;
 
+/**
+ * Scene displaying the the first seen upon launching the game
+ */
 public class VideoScene extends BasicScene {
 
-    public static Boolean bomb;
-    public static MediaPlayer Mplayer;
-    public static VideoBg vb;
-    public static Media music = new Media(new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/retroWave.wav").toURI().toString());
+    private static MediaPlayer Mplayer;
+    private static VideoBg vb;
+    private static final Media music = new Media(new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/retroWave.wav").toURI().toString());
 
+    /**
+     * Contructor of VideoScene
+     *
+     * @param stackPane Pane type object where other layouts will be placed on
+     */
     public VideoScene(StackPane stackPane) {
         super(stackPane);
 
@@ -61,7 +70,7 @@ public class VideoScene extends BasicScene {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 100);
             f2 = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 20);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Controller.alert("Font files could not be loaded please check VideoScene : 71-72");
         }
         Label selectLabel = new Label("sokoban");
         selectLabel.setFont(f);
@@ -92,12 +101,12 @@ public class VideoScene extends BasicScene {
 
         TextField textField = new TextField();
         textField.setVisible(false);
-        // stackPane.getChildren().add(textField);
         System.out.println(textField.getText());
 
+        //effect to make the side menu appear from the side, make the startLabel flicker and play a sound upon clicking on the scene and reverse everything to
         setOnMouseClicked(evt -> {
             if (!shown.get()) {
-                if (OptionPane.soundCheckBox.isSelected()) {
+                if (OptionPane.soundCBoxIsSelected()) {
                     String showSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/teleport.wav").toURI().toString();
                     AudioClip audioClip = new AudioClip(showSound);
                     audioClip.setVolume(0.1);
@@ -124,7 +133,7 @@ public class VideoScene extends BasicScene {
                     rt.play();
                 } else {
                     String showSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/openDoors.wav").toURI().toString();
-                    if (OptionPane.soundCheckBox.isSelected()) {
+                    if (OptionPane.soundCBoxIsSelected()) {
                         AudioClip audioClip = new AudioClip(showSound);
                         audioClip.setVolume(0.1);
                         audioClip.play();
@@ -140,5 +149,37 @@ public class VideoScene extends BasicScene {
                 }
             }
         });
+    }
+
+    /**
+     * Methode used to start the MediaPlayer Mplayer
+     */
+    public static void playMplayer() {
+        Mplayer.play();
+    }
+
+    /**
+     * Methode used to stop the MediaPlayer Mplyer
+     */
+    public static void stopMplayer() {
+        Mplayer.stop();
+    }
+
+    /**
+     * Methode used to get the volume of the MediaPlayer Mplayer
+     *
+     * @return a double representing the current volume of the MediaPlayer Mplayer
+     */
+    public static double getMplayerVolume() {
+        return Mplayer.getVolume();
+    }
+
+    /**
+     * Mehtode used to change the volume of the MediaPlayer Mplayer
+     *
+     * @param volume double type number that will be set a s the new volume
+     */
+    public static void setMplayerVolume(double volume) {
+        Mplayer.setVolume(volume);
     }
 }

@@ -1,7 +1,5 @@
 package sokoban.UI.Widgets;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -10,18 +8,22 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import sokoban.Game;
+import sokoban.UI.Scenes.VideoScene;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import static sokoban.UI.Scenes.VideoScene.Mplayer;
-
+/**
+ * Pane containing the main elements of the Option scene
+ */
 public class OptionPane extends VBox {
-    public static CheckBox soundCheckBox = new CheckBox();
-    public static CheckBox explosionCheckBox = new CheckBox();
+    private static final CheckBox soundCheckBox = new CheckBox();
+    private static final CheckBox explosionCheckBox = new CheckBox();
+    private static final Slider slider = new Slider(0, 100, 10);
 
-    public static Slider slider = new Slider(0, 100, 10);
-
+    /**
+     * Constructor of OptionPane
+     */
     public OptionPane() {
         super(8);
 
@@ -38,12 +40,48 @@ public class OptionPane extends VBox {
         getChildren().addAll(soundEffectbox(font()), explosionBoxSlider(font()));
 
 
-
-
         explosionCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> Controller.setExplosion(explosionCheckBox.isSelected()));
 
     }
 
+    /**
+     * Methode used to get the font used to write
+     *
+     * @return a specific Font type objet used for labels
+     */
+    public static Font font() {
+        Font f = null;
+        try {
+            f = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 40);
+        } catch (FileNotFoundException e) {
+            Controller.alert("Fonts file not found (OptionPane:98)");
+        }
+        return f;
+    }
+
+    /**
+     * Methode that verifies if the soundCheckBox is selected or not
+     *
+     * @return a Boolean that indicates if the soundCheckBox is selected or not
+     */
+    public static Boolean soundCBoxIsSelected() {
+        return soundCheckBox.isSelected();
+    }
+
+    /**
+     * Methode used to get the value of the slider
+     *
+     * @return the slider's value
+     */
+    public static double getSliderVlue() {
+        return slider.getValue();
+    }
+
+    /**
+     * Methode used to make the Slider slider used to change the game's brightness
+     *
+     * @param slider Slider type object that changes the game's brightness
+     */
     public void Brightness(Slider slider) {
 
 
@@ -55,36 +93,44 @@ public class OptionPane extends VBox {
         });
     }
 
+    /**
+     * Mehtode used to make the Slider slider used to change the game's sound
+     *
+     * @param slider Slider that changes the game's sound
+     */
     public void Sound(Slider slider) {
-        slider.setValue(Mplayer.getVolume() * 100);
-        slider.setOnMousePressed(e -> Mplayer.play());
-        slider.setOnMouseReleased(event -> Mplayer.stop());
+        slider.setValue(VideoScene.getMplayerVolume() * 100);
+        slider.setOnMousePressed(e -> VideoScene.playMplayer());
+        slider.setOnMouseReleased(event -> VideoScene.stopMplayer());
         slider.valueProperty().addListener((observable, oldValue, newValue) ->
-                Mplayer.setVolume(slider.getValue() / 100));
-        slider.setValue(Mplayer.getVolume() * 100);
+                VideoScene.setMplayerVolume(slider.getValue() / 100));
+        slider.setValue(VideoScene.getMplayerVolume() * 100);
 
     }
 
+    /**
+     * Mehtode used to make the Slider slider used to change the explosions sound
+     *
+     * @param slider Slider that changes the explosions sound
+     */
     public void explosionSound(Slider slider) {
-        slider.setValue(Controller.audioClip.getVolume() * 10);
+        slider.setValue(Controller.getAudioClipVolume() * 10);
         slider.valueProperty().addListener((observable, oldValue, newValue) ->
-                Controller.audioClip.setVolume(slider.getValue() / 100));
-        slider.setValue(Controller.audioClip.getVolume() * 10);
+                Controller.setAudioClipVolume(slider.getValue() / 100));
+        slider.setValue(Controller.getAudioClipVolume() * 10);
     }
 
+    /**
+     * Mehtode used to make the layout that contains the soundCheckBox and its description in a label
+     *
+     * @param f Font in which the description will be written in
+     * @return A VBox type object containing the, soundCheckBox and its description
+     */
     public VBox soundEffectbox(Font f) {
         VBox vbox = new VBox();
         Label label = new Label("SOUND EFFECTS");
-        soundCheckBox.setSelected(true);
-        //
-
-        // soundCheckBox.getStylesheets().add("app/build/resources/main/CheckB.scss");
-
-
-        //
         label.setFont(f);
         label.setTextFill(Color.web("#A7F5F4"));
-        //vbox.setSpacing(30);
         vbox.getChildren().add(label);
 
         vbox.getChildren().add(soundCheckBox);
@@ -94,6 +140,13 @@ public class OptionPane extends VBox {
 
     }
 
+    /**
+     * Mehtode used to make the layout that contains the explosionCheckBox and the slider
+     * controlling its volume and its description in a label
+     *
+     * @param f Font in which the description will be written in
+     * @return A VBox type object containing th explosionCheckBox and the slider and a description
+     */
     public VBox explosionBoxSlider(Font f) {
         VBox vBox = new VBox();
         Label label1 = new Label("EXPLOSION EFFECTS");
@@ -113,11 +166,21 @@ public class OptionPane extends VBox {
         vBox.setPrefWidth(700);
 
 
-
         return vBox;
 
     }
 
+    /**
+     * Methode used to make a slider and a label describing its use
+     *
+     * @param min       Minimum value of the slider
+     * @param max       Maximum value of the slider
+     * @param value     Value of the initial slider value
+     * @param tickValue Indicates after how many units a tick mark will appear
+     * @param text      Description on the slider
+     * @param f         Font in which the description is written
+     * @return A VBox type object containing a slider and its description
+     */
     public VBox SliderLabel(double min, double max, double value, double tickValue, String text, Font f) {
         VBox vBox = new VBox();
         // vBox.setSpacing(30);
@@ -136,15 +199,5 @@ public class OptionPane extends VBox {
 
         return vBox;
 
-    }
-
-    public static Font font() {
-        Font f = null;
-        try {
-            f = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 40);
-        } catch (FileNotFoundException e) {
-            Controller.alert("Fonts file not found (OptionPane:98)");
-        }
-        return f;
     }
 }

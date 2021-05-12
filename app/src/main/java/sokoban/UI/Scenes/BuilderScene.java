@@ -23,12 +23,20 @@ import sokoban.ScenesEnum;
 import sokoban.CellsEnum;
 import sokoban.Game;
 
+/**
+ *Scene for the Builder menu
+ */
 public class BuilderScene extends BasicScene {
 
     private CellsEnum currentCell = CellsEnum.WALL;
     private StackPane stackPane;
     private String[][] map;
     private TextField saveText;
+
+    /**
+     *Constructor of BuilderScene
+     * @param stackPane Pane type object where other layouts will be placed on
+     */
 
     public BuilderScene(StackPane stackPane) {
         super(stackPane);
@@ -136,6 +144,17 @@ public class BuilderScene extends BasicScene {
         refresh();
     }
 
+    /**
+     * Methode used to change a cell
+     * @param cell Cell type object that will replace the previous one
+     */
+    public void changeCell(CellsEnum cell) {
+        currentCell = cell;
+    }
+
+    /**
+     * Methode used to refresh a cell's type and skin upon selecting it
+     */
     public void refresh() {
         // map
         map = new String[15][15];
@@ -155,10 +174,10 @@ public class BuilderScene extends BasicScene {
         stackPane.getChildren().add(gPane);
     }
 
-    public void changeCell(CellsEnum cell) {
-        currentCell = cell;
-    }
 
+    /**
+     * Methode used to save the map created in the Builder mode in a file
+     */
     public void save() {
         String mapString = "";
         for (int i = 0; i < map.length; i++) {

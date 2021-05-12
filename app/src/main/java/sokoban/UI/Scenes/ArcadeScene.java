@@ -9,7 +9,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import sokoban.Engine.Objects.World;
 import sokoban.Engine.Tools.Generation.MapGenerator;
 import sokoban.Game;
 import sokoban.ScenesEnum;
@@ -21,17 +20,27 @@ import sokoban.UI.Widgets.VideoBg;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
 import javafx.event.*;
+
+/**
+ * Scene displaying the alternative game modes
+ */
 
 public class ArcadeScene extends BasicScene {
 
-    String selectedLevel;
-    boolean canLoad = false;
+    private String selectedLevel;
+    private boolean canLoad = false;
 
+    /**
+     *Constructor of ArcadeScene
+     * @param stackPane Pane type object where other layouts will be placed on
+     */
     public ArcadeScene(StackPane stackPane) {
         super(stackPane);
+
+
         //font
-        // credits
         Font font = null;
         try {
             font = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 20);
@@ -45,8 +54,8 @@ public class ArcadeScene extends BasicScene {
             BackButton bbutton = new BackButton();
             bbutton.setOnAction(e -> {
                 Controller.switchScene(ScenesEnum.VIDEOSCENE);
-                VideoBg.Vplayer.play();
-                VideoScene.Mplayer.play();
+                VideoBg.playVplayer();
+                VideoScene.playMplayer();
             });
             stackPane.getChildren().add(bbutton);
             StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
@@ -61,7 +70,7 @@ public class ArcadeScene extends BasicScene {
             rButton.setText("Random");
             rButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
-            rButton.setOnAction(e ->mkRandom());
+            rButton.setOnAction(e -> mkRandom());
             stackPane.getChildren().add(rButton);
             StackPane.setAlignment(rButton, Pos.CENTER);
             StackPane.setMargin(rButton, new Insets(0.0, 1000.0, 0.0, 0.0));
@@ -76,7 +85,7 @@ public class ArcadeScene extends BasicScene {
             builderButton.setText("Builder");
             builderButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
 
-            builderButton.setOnAction(e -> mkBuilder());
+            builderButton.setOnAction(e -> Controller.switchScene(ScenesEnum.BUILDERSCENE));
             stackPane.getChildren().add(builderButton);
             StackPane.setAlignment(builderButton, Pos.CENTER);
         } catch (FileNotFoundException e) {
@@ -106,32 +115,35 @@ public class ArcadeScene extends BasicScene {
         StackPane.setMargin(sliderVBox, new Insets(600, 0, 0.0, 300));
 
         //info for random button
-        VBox randomInfoBox= randomInfo(font);
+        VBox randomInfoBox = randomInfo(font);
         stackPane.getChildren().add(randomInfoBox);
-        stackPane.setAlignment(randomInfoBox,Pos.TOP_LEFT);
-        stackPane.setMargin(randomInfoBox,new Insets(200,0,0,300));
+        StackPane.setAlignment(randomInfoBox, Pos.TOP_LEFT);
+        StackPane.setMargin(randomInfoBox, new Insets(200, 0, 0, 300));
 
         //info for builder button
-        VBox builderInfoBox= builderInfo(font);
+        VBox builderInfoBox = builderInfo(font);
         stackPane.getChildren().add(builderInfoBox);
-        stackPane.setAlignment(builderInfoBox,Pos.CENTER);
-        stackPane.setMargin(builderInfoBox,new Insets(0,0,450,30));
+        StackPane.setAlignment(builderInfoBox, Pos.CENTER);
+        StackPane.setMargin(builderInfoBox, new Insets(0, 0, 450, 30));
 
         //info for load button
-        VBox laodInfoBox= loadInfo(font);
+        VBox laodInfoBox = loadInfo(font);
         stackPane.getChildren().add(laodInfoBox);
-        stackPane.setAlignment(laodInfoBox,Pos.TOP_RIGHT);
-        stackPane.setMargin(laodInfoBox,new Insets(200,250,0,0));
+        StackPane.setAlignment(laodInfoBox, Pos.TOP_RIGHT);
+        StackPane.setMargin(laodInfoBox, new Insets(200, 250, 0, 0));
 
         //Combo box for load
         VBox loadComboBox = new VBox(loadCbox());
         loadComboBox.setMaxWidth(200);
         loadComboBox.setMaxHeight(200);
         stackPane.getChildren().add(loadComboBox);
-        stackPane.setAlignment(loadComboBox,Pos.BOTTOM_RIGHT);
-        stackPane.setMargin(loadComboBox,new Insets(0,350,200,0));
+        StackPane.setAlignment(loadComboBox, Pos.BOTTOM_RIGHT);
+        StackPane.setMargin(loadComboBox, new Insets(0, 350, 200, 0));
     }
 
+    /**
+     * Mehtode used to generate a random map,load it and display it when the random button is pressed
+     */
     public void mkRandom() {
         Game.level = MapGenerator.generate(Game.genWidth, Game.genHeight, 2);
         Game.randomLevelScene.setOnKeyPressed(event -> Game.randomLevelScene.addKeyHandler(event));
@@ -139,9 +151,9 @@ public class ArcadeScene extends BasicScene {
         Controller.switchScene(ScenesEnum.RANDOMLEVELSCENE);
     }
 
-    public void mkBuilder() {
-        Controller.switchScene(ScenesEnum.BUILDERSCENE);
-    }
+    /**
+     * Methode used to load a map when the load button is pressed
+     */
 
     public void load() {
         if (canLoad) {
@@ -152,6 +164,11 @@ public class ArcadeScene extends BasicScene {
         }
     }
 
+    /**
+     * Layout used to place the Slider controlling the hight of a random map
+     * @param f Font type used to write the information about the slider
+     * @return the layout
+     */
     public VBox sliderH(Font f) {
         VBox vBox = new VBox();
         Slider slider = new Slider(5, 15, 1);
@@ -172,6 +189,12 @@ public class ArcadeScene extends BasicScene {
         return vBox;
 
     }
+
+    /**
+     * Layout used to place the Slider controlling the width of a random map
+     * @param f Font type used to write the information about the slider
+     * @return the layout
+     */
 
     public VBox sliderW(Font f) {
         VBox vBox = new VBox();
@@ -194,6 +217,12 @@ public class ArcadeScene extends BasicScene {
         return vBox;
     }
 
+    /**
+     * Layout used to place the Slider controling the number of boxes in a random map
+     * @param f Font type used to write the information about the slider
+     * @return the layout
+     */
+
     public VBox sliderB(Font f) {
         VBox vBox = new VBox();
         Slider slider = new Slider(1, 5, 1);
@@ -201,7 +230,7 @@ public class ArcadeScene extends BasicScene {
         slider.setMajorTickUnit(1);
         slider.valueProperty().addListener((observable, oldValue, newValue) -> {
             slider.setValue((int) slider.getValue());
-            Game.genBox=(int)slider.getValue();
+            Game.genBox = (int) slider.getValue();
         });
         VBox vBox1 = new VBox(slider);
         vBox1.setPrefWidth(300);
@@ -213,32 +242,56 @@ public class ArcadeScene extends BasicScene {
         return vBox;
     }
 
+    /**
+     * Label used to contain the information of the random mode
+     * @param f Font type used to write the information
+     * @return {@see getVbox}
+     */
     public VBox randomInfo(Font f) {
         Label label = new Label("\t    RANDOM:\nCreate a random map, you can modify the map's height,width and the number of boxes. ");
         return getvBox(f, label);
     }
-
+    /**
+     * Label used to contain the information of the builder mode
+     * @param f Font type used to write the information
+     * @return {@see getVbox}
+     */
     public VBox builderInfo(Font f) {
         Label label = new Label("\t    BUILDER :\n The ultimate creative mode where you can place all the elements of a map yourself!");
         return getvBox(f, label);
     }
+    /**
+     * Label used to contain the information of the load mode
+     * @param f Font type used to write the information
+     * @return {@see getVbox}
+     */
 
     public VBox loadInfo(Font f) {
         Label label = new Label("\t  LOAD :\n Select and load the different kinds of maps you have created yourself.");
         return getvBox(f, label);
     }
 
+    /**
+     * Methode used to creat the layout that contains information about the different gaming modes
+     * @param f Font type used to write the information
+     * @param label Label type containing information about a certain mode
+     * @return VBox that containst {@param label} with {@param f} as font
+     */
     private VBox getvBox(Font f, Label label) {
         label.setFont(f);
         label.setTextFill(Color.web("#FFFFFF"));
         label.setWrapText(true);
-        VBox vBox= new VBox(label);
+        VBox vBox = new VBox(label);
         vBox.setMaxWidth(350);
         vBox.setMaxHeight(180);
         return vBox;
     }
 
-    public ComboBox<String> loadCbox(){
+    /**
+     * Methode used to create the comboBox containing the different loadable maps
+     * @return a ComboBox
+     */
+    public ComboBox<String> loadCbox() {
         File folder = new File("build/resources/main/levels/save/");
         File[] listOfFiles = folder.listFiles();
         ComboBox<String> comboBox = new ComboBox<>();
@@ -252,6 +305,6 @@ public class ArcadeScene extends BasicScene {
             canLoad = true;
         };
         comboBox.setOnAction(event);
-        return  comboBox;
+        return comboBox;
     }
 }

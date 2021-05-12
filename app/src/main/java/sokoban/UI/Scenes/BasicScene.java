@@ -9,8 +9,15 @@ import java.io.FileNotFoundException;
 import sokoban.Game;
 import sokoban.UI.Widgets.Controller;
 
+/**
+ * Object used as mother of all other scenes
+ */
 public class BasicScene extends Scene {
-    
+
+    /**
+     * Contructor of BasicScene
+     * @param stackPane Pane type object where other layouts will be placed on
+     */
     public BasicScene(StackPane stackPane) {
         super(stackPane);
         stackPane.setStyle("-fx-background-color: #000000;");

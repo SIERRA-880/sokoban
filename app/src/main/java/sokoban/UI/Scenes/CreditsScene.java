@@ -1,28 +1,30 @@
 package sokoban.UI.Scenes;
 
-import javafx.scene.ImageCursor;
-import sokoban.UI.Widgets.BackButton;
-import sokoban.UI.Widgets.Controller;
-import sokoban.UI.Widgets.VideoBg;
-import sokoban.ScenesEnum;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-
-import javafx.scene.Scene;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import sokoban.ScenesEnum;
+import sokoban.UI.Widgets.BackButton;
+import sokoban.UI.Widgets.Controller;
+import sokoban.UI.Widgets.VideoBg;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+/**
+ * Scene displaying the credentials
+ */
 public class CreditsScene extends BasicScene {
-
+    /**
+     *Constructor of CreditScene
+     * @param stackPane Pane type object where other layouts will be placed on
+     */
     public CreditsScene(StackPane stackPane) {
         super(stackPane);
 
@@ -33,20 +35,19 @@ public class CreditsScene extends BasicScene {
             Image image = new Image(new FileInputStream("build/resources/main/textures/Default/Menus/cursor_pointerFlat.png"));
             setCursor(new ImageCursor(image));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("cursor problem");
+
+            Controller.alert("Cursor skin file could not be loaded please check the file path in CreditsScene:39 ");
         }
 
         // credits 
         Font f = null;
         try {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/Default/Fonts/Kenney Rocket Square.ttf"), 20);
+        } catch (FileNotFoundException e) {
+
+            Controller.alert("Fonts file could not be loaded please check the file path in CreditsScene:43 ");
         }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("Fonts file not found (CreditsScene:43)");
-        }
-        
+
         // gridPane
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -112,13 +113,13 @@ public class CreditsScene extends BasicScene {
             BackButton bbutton = new BackButton();
             bbutton.setOnAction(e -> {
                 Controller.switchScene(ScenesEnum.VIDEOSCENE);
-                VideoBg.Vplayer.play();
-                VideoScene.Mplayer.play();
+                VideoBg.playVplayer();
+                VideoScene.playMplayer();
             });
             stackPane.getChildren().add(bbutton);
             StackPane.setAlignment(bbutton, Pos.TOP_LEFT);
             StackPane.setMargin(bbutton, new Insets(20.0, 0.0, 0.0, 20.0));
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Controller.alert("The image of the back button could not be loaded please check the file path in the CreditScene");
         }
     }

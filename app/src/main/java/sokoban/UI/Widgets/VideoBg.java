@@ -1,9 +1,7 @@
 package sokoban.UI.Widgets;
 
 import javafx.geometry.Pos;
-
 import javafx.scene.layout.StackPane;
-
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -12,8 +10,8 @@ import java.io.File;
 
 public class VideoBg extends StackPane {
 
-    public static MediaPlayer Vplayer;
-    Media media;
+    private static MediaPlayer Vplayer;
+    private Media media;
 
     /**
      * This widgets display a video(mp4 format) in a stackPane.
@@ -30,5 +28,20 @@ public class VideoBg extends StackPane {
         getChildren().add(mv);
         setAlignment(mv, Pos.CENTER);
         Vplayer.play();
+    }
+
+
+    /**
+     * Methode used to start the music
+     */
+    public static void playVplayer() {
+        Vplayer.play();
+    }
+
+    /**
+     * Methode used to stop the music
+     */
+    public static void stopVplayer() {
+         Vplayer.stop();
     }
 }

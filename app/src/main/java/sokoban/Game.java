@@ -75,7 +75,7 @@ public class Game extends Application {
 
         // scenes
         videoScene = new VideoScene(videoScenePane);
-        VideoScene.Mplayer.play();
+        VideoScene.playMplayer();
         menuLvlScene = new MenuLvlScene(menuLvlScenePane);
         levelScene = new LevelScene(levelScenePane, ScenesEnum.MENULVLSCENE);
         creditsScene = new CreditsScene(creditsScenePane);

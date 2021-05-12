@@ -4,23 +4,18 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Bloom;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.robot.Robot;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
-import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
+import javafx.scene.robot.Robot;
 import sokoban.Engine.Objects.Player;
 import sokoban.Engine.Objects.World;
-import sokoban.UI.Widgets.*;
-
-import java.util.Scanner;
-
+import sokoban.Engine.Tools.MoveLogger;
 import sokoban.Game;
 import sokoban.ScenesEnum;
-import sokoban.Engine.Tools.MoveLogger;
+import sokoban.UI.Widgets.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,26 +24,32 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
+
+/**
+ * Scenes displaying a classic level is loaded upon pressing a level button
+ */
 
 public class LevelScene extends BasicScene {
     //Scene that will contain a Map type object and display a level
 
     public Map map;
-    public Label label1 = new Label("YOU WIN !!!!");
-    StackPane stackPane;
-    ScenesEnum previousScene;
-    boolean move = true;
+    private final Label label1 = new Label("YOU WIN !!!!");
+    private boolean move = true;
     // sounds
-    String moveBoxSounds = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/moveBox.wav").toURI().toString();
-    String allBoxesOnTargetSounds = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
-    AudioClip moveBox = new AudioClip(moveBoxSounds);
-    Robot robot;
+    private String moveBoxSounds = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/moveBox.wav").toURI().toString();
+    private String allBoxesOnTargetSounds = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/level/allBoxesOnTarget.wav").toURI().toString();
+    private  AudioClip moveBox = new AudioClip(moveBoxSounds);
+    private Robot robot;
 
+    /**
+     * Constructor of the scene
+     * @param stackPane Pane type object where other layouts will be placed on
+     * @param previousScene Scene type object that refers the previous scene
+     */
     public LevelScene(StackPane stackPane, ScenesEnum previousScene) {
         super(stackPane);
 
-        this.stackPane = stackPane;
-        this.previousScene = previousScene;
         robot = new Robot();
 
         //victory message
@@ -59,7 +60,6 @@ public class LevelScene extends BasicScene {
         bloom.setThreshold(0.7);
         label1.setEffect(bloom);
         label1.setVisible(false);
-
         stackPane.getChildren().add(label1);
         StackPane.setAlignment(label1, Pos.TOP_CENTER);
 
@@ -180,85 +180,94 @@ public class LevelScene extends BasicScene {
         }
     }
 
-    public void reset() {
+    /**
+     * Methode used to enable player movements
+     */
+    public void moveAgain() {
         move = true;
     }
+
+    /**
+     *Methode listening to user input and moves the player accordingly
+     * @param ke Keyvent
+     */
 
     public void addKeyHandler(KeyEvent ke) {
         //method to move the player on the map
         Player player = Game.level.player;
         World world = Game.level.world;
 
-        if (!move) {
-            return;
-        }
-        KeyCode keyCode = ke.getCode();
-        if (keyCode.equals(Game.up)) {
-            player.setTexture("up");
-            if (player.move("up", world) && OptionPane.soundCheckBox.isSelected()) {
-                moveBox.play();
-            }
+        //if no movement is permitted then exits the methode
+        if (move) {
 
-        } else if (keyCode.equals(Game.left)) {
-            player.setTexture("left");
-            if (player.move("left", world) && OptionPane.soundCheckBox.isSelected()) {
-                moveBox.play();
-            }
+            KeyCode keyCode = ke.getCode();
+            if (keyCode.equals(Game.up)) {
+                player.setTexture("up");
+                if (player.move("up", world) && OptionPane.soundCBoxIsSelected()) {
+                    moveBox.play();
+                }
 
-        } else if (keyCode.equals(Game.down)) {
-            player.setTexture("down");
-            if (player.move("down", world) && OptionPane.soundCheckBox.isSelected()) {
-                moveBox.play();
-            }
+            } else if (keyCode.equals(Game.left)) {
+                player.setTexture("left");
+                if (player.move("left", world) && OptionPane.soundCBoxIsSelected()) {
+                    moveBox.play();
+                }
 
-        } else if (keyCode.equals(Game.right)) {
-            player.setTexture("right");
-            if (player.move("right", world) && OptionPane.soundCheckBox.isSelected()) {
-                moveBox.play();
-            }
-        }
-        map.showMap();
+            } else if (keyCode.equals(Game.down)) {
+                player.setTexture("down");
+                if (player.move("down", world) && OptionPane.soundCBoxIsSelected()) {
+                    moveBox.play();
+                }
 
-        // win conditions 
-        if (world.winCondition() ) {
-            if(OptionPane.soundCheckBox.isSelected()) {
-                AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
-                mplayer.play();
+            } else if (keyCode.equals(Game.right)) {
+                player.setTexture("right");
+                if (player.move("right", world) && OptionPane.soundCBoxIsSelected()) {
+                    moveBox.play();
+                }
             }
-            move = false;
-            MoveLogger.writeToNewestFile();
-            label1.setVisible(true);
+            map.showMap();
 
-            // store the save file in an array
-            if (Game.level.nlevel > 0) {
-                try {
-                    int currentLevel = Game.level.nlevel;
-                    int[] levels = new int[15];
-                    String workingDirectory = System.getProperty("user.dir");
-                    String absoluteFilePath;
-                    absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "saves";
-                    Path dir = Paths.get(absoluteFilePath);
-                    File saves = new File(absoluteFilePath);
-                    Scanner myReader = new Scanner(saves);
-                    int i = 0;
-                    while (myReader.hasNextLine()) {
-                        String currentLine = myReader.nextLine();
-                        levels[i] = Integer.parseInt(currentLine);
-                        i++;
-                    }
-                    myReader.close();
-                    boolean write = true;
-                    for (int n : levels) {
-                        if (currentLevel + 1 == n) {
-                            write = false;
+            // win conditions
+            if (world.winCondition()) {
+                if (OptionPane.soundCBoxIsSelected()) {
+                    AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
+                    mplayer.play();
+                }
+                move = false;
+                MoveLogger.writeToNewestFile();
+                label1.setVisible(true);
+
+                // store the save file in an array
+                if (Game.level.nlevel > 0) {
+                    try {
+                        int currentLevel = Game.level.nlevel;
+                        int[] levels = new int[15];
+                        String workingDirectory = System.getProperty("user.dir");
+                        String absoluteFilePath;
+                        absoluteFilePath = workingDirectory + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "saves";
+                        Path dir = Paths.get(absoluteFilePath);
+                        File saves = new File(absoluteFilePath);
+                        Scanner myReader = new Scanner(saves);
+                        int i = 0;
+                        while (myReader.hasNextLine()) {
+                            String currentLine = myReader.nextLine();
+                            levels[i] = Integer.parseInt(currentLine);
+                            i++;
                         }
+                        myReader.close();
+                        boolean write = true;
+                        for (int n : levels) {
+                            if (currentLevel + 1 == n) {
+                                write = false;
+                            }
+                        }
+                        if (currentLevel == levels[currentLevel - 1] && currentLevel != 15 && write) {
+                            currentLevel++;
+                            Files.writeString(dir, "\n" + currentLevel + "", StandardOpenOption.APPEND);
+                        }
+                    } catch (IOException e) {
+                        Controller.alert("A problem has occured while saving the map please check LevelScene:266");
                     }
-                    if (currentLevel == levels[currentLevel - 1] && currentLevel != 15 && write) {
-                        currentLevel++;
-                        Files.writeString(dir, "\n" + currentLevel + "", StandardOpenOption.APPEND);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }

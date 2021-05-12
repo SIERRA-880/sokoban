@@ -1,61 +1,61 @@
 package sokoban.UI.Widgets;
 
-import static javafx.geometry.Pos.CENTER;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import sokoban.Engine.Objects.Cell;
+import sokoban.Engine.Objects.MatrixCase;
+import sokoban.Game;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
+import static javafx.geometry.Pos.CENTER;
 
-import sokoban.Game;
-import sokoban.Engine.Objects.Cell;
-import sokoban.Engine.Objects.MatrixCase;
-import sokoban.UI.Scenes.LevelScene;
-
+/**
+ * Map is a grid where each case is a game's cell from a matrix
+ * stored in a world object.
+ */
 public class Map extends GridPane {
 
-    Image ground = null;
-    Image empty = null;
-    Image wall = null;
-    Image player = null;
-    Image box = null;
-    Image target = null;
-    Image boxOnTarget = null;
+    private Image ground = null;
+    private Image empty = null;
+    private Image wall = null;
+    private Image player = null;
+    private Image box = null;
+    private Image target = null;
+    private Image boxOnTarget = null;
 
     /**
-     * A Map is a grid where each case is a game's cell from a matrix 
-     * stored in a world object.
+     * Constructor of Map
      */
-    public Map()  {
+    public Map() {
         super();
         setAlignment(CENTER);
         try {
-            ground = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/ground.png"));
-            empty = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/empty.png"));
-            wall = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/wall.png"));
-            box = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/box.png"));
-            target = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/target.png"));
-            player = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/player_down.png"));
-            boxOnTarget = new Image(new FileInputStream("build/resources/main/textures/"+Game.resourcePack+"/Cells/boxOnTarget.png"));
-        }
-        catch (FileNotFoundException e) {
+            ground = new Image(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Cells/ground.png"));
+            empty = new Image(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Cells/empty.png"));
+            wall = new Image(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Cells/wall.png"));
+            box = new Image(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Cells/box.png"));
+            target = new Image(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Cells/target.png"));
+            player = new Image(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Cells/player_down.png"));
+            boxOnTarget = new Image(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Cells/boxOnTarget.png"));
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("image file not found (Map.java:27-32)");
+            Controller.alert("image file not found (Map.java:36-42)");
         }
     }
 
     public void showMap() {
         //clean up
         this.getChildren().clear();
-       // LevelScene.label1.setVisible(false);
+        // LevelScene.label1.setVisible(false);
         //refresh
         MatrixCase[][] matrix = Game.level.world.getMap();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 Cell cell = matrix[i][j].getCell();
-                switch(cell.getCellType()) {
+                switch (cell.getCellType()) {
                     case CELL:
                         this.add(new ImageView(ground), j, i, 1, 1);
                         break;
@@ -68,8 +68,7 @@ public class Map extends GridPane {
                     case PLAYER:
                         try {
                             player = new Image(new FileInputStream(cell.getCellTexture()));
-                        }
-                        catch (FileNotFoundException e) {
+                        } catch (FileNotFoundException e) {
                             e.printStackTrace();
                             System.out.println("texture not found (Map.java:66)");
                         }

@@ -1,13 +1,13 @@
 package sokoban.UI.Widgets;
 
-import sokoban.Game;
 import sokoban.Engine.Tools.MoveLogger;
+import sokoban.Game;
 
 import java.io.FileNotFoundException;
 
 public class LevelButton extends ImageButton {
 
-    int nlevel;
+   private final int nlevel;
     /**
      * This widget is a button that will start a game's level.
      * 
@@ -22,6 +22,6 @@ public class LevelButton extends ImageButton {
 
     public void setMap() {
         Game.level.setLevel("map" + nlevel);
-        MoveLogger.createFile(nlevel+"");
+        MoveLogger.createFile(nlevel + "");
     }
 }

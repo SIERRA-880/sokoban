@@ -1,16 +1,16 @@
 package sokoban.UI.Widgets;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import sokoban.Game;
 
+/**
+ * Layout in form of a GridPane containing 4 KeyBindings representing the directions a player can move in
+ */
 public class KeyBindingPane extends GridPane {
-
+    /**
+     * Contructor of KeyBingDingPane
+     */
     public KeyBindingPane() {
         super();
         setHgap(40);
@@ -37,12 +37,10 @@ public class KeyBindingPane extends GridPane {
             Game.down = k.getCode();
             kb3.button.setText(k.getCode().toString());
         }));
-        // getChildren().add(kb3);
 
         //right
         KeyBinding kb4 = new KeyBinding("  right", Game.right);
         kb4.button.setOnAction(e -> setOnKeyPressed(event -> {
-            System.out.println(event.getCode());
             event.consume();
         }));
         getChildren().addAll(kb1, kb2, kb3, kb4);
