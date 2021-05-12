@@ -127,6 +127,7 @@ public class OptionPane extends VBox {
      * @return A VBox type object containing the, soundCheckBox and its description
      */
     public VBox soundEffectbox(Font f) {
+        soundCheckBox.setSelected(true);
         VBox vbox = new VBox();
         Label label = new Label("SOUND EFFECTS");
         label.setFont(f);

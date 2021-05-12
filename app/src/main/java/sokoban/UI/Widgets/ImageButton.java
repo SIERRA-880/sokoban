@@ -37,7 +37,9 @@ public class ImageButton extends Button {
         Background backgroundUnselected = new Background(finalImUnselected);
         setOnMouseEntered(e -> {
             setBackground(backgroundUnselected);
-            tic.play();
+            if(OptionPane.soundCBoxIsSelected()) {
+                tic.play();
+            }
             setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #EA470D;");
         });
         setOnMouseExited(e -> {
