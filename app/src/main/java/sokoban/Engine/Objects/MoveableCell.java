@@ -135,7 +135,7 @@ public class MoveableCell extends Cell {
         Cell boxCell = world.searchCell(boxPos);
 
         // if the previous cell is a box and the next cell has no collisions
-        if (boxCell.getCellType() == CellsEnum.BOX && (!nextCell.collisions())) { 
+        if (world.searchCell(boxPos) instanceof Box && (!nextCell.hardCollision() && !nextCell.softCollision())) { 
 
             // moving cells and changing positions 
             Cell box = world.searchBox(boxPos);
