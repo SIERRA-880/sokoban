@@ -220,9 +220,11 @@ public class LevelScene extends BasicScene {
         map.showMap();
 
         // win conditions 
-        if (world.winCondition()) {
-            AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
-            mplayer.play();
+        if (world.winCondition() ) {
+            if(OptionPane.soundCheckBox.isSelected()) {
+                AudioClip mplayer = new AudioClip(allBoxesOnTargetSounds);
+                mplayer.play();
+            }
             move = false;
             MoveLogger.writeToNewestFile();
             label1.setVisible(true);
