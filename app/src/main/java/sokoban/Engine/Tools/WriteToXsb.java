@@ -16,6 +16,9 @@ public class WriteToXsb {
     /**
      * Output a Level to .xsb format in build/resources/main/levels/
      * @param fileName A String containing the name of the output file
+     * @param fileName
+     * @param mapString
+     * @param mapWidth
      */
     public static void write(String fileName, String mapString, int mapWidth) {
         try {

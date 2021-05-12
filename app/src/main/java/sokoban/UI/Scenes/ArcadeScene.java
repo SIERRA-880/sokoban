@@ -245,7 +245,7 @@ public class ArcadeScene extends BasicScene {
     /**
      * Label used to contain the information of the random mode
      * @param f Font type used to write the information
-     * @return {@see getVbox}
+     * @return getVbox()
      */
     public VBox randomInfo(Font f) {
         Label label = new Label("\t    RANDOM:\nCreate a random map, you can modify the map's height,width and the number of boxes. ");
@@ -254,7 +254,7 @@ public class ArcadeScene extends BasicScene {
     /**
      * Label used to contain the information of the builder mode
      * @param f Font type used to write the information
-     * @return {@see getVbox}
+     * @return  getVbox()
      */
     public VBox builderInfo(Font f) {
         Label label = new Label("\t    BUILDER :\n The ultimate creative mode where you can place all the elements of a map yourself!");
@@ -263,7 +263,7 @@ public class ArcadeScene extends BasicScene {
     /**
      * Label used to contain the information of the load mode
      * @param f Font type used to write the information
-     * @return {@see getVbox}
+     * @return getVbox()
      */
 
     public VBox loadInfo(Font f) {

@@ -12,17 +12,21 @@ import java.io.FileNotFoundException;
 
 import sokoban.Game;
 
+/**
+ * This widget is a button with a texture (image). It needs 2 images
+ * the first is the texture of the button when de mouse is over it and
+ * the second is displayed when the mouse is not over the button.
+ */
 public class ImageButton extends Button {
 
     private String buttonSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/tic.wav").toURI().toString();
     private AudioClip tic = new AudioClip(buttonSound);
+
     /**
-     * This widget is a button with a texture (image). It need 2 images
-     * the first is the texture of the button when de mouse is over it and
-     * the second is displayed when the mouse is not over the button.
-     *
+     * Constructor of Image button
      * @param selected   is a string corresponding to a file path that leads to the image shown when de mouse is over the button.
      * @param unselected is a string corresponding to a file path that leads to the image shown when de mouse is not over the button.
+     * @throws FileNotFoundException throws an exception when the file path of the images are not found
      */
     public ImageButton(String selected, String unselected) throws FileNotFoundException {
 
