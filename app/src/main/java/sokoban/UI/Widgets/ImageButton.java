@@ -41,7 +41,7 @@ public class ImageButton extends Button {
         BackgroundImage finalImUnselected = new BackgroundImage(imUnselected, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background backgroundSelected = new Background(finalImSelected);
         Background backgroundUnselected = new Background(finalImUnselected);
-        setOnMouseClicked(e -> clic.play());
+        setOnMousePressed(e -> {if (OptionPane.soundCBoxIsSelected()) clic.play();});
         setOnMouseEntered(e -> {
         setBackground(backgroundUnselected);
         if(OptionPane.soundCBoxIsSelected()) {
