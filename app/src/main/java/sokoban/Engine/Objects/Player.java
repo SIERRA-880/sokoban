@@ -2,14 +2,25 @@ package sokoban.Engine.Objects;
 
 import sokoban.CellsEnum;
 
+/**
+ * Object representing the player
+ */
 public class Player extends MoveableCell {
 
     private char termTexture = '@';
 
+    /**
+     * @param pos Array of int containing coordinates (x, y)
+     * @param texture String filepath of the player's png texture
+     */
     public Player(int[] pos, String texture) {
         super(pos, CellsEnum.PLAYER, texture, false, false);
     }
 
+    /**
+     * Change the player's texture orientation
+     * @param direction direction the player is moving
+     */
     public void setTexture(String direction) {
         switch (direction) {
             case "up":

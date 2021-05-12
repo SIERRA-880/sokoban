@@ -3,7 +3,7 @@ package sokoban.Engine.Objects;
 import sokoban.CellsEnum;
 
 /**
- * Object representing a cell on the map
+ * Object representing a sokoban cell
  */
 public class Cell {
 
@@ -15,6 +15,13 @@ public class Cell {
     private String resourcePack = "build/resources/main/textures/Default";
     private CellsEnum cellType;
 
+    /**
+     * @param pos Array of int containing coordinates (x, y) 
+     * @param cellType type of cell {@link sokoban.CellsEnum}
+     * @param texture String filepath of the cell's png texture 
+     * @param hardCollision determine if the cell is crossable or not
+     * @param softCollision determine if the cell is pushable or not
+     */
     public Cell(int[] pos, CellsEnum cellType, String texture, boolean hardCollision, boolean softCollision) {
         this.pos = pos;
         this.texture = resourcePack + texture;
@@ -32,7 +39,7 @@ public class Cell {
 
     /**
      * Set the given position to the current {@link sokoban.Engine.Objects.Cell}
-     * @param newPos Array of int containg coordinates (x,y)
+     * @param newPos Array of int containing coordinates (x,y)
      */
     public void setCellPos(int[] newPos) {
         pos[0] = newPos[0];

@@ -1,9 +1,7 @@
 package sokoban.Engine.Objects;
 
 /**
- * Object representing a case of a matrix.
- * It contents 2 cell objects. The first cell is on top and will be diplayed.
- * The other is behind it so we can have 2 cells in a single MatrixCase.
+ * Object representing a matrix's case containing 2 {@link sokoban.Engine.Objects.Cell}
  */
 public class MatrixCase {
 
