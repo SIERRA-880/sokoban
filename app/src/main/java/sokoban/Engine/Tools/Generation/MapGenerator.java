@@ -14,6 +14,7 @@ public class MapGenerator {
      *
      * @param width is the width of our future map
      * @param height is the height of our future map
+     * @return the basic matrix
      */
     public static MatrixCase[][] mkMap(int width, int height) {
         MatrixCase[][] cellsMatrix = new MatrixCase[height][width];

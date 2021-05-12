@@ -11,6 +11,7 @@ public class Box extends MoveableCell {
     
     /**
      * @param pos Array of int containing coordinates (x, y) 
+     * @param cellType type of cell (see {@link sokoban.CellsEnum})
      * @param texture String filepath of the box's png texture 
      */
     public Box(int[] pos, CellsEnum cellType, String texture) {

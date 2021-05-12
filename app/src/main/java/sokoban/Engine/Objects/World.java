@@ -56,7 +56,7 @@ public class World {
     
     /**
      * Store the given target list into world's targetList attribute
-     * @param targetList Arraylist of all targets on the map
+     * @param targetsList Arraylist of all targets on the map
      */
     public void setTargetsList(ArrayList<Target> targetsList) {
         this.targetsList = targetsList;
