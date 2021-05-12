@@ -20,7 +20,9 @@ import sokoban.Game;
 public class ImageButton extends Button {
 
     private String buttonSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/tic.wav").toURI().toString();
+    private String buttonClickSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/clic.wav").toURI().toString();
     private AudioClip tic = new AudioClip(buttonSound);
+    private AudioClip clic = new AudioClip(buttonClickSound);
 
     /**
      * Constructor of Image button
@@ -39,11 +41,12 @@ public class ImageButton extends Button {
         BackgroundImage finalImUnselected = new BackgroundImage(imUnselected, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background backgroundSelected = new Background(finalImSelected);
         Background backgroundUnselected = new Background(finalImUnselected);
+        setOnMouseClicked(e -> clic.play());
         setOnMouseEntered(e -> {
-            setBackground(backgroundUnselected);
-            if(OptionPane.soundCBoxIsSelected()) {
-                tic.play();
-            }
+        setBackground(backgroundUnselected);
+        if(OptionPane.soundCBoxIsSelected()) {
+            tic.play();
+        }
             setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #EA470D;");
         });
         setOnMouseExited(e -> {
