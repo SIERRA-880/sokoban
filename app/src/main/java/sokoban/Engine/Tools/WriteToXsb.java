@@ -16,9 +16,8 @@ public class WriteToXsb {
     /**
      * Output a Level to .xsb format in build/resources/main/levels/
      * @param fileName A String containing the name of the output file
-     * @param fileName
-     * @param mapString
-     * @param mapWidth
+     * @param mapString The String returned by {@link sokoban.Engine.Tools.MapLoader#load}
+     * @param mapWidth An int, the width of the map returned by {@link sokoban.Engine.Tools.MapLoader#getSize}
      */
     public static void write(String fileName, String mapString, int mapWidth) {
         try {
