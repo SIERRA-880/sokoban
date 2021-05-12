@@ -23,8 +23,37 @@ Schéma d'une MatrixCase :\\
 Grâce à cette représentation d'une map, on peut accéder à n'importe quelle cellule de la matrice grâce à ses coordonnées.
 
 \subsection{Chargement d'un niveau}
+Un objet instancié à partir de la classe Level du package sokoban.Engine.Objects.Level peut contenir toutes les informations d'un niveau de sokoban,
+comme le joueur, le monde dans lequel il évolue, le nom du niveau et sa taille.
+La classe Level permet de passer rapidement d'un niveau à l'autre grâce à la méthode setLevel().
+Celle-ci prend un nom de map en paramètre et va chercher le fichier xsb correspondant.
+Ce fichier est ensuite tranformé en String par la méthode load de la classe MapLoader.
+Ce String est finalement donné en paramètre à la méthode init de la classe Builder qui va pour chaque charactère de ce String créer la case adéquate dans la matrice représentant la map.
+Ainsi, toutes les informations nécessaires afin d'afficher un niveau sont disponibles via un objet Level.
 
 \subsection{Déplacements}
+Seules les cellules héritant de la classe MoveableCell peuvent être déplacées (voir la hiérarchie des objets).
+Le joueur est entièrement controllé par les inputs de l'utilisateur.
+Cependant, il ne pourra se déplacer uniquement sous certaines conditions.
+En effet le joueur ne doit pas pouvoir traverser ou pousser n'importe quelle cellule.
+Voici donc la procédure que nous suivons pour déterminer si oui ou non le joueur peut se déplacer dans la direction donnée par l'utilisateur:\\
+Tout d'abord, il faut analyser la case voisine au joueur dans la direction donnée.
+\begin{itemize}
+	\item Si celle-ci n'est ni traversable ni poussable, alors le joueur ne peut pas se déplacer.
+	\item Si elle est traversable et non-poussable, le joueur peut se déplcer.
+	\item Si elle est poussable, il faut alors analyser la cellule suivante (toujours dans la même direction).
+		\begin{enumerate}
+			\item Si la cellule suivante est traversable et non-poussable alors, le joueur peut se déplacer et pousser la cellule devant lui.
+			\item Sinon, le joueur ne peut pas se déplacer.
+		\end{enumerate}
+	\item Dans tous les autres cas, le joueur ne pourra pas se déplacer. 
+\end{itemize}
+Maintenant que nous avons determiné si le joueur peut se déplacer, on peut déplacer celui-ci dans la matrice représentant la map du niveau et actualiser l'affichage.\\
+
+Cette procédure de déplacement a été implémentée de la façon suivante: \\
+Chaque objet représentant une cellule possède les attributs booléens softCollision et hardCollision.
+softCollision indique si une cellule est poussable ou non et hardCollision si elle est traversable.\\
+Ainsi, en ayant les coordonnées des cellules intervenants dans le déplacement du joueur dans une direction donnée, nous pouvons effectuer les différents tests cités ci-dessus en vérifiant les collisions d'une cellule d'une case précise de la matrice.
 
 \subsection{Options utilisateur}
 
