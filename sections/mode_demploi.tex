@@ -3,7 +3,7 @@
 
 \begin{document}
 
-Le projet utilise Gradle comme système d'automatisation permettant de gérer facilement les dépendances et la compilation.
+Le projet utilise Gradle comme système d'automatisation permettant de gérer facilement les dépendances et la compilation du code java et de la javadoc.
 \subsection{Gradle}
 Nous avons ajoute deux task a Gradle, trouvable a la fin du fichier \textit{build.gradle}
 \begin{itemize}
@@ -16,7 +16,7 @@ Ces task sont utilisables de cette maniere : \\
 Cette task permet de verifier si des maps au format \path{.xsb} sont au format attendu. \\
 Premier argument - \textbf{f} ou \textbf{d} permettant de dire au programme si on veut l'executer sur un \textbf{file} ou sur un \textbf{directory} \\
 Second argument - \textbf{path} \\
-Exemple - \textbf{./gradlewcheckMap --args="fapp/build/resources/main/levels/map1.xsb"} \\
+Exemple - \textbf{./gradlew checkMap --args="fapp/build/resources/main/levels/map1.xsb"} \\
 
 \textbf{movReplay} \\
 Cette task permet de rejouer un fichier \path{.mov} sur un fichier \path{.xsb}. Cette task va automatiquement chercher dans le repertoire \path{build/resources/main/levels}
