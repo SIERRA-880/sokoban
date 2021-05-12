@@ -80,6 +80,7 @@ public class LevelScene extends BasicScene {
             resetButton.setOnAction(e -> {
                 Game.level.setLevel("map" + Game.level.nlevel);
                 Game.levelScene.map.showMap();
+                label1.setVisible(false);
 
             });
             stackPane.getChildren().add(resetButton);
