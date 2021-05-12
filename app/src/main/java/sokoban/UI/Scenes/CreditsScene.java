@@ -26,13 +26,7 @@ import java.io.FileNotFoundException;
  * Scene displaying the credentials
  */
 public class CreditsScene extends BasicScene {
-//////////////////////////////////////////////////
-public void writeToClipboard(String s, ClipboardOwner owner) {
-    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-    Transferable transferable = new StringSelection(s);
-    clipboard.setContents(transferable, owner);
-}
-/////////////////////////////////////////////////
+
     /**
      *Constructor of CreditScene
      * @param stackPane Pane type object where other layouts will be placed on
@@ -123,7 +117,6 @@ public void writeToClipboard(String s, ClipboardOwner owner) {
         grid.add(l11, 0, 5);
 
         Label l12 = new Label("Discord : Ekō-in#7566");
-        //l12.setFont(f);
         l12.setTextFill(Color.web("#FFFFFF"));
         grid.add(l12, 1, 5);
 
@@ -147,7 +140,6 @@ public void writeToClipboard(String s, ClipboardOwner owner) {
         link15.setTextFill(Color.web("#FFFFFF"));
         grid.add(link15, 1, 7);
 
-
         stackPane.getChildren().add(grid);
         StackPane.setAlignment(grid, Pos.CENTER);
 
@@ -165,5 +157,16 @@ public void writeToClipboard(String s, ClipboardOwner owner) {
         } catch (FileNotFoundException e) {
             Controller.alert("The image of the back button could not be loaded please check the file path in the CreditScene");
         }
+    }
+
+    /**
+     * Copy the given String to the OS clipboard
+     * @param s the string to copy
+     * @param owner null
+     */
+    public void writeToClipboard(String s, ClipboardOwner owner) {
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        Transferable transferable = new StringSelection(s);
+        clipboard.setContents(transferable, owner);
     }
 }
