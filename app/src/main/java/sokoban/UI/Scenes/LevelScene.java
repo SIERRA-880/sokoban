@@ -73,19 +73,18 @@ public class LevelScene extends BasicScene {
 
         //restart button
         try {
-            ImageButton resetButton = new ImageButton("build/resources/main/textures/" + Game.resourcePack + "/Buttons/mainMenu/mainButton.png"
-            ,"build/resources/main/textures/" + Game.resourcePack + "/Buttons/mainMenu/mainButtonOver.png");
-            resetButton.setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #A7F5F4;");
-            resetButton.setText("RESET");
+            ImageButton resetButton = new ImageButton("build/resources/main/textures/" + Game.resourcePack + "/Buttons/levelMenu/levelButton_reset.png"
+            ,"build/resources/main/textures/" + Game.resourcePack + "/Buttons/levelMenu/levelButtonOver_reset.png");
             resetButton.setOnAction(e -> {
                 Game.level.setLevel("map" + Game.level.nlevel);
+                Game.levelScene.setOnKeyPressed(event -> Game.levelScene.addKeyHandler(event));
                 Game.levelScene.map.showMap();
                 label1.setVisible(false);
-
+                Controller.switchScene(ScenesEnum.LEVELSCENE);
             });
             stackPane.getChildren().add(resetButton);
             stackPane.setAlignment(Pos.TOP_LEFT);
-            StackPane.setMargin(resetButton, new Insets(100.0, 0.0, 0.0, 10.0));
+            StackPane.setMargin(resetButton, new Insets(20.0, 0.0, 0.0, 140.0));
 
 
         } catch (FileNotFoundException exception) {
