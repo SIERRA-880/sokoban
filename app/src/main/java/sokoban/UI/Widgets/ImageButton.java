@@ -4,12 +4,18 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import sokoban.Game;
+
 public class ImageButton extends Button {
 
+    private String buttonSound = new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/tic.wav").toURI().toString();
+    private AudioClip tic = new AudioClip(buttonSound);
     /**
      * This widget is a button with a texture (image). It need 2 images
      * the first is the texture of the button when de mouse is over it and
@@ -31,6 +37,7 @@ public class ImageButton extends Button {
         Background backgroundUnselected = new Background(finalImUnselected);
         setOnMouseEntered(e -> {
             setBackground(backgroundUnselected);
+            tic.play();
             setStyle("-fx-font: 28 sans-serif-bold; -fx-text-fill: #EA470D;");
         });
         setOnMouseExited(e -> {
