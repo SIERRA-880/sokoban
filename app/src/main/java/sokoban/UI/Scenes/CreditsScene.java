@@ -1,5 +1,6 @@
 package sokoban.UI.Scenes;
 
+import javafx.animation.PauseTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.ImageCursor;
@@ -10,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.control.Hyperlink;
+import javafx.util.Duration;
 import sokoban.ScenesEnum;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
@@ -58,16 +60,34 @@ public class CreditsScene extends BasicScene {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setVgap(20);
-        grid.setHgap(20);
 
-        //labels 
+
+
+        //labels
+        Label label = new Label("LINK COPIED !");
+        label.setFont(f);
+        label.setTextFill(Color.web("#A7F5F4"));
+        label.setVisible(false);
+        stackPane.getChildren().add(label);
+        stackPane.setAlignment(label,Pos.TOP_CENTER);
+        StackPane.setMargin(label,new Insets(200,0,0,0));
+
         Label l1 = new Label("Developers");
         l1.setFont(f);
         l1.setTextFill(Color.web("#A7F5F4"));
         grid.add(l1, 0, 0);
 
         Hyperlink link2 = new Hyperlink("SIERRA-880, tiramisu, Harbinger");
-        link2.setOnAction(e -> writeToClipboard("https://github.com/SIERRA-880/sokoban", null));
+        link2.setOnAction(e ->{ label.setVisible(false);writeToClipboard("https://github.com/SIERRA-880/sokoban", null);
+            label.setVisible(true);
+            PauseTransition visiblePause = new PauseTransition(
+                    Duration.seconds(2)
+            );
+            visiblePause.setOnFinished(
+                    event -> label.setVisible(false)
+            );
+            visiblePause.play();
+        });
         link2.setTextFill(Color.web("#FFFFFF"));
         grid.add(link2, 1, 0);
 
@@ -77,7 +97,15 @@ public class CreditsScene extends BasicScene {
         grid.add(l3, 0, 1);
 
         Hyperlink link4 = new Hyperlink("youtube : Facta Non Verba Designs");
-        link4.setOnAction(e -> writeToClipboard("https://www.youtube.com/watch?v=B02Q3cg2wtY", null));
+        link4.setOnAction(e ->{ writeToClipboard("https://www.youtube.com/watch?v=B02Q3cg2wtY", null);
+        label.setVisible(true);
+        PauseTransition visiblePause = new PauseTransition(
+                Duration.seconds(2)
+        );
+        visiblePause.setOnFinished(
+                event -> label.setVisible(false)
+        );
+        visiblePause.play();});
         link4.setTextFill(Color.web("#FFFFFF"));
         grid.add(link4, 1, 1);
 
@@ -87,7 +115,15 @@ public class CreditsScene extends BasicScene {
         grid.add(l5, 0, 2);
 
         Hyperlink link6 = new Hyperlink("youtube : DzGrimX");
-        link6.setOnAction(e -> writeToClipboard("https://www.youtube.com/watch?v=L5pfhWye3UM", null));
+        link6.setOnAction(e ->{ writeToClipboard("https://www.youtube.com/watch?v=L5pfhWye3UM", null);
+                    label.setVisible(true);
+                    PauseTransition visiblePause = new PauseTransition(
+                            Duration.seconds(2)
+                    );
+                    visiblePause.setOnFinished(
+                            event -> label.setVisible(false)
+                    );
+                    visiblePause.play();});
         link6.setTextFill(Color.web("#FFFFFF"));
         grid.add(link6, 1, 2);
 
@@ -97,7 +133,15 @@ public class CreditsScene extends BasicScene {
         grid.add(l7, 0, 3);
 
         Hyperlink link8 = new Hyperlink("OpenGameArt : Michel Baradari");
-        link8.setOnAction(e -> writeToClipboard("https://opengameart.org/content/9-sci-fi-computer-sounds-and-beeps", null));
+        link8.setOnAction(e -> {writeToClipboard("https://opengameart.org/content/9-sci-fi-computer-sounds-and-beeps", null);
+            label.setVisible(true);
+            PauseTransition visiblePause = new PauseTransition(
+                    Duration.seconds(2)
+            );
+            visiblePause.setOnFinished(
+                    event -> label.setVisible(false)
+            );
+            visiblePause.play();});
         link8.setTextFill(Color.web("#FFFFFF"));
         grid.add(link8, 1, 3);
 
@@ -107,7 +151,15 @@ public class CreditsScene extends BasicScene {
         grid.add(l9, 0, 4);
 
         Hyperlink link10 = new Hyperlink("OpenGameArt : Jellybean");
-        link10.setOnAction(e -> writeToClipboard("https://opengameart.org/content/top-down-2d-metal-box", null));
+        link10.setOnAction(e ->{ writeToClipboard("https://opengameart.org/content/top-down-2d-metal-box", null);
+            label.setVisible(true);
+            PauseTransition visiblePause = new PauseTransition(
+                    Duration.seconds(2)
+            );
+            visiblePause.setOnFinished(
+                    event -> label.setVisible(false)
+            );
+            visiblePause.play();});
         link10.setTextFill(Color.web("#FFFFFF"));
         grid.add(link10, 1, 4);
 
@@ -126,7 +178,15 @@ public class CreditsScene extends BasicScene {
         grid.add(l13, 0, 6);
 
         Hyperlink link14 = new Hyperlink("Marcelo Fernandez");
-        link14.setOnAction(e -> writeToClipboard("https://soundcloud.com/marcelofernandezmusic", null));
+        link14.setOnAction(e ->{ writeToClipboard("https://soundcloud.com/marcelofernandezmusic", null);
+            label.setVisible(true);
+            PauseTransition visiblePause = new PauseTransition(
+                    Duration.seconds(2)
+            );
+            visiblePause.setOnFinished(
+                    event -> label.setVisible(false)
+            );
+            visiblePause.play();});
         link14.setTextFill(Color.web("#FFFFFF"));
         grid.add(link14, 1, 6);
 
@@ -136,7 +196,15 @@ public class CreditsScene extends BasicScene {
         grid.add(l14, 0, 7);
 
         Hyperlink link15 = new Hyperlink("Kenney Assets");
-        link15.setOnAction(e -> writeToClipboard("https://kenney.nl/assets", null));
+        link15.setOnAction(e ->{ writeToClipboard("https://kenney.nl/assets", null);
+            label.setVisible(true);
+            PauseTransition visiblePause = new PauseTransition(
+                    Duration.seconds(2)
+            );
+            visiblePause.setOnFinished(
+                    event -> label.setVisible(false)
+            );
+            visiblePause.play();});
         link15.setTextFill(Color.web("#FFFFFF"));
         grid.add(link15, 1, 7);
 
@@ -169,4 +237,5 @@ public class CreditsScene extends BasicScene {
         Transferable transferable = new StringSelection(s);
         clipboard.setContents(transferable, owner);
     }
+
 }

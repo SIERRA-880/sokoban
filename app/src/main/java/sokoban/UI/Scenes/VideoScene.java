@@ -27,7 +27,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ConcurrentModificationException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static javafx.scene.layout.StackPane.setAlignment;
@@ -38,9 +37,9 @@ import static javafx.scene.layout.StackPane.setMargin;
  */
 public class VideoScene extends BasicScene {
 
+    private static final Media music = new Media(new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/retroWave.wav").toURI().toString());
     private static MediaPlayer Mplayer;
     private static VideoBg vb;
-    private static final Media music = new Media(new File("build/resources/main/textures/" + Game.resourcePack + "/Sounds/menus/retroWave.wav").toURI().toString());
 
     /**
      * Contructor of VideoScene
@@ -70,7 +69,7 @@ public class VideoScene extends BasicScene {
             f = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 100);
             f2 = Font.loadFont(new FileInputStream("build/resources/main/textures/" + Game.resourcePack + "/Fonts/Kenney Rocket Square.ttf"), 20);
         } catch (FileNotFoundException e) {
-            Controller.alert("Font files could not be loaded please check VideoScene : 71-72");
+            Controller.alert("Font files could not be loaded please check VideoScene : 69-70");
         }
         Label selectLabel = new Label("sokoban");
         selectLabel.setFont(f);

@@ -11,13 +11,14 @@ import java.io.IOException;
  * @author Ugo Proietti
  */
 public class Settings {
-    
+
     private static String absolutePath = System.getProperty("user.dir") + File.separator + "build" + File.separator + "resources" + File.separator + "main" + File.separator + "appdata" + File.separator + "settings.properties";
     public static Properties settings = new Properties();
     public static String up = null;
     public static String left = null;
     public static String down = null;
     public static String right = null;
+
 
     /**
      * Load stored settings from settings.properties file in local variables
