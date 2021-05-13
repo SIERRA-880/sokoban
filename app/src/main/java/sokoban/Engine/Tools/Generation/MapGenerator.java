@@ -98,6 +98,7 @@ public class MapGenerator {
         ArrayList<Box> boxesList = new ArrayList<Box>();
 
         for (int nb = Game.genBox; nb > 0; nb--) {
+            System.out.println(nb);
             // make a box and a target 
             MatrixCase[][] map = world.getMap();
             int[] rng = rngPos(world);
@@ -111,7 +112,9 @@ public class MapGenerator {
             boxesList.add(box);
 
             int[] iPos = box.getCellPos();
-            for (int nm = 0; nm<10; nm++) {
+            int nMov = 10; 
+            int boxMovements = 0;
+            for (int nm = 0; nm<nMov; nm++) {
                 boolean playerNextToBox = false;
                 Cell[] nearbyCells = world.getNearbyCells(box.getCellPos());
                 int n = 0;
@@ -134,6 +137,7 @@ public class MapGenerator {
                     }
                 }
 
+                // make the player pull the box 
                 if (playerNextToBox) {
                      int o = 0;
                      Cell[] playerNearbyCells = world.getNearbyCells(player.getCellPos());
@@ -157,21 +161,20 @@ public class MapGenerator {
                          }
                          o+=1;
                      }
-                     player.pull(direction, world);
+                     if (player.pull(direction, world)) {
+                        boxMovements += 1;
+                     }
                 }
-
-                /*
-                // remove the box if there's no path to the box
-                for (int e=checkList.size()-1; e>=0; e--) {
-                    MatrixCase[][] wmap = world.getMap();
-                    Box rmBox = boxesList.get(checkList.get(e));
-                    int[] boxPos = rmBox.getCellPos();
-                    Cell cell = new Cell(boxPos, CellsEnum.CELL, "/Cells/ground.png", false, false);
-                    MatrixCase cellCase = new MatrixCase(cell, cell);
-                    wmap[boxPos[1]][boxPos[0]] = cellCase;
-                    boxesList.remove(checkList.get(e));
-                }
-                */
+               
+            }
+            if (boxMovements < 1) {
+                int[] bPos = box.getCellPos();
+                Cell cell = new Cell(pos, CellsEnum.CELL, "/Cells/ground.png", false, false);
+                MatrixCase groundCase = new MatrixCase(cell, cell);
+                map[bPos[1]][bPos[0]] = groundCase;
+                boxesList.remove(box);
+                targetList.remove(target);
+                nb++;
             }
         }
         world.setTargetsList(targetList);

@@ -107,8 +107,9 @@ public class MoveableCell extends Cell {
      * Pull a box in the given direction
      * @param direction String (up, down, right, left) for the direction.
      * @param world is the current working world.
+     * @return true if the box is pulled 
      */
-    public void pull(String direction, World world) {
+    public boolean pull(String direction, World world) {
         String oppositeDirection = "";
         switch (direction) {
             case "up":
@@ -144,6 +145,8 @@ public class MoveableCell extends Cell {
             boxCell.setCellType(CellsEnum.BOX);
             box.setCellPos(playerPos);
             setCellPos(nextPos);
+            return true;
         }
+        return false;
     }
 }
