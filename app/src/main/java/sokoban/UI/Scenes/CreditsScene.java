@@ -91,7 +91,7 @@ public class CreditsScene extends BasicScene {
         link2.setTextFill(Color.web("#FFFFFF"));
         grid.add(link2, 1, 0);
 
-        Label l3 = new Label("BackGround Video in the main menu");
+        Label l3 = new Label("Video");
         l3.setFont(f);
         l3.setTextFill(Color.web("#A7F5F4"));
         grid.add(l3, 0, 1);
@@ -109,7 +109,7 @@ public class CreditsScene extends BasicScene {
         link4.setTextFill(Color.web("#FFFFFF"));
         grid.add(link4, 1, 1);
 
-        Label l5 = new Label("Music in the main menu");
+        Label l5 = new Label("Music");
         l5.setFont(f);
         l5.setTextFill(Color.web("#A7F5F4"));
         grid.add(l5, 0, 2);
@@ -127,7 +127,7 @@ public class CreditsScene extends BasicScene {
         link6.setTextFill(Color.web("#FFFFFF"));
         grid.add(link6, 1, 2);
 
-        Label l7 = new Label("Sounds in the levels");
+        Label l7 = new Label("Levels sounds FX");
         l7.setFont(f);
         l7.setTextFill(Color.web("#A7F5F4"));
         grid.add(l7, 0, 3);
@@ -145,7 +145,7 @@ public class CreditsScene extends BasicScene {
         link8.setTextFill(Color.web("#FFFFFF"));
         grid.add(link8, 1, 3);
 
-        Label l9 = new Label("Boxes' texture in the levels");
+        Label l9 = new Label("Textures");
         l9.setFont(f);
         l9.setTextFill(Color.web("#A7F5F4"));
         grid.add(l9, 0, 4);
@@ -207,6 +207,15 @@ public class CreditsScene extends BasicScene {
             visiblePause.play();});
         link15.setTextFill(Color.web("#FFFFFF"));
         grid.add(link15, 1, 7);
+
+        Label l16 = new Label("Textures and GUI");
+        l16.setFont(f);
+        l16.setTextFill(Color.web("#A7F5F4"));
+        grid.add(l16, 0, 8);
+
+        Label l17 = new Label("Harbinger");
+        l17.setTextFill(Color.web("#FFFFFF"));
+        grid.add(l17, 1, 8);
 
         stackPane.getChildren().add(grid);
         StackPane.setAlignment(grid, Pos.CENTER);
