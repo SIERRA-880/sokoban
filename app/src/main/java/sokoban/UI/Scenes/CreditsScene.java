@@ -4,23 +4,24 @@ import javafx.animation.PauseTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.ImageCursor;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.control.Hyperlink;
 import javafx.util.Duration;
 import sokoban.ScenesEnum;
 import sokoban.UI.Widgets.BackButton;
 import sokoban.UI.Widgets.Controller;
 import sokoban.UI.Widgets.VideoBg;
-import java.awt.Desktop;
-import java.net.URI;
-import java.awt.Toolkit;
-import java.awt.datatransfer.*;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -80,6 +81,7 @@ public class CreditsScene extends BasicScene {
         Hyperlink link2 = new Hyperlink("SIERRA-880, tiramisu, Harbinger");
         link2.setOnAction(e ->{ label.setVisible(false);writeToClipboard("https://github.com/SIERRA-880/sokoban", null);
             label.setVisible(true);
+            // stack Overflow: https://stackoverflow.com/questions/29487645/how-to-make-a-label-visible-for-a-certain-time-and-then-should-be-invisible-with
             PauseTransition visiblePause = new PauseTransition(
                     Duration.seconds(2)
             );
