@@ -170,9 +170,18 @@ public class CreditsScene extends BasicScene {
         l11.setTextFill(Color.web("#A7F5F4"));
         grid.add(l11, 0, 5);
 
-        Label l12 = new Label("Discord : Ekō-in#7566");
-        l12.setTextFill(Color.web("#FFFFFF"));
-        grid.add(l12, 1, 5);
+        Hyperlink link12 = new Hyperlink("SoundCloud : Eko-in");
+        link12.setOnAction(e ->{ writeToClipboard("https://soundcloud.com/user-534734056", null);
+            label.setVisible(true);
+            PauseTransition visiblePause = new PauseTransition(
+                    Duration.seconds(2)
+            );
+            visiblePause.setOnFinished(
+                    event -> label.setVisible(false)
+            );
+            visiblePause.play();});
+        link12.setTextFill(Color.web("#FFFFFF"));
+        grid.add(link12, 1, 5);
 
         Label l13 = new Label("Explosion sound");
         l13.setFont(f);
