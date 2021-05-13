@@ -13,7 +13,7 @@ Ces différentes classe sont organisées selon la hiérarchie suivante :\\
 
 \subsection{Representation d'une map}
 Le jeu sokoban nécessite l'implémentation de différentes cellules comme le sol, les murs, les boites, etc.. \\
-Une map doit donc pouvoir contenir toutes ces cellules et permettre de les déplacer. Dans ce but, nous avons choisit de représenter une map
+Une map doit donc pouvoir contenir toutes ces cellules et permettre de les déplacer. Dans ce but, nous avons choisi de représenter une map
 par une matrice. Chaque ``case'' de cette matrice est un objet instancié à partir de la classe MatrixCase. Une map est donc une matrice d'objets MatrixCase.\\
 Qu'est-ce qu'une MatrixCase ? C'est un objet qui contient deux cellules. En effet une map de sokoban doit permettre la superposition de deux cellules car le joueur ou une boite peuvent se positionner au dessus du sol ou d'une cellule cible.
 Schéma d'une MatrixCase :\\
@@ -27,6 +27,7 @@ Un objet instancié à partir de la classe Level du package sokoban.Engine.Objec
 comme le joueur, le monde dans lequel il évolue, le nom du niveau et sa taille.
 La classe Level permet de passer rapidement d'un niveau à l'autre grâce à la méthode setLevel().
 Celle-ci prend un nom de map en paramètre et va chercher le fichier xsb correspondant.
+Nos fichiers xsb respectent les conventions du sokoban i.e. chaque case du jeu est représenté en texte par un charactère spécifique.
 Ce fichier est ensuite tranformé en String par la méthode load de la classe MapLoader.
 Ce String est finalement donné en paramètre à la méthode init de la classe Builder qui va pour chaque charactère de ce String créer la case adéquate dans la matrice représentant la map.
 Ainsi, toutes les informations nécessaires afin d'afficher un niveau sont disponibles via un objet Level.
@@ -57,12 +58,36 @@ Ainsi, en ayant les coordonnées des cellules intervenants dans le déplacement 
 
 \subsection{Options utilisateur}
 
-\subsection{Pack de textures}
-
 \subsection{Génération aléatoire de niveau}
-\includegraphics[width=1\textwidth]{images/generation.pdf}
-\subsubsection{Placement aléatoire}
-\subsubsection{Backward induction}
+Afin d'implémenter la génération aléatoire de niveaux, nous avons commencé par nous renseigner sur les différentes techniques extistantes, notre première idée fut de nous diriger vers une génération procédurale.
+Avant de valider ce choix, nous avons questionné notre professeur de mathématique Mr. Brihaye qui nous a conseillé de nous renseigner sur le principe de backward induction.
+Après quelques recherches, nous avons décidé d'utiliser cette technique qui semblait plus simple à mettre en place.
+La backward induction consiste à partir d'un problème résolu et faire les étapes en marche arrière jusqu'à retrouver un problème initial.
+Pour notre sokoban, cela signifie partir d'un niveau résolu et tirer les caisses une à une.
+Ainsi, on assure que le niveau sera réalisable puisqu'il suffira de faire les mêmes déplacements dans l'autre sens.\\
+Nous avons alors imaginé les étapes nécessaires à la création d'un niveau jouable de sokoban.
+\begin{enumerate}
+	\item Créer la map vide initiale 
+	\item Générer les murs aléatoirement
+	\item Placer le joueur sur une case libre aléatoire
+	\item Placer aléatoirement et tirer les boites
+\end{enumerate}
+\begin{itemize}
+	\item Etape 1\\
+		  La map initiale consiste en une map vide d'une certaine largeur et longueur fermée par des murs.
+	\item Etape 2\\
+		  Ensuite, les murs sont générés aléatoirements. Pour chaque case de la map on détermine un pourcentage de chance qu'un mur apparaisse.
+	\item Etape 3 et 4\\
+		  Après avoir placé aléatoirement le joueur, pour chaque boite à placer on va suivre la procédure décrite sur ce schéma :\\
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{images/generation.pdf}
+\end{center}
+
 \subsubsection{A* path finding}
+L'étape 4 de la génération nécessite l'implementation d'un algorithme de pathfinding.\\
+Nous avons choisi le très connu A* algorithm pour son adaptabilité et le très grand nombre de ressources disponibles pour son implémentation.\\
+cet algorithme consiste à se déplacer d'un point A vers un point B de case en case, en choisissant comme prochaine case celle qui a la plus courte distance vers le point B 
+et le point A.
 
 \end{document}
