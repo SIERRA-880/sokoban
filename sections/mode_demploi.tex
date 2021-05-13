@@ -5,7 +5,7 @@
 
 Le projet utilise Gradle comme système d'automatisation permettant de gérer facilement les dépendances et la compilation du code java et de la javadoc.
 \subsection{Gradle}
-Nous avons ajoute deux task a Gradle, trouvable a la fin du fichier \textit{build.gradle}
+Nous avons ajouté deux task a Gradle, trouvable a la fin du fichier \textit{build.gradle}
 \begin{itemize}
     \item checkMap
     \item movReplay
@@ -14,19 +14,19 @@ Ces task sont utilisables de cette maniere : \\
 
 \textbf{checkMap} \\
 Cette task permet de verifier si des maps au format \path{.xsb} sont au format attendu. \\
-Premier argument - \textbf{f} ou \textbf{d} permettant de dire au programme si on veut l'executer sur un \textbf{file} ou sur un \textbf{directory} \\
+Premier argument - \textbf{f} ou \textbf{d} permettant de dire au programme si on veut l'exécuter sur un \textbf{file} ou sur un \textbf{directory} \\
 Second argument - \textbf{path} \\
 Exemple - \textbf{./gradlew checkMap --args="fapp/build/resources/main/levels/map1.xsb"} \\
 
 \textbf{movReplay} \\
 Cette task permet de rejouer un fichier \path{.mov} sur un fichier \path{.xsb}. Cette task va automatiquement chercher dans le repertoire \path{build/resources/main/levels}
-et \path{build/resources/main/appdata/movements}. Et va ecrire un fichier de sortie dans \path{build/resources/main/levels/save} \\
+et \path{build/resources/main/appdata/movements}. Et va écrire un fichier de sortie dans \path{build/resources/main/levels/save} \\
 Premier argument - \textbf{map} La map au format \path{.xsb} \\
-Second argument - \textbf{mov} Le fichier de movements au fornat \path{.mov} \\
+Second argument - \textbf{mov} Le fichier de movements au format \path{.mov} \\
 Exemple - \textbf{./gradlew movReplay --args="ma1 mov1"}
 
 \subsection{Dépendances}
-ffmpeg - nécessaire sur les systèmes UNIX afin d'afficher correctement la video de fond de l'écran principal.
+ffmpeg - nécessaire sur les systèmes UNIX afin d'afficher correctement la vidéo de fond de l'écran principal.
 \subsection{Guide d'utilisation}
 Notre sokoban comporte 3 modes. \\
 
