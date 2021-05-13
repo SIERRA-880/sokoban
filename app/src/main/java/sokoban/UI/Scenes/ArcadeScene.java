@@ -297,7 +297,9 @@ public class ArcadeScene extends BasicScene {
         ComboBox<String> comboBox = new ComboBox<>();
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                comboBox.getItems().add(file.getName());
+                if (!(file.getName().equals("_")) && !(file.getName().equals("out1.xsb"))) {
+                    comboBox.getItems().add(file.getName());
+                }
             }
         }
         EventHandler<ActionEvent> event = e -> {
