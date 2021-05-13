@@ -82,9 +82,11 @@ public class LevelScene extends BasicScene {
                 label1.setVisible(false);
                 Controller.switchScene(ScenesEnum.LEVELSCENE);
             });
-            stackPane.getChildren().add(resetButton);
-            stackPane.setAlignment(Pos.TOP_LEFT);
-            StackPane.setMargin(resetButton, new Insets(20.0, 0.0, 0.0, 140.0));
+            if (previousScene == ScenesEnum.MENULVLSCENE) {
+                stackPane.getChildren().add(resetButton);
+                stackPane.setAlignment(Pos.TOP_LEFT);
+                StackPane.setMargin(resetButton, new Insets(20.0, 0.0, 0.0, 140.0));
+            }
 
 
         } catch (FileNotFoundException exception) {
