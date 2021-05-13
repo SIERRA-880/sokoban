@@ -88,37 +88,37 @@ Nous avons alors imaginé les étapes nécessaires à la création d'un niveau j
 \node[draw,
     rounded rectangle,
     minimum width=2.5cm,
-    minimum height=1cm] (block1) {Faire apparaitre le joueur sur une case aleatoire};
+    minimum height=1cm] (block1) {Faire apparaitre le joueur sur une case aléatoire};
  
 \node[draw,
     rounded rectangle, 
     below=of block1,
     minimum width=3.5cm,
-    minimum height=1cm] (block2) { Faire apparaitre une caisse sur une case aleatoire };
+    minimum height=1cm] (block2) { Faire apparaitre une caisse sur une case aléatoire };
  
 \node[draw,
     rounded rectangle,
     below=of block2,
     minimum width=3.5cm,
-    minimum height=1cm] (block3) { Verifier si un chemin existe du joueur a la caisse };
+    minimum height=1cm] (block3) { Vérifier si un chemin existe du joueur a la caisse };
  
 \node[draw,
     rounded rectangle,
     right=of block3,
     minimum width=2.5cm,
-    minimum height=1cm] (block4) { Suprimer la caisse };
+    minimum height=1cm] (block4) { Supprimer la caisse };
 
 \node[draw,
     rounded rectangle,
     below=of block3,
     minimum width=2.5cm,
-    minimum height=1cm] (block5) { Deplacer le joueur a cote la caisse };
+    minimum height=1cm] (block5) { Déplacer le joueur a côté la caisse };
  
 \node[draw,
     rounded rectangle,
     below=of block5,
     minimum width=2.5cm,
-    minimum height=1cm] (block6) { Tirer la caisse dans des directions aleatoires };
+    minimum height=1cm] (block6) { Tirer la caisse dans des directions aléatoires };
  
 % Arrows
     \draw[-latex] (block1) edge (block2);
