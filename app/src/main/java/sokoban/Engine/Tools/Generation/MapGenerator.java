@@ -98,7 +98,6 @@ public class MapGenerator {
         ArrayList<Box> boxesList = new ArrayList<Box>();
 
         for (int nb = Game.genBox; nb > 0; nb--) {
-            System.out.println(nb);
             // make a box and a target 
             MatrixCase[][] map = world.getMap();
             int[] rng = rngPos(world);
