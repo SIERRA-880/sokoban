@@ -19,15 +19,25 @@ L'éditeur de niveau est un mode supplémentaire permettant d'imaginer et créer
 Ce mode permet la création d'une map de maximum 15 cases de largeur et hauteur. 
 L'éditeur est composé d'un menu contenant tous les types de cellules que l'utilisateur pourra placer sur sa map et d'une grille sur laquelle
 il pourra cliquer pour changer la cellule ciblée par la cellule choisie.
+
 \subsubsection{Enregistreur de niveau aleatoires}
+Les niveaux peuvent être enregistrés très facilement depuis une partie en cours.
+
 \subsubsection{Menu d'options}
-Le menu permettant de modifier les options est relativement complet
+Le menu permettant de modifier les options est relativement complet pour ce type de projet.
+
 \subsubsection{Pack de textures}
-Il est tres facile de changer les textures et d'importer son propre pack
+Il est tres facile de changer les textures et d'importer son propre pack.
 
 \subsection{Points faibles}
+
 \subsubsection{Generation aleatoire}
+Notre génération n’est pas correctement ajustée.
+Nous avons établi une bonne base et une bonne logique mais sans prendre du temps à essayer et à corriger les erreurs, elle ne peut pas être bonne.
+
 \subsubsection{Interface non responsive}
+Notre interface fonctionne en fenêtré plein écran, est prévue pour un écran 1920*1080, et n’est pas responsive.
+
 \subsubsection{Taille des niveaux}
 La taille des niveaux est limitee a un carre de 15*15 blocs
 
@@ -35,5 +45,7 @@ La taille des niveaux est limitee a un carre de 15*15 blocs
 La classe Settings.java permet de stocker des valeurs et de les recuperer dans un fichier. Nous voulions l'utiliser pour conserver les parametres utilisateur entre chaques redemarrages mais nous n'avons pas eu le temps de l'integrer. Cette classe utilise java.util.Properties afin de recuperer les variables sauvegardees, modifier les valeurs et stocker les modifications. \\
 
 Nous avons decide de laisser cette classe malgre le fait qu'elle n'est pas utilisee. Elle sert actuellement de "preuve de concept" et pourra eventuellement etre utilisee plus tard si nous decidons de continuer de travailler sur le jeu.
+
+\newpage
 
 \end{document}
