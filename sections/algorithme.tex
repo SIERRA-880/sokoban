@@ -60,6 +60,29 @@ Ainsi, en ayant les coordonnées des cellules intervenants dans le déplacement 
 
 \subsection{Génération aléatoire de niveau}
 
+\subsubsection{Backward induction}
+Afin d'implémenter la génération aléatoire de niveaux, nous avons commencé par nous renseigner sur les différentes techniques extistantes, notre première idée fut de nous diriger vers une génération procédurale.
+Avant de valider ce choix, nous avons questionné notre professeur de mathématique Mr. Brihaye qui nous a conseillé de nous renseigner sur le principe de backward induction.
+Après quelques recherches, nous avons décidé d'utiliser cette technique qui semblait plus simple à mettre en place.
+La backward induction consiste à partir d'un problème résolu et faire les étapes en marche arrière jusqu'à retrouver un problème initial.
+Pour notre sokoban, cela signifie partir d'un niveau résolu et tirer les caisses une à une.
+Ainsi, on assure que le niveau sera réalisable puisqu'il suffira de faire les mêmes déplacements dans l'autre sens.\\
+Nous avons alors imaginé les étapes nécessaires à la création d'un niveau jouable de sokoban.
+\begin{enumerate}
+	\item Créer la map vide initiale 
+	\item Générer les murs aléatoirement
+	\item Placer le joueur sur une case libre aléatoire
+	\item Placer aléatoirement et tirer les boites
+\end{enumerate}
+\begin{itemize}
+	\item Etape 1\\
+		  La map initiale consiste en une map vide d'une certaine largeur et longueur fermée par des murs.
+	\item Etape 2\\
+		  Ensuite, les murs sont générés aléatoirements. Pour chaque case de la map on détermine un pourcentage de chance qu'un mur apparaisse.
+	\item Etape 3 et 4\\
+		  Après avoir placé aléatoirement le joueur, pour chaque boite à placer on va suivre la procédure décrite sur ce schéma :\\
+\end{itemize}
+
 \begin{tikzpicture}[font=\small,thick]
  
 \node[draw,
@@ -107,33 +130,6 @@ Ainsi, en ayant les coordonnées des cellules intervenants dans le déplacement 
     \draw[-latex] (block6.west) -- ++(-10mm,0) |- (block2.west);
 
 \end{tikzpicture}
-
-\subsubsection{Placement aléatoire}
-\subsubsection{Backward induction}
-Afin d'implémenter la génération aléatoire de niveaux, nous avons commencé par nous renseigner sur les différentes techniques extistantes, notre première idée fut de nous diriger vers une génération procédurale.
-Avant de valider ce choix, nous avons questionné notre professeur de mathématique Mr. Brihaye qui nous a conseillé de nous renseigner sur le principe de backward induction.
-Après quelques recherches, nous avons décidé d'utiliser cette technique qui semblait plus simple à mettre en place.
-La backward induction consiste à partir d'un problème résolu et faire les étapes en marche arrière jusqu'à retrouver un problème initial.
-Pour notre sokoban, cela signifie partir d'un niveau résolu et tirer les caisses une à une.
-Ainsi, on assure que le niveau sera réalisable puisqu'il suffira de faire les mêmes déplacements dans l'autre sens.\\
-Nous avons alors imaginé les étapes nécessaires à la création d'un niveau jouable de sokoban.
-\begin{enumerate}
-	\item Créer la map vide initiale 
-	\item Générer les murs aléatoirement
-	\item Placer le joueur sur une case libre aléatoire
-	\item Placer aléatoirement et tirer les boites
-\end{enumerate}
-\begin{itemize}
-	\item Etape 1\\
-		  La map initiale consiste en une map vide d'une certaine largeur et longueur fermée par des murs.
-	\item Etape 2\\
-		  Ensuite, les murs sont générés aléatoirements. Pour chaque case de la map on détermine un pourcentage de chance qu'un mur apparaisse.
-	\item Etape 3 et 4\\
-		  Après avoir placé aléatoirement le joueur, pour chaque boite à placer on va suivre la procédure décrite sur ce schéma :\\
-\end{itemize}
-\begin{center}
-\includegraphics[width=0.75\textwidth]{images/generation.pdf}
-\end{center}
 
 \subsubsection{A* path finding}
 L'étape 4 de la génération nécessite l'implementation d'un algorithme de pathfinding.\\
