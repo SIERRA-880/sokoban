@@ -3,8 +3,6 @@
 
 \begin{document}
 
-Dans cette section, vous allez expliquer les différents algorithmes qui vous paraissent importants pour votre projet. (Pour l'explication : son principe, les grandes lignes de comment il s'exécute, sa complexité,...)
-
 \subsection{Programmation orientee objet}
 Chaque élément de base du jeu est représenté par une classe. Player représente un joueur controllé par l'utilisateur, World représente le monde contenant le joueur et la map dans laquel il évolue, MatrixCase représente une case de la map, Cell représente tous les différents types de cellules et enfin Level représente un niveau de jeu.\\
 Ces différentes classe sont organisées selon la hiérarchie suivante :\\
@@ -55,8 +53,6 @@ Cette procédure de déplacement a été implémentée de la façon suivante: \\
 Chaque objet représentant une cellule possède les attributs booléens softCollision et hardCollision.
 softCollision indique si une cellule est poussable ou non et hardCollision si elle est traversable.\\
 Ainsi, en ayant les coordonnées des cellules intervenants dans le déplacement du joueur dans une direction donnée, nous pouvons effectuer les différents tests cités ci-dessus en vérifiant les collisions d'une cellule d'une case précise de la matrice.
-
-\subsection{Options utilisateur}
 
 \subsection{Génération aléatoire de niveau}
 
@@ -136,5 +132,7 @@ L'étape 4 de la génération nécessite l'implementation d'un algorithme de pat
 Nous avons choisi le très connu A* algorithm pour son adaptabilité et le très grand nombre de ressources disponibles pour son implémentation.\\
 cet algorithme consiste à se déplacer d'un point A vers un point B de case en case, en choisissant comme prochaine case celle qui a la plus courte distance vers le point B 
 et le point A.
+
+\newpage
 
 \end{document}

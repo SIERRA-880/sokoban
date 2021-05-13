@@ -3,18 +3,92 @@
 
 \begin{document}
 
-\subsection{Objectif}
-Ce projet est réalisé pour le cours de projet d'informatique donné en BAC 1 Sciences Informatiques a l'université de Mons.
-Il s'agit d'un jeu de sokoban écrit en java sur la version 11.
-Cette version n'est pas la plus récente (java 15 était disponible lors de la réalisation du projet début 2021) mais c'est la version LTS (long term support) la plus récente.
-Voulant rendre le jeu open source sur GitHub, il nous semblait important d'utiliser une version LTS afin que d'autres étudiants puissent utiliser et/ou analyser notre code dans les années a venir.
+Concernant le design de l’interface graphique on s’est fié aux instructions d’un membre de l’équipe qui avait déjà un peu d’expérience car il avait comme projet personnel de créer un jeu. \\
+Son idée était la suivante : diviser toute la partie interface graphique en 3 sections. 
+Une section Scene qui comme son nom l’indique sera utile pour la création des différentes scènes contenues dans notre jeu et une section pour des objets réutilisable dans plusieurs scènes appelé Widgets.
+On a aussi la classe Game qui sert à lancer l’application, la classe Controller qui contient des méthodes utilisées par tous les scènes et deux enum différent contenant pour l’un les scènes et l’autre les types de cells.
+Une fois la marche à suivre décidée nous nous sommes attelés au travail, bien sûr le plus compliqué n'était pas d’avoir un plan mais de s’y tenir. 
+En effet on s’est vite rendu compte que les objets que l’on mettait dans la section Widgets n’étaient pas que des widgets mais aussi différents Pane et d’autre formes de layout.
+Nous n'avons cependant pas changé les noms des sections de un par habitude et de deux car il y avait toujours une séparations claire entre les deux grandes sections. 
+Et à partir de ce moment là, Scenes resterait la section qui ne contiendrait que des scènes, et Widget deviendrai la section contenant tout ce qu’on pouvait trouver dans une scène de notre jeu,
+que ce soit notre classe ImageButton.java qui est réutilisé une multitude de fois, ou la classe OptionPane.java qui n’est utilisé qu’une fois. \\
 
-\subsection{Procédure}
-Afin de rendre le projet realisable, nous avons du nous organiser serieusement. \\
-Nous avons commencé par réfléchir a la logique du jeu et faire un premier prototype en Python afin de souligner les points importants avant de se mettre a la programmation du moteur de jeu. \\
-Ensuite differents outils ont été créés, facilitant le developpement du moteur qui était deja assez complexe et permettant de se concentrer sur des fonctionalités plus avancées. \\
-Une base solide étant établie, le developpement de l'interface graphique a pris part au projet. Sans pour autant laisser de côté des améliorations du moteur et des tools. \\
-Nous avons terminé par le débugage et l'écriture du rapport.
+Mais avoir un plan n'était pas tout, il nous fallait aussi savoir vers quelle style graphique se diriger. 
+Après un brainstorm ou plusieurs idées ont été évoquées (Portal, Pokémon,Bomberman,...), ce fût le thème “Cyber-retrowave” qui a fait l’unanimité  et une fois le thème décidé il ne nous restait plus qu'à commencer le travail.
+
+\subsection{FXML}
+Un des membres de notre équipe avait lancé comme idée d’utiliser SceneBuilder ce qui permettrait de rapidement et facilement créer et disposer les éléments d’une scène et d’en voir le résultat en direct.
+Après quelques recherches nous avons découvert qu’en général, la partie purement graphique se faisait en FXML et javaFx n'était utilisé que pour créer des interactions entre les différents éléments.
+Mais on a abandonné de peur de mal gérer les relations entre javaFx et FXML en particulier le changement de scènes.
+
+\subsection{JavaFX}
+Une fois le langage choisi et approuvé par tous, nous avons commencé à coder.
+Contrairement à nos attentes, JavaFx était assez facile à comprendre de par sa très forte similitude avec Java. Nous avons quand même eu un petit soucis à comprendre les méthodes d’actions et les Handler. \\
+
+Notre façon de faire est simple: on crée une classe Scene portant le nom de la scène qu’elle représente et on lui associe une classe Pane.
+Cette dernière servira à contenir la majorité des éléments devant être présents dans la scène même si ce n’est pas toujours le cas.
+
+\subsection{Ecran de démarrage}
+Initialement, nous avions comme idée d’avoir un écran d'accueil animé. On a d’abord pensé faire défiler une même image en boucle.
+Le principe était simple, prendre deux images identiques, en faire défiler une sur l’écran et quand celle-ci sort de l’écran la deuxième image commencera à défiler de sorte à avoir une boucle perpétuelle.
+Mais on a pas réussi à l'implémenter. On rencontrait des problèmes avec l’effet de transition utilisé pour faire défiler l’image et on arrivait pas non plus à synchroniser la transition entre les deux images sans compter le fait de trouver une image qui ferait une belle boucle.
+On a donc abandonné cette idée et on a, à la place adopté la stratégie consistant à jouer une vidéo en fond. Les avantages étaient :
+\begin{itemize}
+    \item On avait plus de transitions à gérer 
+    \item Des vidéos libres d’accès qui boucle avec elles-même sont facilement trouvables.
+\end{itemize}
+Après quelque temps de recherche nous avons trouvé la vidéo qui fera office de fond d’écran lors du démarrage du jeu, et en plus elle correspondait parfaitement avec notre thème cyber-retrowave.
+On a réussi à faire exactement ce qu’on voulait et on a même pu ajouter des fonctionnalité qu’on retrouve dans beaucoup de jeu arcade, comme par exemple le menu qui apparaît d’un côté une fois qu’on a cliqué sur l'écran, le petit message qui clignote quand on clique...
+
+\subsection{Menu d'option}
+On voulait absolument laisser le choix à l'utilisateur de changer les touches utilisées pour déplacer le joueur.
+Pareillement pour le contrôle des différents sons présents car on sait d’expérience que le son d’un jeu de ce type peut vite devenir frustrant quand on y joue pendant longtemps.
+Le contrôle de la luminosité est un plus apporté pour tous les joueurs nocturnes qui sont éblouis par leurs écrans de jeu.
+On y donne aussi l’accès à un des easter eggs qu’on a implémenté.
+On est à nouveau très content du résultat mais on a rencontré beaucoup de problèmes pour cette scène.
+\begin{enumerate}
+    \item Les différents layout utilisés se superposent mal, on avait donc des boutons qui n'étaient plus visible ou certains qui étaient encore visible mais ne réagissaient plus aux clics.
+Ce fut l’un des plus gros obstacles rencontré durant la création de l’interface graphique. 
+Et comme c'était la première fois qu’on avait ce problème, on a pris beaucoup de temps pour trouver une solution pour y remédier. 
+La solution bien que longue était simple, redimensionner les layouts pour qu’ils ne se superposent plus.
+Une fois implémenté, on a avait plus de problèmes.
+    \item Le slider contrôlant la luminosité.
+On pensait au début que ça allait être facile et qu’il ne faudrait que changer la luminosité du Stage ce qui affecterait la luminosité de tout les scènes, mais malheureusement c'était impossible.
+La classe Stage ne possède pas de telles méthodes.
+On s’est ensuit dit qu’on pouvait le faire sur un Pane qu’on et qu'on mettait le même Pane dans chaque scène et quand on change de scène de la scène A vers la scène B on efface toute chose du pane concernant la scène A et on y met les choses nécessaire pour la scène B.
+Mais le problème, on ne peut pas passer le même Pane en paramètre pour plusieurs scene.
+La solution a ça fut d'appliquer le même effet de luminosité à chaque scene et indépendamment. On fait ça dans la classe Controller.java.
+    \item L’easter-egg qui consistait à faire apparaître une image et un son d’explosion dès qu’on clic sur une scène.
+Le premier souci était de faire apparaître une image à l'endroit du clic, on a tout essayé mais tout ce qu’on arrivait à faire était de faire apparaître l’image en haut à gauche de l’écran, mais jamais à l'endroit du clic.
+L’un des membres a donc proposé de changer d’optique et de juste changer le skin du curseur et le transformer en image d’explosion, et ça a marché !
+Le deuxième souci fut de trouver un son libre d’explosion. 
+Maintenant qu’on avait l’image et le son, le plus gros restait à faire : implémenter la chose. Et c’est là qu’on a eu notre troisième et avant dernier souci.
+    \item L’effet ne marchait que sur la scène d’options et pas sur les autres scènes.
+La solution fut d'implémenter une fonction qui prend en paramètre la scène et qui y applique l'effet souhaité, en l'occurrence le fait de changer l’image du curseur en image d’explosion et d’en jouer le son.
+    \item Le cinquieme et dernier souci fut de désactiver l’effet quand la case y étant associée présente dans les options était décoché.
+On n'y arrivait pas, on a donc décidé de remplacer l’effet explosion par un autre effet mais un qui ne fait rien de sorte à "override” le dernier.
+\end{enumerate}
+
+\subsection{Scene de jeu}
+Pour ce qui est de la représentation de la map ou évolue le personnage jouable, on a pas eu trop de soucis et cela pour 2 raisons : 
+\begin{enumerate}
+    \item Un membre de l’équipe a fait un prototype sur python ce qui nous a beaucoup aidé car il fallait juste traduire le python en java.
+    \item On était tous familier avec la représentation d’une carte de jeu sous forme de grille et donc de matrice.
+\end{enumerate}
+Le problème majeur qu’on a eu avec la scène où se déroule une partie était le fait de bouger le joueur.
+Comme on a commencé par cette scène là, on était pas encore familiarisé avec les méthodes de setOnAction() et on comprenais pas comment les implémenter ni ou les implémenter.
+Après des recherches sur StackOverflow et GeeksForGeeks, on a trouvé comment faire et on a réussi l’implémentation.
+Le problème était qu’au début du projet on avait créé cette méthode dans la classe Game.java or elle doit uniquement servir au lancement du jeu et rien d'autre.
+Quand on a changé l’endroit de définition de la méthode ça fonctionnait à nouveau mais on a un dernier souci.
+En effet, comme cette scène était la première qu’on a implémenté, quand on a voulu rajouter une scène, celle contenant les levels sélectionnable, la méthode ne marchait plus sur la scène affichant la partie en cours après le passage de la scène des level vers celle de la partie.
+La seule solution qu’on a trouvé c’est de la définir dans la classe de la scène affichant la partie nommée LevelScene.
+
+\subsection{Erreur}
+Un autre gros problème qu’on a eu c’était avec notre gestion des erreurs dans les “try-catch”.
+On pensait initialement qu’un simple printStackTrace() dans le catch serait suffisant.
+C’est seulement après un entretien avec l’un des assistants qu’on a appris qu’il était préférable d’avoir un indicateur visuel pour les erreurs, car comme l'assistant nous a dit, chaque utilisateur n'est un programmeur qui ira chercher l' erreur dans le terminal.
+On a d’abord débattu sur le fait de créer notre propre type d’erreur et d’y mettre une méthode qui ferait apparaître à l’écran un message mais au final on a décidé d’utiliser la classe Alert() qui était idéale dans notre situation.
+On a implémenté une méthode dans la classe Controlleur.java qui ferait apparaître un message d’erreur à l'écran avec la classe Alert() tout ça avec un bouton permettant de quitter l’application après avoir lu l’erreur présentée.
 
 \newpage
 
