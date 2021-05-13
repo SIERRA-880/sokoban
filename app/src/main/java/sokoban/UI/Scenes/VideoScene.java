@@ -115,6 +115,7 @@ public class VideoScene extends BasicScene {
                 menuTranslation.setRate(1.5);
                 menuTranslation.play();
                 shown.set(true);
+                //see Stack Overflow https://stackoverflow.com/questions/43084698/flashing-label-in-javafx-gui
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.05), event -> startLabel.setVisible(true)),
                         new KeyFrame(Duration.seconds(0.1), event -> startLabel.setVisible(false)));
                 timeline.setCycleCount(2);
