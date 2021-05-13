@@ -4,7 +4,11 @@
 \begin{document}
 
 \subsection{Generation}
-La generation aleatoire de niveaux aleatoires ne fonctionne pas dans tous des cas
+Si il est impossible de placer une boîte accessible par le joueur et qui peut être déplacée d'au moins une case, le jeu plante. \\
+
+Cela arrive sur des petites maps avec trop de caisses. Le jeu essaye de placer des caisses mais n'y arrive pas et répète cette opération sans cesse, ce qui fige le jeu. Il faut absolument forcer son arrêt (par exemple ctrl + c dans le terminal). \\
+
+Ce bug peut être réglé mais nous n’avons pas eu le temps de nous en occuper. Il est assez dérangeant car il faut absolument relancer le jeu mais il peut être évité en choisissant de tailles plus grandes et avec moins de caisses.
 
 \subsection{Chargement d'une map}
 Quand l’utilisateur ajoute une map dans le dossier qui y est consacré, ou s'il sauvegarde un map fraîchement terminée, il ne pourra pas la charger.
