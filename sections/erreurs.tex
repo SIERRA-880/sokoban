@@ -7,6 +7,15 @@
 La generation aleatoire de niveaux aleatoires ne fonctionne pas dans tous des cas
 
 \subsection{Chargement d'une map}
-Le jeu a besoin d'etre redemarre pour actualiser la liste de map a charger
+Quand l’utilisateur ajoute une map dans le dossier qui y est consacré, ou s'il sauvegarde un map fraîchement terminée, il ne pourra pas la charger.
+En effet, le jeu a besoin d’un redémarrage pour recharger la liste des maps. Nous n’avons pas trouvé comment rafraîchir cette liste pendant que le jeu est lancé. \\ 
+
+Ce bug est assez dérangeant car il force l’utilisateur à redémarrer le jeu ce qui n’est pas du tout pratique.
+
+\subsection{Builder}
+Si l’utilisateur crée une map non fermée dans le menu Arcade -> Builder, il pourra l’enregistrer mais il ne pourra pas la charger dans Arcade -> Load. \\
+La méthode mapTrimmer située dans sokoban.Engine.Tools.MapLoader rend les maps non rectangulaires en map rectangulaires afin de travailler avec une hauteur et une largeur fixe peut importe la position sur la map. Cela simplifie le fonctionnement du moteur du jeu mais a pour conséquence de générer une erreur si une map n’est pas fermée. \\
+
+Dans notre cas l’erreur est simplement indiquée dans le terminal et nous n’avons pas pris la peine de l'implémenter dans l’interface. Ce bug n’est pas très gênant car il ne fait pas planter le jeu, si l’utilisateur charge une map non fermée il ne se passe tout simplement rien à ses yeux.
 
 \end{document}

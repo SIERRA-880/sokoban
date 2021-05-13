@@ -60,7 +60,55 @@ Ainsi, en ayant les coordonnées des cellules intervenants dans le déplacement 
 \subsection{Pack de textures}
 
 \subsection{Génération aléatoire de niveau}
-\includegraphics[width=1\textwidth]{images/generation.pdf}
+
+\begin{tikzpicture}[font=\small,thick]
+ 
+\node[draw,
+    rounded rectangle,
+    minimum width=2.5cm,
+    minimum height=1cm] (block1) {Faire apparaitre le joueur sur une case aleatoire};
+ 
+\node[draw,
+    rounded rectangle, 
+    below=of block1,
+    minimum width=3.5cm,
+    minimum height=1cm] (block2) { Faire apparaitre une caisse sur une case aleatoire };
+ 
+\node[draw,
+    rounded rectangle,
+    below=of block2,
+    minimum width=3.5cm,
+    minimum height=1cm] (block3) { Verifier si un chemin existe du joueur a la caisse };
+ 
+\node[draw,
+    rounded rectangle,
+    right=of block3,
+    minimum width=2.5cm,
+    minimum height=1cm] (block4) { Suprimer la caisse };
+
+\node[draw,
+    rounded rectangle,
+    below=of block3,
+    minimum width=2.5cm,
+    minimum height=1cm] (block5) { Deplacer le joueur a cote la caisse };
+ 
+\node[draw,
+    rounded rectangle,
+    below=of block5,
+    minimum width=2.5cm,
+    minimum height=1cm] (block6) { Tirer la caisse dans des directions aleatoires };
+ 
+% Arrows
+    \draw[-latex] (block1) edge (block2);
+    \draw[-latex] (block2) edge (block3);
+    \draw[-latex, green] (block3) edge (block4);
+    \draw[-latex] (block4) |- (block2);
+    \draw[-latex, red] (block3) edge (block5);
+    \draw[-latex] (block5) edge (block6);
+    \draw[-latex] (block6.west) -- ++(-10mm,0) |- (block2.west);
+
+\end{tikzpicture}
+
 \subsubsection{Placement aléatoire}
 \subsubsection{Backward induction}
 \subsubsection{A* path finding}
