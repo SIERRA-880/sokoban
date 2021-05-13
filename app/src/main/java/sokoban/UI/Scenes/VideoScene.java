@@ -175,7 +175,7 @@ public class VideoScene extends BasicScene {
     }
 
     /**
-     * Mehtode used to change the volume of the MediaPlayer Mplayer
+     * Methode used to change the volume of the MediaPlayer Mplayer
      *
      * @param volume double type number that will be set a s the new volume
      */
