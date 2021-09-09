@@ -40,8 +40,9 @@ public class KeyBindingPane extends GridPane {
 
         //right
         KeyBinding kb4 = new KeyBinding("  right", Game.right);
-        kb4.button.setOnAction(e -> setOnKeyPressed(event -> {
-            event.consume();
+        kb4.button.setOnAction(e -> setOnKeyPressed(k -> {
+            Game.right = k.getCode();
+            kb4.button.setText(k.getCode().toString());
         }));
         getChildren().addAll(kb1, kb2, kb3, kb4);
         GridPane.setRowIndex(kb1, 0);

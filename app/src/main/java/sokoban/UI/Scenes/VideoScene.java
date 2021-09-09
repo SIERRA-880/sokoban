@@ -157,7 +157,6 @@ public class VideoScene extends BasicScene {
     public static void playMplayer() {
         Mplayer.play();
     }
-
     /**
      * Methode used to stop the MediaPlayer Mplyer
      */
